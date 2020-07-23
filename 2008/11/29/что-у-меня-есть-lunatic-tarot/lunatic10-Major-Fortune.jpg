@@ -1,0 +1,751 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Articles # Jehy</title>
+	
+	<link rel="stylesheet" href="https://jehy.ru/articles/wp-content/themes/grey-is-love/css/screen.css" type="text/css" media="screen, projection" />
+	<link rel="stylesheet" href="https://jehy.ru/articles/wp-content/themes/grey-is-love/css/print.css" type="text/css" media="print" /> 
+	<!--[if IE]>
+		<link rel="stylesheet" href="https://jehy.ru/articles/wp-content/themes/grey-is-love/css/ie.css" type="text/css" media="screen, projection" />
+	<![endif]-->
+	<link rel="stylesheet" href="https://jehy.ru/articles/wp-content/themes/grey-is-love/style.css" type="text/css" media="screen, projection" />
+	<!--[if lt IE 7]>
+		<link rel="stylesheet" href="https://jehy.ru/articles/wp-content/themes/grey-is-love/css/ielt7.css" type="text/css" media="screen, projection" />
+	<![endif]-->
+	<link rel="alternate" type="application/rss+xml" title="Articles #Jehy RSS Feed" href="https://jehy.ru/articles/feed/" />
+	<link rel="shortcut icon" type="image/x-png" href="https://jehy.ru/articles/wp-content/themes/grey-is-love/images/favicon.ico" />
+	<link rel="pingback" href="https://jehy.ru/articles/xmlrpc.php" />
+	
+	
+<!-- All In One SEO Pack 3.6.2[285,344] -->
+<meta name="description"  content="Настройка вики, вордпресса, PHP скрипты, а так же карты таро и креатив :)" />
+
+<meta name="keywords"  content="хроники, PHP, wordpress, wiki, jehy" />
+<link rel="next" href="https://jehy.ru/articles/page/2/" />
+
+<script type="application/ld+json" class="aioseop-schema">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://jehy.ru/articles/#organization","url":"https://jehy.ru/articles/","name":"Articles #Jehy","sameAs":[]},{"@type":"WebSite","@id":"https://jehy.ru/articles/#website","url":"https://jehy.ru/articles/","name":"Articles #Jehy","publisher":{"@id":"https://jehy.ru/articles/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://jehy.ru/articles/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"https://jehy.ru/articles#webpage","url":"https://jehy.ru/articles","inLanguage":"en-US","name":"Articles #Jehy","isPartOf":{"@id":"https://jehy.ru/articles/#website"},"breadcrumb":{"@id":"https://jehy.ru/articles#breadcrumblist"},"description":"Настройка вики, вордпресса, PHP скрипты, а так же карты таро и креатив :)","about":{"@id":"https://jehy.ru/articles/#organization"}},{"@type":"BreadcrumbList","@id":"https://jehy.ru/articles#breadcrumblist","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://jehy.ru/articles/","url":"https://jehy.ru/articles/","name":"Articles # Jehy"}}]}]}</script>
+<!-- All In One SEO Pack -->
+<link rel='dns-prefetch' href='//s.w.org' />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/jehy.ru\/articles\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.4.2"}};
+			/*! This file is auto-generated */
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='openid-css'  href='https://jehy.ru/articles/wp-content/plugins/openid/f/openid.css?ver=519' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://jehy.ru/articles/wp-includes/css/dist/block-library/style.min.css?ver=5.4.2' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-syntax-css-css'  href='https://jehy.ru/articles/wp-content/plugins/wp-syntax/css/wp-syntax.css?ver=1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-commentnavi-css'  href='https://jehy.ru/articles/wp-content/plugins/wp-commentnavi/commentnavi-css.css?ver=1.10' type='text/css' media='all' />
+<link rel='stylesheet' id='lightboxStyle-css'  href='https://jehy.ru/articles/wp-content/plugins/lightbox-plus/css/dark/colorbox.min.css?ver=2.7.2' type='text/css' media='screen' />
+<script type='text/javascript' src='https://jehy.ru/articles/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='https://jehy.ru/articles/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://jehy.ru/articles/wp-content/plugins/lightbox-plus/js/jquery.colorbox.1.5.9-min.js?ver=1.5.9'></script>
+<link rel='https://api.w.org/' href='https://jehy.ru/articles/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://jehy.ru/articles/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://jehy.ru/articles/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.4.2" />
+
+			<link rel="openid2.provider" href="https://jehy.ru/articles/?openid=server" />
+			<link rel="openid2.local_id" href="https://jehy.ru/articles/author/jehy/" />
+			<link rel="openid.server" href="https://jehy.ru/articles/?openid=server" />
+			<link rel="openid.delegate" href="https://jehy.ru/articles/author/jehy/" /><link rel="stylesheet" href="https://jehy.ru/articles/wp-content/plugins/wp-page-numbers/tiny/wp-page-numbers.css" type="text/css" media="screen" /><meta http-equiv="X-XRDS-Location" content="https://jehy.ru/articles/?xrds" />
+<meta http-equiv="X-Yadis-Location" content="https://jehy.ru/articles/?xrds" />
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><!-- Lightbox Plus Colorbox v2.7.2/1.5.9 - 2013.01.24 - Message: 0-->
+<script type="text/javascript">
+jQuery(document).ready(function($){
+  $("a[rel*=lightbox]").colorbox({speed:0,width:false,height:false,innerWidth:false,innerHeight:false,initialWidth:false,initialHeight:false,maxWidth:false,maxHeight:false,scalePhotos:false,opacity:0.8,preloading:false,current:" {current}  {total}",previous:"",next:"",close:"",overlayClose:false,scrolling:false,escKey:false,top:false,right:false,bottom:false,left:false});
+});
+</script>
+	
+</head>
+
+<body>
+	<div class="container">
+		<div>
+			<div class="pageheader">
+					<a href="https://jehy.ru/articles"><img class="logo" src="https://jehy.ru/articles/wp-content/themes/grey-is-love/images/logo.jpg" alt="Articles #Jehy" /></a>
+					<div id="header">
+						<h1 id="title">Articles #Jehy</h1>
+						<h2 id="descr">insert 1 into dual</h2>
+  </div><div id="top"><div class="menu">
+				
+					<a href="https://jehy.ru/articles/feed/" title="Subscribe to RSS feed"><img src="https://jehy.ru/articles/wp-content/themes/grey-is-love/images/feed.png" alt="Subscribe to RSS feed" /> Subscribe? Sure? What for?</a>
+				
+			</div>
+					<div class="searchform">
+	<form method="get" action="/articles/index.php">
+		<p>
+			<input type="text" name="s" id="searchbox" />	
+			<input type="submit" src="https://jehy.ru/articles/wp-content/themes/grey-is-love/images/searchbutton.jpg" id="searchbutton" value=""/>		
+		</p>
+	</form>
+</div>				</div>
+			</div>
+ <!-- posts  -->
+<div id="posts" class="span-16 prepend-1 append-1">
+	
+		
+		<div class="post" id="post-3735">
+			<div class="postheader">
+				<div class="posttitle">
+					<h2><a href="https://jehy.ru/articles/2017/10/16/%d0%be%d0%b1%d1%8b%d1%87%d0%bd%d0%be%d0%b5-%d1%83%d1%82%d1%80%d0%be-2027-%d0%b3%d0%be%d0%b4%d0%b0/" rel="bookmark" title="Обычное утро 2027 года">Обычное утро 2027 года</a></h2>
+16 October 2017, 15:10:32<br>
+</div><div  class="gravatar"><div class="postavatar"><img class="avatar avatar-100" src="https://jehy.ru/articles/wp-content/uploads/icons/lain.jpg" width="100" height="100" alt="%d0%be%d0%b1%d1%8b%d1%87%d0%bd%d0%be%d0%b5-%d1%83%d1%82%d1%80%d0%be-2027-%d0%b3%d0%be%d0%b4%d0%b0" border="0" /></div>
+</div>
+			</div>
+			<div class="postcontent">
+			<p>Ну что же, доброе утро. Сегодня… Хмм… 23 сентября 2027 года. Надо бы посмотреть, какие на сегодня планы. О, сегодня же день рождения моего двоюродного племянника! Надо бы поздравить его. Интересно… Мы не виделись с ним уже три года. Даже не могу точно вспомнить, как он выглядит. Ну да ладно, это не проблема. Нельзя помнить всех и всё &#8211; вполне достаточно пары воспоминаний и дежурного набора слов.</p>
+<p>Вежливость и память &#8211; наше всё. Опорная точка для здравого рассудка человека, который не может существовать в социальном вакууме. Об этом свидетельствует социальный проект “Third Life”, который был запущен пять лет назад, сразу после Второй Мировой Криптовойны, которая стоила человечеству миллионы сожженных вместе с мозгами нейроимплантов. Потери были так велики, что на освободившихся от обслуживания мощностях было решено запустить ИИ симуляторы восьмого поколения, которые, обработав полностью всю информацию о деятельности человека в сети, создавали его виртуальный образ, который мог почти полноценно участвовать в его социальной жизни.<br />
+ <a href="https://jehy.ru/articles/2017/10/16/%d0%be%d0%b1%d1%8b%d1%87%d0%bd%d0%be%d0%b5-%d1%83%d1%82%d1%80%d0%be-2027-%d0%b3%d0%be%d0%b4%d0%b0/#more-3735" class="more-link"><br />Continue reading&#8230;</a></p>
+</div>
+      <div class="postmeta">
+			<div class="posttags">Tags: <a href="https://jehy.ru/articles/archives/tag/%d0%b8%d1%81%d1%82%d0%be%d1%80%d0%b8%d0%b8/" rel="tag">истории</a></div><div class="editlink"></td></div><div id="commentcount"><a href="https://jehy.ru/articles/2017/10/16/%d0%be%d0%b1%d1%8b%d1%87%d0%bd%d0%be%d0%b5-%d1%83%d1%82%d1%80%d0%be-2027-%d0%b3%d0%be%d0%b4%d0%b0/#respond">Comments 
+						[ 0 ]
+					</a></div></div>
+      </div>
+				
+		<div class="post" id="post-3731">
+			<div class="postheader">
+				<div class="posttitle">
+					<h2><a href="https://jehy.ru/articles/2017/09/19/%d0%bf%d1%80%d0%b5%d0%b4%d1%8b%d1%81%d1%82%d0%be%d1%80%d0%b8%d1%8f-%d0%be%d0%b4%d0%bd%d0%be%d0%b3%d0%be-%d0%bc%d0%b0%d0%b3%d0%b0/" rel="bookmark" title="Предыстория одного мага">Предыстория одного мага</a></h2>
+19 September 2017, 11:09:44<br>
+</div><div  class="gravatar"><div class="postavatar"><img class="avatar avatar-100" src="https://jehy.ru/articles/wp-content/uploads/icons/death_the_kid.jpg" width="100" height="56" alt="%d0%bf%d1%80%d0%b5%d0%b4%d1%8b%d1%81%d1%82%d0%be%d1%80%d0%b8%d1%8f-%d0%be%d0%b4%d0%bd%d0%be%d0%b3%d0%be-%d0%bc%d0%b0%d0%b3%d0%b0" border="0" /></div>
+</div>
+			</div>
+			<div class="postcontent">
+			<p>Небольшая предыстория мага Традиции Эвтанатос для тех, кому это может быть интересно. Орфография и построение предложений может местами страдать, так как тест является компиляцией телеграмм переписки. Итак&#8230;</p>
+<p>Джеффри никогда не блистал отличными оценками или выдающимся умом. От сверстников его отличало одно &#8211; всепоглощающее стремление помогать живым существам. Это был именно тот ребёнок, который несколько раз за неделю приносит домой больных животных и их выхаживает. Неудивительно, что он хотел стать врачом&#8230;</p>
+<p>В семье и вокруг всё тоже складывалось не лучшим образом. Отец был алкоголиком и часто по пьяни бил его, мать и младшую сестру. Мать была молчаливой страдалицей, и пыталась наставить Джеффри на путь христианского смирения. Он смирялся, но религиозные соображения проходили мимо, несмотря на наличие креста &#8211; Джеффри не мог понять, почему Бог хочет, чтобы вечерами его бил смрадный тупой боров.</p>
+<p>Сестра была его маленьким ангелом. Джеффри видел, что она умна не по годам, и, когда мог, переносил гнев отца с неё на себя. Он хотел помочь ей с обучением, чтобы она выбралась из их затхлой жизни в маленькой грязной квартире, и по ночам занимался грязной работой вроде мойки машин и подметания мусора. Но ближе к окончанию школы стало понятно, что этих денег не хватит на то, чтобы отправить её в какое-то лучшее место. Всё, что зарабатывала мать и большая часть денег Джеффри уходила на поддержание их скудного существования и выпивку отца. Тогда Джеффри преступил через свою мечту о становлении врачом и начал искать постоянную работу.</p>
+<p>В поисках работы, он нашёл непопулярную и тяжёлую задачу. Джеффри начал работать в детском хосписе, помогая детям справляться с самой тяжёлой в их недолгой жизни задачей.<br />
+ <a href="https://jehy.ru/articles/2017/09/19/%d0%bf%d1%80%d0%b5%d0%b4%d1%8b%d1%81%d1%82%d0%be%d1%80%d0%b8%d1%8f-%d0%be%d0%b4%d0%bd%d0%be%d0%b3%d0%be-%d0%bc%d0%b0%d0%b3%d0%b0/#more-3731" class="more-link"><br />Continue reading&#8230;</a></p>
+</div>
+      <div class="postmeta">
+			<div class="posttags">Tags: <a href="https://jehy.ru/articles/archives/tag/mta/" rel="tag">mta</a>, <a href="https://jehy.ru/articles/archives/tag/wod/" rel="tag">wod</a></div><div class="editlink"></td></div><div id="commentcount"><a href="https://jehy.ru/articles/2017/09/19/%d0%bf%d1%80%d0%b5%d0%b4%d1%8b%d1%81%d1%82%d0%be%d1%80%d0%b8%d1%8f-%d0%be%d0%b4%d0%bd%d0%be%d0%b3%d0%be-%d0%bc%d0%b0%d0%b3%d0%b0/#respond">Comments 
+						[ 0 ]
+					</a></div></div>
+      </div>
+				
+		<div class="post" id="post-3712">
+			<div class="postheader">
+				<div class="posttitle">
+					<h2><a href="https://jehy.ru/articles/2016/07/08/%d0%bd%d0%be%d1%87%d1%8c-%d0%b2-%d0%be%d0%b4%d0%b8%d0%bd%d0%be%d0%ba%d0%be%d0%bc-%d0%be%d0%ba%d1%82%d1%8f%d0%b1%d1%80%d0%b5/" rel="bookmark" title="Ночь в одиноком октябре">Ночь в одиноком октябре</a></h2>
+8 July 2016, 17:07:42<br>
+</div><div  class="gravatar"><div class="postavatar"><img class="avatar avatar-100" src="https://jehy.ru/articles/wp-content/uploads/icons/arquade_bound.jpg" width="200" height="160" alt="%d0%bd%d0%be%d1%87%d1%8c-%d0%b2-%d0%be%d0%b4%d0%b8%d0%bd%d0%be%d0%ba%d0%be%d0%bc-%d0%be%d0%ba%d1%82%d1%8f%d0%b1%d1%80%d0%b5" border="0" /></div>
+</div>
+			</div>
+			<div class="postcontent">
+			<p>Шёл октябрь 2017 года. В огромном здании из стекла и металла шёл какой-то бурный праздник. Люди с чёрными синяками под глазами и широкими улыбками на осунувшихся лицах поздравляли друг друга с окончанием долгой и тяжёлой работы. Наконец-то &ldquo;Дженезис&rdquo; будет запущен &#8211; продукт нового века с непревзойдённой скоростью обработки информации, который позволит объединить в одну огромную систему все существующие на планете электронные устройства.</p>
+
+<p>Но не все радовались одинаково. Нарушая все правила безопасности, группа избранных предавалась празднику и обливала стены холодной серверной комнаты шампанским. Присмотревшись, можно было заметить некоторые странности в этой группе. У одного человека из черепа шла направленная вперёд антенна, у некоторых были татуировки с рисунками сложных схем, третьи несли свои массивные или же наоборот истощённые тела в лёгких экзоскелетах. <a href="https://jehy.ru/articles/2016/07/08/%d0%bd%d0%be%d1%87%d1%8c-%d0%b2-%d0%be%d0%b4%d0%b8%d0%bd%d0%be%d0%ba%d0%be%d0%bc-%d0%be%d0%ba%d1%82%d1%8f%d0%b1%d1%80%d0%b5/#more-3712" class="more-link"><br />Continue reading&#8230;</a></p></div>
+      <div class="postmeta">
+			<div class="posttags">Tags: <a href="https://jehy.ru/articles/archives/tag/%d0%b8%d1%81%d1%82%d0%be%d1%80%d0%b8%d0%b8/" rel="tag">истории</a></div><div class="editlink"></td></div><div id="commentcount"><a href="https://jehy.ru/articles/2016/07/08/%d0%bd%d0%be%d1%87%d1%8c-%d0%b2-%d0%be%d0%b4%d0%b8%d0%bd%d0%be%d0%ba%d0%be%d0%bc-%d0%be%d0%ba%d1%82%d1%8f%d0%b1%d1%80%d0%b5/#comments">Comments 
+						[ 1 ]
+					</a></div></div>
+      </div>
+				
+		<div class="post" id="post-3664">
+			<div class="postheader">
+				<div class="posttitle">
+					<h2><a href="https://jehy.ru/articles/2015/11/24/%d0%be%d0%b4%d0%b8%d0%bd-%d0%b4%d0%b5%d0%bd%d1%8c-%d0%b7%d0%b8%d0%bc%d1%8b/" rel="bookmark" title="Один день Зимы">Один день Зимы</a></h2>
+24 November 2015, 13:11:54<br>
+</div><div  class="gravatar"><div class="postavatar"><img class="avatar avatar-100" src="https://jehy.ru/articles/wp-content/uploads/icons/arquade_bound.jpg" width="200" height="160" alt="%d0%be%d0%b4%d0%b8%d0%bd-%d0%b4%d0%b5%d0%bd%d1%8c-%d0%b7%d0%b8%d0%bc%d1%8b" border="0" /></div>
+</div>
+			</div>
+			<div class="postcontent">
+			<p>Огромные кристаллы снежинок, порхая в воздухе, неумолимо стремились к грязному асфальту, превращаясь на нём в тёмную слякоть. Они могли танцевать, застывать на предметах, резкие порывы ветра иногда вскидывали их обратно вверх &#8211; но судьба их была предрешена. Я подставил им лицо, и они таяли, оставляя на нём длинные влажные следы. Неплохая судьба, если сравнить их с теми, что были безжалостно размазаны и стекали в канализацию тёмными лужами. А ведь когда-то я шёл сквозь снег и ни одна снежинка не посмела ко мне приблизиться, словно облетая невидимую преграду. <a href="https://jehy.ru/articles/2015/11/24/%d0%be%d0%b4%d0%b8%d0%bd-%d0%b4%d0%b5%d0%bd%d1%8c-%d0%b7%d0%b8%d0%bc%d1%8b/#more-3664" class="more-link"><br />Continue reading&#8230;</a></p>
+</div>
+      <div class="postmeta">
+			<div class="posttags">Tags: <a href="https://jehy.ru/articles/archives/tag/%d0%b8%d1%81%d1%82%d0%be%d1%80%d0%b8%d0%b8/" rel="tag">истории</a></div><div class="editlink"></td></div><div id="commentcount"><a href="https://jehy.ru/articles/2015/11/24/%d0%be%d0%b4%d0%b8%d0%bd-%d0%b4%d0%b5%d0%bd%d1%8c-%d0%b7%d0%b8%d0%bc%d1%8b/#respond">Comments 
+						[ 0 ]
+					</a></div></div>
+      </div>
+				
+		<div class="post" id="post-3649">
+			<div class="postheader">
+				<div class="posttitle">
+					<h2><a href="https://jehy.ru/articles/2015/07/16/%d0%b1%d0%b5%d0%b3-%d1%81-microsoft-band/" rel="bookmark" title="Бег с Microsoft Band">Бег с Microsoft Band</a></h2>
+16 July 2015, 12:07:39<br>
+</div><div  class="gravatar"><img alt='' src='https://secure.gravatar.com/avatar/cd510f34da2e7ad8e1812274a89fb6e2?s=100&#038;d=mm&#038;r=x' srcset='https://secure.gravatar.com/avatar/cd510f34da2e7ad8e1812274a89fb6e2?s=200&#038;d=mm&#038;r=x 2x' class='avatar avatar-100 photo' height='100' width='100' /></div>
+			</div>
+			<div class="postcontent">
+			<p><img src="https://compass-ssl.surface.com/assets/57/21/572176de-d109-4101-a710-015fcb6c3c43.png#Desktop_Ksite-announce_Hero-Marquee.png"/></p>
+<p>Не так давно стал счастливым обладателем Microsoft Band. До него бегал сначала с Endomondo на телефоне, потом с Strava, потом получил Suunto Quest с HR датчиком, и радостно использовал его.<br />
+Поскольку у нас пока в продаже MS Band нету, то наверняка обзор будет интересен. Если что, купить это чудо можно примерно за 10.000 рублей на ebay. Не за 17, как у нас продают :)</p>
+<p>Итак, что же мы хотим от устройства?<br />
+1) Пульс. Думаю, комментировать очевидное не стоит.<br />
+2) GPS. Важно знать пройденное расстояние и интересно смотреть на маршруты, которые пробежал. На той же Strava можно ещё сравнивать своё время на известном маршруте с другими бегунами. Бывает интересно &#8211; побегал в произвольной местности, а потом оказалось, что там тоже кто-то бегал. Сравниваешь, радуешься&#8230; Или огорчаешься и мотивируешься :)<br />
+3) Количество шагов. Не так важно, но интересно.</p>
+<p> <a href="https://jehy.ru/articles/2015/07/16/%d0%b1%d0%b5%d0%b3-%d1%81-microsoft-band/#more-3649" class="more-link"><br />Continue reading&#8230;</a></p>
+</div>
+      <div class="postmeta">
+			<div class="posttags">Tags: <a href="https://jehy.ru/articles/archives/tag/%d0%b1%d0%b5%d0%b3/" rel="tag">бег</a></div><div class="editlink"></td></div><div id="commentcount"><a href="https://jehy.ru/articles/2015/07/16/%d0%b1%d0%b5%d0%b3-%d1%81-microsoft-band/#comments">Comments 
+						[ 1 ]
+					</a></div></div>
+      </div>
+				
+		<div class="post" id="post-3641">
+			<div class="postheader">
+				<div class="posttitle">
+					<h2><a href="https://jehy.ru/articles/2015/04/24/%d0%bc%d0%b0%d1%81%d0%ba%d0%b8%d1%80%d0%be%d0%b2%d0%ba%d0%b0-%d1%81%d1%81%d1%8b%d0%bb%d0%be%d0%ba-%d0%b2-%d0%bf%d1%80%d0%be%d0%b8%d0%b7%d0%b2%d0%be%d0%bb%d1%8c%d0%bd%d1%8b%d1%85-%d0%bf%d0%be%d0%bb/" rel="bookmark" title="Маскировка ссылок в произвольных полях с wp-noexternallinks">Маскировка ссылок в произвольных полях с wp-noexternallinks</a></h2>
+24 April 2015, 12:04:17<br>
+</div><div  class="gravatar"><img alt='' src='https://secure.gravatar.com/avatar/cd510f34da2e7ad8e1812274a89fb6e2?s=100&#038;d=mm&#038;r=x' srcset='https://secure.gravatar.com/avatar/cd510f34da2e7ad8e1812274a89fb6e2?s=200&#038;d=mm&#038;r=x 2x' class='avatar avatar-100 photo' height='100' width='100' /></div>
+			</div>
+			<div class="postcontent">
+			<p><strong>Внимание! Я более не занимаюсь поддержкой этой плагина, после версии 3.5.9.9! Пожалуйста, задавайте вопросы на странице поддержки wordpress.</strong></p>
+<p>Маскировать ссылки в произвольных полях при помощи wp-noexternallinks очень просто. Сначала, нужно найти место, где идёт вывод вашего произвольного поля. Скорее всего, он идёт в файле вашей темы, single.php.<br />
+Выглядеть он должен как-то так:</p>
+
+<div class="wp_syntax" style="position:relative;"><table><tr><td class="line_numbers"><pre>1
+</pre></td><td class="code"><pre class="php" style="font-family:monospace;"><span style="color: #b1b100;">echo</span> get_post_meta<span style="color: #009900;">&#40;</span>get_the_ID<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span> <span style="color: #0000ff;">'имя_вашего_поля'</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">1</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre></td></tr></table><p class="theCode" style="display:none;">echo get_post_meta(get_the_ID(), 'имя_вашего_поля', 1);</p></div>
+
+<p>Затем редактируем его, чтобы он выглядел так:</p>
+
+<div class="wp_syntax" style="position:relative;"><table><tr><td class="line_numbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre class="php" style="font-family:monospace;"><span style="color: #666666; font-style: italic;">//получить содержимое поля</span>
+<span style="color: #000088;">$text</span><span style="color: #339933;">=</span>get_post_meta<span style="color: #009900;">&#40;</span>get_the_ID<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span> <span style="color: #0000ff;">'имя_вашего_поля'</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">1</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #666666; font-style: italic;">//Использовать на содержимом поля все те же фильтры, что на стандартном выводе контента страницы</span>
+<span style="color: #666666; font-style: italic;">//В эти фильтры так же входит фильтр wp-noexternallinks:</span>
+<span style="color: #000088;">$text_filtered</span><span style="color: #339933;">=</span>apply_filters<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'the_content'</span><span style="color: #339933;">,</span><span style="color: #000088;">$text</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #666666; font-style: italic;">//Вывести отфильтрованный текст:</span>
+<span style="color: #b1b100;">echo</span> <span style="color: #000088;">$text_filtered</span><span style="color: #339933;">;</span></pre></td></tr></table><p class="theCode" style="display:none;">//получить содержимое поля
+$text=get_post_meta(get_the_ID(), 'имя_вашего_поля', 1);
+//Использовать на содержимом поля все те же фильтры, что на стандартном выводе контента страницы
+//В эти фильтры так же входит фильтр wp-noexternallinks:
+$text_filtered=apply_filters('the_content',$text);
+//Вывести отфильтрованный текст:
+echo $text_filtered;</p></div>
+
+<p>Заметьте, что если вы не маскируете ссылки в тексте поста, а маскируете их в комментариях, то пятая строчка должна выглядеть так:</p>
+
+<div class="wp_syntax" style="position:relative;"><table><tr><td class="line_numbers"><pre>3
+4
+5
+</pre></td><td class="code"><pre class="php" style="font-family:monospace;"><span style="color: #666666; font-style: italic;">//Использовать на содержимом поля все те же фильтры, что на стандартном выводе комментария пользователя</span>
+<span style="color: #666666; font-style: italic;">//В эти фильтры так же входит фильтр wp-noexternallinks:</span>
+<span style="color: #000088;">$text_filtered</span><span style="color: #339933;">=</span>apply_filters<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'comment_text'</span><span style="color: #339933;">,</span><span style="color: #000088;">$text</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre></td></tr></table><p class="theCode" style="display:none;">//Использовать на содержимом поля все те же фильтры, что на стандартном выводе комментария пользователя
+//В эти фильтры так же входит фильтр wp-noexternallinks:
+$text_filtered=apply_filters('comment_text',$text);</p></div>
+
+<p>Заметьте, что если произвольное поле выводится при помощи плагина, то вам придётся править его код или как-то ещё обрабатывать его вывод.</p>
+<p><strong>Обновление</strong><br />
+Я так же добавил фильтр, который можно вызывать в коде без остальных, вот так:</p>
+
+<div class="wp_syntax" style="position:relative;"><table><tr><td class="code"><pre class="php" style="font-family:monospace;"><span style="color: #000088;">$text_filtered</span><span style="color: #339933;">=</span>apply_filters<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'wp_noexternallinks'</span><span style="color: #339933;">,</span><span style="color: #000088;">$text</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre></td></tr></table><p class="theCode" style="display:none;">$text_filtered=apply_filters('wp_noexternallinks',$text);</p></div>
+
+</div>
+      <div class="postmeta">
+			<div class="posttags">Tags: <a href="https://jehy.ru/articles/archives/tag/wordpress/" rel="tag">wordpress</a></div><div class="editlink"></td></div><div id="commentcount"><a href="https://jehy.ru/articles/2015/04/24/%d0%bc%d0%b0%d1%81%d0%ba%d0%b8%d1%80%d0%be%d0%b2%d0%ba%d0%b0-%d1%81%d1%81%d1%8b%d0%bb%d0%be%d0%ba-%d0%b2-%d0%bf%d1%80%d0%be%d0%b8%d0%b7%d0%b2%d0%be%d0%bb%d1%8c%d0%bd%d1%8b%d1%85-%d0%bf%d0%be%d0%bb/#comments">Comments 
+						[ 10 ]
+					</a></div></div>
+      </div>
+				
+		<div class="post" id="post-3623">
+			<div class="postheader">
+				<div class="posttitle">
+					<h2><a href="https://jehy.ru/articles/2015/03/06/masking-links-in-custom-fields-with-wp-noexternallinks/" rel="bookmark" title="Masking links in custom fields with wp-noexternallinks">Masking links in custom fields with wp-noexternallinks</a></h2>
+6 March 2015, 14:03:58<br>
+</div><div  class="gravatar"><img alt='' src='https://secure.gravatar.com/avatar/cd510f34da2e7ad8e1812274a89fb6e2?s=100&#038;d=mm&#038;r=x' srcset='https://secure.gravatar.com/avatar/cd510f34da2e7ad8e1812274a89fb6e2?s=200&#038;d=mm&#038;r=x 2x' class='avatar avatar-100 photo' height='100' width='100' /></div>
+			</div>
+			<div class="postcontent">
+			<p><strong>Warning! I no longer support this plugin after version 3.5.9.9! Please ask questions on wordpress support page.</strong></p>
+<p>Masking links in custom fields with wp-noexternallinks is really simple. At first, you need to find the place where your custom field is being output. It should be in your theme file, single.php.</p>
+<p>Then edit output so it looks like this (you should change <strong>custom_field_name</strong> to your field name):</p>
+
+<div class="wp_syntax" style="position:relative;"><table><tr><td class="line_numbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre class="php" style="font-family:monospace;"><span style="color: #666666; font-style: italic;">//get custom field text with links:</span>
+<span style="color: #000088;">$text</span><span style="color: #339933;">=</span>get_post_meta<span style="color: #009900;">&#40;</span>get_the_ID<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span> <span style="color: #0000ff;">'custom_field_name'</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">1</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #666666; font-style: italic;">//Apply all the filters that are used for post content on custom field text.</span>
+<span style="color: #666666; font-style: italic;">//It will also apply wp-noexternallinks filter:</span>
+<span style="color: #000088;">$text_filtered</span><span style="color: #339933;">=</span>apply_filters<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'the_content'</span><span style="color: #339933;">,</span><span style="color: #000088;">$text</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #666666; font-style: italic;">//output filtered text:</span>
+<span style="color: #b1b100;">echo</span> <span style="color: #000088;">$text_filtered</span><span style="color: #339933;">;</span></pre></td></tr></table><p class="theCode" style="display:none;">//get custom field text with links:
+$text=get_post_meta(get_the_ID(), 'custom_field_name', 1);
+//Apply all the filters that are used for post content on custom field text.
+//It will also apply wp-noexternallinks filter:
+$text_filtered=apply_filters('the_content',$text);
+//output filtered text:
+echo $text_filtered;</p></div>
+
+<p>Notice that if you don&#8217;t mask links in your posts&#8217;s content but mask them in comments, your fifth line should look like this:</p>
+
+<div class="wp_syntax" style="position:relative;"><table><tr><td class="line_numbers"><pre>3
+4
+5
+</pre></td><td class="code"><pre class="php" style="font-family:monospace;"><span style="color: #666666; font-style: italic;">//Apply all the filters that are used for user comments on custom field text.</span>
+<span style="color: #666666; font-style: italic;">//It will also apply wp-noexternallinks filter:</span>
+<span style="color: #000088;">$text_filtered</span><span style="color: #339933;">=</span>apply_filters<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'comment_text'</span><span style="color: #339933;">,</span><span style="color: #000088;">$text</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre></td></tr></table><p class="theCode" style="display:none;">//Apply all the filters that are used for user comments on custom field text.
+//It will also apply wp-noexternallinks filter:
+$text_filtered=apply_filters('comment_text',$text);</p></div>
+
+<p>If custom field output is generated by plugin then unfortunately you will have to edit plugin code or try to preprocess it&#8217;s output.</p>
+<p><strong>UPDATE</strong><br />
+I also provided custom filter to process links. You can call it like this:</p>
+
+<div class="wp_syntax" style="position:relative;"><table><tr><td class="code"><pre class="php" style="font-family:monospace;"><span style="color: #000088;">$text_filtered</span><span style="color: #339933;">=</span>apply_filters<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'wp_noexternallinks'</span><span style="color: #339933;">,</span><span style="color: #000088;">$text</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre></td></tr></table><p class="theCode" style="display:none;">$text_filtered=apply_filters('wp_noexternallinks',$text);</p></div>
+
+</div>
+      <div class="postmeta">
+			<div class="posttags">Tags: <a href="https://jehy.ru/articles/archives/tag/wordpress/" rel="tag">wordpress</a></div><div class="editlink"></td></div><div id="commentcount"><a href="https://jehy.ru/articles/2015/03/06/masking-links-in-custom-fields-with-wp-noexternallinks/#comments">Comments 
+						[ 10 ]
+					</a></div></div>
+      </div>
+				
+		<div class="post" id="post-3602">
+			<div class="postheader">
+				<div class="posttitle">
+					<h2><a href="https://jehy.ru/articles/2014/12/09/encrypting-links-for-wp-noexternallinks/" rel="bookmark" title="Encrypting links for WP-NoExternalLinks">Encrypting links for WP-NoExternalLinks</a></h2>
+9 December 2014, 16:12:03<br>
+</div><div  class="gravatar"><img alt='' src='https://secure.gravatar.com/avatar/cd510f34da2e7ad8e1812274a89fb6e2?s=100&#038;d=mm&#038;r=x' srcset='https://secure.gravatar.com/avatar/cd510f34da2e7ad8e1812274a89fb6e2?s=200&#038;d=mm&#038;r=x 2x' class='avatar avatar-100 photo' height='100' width='100' /></div>
+			</div>
+			<div class="postcontent">
+			<p><strong>Warning! I no longer support this plugin after version 3.5.9.9! Please ask questions on wordpress support page.</strong></p>
+<p>This article is based on <a href="https://www.digi77.com/how-to-protect-your-wordpress-external-links/">this one</a> and the latest version of plugin. Now you can easily encrypt your links without changing plugin code.</p>
+<p>1) Ensure that you have <strong>php-mcrypt</strong> installed:</p>
+<p>For CentOS, type</p>
+
+<div class="wp_syntax" style="position:relative;"><table><tr><td class="code"><pre class="bash" style="font-family:monospace;"><span style="color: #c20cb9; font-weight: bold;">sudo</span> <span style="color: #c20cb9; font-weight: bold;">yum install</span> php-mcrypt</pre></td></tr></table><p class="theCode" style="display:none;">sudo yum install php-mcrypt</p></div>
+
+<p>For ubuntu, type</p>
+
+<div class="wp_syntax" style="position:relative;"><table><tr><td class="code"><pre class="bash" style="font-family:monospace;"><span style="color: #c20cb9; font-weight: bold;">sudo</span> <span style="color: #c20cb9; font-weight: bold;">apt-get install</span> php5-mcrypt</pre></td></tr></table><p class="theCode" style="display:none;">sudo apt-get install php5-mcrypt</p></div>
+
+<p>For windows, enable this extension in php.ini:</p>
+
+<div class="wp_syntax" style="position:relative;"><table><tr><td class="code"><pre class="bash" style="font-family:monospace;"><span style="color: #007800;">extension</span>=php_mcrypt.dll</pre></td></tr></table><p class="theCode" style="display:none;">extension=php_mcrypt.dll</p></div>
+
+<p>2) Create file <strong>wp-content/uploads/custom-parser.php</strong> and add here the following:</p>
+
+<div class="wp_syntax" style="position:relative;"><table><tr><td class="line_numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td><td class="code"><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
+<span style="color: #b1b100;">if</span><span style="color: #009900;">&#40;</span><span style="color: #339933;">!</span><span style="color: #990000;">defined</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'DB_NAME'</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span>
+  <span style="color: #990000;">die</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'Error: Plugin &quot;wp-noexternallinks&quot; does not support standalone calls, damned hacker.'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+<span style="color: #666666; font-style: italic;">#include base parser
+</span><span style="color: #b1b100;">include_once</span><span style="color: #009900;">&#40;</span>ABSPATH <span style="color: #339933;">.</span> <span style="color: #0000ff;">'wp-content/plugins/wp-noexternallinks/wp-noexternallinks-parser.php'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+<span style="color: #000000; font-weight: bold;">class</span> custom_parser <span style="color: #000000; font-weight: bold;">extends</span> wp_noexternallinks_parser
+<span style="color: #009900;">&#123;</span>
+  <span style="color: #000000; font-weight: bold;">var</span> <span style="color: #000088;">$salt</span><span style="color: #339933;">,</span><span style="color: #000088;">$iv</span><span style="color: #339933;">;</span>
+  <span style="color: #000000; font-weight: bold;">function</span> init_crypt<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>
+  <span style="color: #009900;">&#123;</span>
+    <span style="color: #b1b100;">if</span><span style="color: #009900;">&#40;</span><span style="color: #339933;">!</span><span style="color: #990000;">function_exists</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'mcrypt_create_iv'</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span>
+      <span style="color: #990000;">die</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'php-mcrypt library not installed, can not process links!'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">salt</span> <span style="color: #339933;">=</span><span style="color: #0000ff;">'ms8-sRt-kBs5-s1wQ'</span><span style="color: #339933;">;</span>
+    <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">iv</span><span style="color: #339933;">=</span><span style="color: #990000;">mcrypt_create_iv</span><span style="color: #009900;">&#40;</span><span style="color: #990000;">mcrypt_get_iv_size</span><span style="color: #009900;">&#40;</span>MCRYPT_RIJNDAEL_256<span style="color: #339933;">,</span> MCRYPT_MODE_ECB<span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span> MCRYPT_RAND<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+  <span style="color: #009900;">&#125;</span>
+  <span style="color: #000000; font-weight: bold;">function</span> encode_link<span style="color: #009900;">&#40;</span><span style="color: #000088;">$url</span><span style="color: #009900;">&#41;</span>
+  <span style="color: #009900;">&#123;</span>
+    <span style="color: #b1b100;">if</span><span style="color: #009900;">&#40;</span><span style="color: #339933;">!</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">salt</span><span style="color: #009900;">&#41;</span>
+      <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">init_crypt</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #b1b100;">return</span> <span style="color: #990000;">trim</span><span style="color: #009900;">&#40;</span><span style="color: #990000;">base64_encode</span><span style="color: #009900;">&#40;</span><span style="color: #990000;">mcrypt_encrypt</span><span style="color: #009900;">&#40;</span>MCRYPT_RIJNDAEL_256<span style="color: #339933;">,</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">salt</span><span style="color: #339933;">,</span> <span style="color: #000088;">$url</span><span style="color: #339933;">,</span> MCRYPT_MODE_ECB<span style="color: #339933;">,</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">iv</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+  <span style="color: #009900;">&#125;</span>
+  <span style="color: #000000; font-weight: bold;">function</span> decode_link<span style="color: #009900;">&#40;</span><span style="color: #000088;">$url</span><span style="color: #009900;">&#41;</span>
+  <span style="color: #009900;">&#123;</span> 
+    <span style="color: #b1b100;">if</span><span style="color: #009900;">&#40;</span><span style="color: #339933;">!</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">salt</span><span style="color: #009900;">&#41;</span>
+      <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">init_crypt</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #b1b100;">return</span> <span style="color: #990000;">trim</span><span style="color: #009900;">&#40;</span><span style="color: #990000;">mcrypt_decrypt</span><span style="color: #009900;">&#40;</span>MCRYPT_RIJNDAEL_256<span style="color: #339933;">,</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">salt</span><span style="color: #339933;">,</span> <span style="color: #990000;">base64_decode</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$url</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span> MCRYPT_MODE_ECB<span style="color: #339933;">,</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">iv</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+  <span style="color: #009900;">&#125;</span>
+<span style="color: #009900;">&#125;</span>
+<span style="color: #000000; font-weight: bold;">?&gt;</span></pre></td></tr></table><p class="theCode" style="display:none;">&lt;?php
+if(!defined('DB_NAME'))
+  die('Error: Plugin &quot;wp-noexternallinks&quot; does not support standalone calls, damned hacker.');
+ 
+#include base parser
+include_once(ABSPATH . 'wp-content/plugins/wp-noexternallinks/wp-noexternallinks-parser.php');
+ 
+class custom_parser extends wp_noexternallinks_parser
+{
+  var $salt,$iv;
+  function init_crypt()
+  {
+    if(!function_exists('mcrypt_create_iv'))
+      die('php-mcrypt library not installed, can not process links!');
+    $this-&gt;salt ='ms8-sRt-kBs5-s1wQ';
+    $this-&gt;iv=mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND);
+  }
+  function encode_link($url)
+  {
+    if(!$this-&gt;salt)
+      $this-&gt;init_crypt();
+    return trim(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $this-&gt;salt, $url, MCRYPT_MODE_ECB, $this-&gt;iv)));
+  }
+  function decode_link($url)
+  { 
+    if(!$this-&gt;salt)
+      $this-&gt;init_crypt();
+    return trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $this-&gt;salt, base64_decode($url), MCRYPT_MODE_ECB, $this-&gt;iv));
+  }
+}
+?&gt;</p></div>
+
+<p>Do not forget to change <strong>$salt</strong> to any custom value! Also, add statistic handling from the original function if you use statistics.</p>
+</div>
+      <div class="postmeta">
+			<div class="posttags">Tags: <a href="https://jehy.ru/articles/archives/tag/wordpress/" rel="tag">wordpress</a></div><div class="editlink"></td></div><div id="commentcount"><a href="https://jehy.ru/articles/2014/12/09/encrypting-links-for-wp-noexternallinks/#comments">Comments 
+						[ 10 ]
+					</a></div></div>
+      </div>
+				
+		<div class="post" id="post-3592">
+			<div class="postheader">
+				<div class="posttitle">
+					<h2><a href="https://jehy.ru/articles/2014/12/08/custom-parser-for-wp-noexternallinks/" rel="bookmark" title="Custom parser for WP-NoExternalLinks">Custom parser for WP-NoExternalLinks</a></h2>
+8 December 2014, 22:12:49<br>
+</div><div  class="gravatar"><img alt='' src='https://secure.gravatar.com/avatar/cd510f34da2e7ad8e1812274a89fb6e2?s=100&#038;d=mm&#038;r=x' srcset='https://secure.gravatar.com/avatar/cd510f34da2e7ad8e1812274a89fb6e2?s=200&#038;d=mm&#038;r=x 2x' class='avatar avatar-100 photo' height='100' width='100' /></div>
+			</div>
+			<div class="postcontent">
+			<p><strong>Warning! I no longer support this plugin after version 3.5.9.9! Please ask questions on wordpress support page.</strong></p>
+<p>Recently I added a new feature to this plugin. Now you can extend it yourself without danger of plugin update which could remove all your changes in plugin code.</p>
+<p>In this sample, we will overwrite function <strong>check_follow</strong>, which checks if link is posted by admin and has <strong>rel=&#8221;follow&#8221;</strong> attribute.<br />
+Let&#8217;s imagine we want all our authors to have the same options. How can we accomplish it? Easily!<br />
+Just create file <strong>custom-parser.php</strong> in directory <strong>wp-content/uploads</strong> and replace</p>
+
+<div class="wp_syntax" style="position:relative;"><table><tr><td class="code"><pre class="php" style="font-family:monospace;">user_can<span style="color: #009900;">&#40;</span><span style="color: #000088;">$author</span><span style="color: #339933;">,</span><span style="color: #0000ff;">'manage_options'</span> <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre></td></tr></table><p class="theCode" style="display:none;">user_can($author,'manage_options' );</p></div>
+
+<p> from original function with</p>
+
+<div class="wp_syntax" style="position:relative;"><table><tr><td class="code"><pre class="php" style="font-family:monospace;">user_can<span style="color: #009900;">&#40;</span><span style="color: #000088;">$author</span><span style="color: #339933;">,</span><span style="color: #0000ff;">'publish_posts'</span> <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre></td></tr></table><p class="theCode" style="display:none;">user_can($author,'publish_posts' );</p></div>
+
+<p> &#8211; voila!<br />
+Here is the full code of our new modified class which will be loaded instead of basic one:</p>
+<p><strong>wp-content/uploads/custom-parser.php</strong></p>
+
+<div class="wp_syntax" style="position:relative;"><table><tr><td class="line_numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="code"><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
+<span style="color: #b1b100;">if</span><span style="color: #009900;">&#40;</span><span style="color: #339933;">!</span><span style="color: #990000;">defined</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'DB_NAME'</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span>
+  <span style="color: #990000;">die</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'Error: Plugin &quot;wp-noexternallinks&quot; does not support standalone calls, damned hacker.'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+<span style="color: #666666; font-style: italic;">#include base parser
+</span><span style="color: #b1b100;">include_once</span><span style="color: #009900;">&#40;</span>ABSPATH <span style="color: #339933;">.</span> <span style="color: #0000ff;">'wp-content/plugins/wp-noexternallinks/wp-noexternallinks-parser.php'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+<span style="color: #000000; font-weight: bold;">class</span> custom_parser <span style="color: #000000; font-weight: bold;">extends</span> wp_noexternallinks_parser
+<span style="color: #009900;">&#123;</span>
+<span style="color: #000000; font-weight: bold;">function</span> check_follow<span style="color: #009900;">&#40;</span><span style="color: #000088;">$matches</span><span style="color: #009900;">&#41;</span>
+<span style="color: #009900;">&#123;</span>
+  <span style="color: #666666; font-style: italic;">#support of &quot;meta=follow&quot; option for admins. disabled by default to minify processing.
+</span>  <span style="color: #b1b100;">if</span><span style="color: #009900;">&#40;</span><span style="color: #339933;">!</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">options</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'dont_mask_admin_follow'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span>
+    <span style="color: #b1b100;">return</span> <span style="color: #009900; font-weight: bold;">false</span><span style="color: #339933;">;</span>
+  <span style="color: #000088;">$id</span><span style="color: #339933;">=</span><span style="color: #990000;">array</span><span style="color: #009900;">&#40;</span>get_comment_ID<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span>get_the_ID<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><span style="color: #666666; font-style: italic;">//it is either page or post</span>
+  <span style="color: #b1b100;">if</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$id</span><span style="color: #009900;">&#91;</span><span style="color: #cc66cc;">0</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span>
+    <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">debug_info</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'It is a comment. id '</span><span style="color: #339933;">.</span><span style="color: #000088;">$id</span><span style="color: #009900;">&#91;</span><span style="color: #cc66cc;">0</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+  <span style="color: #b1b100;">elseif</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$id</span><span style="color: #009900;">&#91;</span><span style="color: #cc66cc;">1</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span>
+    <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">debug_info</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'It is a page. id '</span><span style="color: #339933;">.</span><span style="color: #000088;">$id</span><span style="color: #009900;">&#91;</span><span style="color: #cc66cc;">1</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+  <span style="color: #000088;">$author</span><span style="color: #339933;">=</span><span style="color: #009900; font-weight: bold;">false</span><span style="color: #339933;">;</span>
+  <span style="color: #b1b100;">if</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$id</span><span style="color: #009900;">&#91;</span><span style="color: #cc66cc;">0</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span>
+    <span style="color: #000088;">$author</span><span style="color: #339933;">=</span>get_comment_author<span style="color: #009900;">&#40;</span><span style="color: #000088;">$id</span><span style="color: #009900;">&#91;</span><span style="color: #cc66cc;">0</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+  <span style="color: #b1b100;">else</span> <span style="color: #b1b100;">if</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$id</span><span style="color: #009900;">&#91;</span><span style="color: #cc66cc;">1</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span>
+    <span style="color: #000088;">$author</span><span style="color: #339933;">=</span>get_the_author_meta<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'ID'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+  <span style="color: #b1b100;">if</span><span style="color: #009900;">&#40;</span><span style="color: #339933;">!</span><span style="color: #000088;">$author</span><span style="color: #009900;">&#41;</span>
+    <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">debug_info</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'it is neither post or page, applying usual rules'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+  <span style="color: #b1b100;">elseif</span><span style="color: #009900;">&#40;</span>user_can<span style="color: #009900;">&#40;</span><span style="color: #000088;">$author</span><span style="color: #339933;">,</span><span style="color: #0000ff;">'publish_posts'</span> <span style="color: #009900;">&#41;</span><span style="color: #339933;">&amp;&amp;</span><span style="color: #009900;">&#40;</span><span style="color: #990000;">stripos</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$matches</span><span style="color: #009900;">&#91;</span><span style="color: #cc66cc;">0</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span><span style="color: #0000ff;">'rel=&quot;follow&quot;'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">!==</span><span style="color: #009900; font-weight: bold;">FALSE</span> <span style="color: #339933;">||</span> <span style="color: #990000;">stripos</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$matches</span><span style="color: #009900;">&#91;</span><span style="color: #cc66cc;">0</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span><span style="color: #0000ff;">&quot;rel='follow'&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">!==</span><span style="color: #009900; font-weight: bold;">FALSE</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span>
+  <span style="color: #009900;">&#123;</span>
+    <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">debug_info</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'This link has a follow atribute and is posted by author, not masking it.'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #666666; font-style: italic;">#wordpress adds rel=&quot;nofollow&quot; by itself when posting new link in comments. get rid of it! Also, remove our follow attibute - it is unneccesary.
+</span>    <span style="color: #b1b100;">return</span> <span style="color: #990000;">str_ireplace</span><span style="color: #009900;">&#40;</span><span style="color: #990000;">array</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'rel=&quot;follow&quot;'</span><span style="color: #339933;">,</span><span style="color: #0000ff;">&quot;rel='follow'&quot;</span><span style="color: #339933;">,</span><span style="color: #0000ff;">'rel=&quot;nofollow&quot;'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span><span style="color: #0000ff;">''</span><span style="color: #339933;">,</span><span style="color: #000088;">$matches</span><span style="color: #009900;">&#91;</span><span style="color: #cc66cc;">0</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+  <span style="color: #009900;">&#125;</span>
+  <span style="color: #b1b100;">else</span>
+    <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">debug_info</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'it does not have rel follow or is not posted by author, masking it'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+  <span style="color: #b1b100;">return</span> <span style="color: #009900; font-weight: bold;">false</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span>
+<span style="color: #009900;">&#125;</span>
+<span style="color: #000000; font-weight: bold;">?&gt;</span></pre></td></tr></table><p class="theCode" style="display:none;">&lt;?php
+if(!defined('DB_NAME'))
+  die('Error: Plugin &quot;wp-noexternallinks&quot; does not support standalone calls, damned hacker.');
+
+#include base parser
+include_once(ABSPATH . 'wp-content/plugins/wp-noexternallinks/wp-noexternallinks-parser.php');
+
+class custom_parser extends wp_noexternallinks_parser
+{
+function check_follow($matches)
+{
+  #support of &quot;meta=follow&quot; option for admins. disabled by default to minify processing.
+  if(!$this-&gt;options['dont_mask_admin_follow'])
+    return false;
+  $id=array(get_comment_ID(),get_the_ID());//it is either page or post
+  if($id[0])
+    $this-&gt;debug_info('It is a comment. id '.$id[0]);
+  elseif($id[1])
+    $this-&gt;debug_info('It is a page. id '.$id[1]);
+  $author=false;
+  if($id[0])
+    $author=get_comment_author($id[0]);
+  else if($id[1])
+    $author=get_the_author_meta('ID');
+  if(!$author)
+    $this-&gt;debug_info('it is neither post or page, applying usual rules');
+  elseif(user_can($author,'publish_posts' )&amp;&amp;(stripos($matches[0],'rel=&quot;follow&quot;')!==FALSE || stripos($matches[0],&quot;rel='follow'&quot;)!==FALSE))
+  {
+    $this-&gt;debug_info('This link has a follow atribute and is posted by author, not masking it.');
+    #wordpress adds rel=&quot;nofollow&quot; by itself when posting new link in comments. get rid of it! Also, remove our follow attibute - it is unneccesary.
+    return str_ireplace(array('rel=&quot;follow&quot;',&quot;rel='follow'&quot;,'rel=&quot;nofollow&quot;'),'',$matches[0]);
+  }
+  else
+    $this-&gt;debug_info('it does not have rel follow or is not posted by author, masking it');
+  return false;
+}
+}
+?&gt;</p></div>
+
+<p>One more sample is <a href="https://jehy.ru/articles/2014/12/09/encrypting-links-for-wp-noexternallinks/">encrypting links</a>.</p>
+</div>
+      <div class="postmeta">
+			<div class="posttags">Tags: <a href="https://jehy.ru/articles/archives/tag/wordpress/" rel="tag">wordpress</a></div><div class="editlink"></td></div><div id="commentcount"><a href="https://jehy.ru/articles/2014/12/08/custom-parser-for-wp-noexternallinks/#comments">Comments 
+						[ 24 ]
+					</a></div></div>
+      </div>
+				
+		<div class="post" id="post-3578">
+			<div class="postheader">
+				<div class="posttitle">
+					<h2><a href="https://jehy.ru/articles/2014/10/13/%d0%b1%d0%b5%d0%b3%d1%83%d1%89%d0%b8%d0%b9-%d0%b2-%d0%bb%d0%b0%d0%b1%d0%b8%d1%80%d0%b8%d0%bd%d1%82%d0%b5-%d0%bf%d0%be%d0%b1%d0%b5%d0%b4%d0%b0-%d0%bc%d0%b0%d1%80%d0%ba%d0%b5%d1%82%d0%b8%d0%bd%d0%b3/" rel="bookmark" title="Бегущий в лабиринте &#8211; победа маркетинга над разумом">Бегущий в лабиринте &#8211; победа маркетинга над разумом</a></h2>
+13 October 2014, 02:10:25<br>
+</div><div  class="gravatar"><div class="postavatar"><img class="avatar avatar-100" src="https://jehy.ru/articles/wp-content/uploads/icons/do_not_want.jpg" width="48" height="100" alt="%d0%b1%d0%b5%d0%b3%d1%83%d1%89%d0%b8%d0%b9-%d0%b2-%d0%bb%d0%b0%d0%b1%d0%b8%d1%80%d0%b8%d0%bd%d1%82%d0%b5-%d0%bf%d0%be%d0%b1%d0%b5%d0%b4%d0%b0-%d0%bc%d0%b0%d1%80%d0%ba%d0%b5%d1%82%d0%b8%d0%bd%d0%b3" border="0" /></div>
+</div>
+			</div>
+			<div class="postcontent">
+			<p>Только что дочитал трилогию, по которой недавно вышел фильм, покрывший первую книгу.<br />
+Ужасное впечатление. Похоже на подвиг графомана-любителя. Как такое могло стать бестселлером и тем более выйти на экран &#8211; загадка загадок. Дабы не быть голословным, распишу немного по пунктам.</p>
+<p>1) за всю трилогию нет никакой эволюции персонажей. Какими они были с самого начала &#8211; такими и остались.<br />
+2) &#8220;глубокие переживания&#8221; и эмоции персонажей поднимаются не выше пятого класса средней школы. Всё просто как сценарий телевизионного ток шоу на канале тнт. С учётом того, что нам ещё и пытаются скормить, что это самые умные и наиболее эмоциональные подростки&#8230; It smells.<br />
+3) рояли выпрыгивают из кустов с такой скоростью и в таком количестве, что повествование даже нельзя воспринимать всерьёз. Ты заранее знаешь, что тебя наёбывают. Причём делают это крайне топорным методом &#8211; например, загадка разрешается ответом &#8220;просто всемогущие наблюдатели, которые могут делать что угодно с их мозгом, подменили их восприятие&#8221;.<br />
+4) на корню отсутствует хоть какая-то оригинальность мира и сюжета. Впрочем, даже автор признаётся, что именно он так убого копировал.<br />
+5) главной идеи, озарения, катарсиса к концу трилогии &#8211; ничего нет. Всё те же рояли.<br />
+6) так же полностью отсутствует какая-либо выразительность и колорит, который раскрашивает черновик повествования. Даже сленг в книге состоит менее чем из десятка слов, и убог донельзя.<br />
+7) персонажи картонные. У большинства даже нет имён. Так и говорится &#8220;и тут погибло ещё десять человек, имён которых Томас не знал&#8221;. Именные персонажи в общем-то тоже никакие, безо всякой индивидуальности.<br />
+8) абсолютно никак не раскрыты многие идеи и фишки. Например, практически немая и безымянная группа девушек, или сама телепатия. Недаром из фильма её вообще убрали &#8211; зачем собаке пятая нога?<br />
+9) на закуску дабы показать примером общую характеристику трилогии. Главный герой убегает из рушащегося строения с двумя неравнодушными к нему девками. Я уже какое-то время задаюсь вопросом, как автор это разрешит. И тут автор разрешает. Одна из них выпихивает его из-под подающих обломков и умирает. Наверное, один из самых скучных штампов за всю историю книгопечатания, в котором автор полностью расписывается в своей беспомощности относительно того, чтобы как-то решить повествовательную задачу. Кстати, только сейчас подумал, что за трилогию это вторая такая идиотская смерть &#8211; первым был Чак, который заслонил главного героя грудью от ножа. Феерически бездарный и неправдоподобный штамп.</p>
+<p>В общем, смотрите &#8220;обитель зла&#8221; и читайте &#8220;игру эндера&#8221; (на самом деле, можно и читать и смотреть и то и другое). А это&#8230; Обойдите стороной, сэкономьте время.<br />
+Дико обидно, что такие вот бездушные и пустые подделки как-то находят путь на прилавки и в кинотеатры.</p>
+</div>
+      <div class="postmeta">
+			<div class="posttags">Tags: <a href="https://jehy.ru/articles/archives/tag/%d0%ba%d0%bd%d0%b8%d0%b3%d0%b8/" rel="tag">книги</a></div><div class="editlink"></td></div><div id="commentcount"><a href="https://jehy.ru/articles/2014/10/13/%d0%b1%d0%b5%d0%b3%d1%83%d1%89%d0%b8%d0%b9-%d0%b2-%d0%bb%d0%b0%d0%b1%d0%b8%d1%80%d0%b8%d0%bd%d1%82%d0%b5-%d0%bf%d0%be%d0%b1%d0%b5%d0%b4%d0%b0-%d0%bc%d0%b0%d1%80%d0%ba%d0%b5%d1%82%d0%b8%d0%bd%d0%b3/#comments">Comments 
+						[ 3 ]
+					</a></div></div>
+      </div>
+				
+	
+	<div class="navlinks">
+<div id='wp_page_numbers'>
+<ul><li class="page_info">Page 1 of 49</li><li class="active_page"><a href="https://jehy.ru/articles/">1</a></li>
+<li><a href="https://jehy.ru/articles/page/2/">2</a></li>
+<li><a href="https://jehy.ru/articles/page/3/">3</a></li>
+<li><a href="https://jehy.ru/articles/page/4/">4</a></li>
+<li><a href="https://jehy.ru/articles/page/5/">5</a></li>
+<li><a href="https://jehy.ru/articles/page/6/">6</a></li>
+<li><a href="https://jehy.ru/articles/page/7/">7</a></li>
+<li><a href="https://jehy.ru/articles/page/8/">8</a></li>
+<li><a href="https://jehy.ru/articles/page/9/">9</a></li>
+<li><a href="https://jehy.ru/articles/page/10/">10</a></li>
+<li><a href="https://jehy.ru/articles/page/11/">11</a></li>
+<li><a href="https://jehy.ru/articles/page/12/">12</a></li>
+<li><a href="https://jehy.ru/articles/page/13/">13</a></li>
+<li><a href="https://jehy.ru/articles/page/14/">14</a></li>
+<li><a href="https://jehy.ru/articles/page/15/">15</a></li>
+<li><a href="https://jehy.ru/articles/page/16/">16</a></li>
+<li><a href="https://jehy.ru/articles/page/17/">17</a></li>
+<li><a href="https://jehy.ru/articles/page/18/">18</a></li>
+<li><a href="https://jehy.ru/articles/page/19/">19</a></li>
+<li><a href="https://jehy.ru/articles/page/20/">20</a></li>
+<li><a href="https://jehy.ru/articles/page/21/">21</a></li>
+<li><a href="https://jehy.ru/articles/page/22/">22</a></li>
+<li><a href="https://jehy.ru/articles/page/23/">23</a></li>
+<li class="space">...</li>
+<li class="first_last_page"><a href="https://jehy.ru/articles/page/49/">49</a></li>
+<li><a href="https://jehy.ru/articles/page/2/">&gt;</a></li>
+</ul>
+<div style='float: none; clear: both;'></div>
+</div>
+<br/><br/>
+		<a href="#posts"><img src="https://jehy.ru/articles/wp-content/themes/grey-is-love/images/backtotopicon.gif" alt="Back to top" />Back to top</a>
+	</div>
+	
+	</div>
+	
+
+<div id="sidebar" class="span-5 append-1 last">
+	<div id="wrapbox">
+	
+				<div id="pages-2" class="sidebarbox"><h3>Pages</h3>		<ul>
+			<li class="page_item page-item-3124"><a href="https://jehy.ru/articles/about-me/">About me</a></li>
+<li class="page_item page-item-3598"><a href="https://jehy.ru/articles/donate/">Donate</a></li>
+<li class="page_item page-item-3025"><a href="https://jehy.ru/articles/contact-me/">E-mail me</a></li>
+<li class="page_item page-item-3050"><a href="https://jehy.ru/articles/soft/">My Software</a></li>
+<li class="page_item page-item-3075"><a href="https://jehy.ru/articles/web/">My web</a></li>
+<li class="page_item page-item-1697"><a href="https://jehy.ru/articles/wishlist/">Wishlist</a></li>
+		</ul>
+			</div>		<div id="meta" class="sidebarbox">			<h3>Meta</h3>			<ul>
+			<li><a href="https://jehy.ru/articles/wp-login.php?action=register">Register</a></li>			<li><a href="https://jehy.ru/articles/wp-login.php">Log in</a></li>
+			<li><a href="https://jehy.ru/articles/feed/" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://jehy.ru/articles/comments/feed/" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+						</ul>
+		</div><div id="recent-comments-2" class="sidebarbox"><h3>Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">Lorem Ipsum</span> on <a href="https://jehy.ru/articles/contact-me/comment-page-1/#comment-17576">E-mail me</a></li><li class="recentcomments"><span class="comment-author-link"><a rel="nofollow" href="https://jehy.ru/articles/out/2591"  rel='external nofollow ugc' class='url'>YaBlogo</a></span> on <a href="https://jehy.ru/articles/2014/12/08/custom-parser-for-wp-noexternallinks/comment-page-1/#comment-17565">Custom parser for WP-NoExternalLinks</a></li><li class="recentcomments"><span class="comment-author-link"><a rel="nofollow" href="https://jehy.ru/articles/out/2354"  rel='external nofollow ugc' class='url'>Name</a></span> on <a href="https://jehy.ru/articles/2016/07/08/%d0%bd%d0%be%d1%87%d1%8c-%d0%b2-%d0%be%d0%b4%d0%b8%d0%bd%d0%be%d0%ba%d0%be%d0%bc-%d0%be%d0%ba%d1%82%d1%8f%d0%b1%d1%80%d0%b5/comment-page-1/#comment-17547">Ночь в одиноком октябре</a></li><li class="recentcomments"><span class="comment-author-link"><a rel="nofollow" href="https://jehy.ru/articles/out/1543"  rel='external nofollow ugc' class='url'>Viktor</a></span> on <a href="https://jehy.ru/articles/2014/12/08/custom-parser-for-wp-noexternallinks/comment-page-1/#comment-17518">Custom parser for WP-NoExternalLinks</a></li><li class="recentcomments"><span class="comment-author-link"><a rel="nofollow" href="https://jehy.ru/articles/out/1481"  rel='external nofollow ugc' class='url'>VNCoupon</a></span> on <a href="https://jehy.ru/articles/2013/12/12/warning-the-signers-certificate-chain-is-not-validated/comment-page-1/#comment-17489">Warning: The signer&#8217;s certificate chain is not validated</a></li></ul></div><div id="nktagcloud-3" class="sidebarbox"><h3>Tags</h3><a href='https://jehy.ru/articles/archives/tag/android/'  class='tag-link-92 nktagcloud-8' title='2' rel="tag" style='font-size: 8.23pt;'>android</a>
+<a href='https://jehy.ru/articles/archives/tag/applet/'  class='tag-link-97 nktagcloud-8' title='4' rel="tag" style='font-size: 8.68pt;'>applet</a>
+<a href='https://jehy.ru/articles/archives/tag/buddypress/'  class='tag-link-73 nktagcloud-8' title='2' rel="tag" style='font-size: 8.23pt;'>buddypress</a>
+<a href='https://jehy.ru/articles/archives/tag/codesigning/'  class='tag-link-98 nktagcloud-8' title='2' rel="tag" style='font-size: 8.23pt;'>codesigning</a>
+<a href='https://jehy.ru/articles/archives/tag/git/'  class='tag-link-101 nktagcloud-8' title='1' rel="tag" style='font-size: 8pt;'>git</a>
+<a href='https://jehy.ru/articles/archives/tag/java/'  class='tag-link-99 nktagcloud-8' title='4' rel="tag" style='font-size: 8.68pt;'>java</a>
+<a href='https://jehy.ru/articles/archives/tag/jvm/'  class='tag-link-100 nktagcloud-8' title='1' rel="tag" style='font-size: 8pt;'>jvm</a>
+<a href='https://jehy.ru/articles/archives/tag/livejournal/'  class='tag-link-49 nktagcloud-8' title='1' rel="tag" style='font-size: 8pt;'>livejournal</a>
+<a href='https://jehy.ru/articles/archives/tag/ms-sql/'  class='tag-link-88 nktagcloud-8' title='1' rel="tag" style='font-size: 8pt;'>MS SQL</a>
+<a href='https://jehy.ru/articles/archives/tag/mta/'  class='tag-link-194 nktagcloud-8' title='1' rel="tag" style='font-size: 8pt;'>mta</a>
+<a href='https://jehy.ru/articles/archives/tag/openid/'  class='tag-link-71 nktagcloud-8' title='2' rel="tag" style='font-size: 8.23pt;'>openid</a>
+<a href='https://jehy.ru/articles/archives/tag/oracle/'  class='tag-link-89 nktagcloud-8' title='3' rel="tag" style='font-size: 8.45pt;'>Oracle</a>
+<a href='https://jehy.ru/articles/archives/tag/php/'  class='tag-link-47 nktagcloud-8' title='4' rel="tag" style='font-size: 8.68pt;'>PHP</a>
+<a href='https://jehy.ru/articles/archives/tag/rhel/'  class='tag-link-93 nktagcloud-8' title='1' rel="tag" style='font-size: 8pt;'>RHEL</a>
+<a href='https://jehy.ru/articles/archives/tag/sap/'  class='tag-link-24 nktagcloud-8' title='1' rel="tag" style='font-size: 8pt;'>SAP</a>
+<a href='https://jehy.ru/articles/archives/tag/skype/'  class='tag-link-102 nktagcloud-8' title='1' rel="tag" style='font-size: 8pt;'>skype</a>
+<a href='https://jehy.ru/articles/archives/tag/webstart/'  class='tag-link-96 nktagcloud-8' title='4' rel="tag" style='font-size: 8.68pt;'>webstart</a>
+<a href='https://jehy.ru/articles/archives/tag/wiki/'  class='tag-link-45 nktagcloud-8' title='4' rel="tag" style='font-size: 8.68pt;'>wiki</a>
+<a href='https://jehy.ru/articles/archives/tag/wod/'  class='tag-link-193 nktagcloud-8' title='1' rel="tag" style='font-size: 8pt;'>wod</a>
+<a href='https://jehy.ru/articles/archives/tag/wordpress/'  class='tag-link-37 nktagcloud-12' title='19' rel="tag" style='font-size: 12.06pt;'>wordpress</a>
+<a href='https://jehy.ru/articles/archives/tag/wordpress-mu/'  class='tag-link-72 nktagcloud-8' title='1' rel="tag" style='font-size: 8pt;'>wordpress mu</a>
+<a href='https://jehy.ru/articles/archives/tag/yum/'  class='tag-link-94 nktagcloud-8' title='1' rel="tag" style='font-size: 8pt;'>yum</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%bd%d0%b0%d1%88%d0%b8/'  class='tag-link-33 nktagcloud-8' title='1' rel="tag" style='font-size: 8pt;'>НАШИ</a>
+<a href='https://jehy.ru/articles/archives/tag/%d1%85%d1%80%d0%be%d0%bd%d0%b8%d0%ba%d0%b8/'  class='tag-link-56 nktagcloud-8' title='2' rel="tag" style='font-size: 8.23pt;'>Хроники</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%b0%d0%bd%d0%b8%d0%bc%d0%b5/'  class='tag-link-35 nktagcloud-9' title='6' rel="tag" style='font-size: 9.13pt;'>аниме</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%b1%d0%b5%d0%b3/'  class='tag-link-104 nktagcloud-8' title='1' rel="tag" style='font-size: 8pt;'>бег</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%b2%d0%b5%d0%b1%d0%bc%d0%b0%d1%81%d1%82%d0%b5%d1%80%d1%81%d0%ba%d0%be%d0%b5/'  class='tag-link-75 nktagcloud-8' title='5' rel="tag" style='font-size: 8.9pt;'>вебмастерское</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%b2%d0%b5%d0%bb%d0%bb%d0%b5%d1%80/'  class='tag-link-90 nktagcloud-8' title='1' rel="tag" style='font-size: 8pt;'>веллер</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%b5%d1%85%d0%b8%d0%b4%d0%bd%d0%be%d0%b5/'  class='tag-link-51 nktagcloud-13' title='27' rel="tag" style='font-size: 13.87pt;'>ехидное</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%b6%d0%be%d0%bf%d0%b0/'  class='tag-link-79 nktagcloud-8' title='1' rel="tag" style='font-size: 8pt;'>жопа</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%b8%d0%bd%d0%ba%d0%b2%d0%b8%d0%b7%d0%b8%d1%86%d0%b8%d1%8f/'  class='tag-link-14 nktagcloud-8' title='2' rel="tag" style='font-size: 8.23pt;'>инквизиция</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%b8%d0%bd%d1%82%d0%b5%d1%80%d0%bd%d0%b5%d1%82%d1%8b/'  class='tag-link-5 nktagcloud-10' title='13' rel="tag" style='font-size: 10.71pt;'>интернеты</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%b8%d1%81%d1%82%d0%be%d1%80%d0%b8%d0%b8/'  class='tag-link-61 nktagcloud-22' title='63' rel="tag" style='font-size: 22pt;'>истории</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%ba%d0%b0%d1%80%d1%82%d0%b8%d0%bd%d0%ba%d0%b8/'  class='tag-link-55 nktagcloud-13' title='27' rel="tag" style='font-size: 13.87pt;'>картинки</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%ba%d0%b8%d0%bd%d0%be/'  class='tag-link-64 nktagcloud-11' title='15' rel="tag" style='font-size: 11.16pt;'>кино</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%ba%d0%bb%d0%b8%d0%bd%d0%b8%d1%82/'  class='tag-link-39 nktagcloud-9' title='9' rel="tag" style='font-size: 9.81pt;'>клинит</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%ba%d0%bd%d0%b8%d0%b3%d0%b8/'  class='tag-link-103 nktagcloud-8' title='1' rel="tag" style='font-size: 8pt;'>книги</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%ba%d0%bd%d0%b8%d0%b6%d0%bd%d0%be%d0%b5/'  class='tag-link-19 nktagcloud-14' title='28' rel="tag" style='font-size: 14.1pt;'>книжное</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%ba%d0%be%d0%b4%d0%b5%d1%80%d1%81%d0%ba%d0%be%d0%b5/'  class='tag-link-6 nktagcloud-11' title='17' rel="tag" style='font-size: 11.61pt;'>кодерское</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%ba%d0%be%d1%84%d0%b5/'  class='tag-link-74 nktagcloud-8' title='1' rel="tag" style='font-size: 8pt;'>кофе</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%ba%d0%bf%d0%ba/'  class='tag-link-20 nktagcloud-9' title='6' rel="tag" style='font-size: 9.13pt;'>кпк</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%ba%d1%83%d0%bb%d1%8c%d1%82%d1%83%d1%80/'  class='tag-link-69 nktagcloud-8' title='1' rel="tag" style='font-size: 8pt;'>культур</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%bb%d0%b8%d0%bd%d1%83%d0%ba%d1%81/'  class='tag-link-16 nktagcloud-9' title='6' rel="tag" style='font-size: 9.13pt;'>линукс</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%bb%d1%8e%d0%b4%d0%b8/'  class='tag-link-63 nktagcloud-9' title='7' rel="tag" style='font-size: 9.35pt;'>люди</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%bc%d0%b0%d0%bd%d0%b3%d0%b0/'  class='tag-link-36 nktagcloud-8' title='1' rel="tag" style='font-size: 8pt;'>манга</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%bc%d1%83%d0%b7%d1%8b%d0%ba%d0%b0/'  class='tag-link-25 nktagcloud-14' title='28' rel="tag" style='font-size: 14.1pt;'>музыка</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%bc%d1%8b%d1%81%d0%bb%d0%b8/'  class='tag-link-58 nktagcloud-17' title='43' rel="tag" style='font-size: 17.48pt;'>мысли</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%bd%d0%b0%d1%84%d0%b8%d0%ba/'  class='tag-link-15 nktagcloud-8' title='3' rel="tag" style='font-size: 8.45pt;'>нафик</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%bd%d0%b5-%d0%b2%d0%b5%d0%bb%d0%bb%d0%b5%d1%80/'  class='tag-link-91 nktagcloud-8' title='1' rel="tag" style='font-size: 8pt;'>не веллер</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%be%d1%82%d0%b4%d1%8b%d1%85/'  class='tag-link-27 nktagcloud-9' title='7' rel="tag" style='font-size: 9.35pt;'>отдых</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%bf%d0%b5%d1%80%d0%b5%d0%b2%d0%be%d0%b4%d1%8b/'  class='tag-link-46 nktagcloud-10' title='11' rel="tag" style='font-size: 10.26pt;'>переводы</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%bf%d0%be-%d0%b6%d0%b8%d0%b7%d0%bd%d0%b8/'  class='tag-link-9 nktagcloud-9' title='8' rel="tag" style='font-size: 9.58pt;'>по жизни</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%bf%d0%be%d0%bb%d0%b5%d0%b7%d0%bd%d0%be%d0%b5/'  class='tag-link-43 nktagcloud-8' title='4' rel="tag" style='font-size: 8.68pt;'>полезное</a>
+<a href='https://jehy.ru/articles/archives/tag/%d0%bf%d0%be%d0%bb%d0%b8%d1%82%d0%b8%d0%ba%d0%b0/'  class='tag-link-44 nktagcloud-9' title='9' rel="tag" style='font-size: 9.81pt;'>политика</a>
+<a href='https://jehy.ru/articles/archives/tag/%d1%80%d0%b0%d0%b1%d0%be%d1%82%d0%b0/'  class='tag-link-38 nktagcloud-8' title='3' rel="tag" style='font-size: 8.45pt;'>работа</a>
+<a href='https://jehy.ru/articles/archives/tag/%d1%80%d1%83%d0%b1%d0%b5%d0%b6/'  class='tag-link-8 nktagcloud-10' title='12' rel="tag" style='font-size: 10.48pt;'>рубеж</a>
+<a href='https://jehy.ru/articles/archives/tag/%d1%82%d0%b0%d1%80%d0%be/'  class='tag-link-54 nktagcloud-8' title='4' rel="tag" style='font-size: 8.68pt;'>таро</a>
+<a href='https://jehy.ru/articles/archives/tag/%d1%82%d0%b5%d0%ba%d1%83%d1%87%d0%ba%d0%b0/'  class='tag-link-62 nktagcloud-10' title='14' rel="tag" style='font-size: 10.94pt;'>текучка</a>
+<a href='https://jehy.ru/articles/archives/tag/%d1%83%d0%b1%d0%b8%d1%82%d1%8c%d1%81%d1%8f/'  class='tag-link-17 nktagcloud-8' title='2' rel="tag" style='font-size: 8.23pt;'>убиться</a>
+<a href='https://jehy.ru/articles/archives/tag/%d1%83%d1%87%d0%b5%d0%b1%d0%bd%d0%be%d0%b5/'  class='tag-link-26 nktagcloud-10' title='12' rel="tag" style='font-size: 10.48pt;'>учебное</a>
+<a href='https://jehy.ru/articles/archives/tag/%d1%85%d0%b8%d0%ba%d0%ba%d0%b8/'  class='tag-link-29 nktagcloud-8' title='2' rel="tag" style='font-size: 8.23pt;'>хикки</a>
+<a href='https://jehy.ru/articles/archives/tag/%d1%85%d0%be%d1%87%d1%83/'  class='tag-link-21 nktagcloud-8' title='1' rel="tag" style='font-size: 8pt;'>хочу</a>
+<a href='https://jehy.ru/articles/archives/tag/%d1%86%d0%b5%d1%80%d0%ba%d0%be%d0%b2%d1%8c/'  class='tag-link-59 nktagcloud-9' title='9' rel="tag" style='font-size: 9.81pt;'>церковь</a>
+<a href='https://jehy.ru/articles/archives/tag/%d1%86%d0%b8%d1%82%d0%b0%d1%82%d1%8b/'  class='tag-link-52 nktagcloud-20' title='56' rel="tag" style='font-size: 20.42pt;'>цитаты</a></div>	</div>
+</div>
+		</div> <!-- contentwrapper -->
+		<div>
+			<div class="span-22 prepend-1 last">
+			<img width="1px" height="1px" src="http://jehy.ru/images/dot.gif"><script type='text/javascript' src='https://jehy.ru/articles/wp-content/plugins/wp-syntax/js/wp-syntax.js?ver=1.1'></script>
+<script type='text/javascript' src='https://jehy.ru/articles/wp-includes/js/wp-embed.min.js?ver=5.4.2'></script>
+</div>
+		</div>
+	</div> <!-- container -->
+</body>
+</html>

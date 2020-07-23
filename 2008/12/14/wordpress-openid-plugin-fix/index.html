@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Wordpress OpenId plugin fix | Jehy&#39;s notes</title>
+  <meta name="author" content="Jehy">
+  
+  <meta name="description" content="In case you have problems with using your own url as openid server with wordpress OpenId plugin, the reason may be that server actually works but does not declare itself - so no openid system can recognize it.
+If you can login to your blog as http://myblog.com/author/myname/ but can’t use just http://myblog.com/ then it’s possibly the case.
+You can fix it for now with a little plugin which adds this declaration.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Wordpress OpenId plugin fix"/>
+  <meta property="og:site_name" content="Jehy&#39;s notes"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Jehy&#39;s notes" type="application/atom+xml">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Jehy&#39;s notes</a></h1>
+  <h2><a href="/">Insert 1 into dual</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/wishlist">Wishlist</a></li>
+    
+      <li><a href="/donate">Donate</a></li>
+    
+      <li><a href="/atom.xml">Subscribe</a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://whois.jehy.ru">Contact me</a></li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-2008/12/wordpress-openid-plugin-fix" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2008-12-14T03:17:48.000Z"><a href="/2008/12/14/wordpress-openid-plugin-fix/">2008-12-14</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Wordpress OpenId plugin fix</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p>In case you have problems with using your own url as openid server with <a target="_blank" rel="noopener" href="http://wordpress.org/extend/plugins/openid/">wordpress OpenId plugin</a>, the reason may be that server actually <strong>works</strong> but does not declare itself - so no openid system can recognize it.</p>
+<p>If you can login to your blog as <a target="_blank" rel="noopener" href="http://myblog.com/author/myname/">http://myblog.com/author/myname/</a> but can’t use just <a target="_blank" rel="noopener" href="http://myblog.com/">http://myblog.com/</a> then it’s possibly the case.</p>
+<p>You can fix it for now with a little plugin which adds this declaration.</p>
+<a id="more"></a>
+<p>Plugin code (copy-paste it to your wp-content\plugins directory, <strong>change “<a href="https://jehy.ru/articles/&quot;">https://jehy.ru/articles/&quot;</a> to your main blog directory, “jehy” to your login and activate plugin</strong>)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Plugin Name: openid-rel</span></span><br><span class="line"><span class="comment">Plugin URI: https://jehy.ru/articles/2008/12/14/wordpress-openid-plugin-fix</span></span><br><span class="line"><span class="comment">Description: Mini plugin for displaying of fucken openid rel link</span></span><br><span class="line"><span class="comment">Version: 0.01</span></span><br><span class="line"><span class="comment">Author: Jehy</span></span><br><span class="line"><span class="comment">Author URI: https://jehy.ru*/</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add_openid_rel</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;<span class="meta">?&gt;</span>    </span><br><span class="line"> </span><br><span class="line">&lt;link rel=<span class="string">&quot;openid2.provider&quot;</span> href=<span class="string">&quot;https://jehy.ru/articles/?openid_server=1&quot;</span> /&gt;</span><br><span class="line">&lt;link rel=<span class="string">&quot;openid2.local_id&quot;</span> href=<span class="string">&quot;https://jehy.ru/articles/author/jehy/&quot;</span> /&gt;</span><br><span class="line">&lt;link rel=<span class="string">&quot;openid.server&quot;</span> href=<span class="string">&quot;https://jehy.ru/articles/?openid_server=1&quot;</span> /&gt;</span><br><span class="line">&lt;link rel=<span class="string">&quot;openid.delegate&quot;</span> href=<span class="string">&quot;https://jehy.ru/articles/author/jehy/&quot;</span> /&gt;</span><br><span class="line"><span class="meta">&lt;?</span></span><br><span class="line">&#125;</span><br><span class="line">add_action(<span class="string">&#x27;wp_head&#x27;</span>, <span class="string">&#x27;add_openid_rel&#x27;</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>I really hope that strange bug will be fixed soon so I don’t want to write a complete plugin with interface. Use that fix for now.</p>
+<hr>
+By the way, if you don't have wordpress openid plugin, but want to use external openid provider, you can use the following code (the example is for myopenid.com, but I am sure that you will get the idea):
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Plugin Name: openid-rel</span></span><br><span class="line"><span class="comment">Plugin URI: https://jehy.ru/articles/2008/12/14/wordpress-openid-plugin-fix</span></span><br><span class="line"><span class="comment">Description: Mini plugin for displaying of fucken openid rel link</span></span><br><span class="line"><span class="comment">Version: 0.01</span></span><br><span class="line"><span class="comment">Author: Jehy</span></span><br><span class="line"><span class="comment">Author URI: https://jehy.ru*/</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add_openid_rel</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;<span class="meta">?&gt;</span></span><br><span class="line">&lt;link rel=<span class="string">&quot;openid.server&quot;</span></span><br><span class="line">        href=<span class="string">&quot;http://www.myopenid.com/server&quot;</span> /&gt;</span><br><span class="line">  &lt;link rel=<span class="string">&quot;openid.delegate&quot;</span></span><br><span class="line">        href=<span class="string">&quot;http://youraccount.myopenid.com/&quot;</span> /&gt;</span><br><span class="line">  &lt;link rel=<span class="string">&quot;openid2.local_id&quot;</span></span><br><span class="line">        href=<span class="string">&quot;http://youraccount.myopenid.com&quot;</span> /&gt;</span><br><span class="line">  &lt;link rel=<span class="string">&quot;openid2.provider&quot;</span></span><br><span class="line">        href=<span class="string">&quot;http://www.myopenid.com/server&quot;</span> /&gt;</span><br><span class="line">  &lt;meta http-equiv=<span class="string">&quot;X-XRDS-Location&quot;</span></span><br><span class="line">        content=<span class="string">&quot;http://www.myopenid.com/xrds?username=youraccount.myopenid.com&quot;</span> /&gt;</span><br><span class="line"><span class="meta">&lt;?</span></span><br><span class="line">&#125;</span><br><span class="line">add_action(<span class="string">&#x27;wp_head&#x27;</span>, <span class="string">&#x27;add_openid_rel&#x27;</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/wordpress/">wordpress</a>, <a href="/tags/openid/">openid</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="as_sitesearch" value="jehy.ru/artiles">
+  </form>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.54px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.77px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.77px;">android</a> <a href="/tags/applet/" style="font-size: 12.31px;">applet</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.77px;">codesigning</a> <a href="/tags/dev/" style="font-size: 16.15px;">dev</a> <a href="/tags/fun/" style="font-size: 14.62px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 12.31px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/openid/" style="font-size: 10.77px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.31px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.31px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 16.92px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.31px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.77px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.54px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.85px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 15.38px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.69px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.77px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BB%D1%8E%D0%B4%D0%B8/" style="font-size: 10px;">люди</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.77px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 18.46px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 17.69px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.62px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.77px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.77px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.77px;">работа</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.31px;">таро</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 13.08px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.77px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 19.23px;">цитаты</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2017/10/16/обычное-утро-2027-года/">Обычное утро 2027 года</a>
+      </li>
+    
+      <li>
+        <a href="/2017/09/19/предыстория-одного-мага/">Предыстория одного мага</a>
+      </li>
+    
+      <li>
+        <a href="/2016/07/08/ночь-в-одиноком-октябре/">Ночь в одиноком октябре</a>
+      </li>
+    
+      <li>
+        <a href="/2015/11/24/один-день-зимы/">Один день Зимы</a>
+      </li>
+    
+      <li>
+        <a href="/2015/07/16/бег-с-microsoft-band/">Бег с Microsoft Band</a>
+      </li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><!--<div class="alignleft">
+  
+  &copy; 2020 Jehy
+  
+</div>-->
+<div class="clearfix"></div>
+</footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
