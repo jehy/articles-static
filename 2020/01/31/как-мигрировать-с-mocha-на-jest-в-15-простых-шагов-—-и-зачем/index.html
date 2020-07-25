@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Как мигрировать с mocha на jest в 15 простых шагов — и зачем | Jehy&#39;s notes</title>
+  <meta name="author" content="Jehy">
+  
+  <meta name="description" content="Оригинал поста на хабре
+
+Уже давно я заглядывался на фреймворк для тестирования jest, в котором есть огромное количество всяких вкусных фишек, одна из которых - многопоточное выполнение тестов. При условии того, что у меня был проект на 5000 юнит тестов, миграция обещала быть крайне полезной. Далее я расскажу 14 простых шагов, за которых мне удалось мигрировать - пусть и с некоторыми оговорками - и что мы в результате получили. Спойлер - всё получилось очень круто.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Как мигрировать с mocha на jest в 15 простых шагов — и зачем"/>
+  <meta property="og:site_name" content="Jehy&#39;s notes"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Jehy&#39;s notes" type="application/atom+xml">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Jehy&#39;s notes</a></h1>
+  <h2><a href="/">Insert 1 into dual</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/wishlist">Wishlist</a></li>
+    
+      <li><a href="/donate">Donate</a></li>
+    
+      <li><a href="/atom.xml">Subscribe</a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://whois.jehy.ru">Contact me</a></li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-2020/01/как-мигрировать-с-mocha-на-jest-в-15-простых-шагов-—-и-зачем" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2020-01-31T10:00:00.000Z"><a href="/2020/01/31/как-мигрировать-с-mocha-на-jest-в-15-простых-шагов-—-и-зачем/">2020-01-31</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Как мигрировать с mocha на jest в 15 простых шагов — и зачем</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/486360%7D">Оригинал поста на хабре</a></p>
+<p><img src="https://habrastorage.org/webt/yp/sx/cq/ypsxcqq0qntlarv3avuvwqkg5pu.jpeg"></p>
+<p>Уже давно я заглядывался на фреймворк для тестирования jest, в котором есть огромное количество всяких вкусных фишек, одна из которых - многопоточное выполнение тестов. При условии того, что у меня был проект на 5000 юнит тестов, миграция обещала быть крайне полезной. Далее я расскажу 14 простых шагов, за которых мне удалось мигрировать - пусть и с некоторыми оговорками - и что мы в результате получили. Спойлер - всё получилось очень круто.<a id="more"></a></p>
+<h3 id="Исходные-условия"><a href="#Исходные-условия" class="headerlink" title="Исходные условия"></a>Исходные условия</h3><p>Дано - монолит с огромным количеством кода, о котором я <a target="_blank" rel="noopener" href="https://habr.com/ru/post/459206/">рассказывал ранее</a>, и который мы продолжаем растаскивать. Давайте не холиварить на тему монолитов в этом посте - всё что я хотел и мог сказать - уже было сказано ранее. Понятно, что проект должен быть разбит, и тогда самой проблемы запуска 5000 юнит тестов не возникнет - но не всё получается сделать сразу.</p>
+<p>Для юнитов используется mocha, chai, sinon, rewire, nock, nyc - вот такая вот сборная солянка, которая полностью покрывает наши потребности. В юнитах есть несколько известных, но сложно диагностируемых и исправляемых проблем:</p>
+<ol>
+<li>Местами используется глобальный sandbox, оставшихся с тех времён, когда ещё был sinon.sandbox.</li>
+<li>Из-за глобального сендбокса часть юнитов завязаны друг на друга - они используют чужие моки. Это очевидно плохо, но такие случаи сложно выявлять и исправлять.</li>
+<li>Местами используется глобальная подмена таймеров через sinon.useFakeTimers. И иногда тесты тоже завязываются на таймеры друг друга. Или последующий тест сбрасывает изменения таймеров от предыдущего.</li>
+<li>Ну и наконец прохождение юнитов занимает порядка 13 секунд. Что в целом терпимо, но некоторые разработчики жалуются на то, что время препуш хука с тестами каждый раз сокращает время их рабочего дня на эти самые 13 секунд.</li>
+</ol>
+<h3 id="Почему-мультитрединг"><a href="#Почему-мультитрединг" class="headerlink" title="Почему мультитрединг"></a>Почему мультитрединг</h3><p>Как я уже написал чуть выше, Jest мне в первую очередь был интересен тем, что умеет запускать тесты в несколько потоков. Так как это бекенд тесты безо всякого там puppeteer и прочих внешних компонентов, то юниты фактически не имеют в себе никаких асинхронных операций (не путать с асинхроными функциями) - и что запускай их параллельно что последовательно - время исполнения не изменится, только забьёшь ивент луп и оперативку. Так что в данном случае мультитрединг - фактически единственное и оптимальное средство оптимизации. Было понятно, что возникнут накладные расходы на инициализацию - но было непонятно, насколько они будут велики.</p>
+<h3 id="Оставь-надежду-всяк-сюда-входящий"><a href="#Оставь-надежду-всяк-сюда-входящий" class="headerlink" title="Оставь надежду всяк сюда входящий"></a>Оставь надежду всяк сюда входящий</h3><p>Сначала я пробовал использовать какие-то имеющиеся решения для запуска mocha в многопоточном режиме - но таких решений было полторы штуки, и они вываливались с такими стрёмными ошибками, что даже дебажить это не было никакого желания. Например, я точно смотрел <a target="_blank" rel="noopener" href="https://github.com/mocha-parallel/mocha-parallel-tests">mocha-parallel-tests</a> от <a target="_blank" rel="noopener" href="https://github.com/1999">Дмитрия Сорина</a>, бывшего сотрудника Яндекса. Падало вдребезги - хотя возможно, что проблема была скорее в проекте, а не в раннере. Надеюсь, у Дмитрия  всё получится.</p>
+<p>Так же я наудачу пробовал просто взять и смигрировать тесты при помощи <a target="_blank" rel="noopener" href="https://github.com/skovhus/jest-codemods">jest-codemods</a> - но увы, всё тоже падало, судя по всему - ломалось на sinon - а править 5000 юнитов не было ни времени ни желания. Хотелось более простого решения.</p>
+<h2 id="Таки-миграция"><a href="#Таки-миграция" class="headerlink" title="Таки миграция!"></a>Таки миграция!</h2><h3 id="1-Установка"><a href="#1-Установка" class="headerlink" title="1. Установка"></a>1. Установка</h3><p>В очередной рад с тоскливой завистью просматривая список фишек из <a target="_blank" rel="noopener" href="https://github.com/jest-community/awesome-jest">awesome-jest</a>, я вдруг заметил <a target="_blank" rel="noopener" href="https://github.com/rogeliog/jest-runner-mocha">jest-runner-mocha</a>. “Это может сработать!” - подумал я, и решил так же быстро попробовать, взлетит ли джест с мокой в виде тест раннера.</p>
+<p>Ну что же.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev jest jest-runner-mocha</span><br></pre></td></tr></table></figure>
+
+<p>Пишем простой конфиг запуска jest-test.config.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    runner: <span class="string">&#x27;jest-runner-mocha&#x27;</span>,</span><br><span class="line">    testRegex: <span class="string">&#x27;tests/.*test_.*\\.js$&#x27;</span>,</span><br><span class="line">    maxWorkers: <span class="number">3</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>и запускаем тесты</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node --use_strict ./node_modules/.bin/jest --no-cache --config jest-test.config.js</span><br></pre></td></tr></table></figure>
+<p>Да, я большой фанат глобального стрикт мода, поэтому запуск выглядит именно так.
+Кстати, кеш - тоже очень крутая фишка jest. А отключил я его для отладки на всякий случай - включить его потом всегда можно.
+И - внезапный результат - &lt;u&gt;мгновенно прошло порядка 90% тестов&lt;/u&gt;, что было прямо феерически хорошим результатом! И было ощущение, что прошли они чуть быстрее - точно понять было нельзя, так как некоторые не проходившие тесты тупо зависали.</p>
+<h3 id="2-Выбор-репортера"><a href="#2-Выбор-репортера" class="headerlink" title="2. Выбор репортера"></a>2. Выбор репортера</h3><p>Для джеста, как и для моки, есть богатый выбор репортеров. Тот, который по умолчанию, тоже клёвый - при запуске ты чувствуешь себя не разработчиком, а пилотом космического корабля. Это очень круто, но при наличии сотен наборов быстрых тестов ты всё равно не видишь там ничего полезного, а история терминала просто засоряется. Так что я выбрал простой <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/jest-dot-reporter">jest-dot-reporter</a> - он рисует progress bar и говорит количество прошедших, упавших и выключенных тестов - ничего лишнего.</p>
+<p>Выбор репортера делается через CLI опции или через config:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reporters: [&#39;jest-dot-reporter&#39;],</span><br></pre></td></tr></table></figure>
+
+<p>Кстати, его в списке awesome-jest почему-то не было. Теперь будет - пулл реквест я добавил.</p>
+<h3 id="3-Использование-актуальной-версии-mocha"><a href="#3-Использование-актуальной-версии-mocha" class="headerlink" title="3. Использование актуальной версии mocha"></a>3. Использование актуальной версии mocha</h3><p>Есть у меня плохая привычка - смотреть код пакета, который я использую. И вот залез я в jest-runner-mocha. И обнаружил, что он использует для запуска тестов  mocha версии 3.5. Когда как последняя - 7. Мейнтейнер на предложение обновиться говорит, что он хочет поддерживать Node 4. На аргументы, что</p>
+<ul>
+<li>Node 4 не поддерживает уже ни mocha ни jest, ни даже yarn, который любит ментейнер</li>
+<li>Уже Node 8 дошла до End Of Life</li>
+<li>Можно сделать обновление мажорной версии, а пользователи на старой ноде могут продолжать пользоваться прошлой версией</li>
+<li>Можно сделать mocha в виде peerDependency, и пользователь сам выберет свою версию</li>
+</ul>
+<p>внятного ответа получено не было. Ну ладно. Делаем форк. В форке мока теперь в peerDependency - то есть будет использоваться та же версия, что указана в проекте.</p>
+<h3 id="4-Реализуем-свой-clearMocks"><a href="#4-Реализуем-свой-clearMocks" class="headerlink" title="4. Реализуем свой clearMocks"></a>4. Реализуем свой clearMocks</h3><p>Как я уже сказал, в джесте есть воистину божественные фичи. Две из них - это сброс моков и фальшивых таймеров перед каждым набором тестов - что позволяет делать их действительно независимыми. Для особо упоротых граждан можно сбрасывать даже кеш загруженных модулей - имхо перебор, и говорит о непродуманной архитектуре - но я знаю проекты, в которых это делают.</p>
+<p>К сожалению, непродолжительные изыскания привели к выяснению, что поддержка clearMocks должна быть реализована в самом тест раннере. К слову, тест раннер моки фактически является единственным представителем вида тест раннеров - потому что остальные раннеры джеста делают всякие более простые вещи вроде линтинга, и никак не связаны с тестированием. Так что кроме раннера моки есть только нативный джестовый раннер jasmine2. Вот в его коде как раз можно найти полную реализацию всяких плюшек - но мигрировать их долго и сложно.</p>
+<p>Так что я решил пойти более коротким и грязным путём - добавил в свой форк поддержку опции <code>setupFilesAfterEnv</code>, а в них - поддержку экспорта функции с именем <code>clearMocks</code>  и при её нахождении - вызов её перед каждым вызовом набора тестов. Не самое элегантное решение, но навскидку больше ничего не пришло в голову. Кроме того, поддержка clearMocks от jest мне никак не помогла бы - поскольку моки в проекте были от sinon, и jest не мог их сбросить так как ничего не знал про них.</p>
+<p>Так что в конфиг джеста добавились опции:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setupFilesAfterEnv: [ <span class="string">&#x27;lib/clearMocks.js&#x27;</span>],</span><br><span class="line">clearMocks: <span class="literal">true</span>,</span><br></pre></td></tr></table></figure>
+
+<p>Ну а <code>lib/clearMocks.js</code> представляет собой</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// const jest = require(&#x27;jest-mock&#x27;);</span></span><br><span class="line"><span class="keyword">const</span> sinon = <span class="built_in">require</span>(<span class="string">&#x27;sinon&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    clearMocks: () =&amp;gt; &#123;</span><br><span class="line">        <span class="comment">// jest.clearAllMocks(); возможно, сможет скидывать нативные моки джеста, надо проверять</span></span><br><span class="line">        sinon.sandbox.restore();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Пулл реквест в оригинальный репозиторий мока раннера был создан и даже обсуждается.
+После этого процент проходящих тестов стал заметно больше. А на некоторых тестах стало видно, каких моков им не не хватает - и удалось это быстро поправить.</p>
+<h3 id="5-Правим-оставшиеся-тесты"><a href="#5-Правим-оставшиеся-тесты" class="headerlink" title="5. Правим оставшиеся тесты"></a>5. Правим оставшиеся тесты</h3><p>Конечно, остались какие-то кривые единичные случаи. Например, нестабильно воспроизводимая проблема, когда при некоей последовательности запуска тестов падали циклические зависимости (вот почему я всегда говорю их не использовать). Ещё были тесты с использованием фальшивых таймеров без их восстановления. Но таких проблем осталось не слишком много, и поправили мы их довольно быстро. Ура - тесты проходят! Думаете, всё? Нет, история продолжается!</p>
+<h3 id="6-Сотни-ивентов"><a href="#6-Сотни-ивентов" class="headerlink" title="6. Сотни ивентов"></a>6. Сотни ивентов</h3><p>При запуске тестов я обратил внимание на то, что при запуске тестов на <code>process</code> вешается 500 обработчиков <code>exit</code>. Что-то явно шло не так. В коде раннера я заметил прекрасный кусок</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">process.on(<span class="string">&#x27;exit&#x27;</span>, () =&amp;gt; process.exit());</span><br></pre></td></tr></table></figure>
+<p>Мало того, что он не имеет никакого смысла, так этот ивент ещё и вешается при прохождении каждого набора тестов… В общем, в моём форке бага исправлена, а пулл реквест в оригинальный репозиторий пока изучают… slowpoke.jpg.</p>
+<h3 id="7-Ещё-сотни-ивентов"><a href="#7-Ещё-сотни-ивентов" class="headerlink" title="7. Ещё сотни ивентов"></a>7. Ещё сотни ивентов</h3><p>После того, как я разобрался с предыдущими багами, теперь я заметил, что на <code>process</code> вешаются сотни обработчиков <code>unCaughtException</code>. На этот раз, проблема оказалась не в раннере, а в самой моке - достаточно было обновиться с 7.0.0 до 7.0.1.</p>
+<h3 id="8-Крадём-чужие-пулл-реквесты"><a href="#8-Крадём-чужие-пулл-реквесты" class="headerlink" title="8. Крадём чужие пулл реквесты"></a>8. Крадём чужие пулл реквесты</h3><p>Есть у меня привычка отсматривать пулл реквесты в проектах, которые мне интересны - в особенности в форках, которые я поддерживаю. Обнаружил <a target="_blank" rel="noopener" href="https://github.com/rogeliog/jest-runner-mocha/pull/18">отличный пулл реквест в jest-runner-mocha</a>, который заменял всю ручную работу с воркерами на стандартный флоу в jest и исправлял связанные с этим баги. К сожалению, тут опять потерялась совместимость со священным граалем - четвёртой нодой - поэтому пулл реквест висит не принятый. Ну что же - я влил его в свой форк, а заодно выпилил из него сборку бабелем, совместимость с четвёртой нодой и yarn.</p>
+<h3 id="9-Зовём-чувака-на-работу"><a href="#9-Зовём-чувака-на-работу" class="headerlink" title="9. Зовём чувака на работу"></a>9. Зовём чувака на работу</h3><p>Переставляя зависимости в основном проекте, внезапно обнаруживаю новый postinstall hook от транзитивной зависимости jest-runner-mocha:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; core-js@3.6.4 postinstall</span><br><span class="line">&gt; node -e &quot;try&#123;require(&#39;&#x2F;postinstall&#39;)&#125;catch(e)&#123;&#125;&quot;</span><br><span class="line"></span><br><span class="line">Thank you for using core-js ( https:&#x2F;&#x2F;github.com&#x2F;zloirock&#x2F;core-js ) for polyfilling JavaScript standard library!</span><br><span class="line"></span><br><span class="line">The project needs your help! Please consider supporting of core-js on Open Collective or Patreon: </span><br><span class="line">&gt; https:&#x2F;&#x2F;opencollective.com&#x2F;core-js </span><br><span class="line">&gt; https:&#x2F;&#x2F;www.patreon.com&#x2F;zloirock </span><br><span class="line"></span><br><span class="line">Also, the author of core-js ( https:&#x2F;&#x2F;github.com&#x2F;zloirock ) is looking for a good job -)</span><br></pre></td></tr></table></figure>
+<p>Не люблю такие вещи, поэтому пошёл смотреть, в чём дело. Выжимку можно прочитать <a target="_blank" rel="noopener" href="https://github.com/zloirock/core-js/issues/548#issuecomment-494112872">в этом комментарии</a>. Если вкратце - автор пакета c 23,528,407 еженедельных установок, одного из базовых компонентов бабеля - работал над ним бесплатно пять лет, а  сейчас у него проблемы, огромный долг, и ему грозит тюрьма. Сообщество бабеля отказалось спонсировать его проект, на пожертвованиях он собрал 57 баксов, и получил тонны негативных комментариев за свой пост инсталл хук. После чего решил оставить этот хук на неопределённое время. Поддерживаю. Последний коммит автора был от 12 января. Надеюсь, с ним всё в порядке. Предложил ему работу в нашей компании. После написания поста ещё закину пожертвовование. Предлагаю вам сделать так же. Кстати, это не имеет значения, но он наш соотечественник.</p>
+<p>Что же до пост инсталл хука - проблема с ним решилась сама чуть позже.</p>
+<h3 id="10-Переносим-линтинг-в-джест"><a href="#10-Переносим-линтинг-в-джест" class="headerlink" title="10. Переносим линтинг в джест"></a>10. Переносим линтинг в джест</h3><p>Не относится напрямую к тестированию, но если ты вдруг начал забивать гвозди молотком вместо ложки - очень сложно остановиться. Линтинг всего репозитория в CI у нас занимал порядка двух минут, и, поскольку он тоже полностью синхронный, мне так же давно хотелось сделать его многопоточным. Как-то давно я уже пробовал <a target="_blank" rel="noopener" href="https://github.com/pinterest/esprint">esprint</a> - но там всё было не слава богу, и я на это забил.</p>
+<p>Но для джеста есть отличный раннер <a target="_blank" rel="noopener" href="https://www.github.com/jest-community/jest-runner-eslint">jest-runner-eslint</a> - который просто берёт движок еслинт, запускает его в несколько потоков, и агрегирует результаты. И надо сказать, что тут реально всё взлетело безо всяких плясок с бубнами. Линтинг ускоряется примерно в то количество раз, сколько у тебя воркеров - пока не упрёшься в память.</p>
+<p>Надо сказать, что забавно, что всё новое - хорошо забытое старое. По факту Jest просто повторил всё то, что уже было в раннерах вроде grunt или gulp. Просто те раннеры раньше использовались для сборки фронта, а сейчас всё это, включая многопоточное выполнение задач, включил в себя вебпак. Так что Jest переоткрыл заново эту же нишу, сузив её и удобно реализовав…</p>
+<h3 id="11-Исправляем-CI"><a href="#11-Исправляем-CI" class="headerlink" title="11. Исправляем CI"></a>11. Исправляем CI</h3><p>Раньше в CI у нас параллельно выполнялся линтинг и юнит тесты, чтобы хоть как-то рационально использовать ядра на арендуемых виртуалках. Это иногда создавало кашу из вывода линтера и юнит тестов, но в целом было терпимо, и точно проходило быстрее, чем последовательно. Теперь можно было вернуться к последовательному исполнению - ведь и юниты и тесты проходили в несколько потоков!</p>
+<h3 id="12-Эпическая-подстава"><a href="#12-Эпическая-подстава" class="headerlink" title="12. Эпическая подстава"></a>12. Эпическая подстава</h3><p>В какой-то момент я вдруг заметил, что у меня перестали проходить тесты на форке мока раннера. Какое-то время пришлось потратить на то, чтобы сравнить изменения… А потом я подумал, что видимо не просто так тесты должны были запускаться после установки при помощи yarn, и наверное не просто так там лежал файл yarn.lock. Да. Дело было в лок файле.</p>
+<p>Это просто эпическая подстава. Потому что даже если вы используете yarn для управления зависимостями - лок файл от yarn внутри пакета использоваться не будет. Он используется только для верхнего уровня. Что это значит? То что тот код, который отрабатывает в юнит тестах на установленных из лок файла пакетах - будет работать некорректно внутри проекта.</p>
+<p>Что делать? В качестве быстрого фикса, я использовал утилиту для конвертации лок файла от yarn в package-lock.json, после чего переименовал его в npm-shrinkwrap.json (их формат идентичен). Если вы не знали - лок файл игнорируется при установке, а вот shrinkwrap нет - и транзитивные зависимости вашей зависимости ставятся ровно тех версий, которые указаны в shrinkwrap. Конечно, это плохая практика, и в результате количество зависимостей в основном проекте чудовищно раздулось. Зато я уверен, что всё работает точно так, как должно. А эти зависимости всё равно уходят при сборке артефакта на <code>npm prune --production</code>.</p>
+<p>Фикс влит в мой форк, а в оригинальном репозитории его раскритиковали. Нет, я согласен, что лок файл в пакете это плохо. Но лучше, чем заведомо неработающий код. Как-нибудь я надеюсь поправить зависимости и избавиться от этого лока. Может быть, в оригинальном репозитории это поправят. Или может быть вы поможете?</p>
+<h3 id="13-Форматирование-ошибок"><a href="#13-Форматирование-ошибок" class="headerlink" title="13. Форматирование ошибок"></a>13. Форматирование ошибок</h3><p>И только на этом моменте я заметил, что ошибки выдаются в кривом формате - вместо красивых ассертов всё вываливается массивом текста со слетевшим форматированием и цветами. Грешил на многое, но проблема оказалась опять же в раннере. Возможно, более ранние версии jest умели воспринимать ошибки массивом, но сейчас там ожидается строка. Фикс есть в форке, в оригинальном репозитории пока без комментариев.</p>
+<h3 id="14-Описание-миграции"><a href="#14-Описание-миграции" class="headerlink" title="14. Описание миграции"></a>14. Описание миграции</h3><p>Так как нужно рассказать коллегам, что было сделано, почему, и как они при желании могут повторить миграцию - собственно была написана эта статья, как максимально подробный и удобный формат руководства. Опять же, я корыстно надеюсь на помощь сообщества и на всякие полезные комментарии.</p>
+<h3 id="15-Обновление"><a href="#15-Обновление" class="headerlink" title="15. Обновление"></a>15. Обновление</h3><p>Этот параграф я дописал чуть позже. Нам таки удалось обновить все зависимости, починить юнит тесты и избавиться от лок файла. Жизнь прекрасна!</p>
+<h2 id="Результат"><a href="#Результат" class="headerlink" title="Результат"></a>Результат</h2><p>Так что в итоге мы получили после миграции?</p>
+<ol>
+<li>Скорость тестов и линтинга локально и в CI увеличилась примерно в 3 раза на 3х потоках. Наверное, можно и больше, пока просто мало играл с количеством воркеров.</li>
+<li>Ушли завязки тестов друг на друга. То что происходит в тесте - остаётся в тесте. Более того, разбивка тестов на несколько процессов даёт возможность выявления дополнительных не очевидных ошибок.</li>
+<li>Можно использовать встроенные возможности jest вместо всего того зоопарка решений, который развёлся за эти годы.</li>
+</ol>
+<h2 id="ToDo"><a href="#ToDo" class="headerlink" title="ToDo"></a>ToDo</h2><p>Что ещё осталось сделать:</p>
+<ol>
+<li>Пока я не смотрел, как работает проверка покрытия. Возможно, там будут проблемы. Но это не очень критично, так как mocha никуда не уходит, и можно спокойно считать покрытие как раньше.</li>
+<li>Можно дать разработчикам возможность писать тесты полностью на jest - просто сделать другой префикс для тестовых файлов. Но это породит некоторый зоопарк и проблемы с тем что придётся сливать между собой покрытие от разных раннеров - так что надо ещё подумать, стоит ли.</li>
+<li>Возможно, стоит теперь ещё раз пройтись по коду при помощи jest-codemods и посмотреть, что можно безопасно заменить - например, сменить для начала библиотеку для ассертов.</li>
+</ol>
+<p>Да, если что, вот <a target="_blank" rel="noopener" href="https://github.com/jehy/jest-runner-mocha">ссылка на мой форк раннера mocha</a>.
+Поставить его можно командой</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @kernel-panic/jest-runner-mocha</span><br></pre></td></tr></table></figure>
+<p>А в конфиге прописать как</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runner: <span class="string">&#x27;@kernel-panic/jest-runner-mocha&#x27;</span>,</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/habr/">habr</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="as_sitesearch" value="articles.jehy.ru">
+  </form>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.43px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.71px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.71px;">android</a> <a href="/tags/applet/" style="font-size: 12.14px;">applet</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.71px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15.71px;">dev</a> <a href="/tags/fun/" style="font-size: 14.29px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.29px;">habr</a> <a href="/tags/java/" style="font-size: 12.14px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.71px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/openid/" style="font-size: 10.71px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.14px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.14px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 16.43px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.14px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.71px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.43px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.57px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 15px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.14px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.71px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BB%D1%8E%D0%B4%D0%B8/" style="font-size: 10px;">люди</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.71px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.86px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 17.14px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.29px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.71px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.71px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.71px;">работа</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.14px;">таро</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.86px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.71px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.57px;">цитаты</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2020/06/26/как-активный-гражданин-приучает-людей-к-фишингу/">Как «активный гражданин» приучает людей к фишингу</a>
+      </li>
+    
+      <li>
+        <a href="/2020/02/16/снимаем-покрытие-кода-с-уже-запущенного-nodejs-приложения/">Снимаем покрытие кода с уже запущенного Node.JS приложения</a>
+      </li>
+    
+      <li>
+        <a href="/2020/01/31/как-мигрировать-с-mocha-на-jest-в-15-простых-шагов-—-и-зачем/">Как мигрировать с mocha на jest в 15 простых шагов — и зачем</a>
+      </li>
+    
+      <li>
+        <a href="/2019/12/17/зачем-нужно-столько-разработчиков/">Зачем нужно столько разработчиков?</a>
+      </li>
+    
+      <li>
+        <a href="/2019/11/22/deno-время-nodejs-уходит/">Deno - время Node.JS уходит?</a>
+      </li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><!--<div class="alignleft">
+  
+  &copy; 2020 Jehy
+  
+</div>-->
+<div class="clearfix"></div>
+</footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Diarrhea для вашего бэкенда на Node.JS — уменьшаем вес сборки | Jehy&#39;s notes</title>
+  <meta name="author" content="Jehy">
+  
+  <meta name="description" content="Оригинал поста на хабре
+Наверняка вы часто замечали, сколько всякого мусора лежит внутри node modules. Это тесты, бенчмарки, ридми файлы, лицензии, тайпскрипт, и ещё безумное количество мусора, который можно более-менее безопасно удалить. Что мы собственно и сделаем в этом посте.
+Картинку про вес node module я и так упоминал последние несколько публикаций, так что вот вам другая, которая в целом отражает текущую ситуацию. В качестве саундтрека к посту рекомендуется Little Big, “Life in da trash”.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Diarrhea для вашего бэкенда на Node.JS — уменьшаем вес сборки"/>
+  <meta property="og:site_name" content="Jehy&#39;s notes"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Jehy&#39;s notes" type="application/atom+xml">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Jehy&#39;s notes</a></h1>
+  <h2><a href="/">Insert 1 into dual</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/wishlist">Wishlist</a></li>
+    
+      <li><a href="/donate">Donate</a></li>
+    
+      <li><a href="/atom.xml">Subscribe</a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://whois.jehy.ru">Contact me</a></li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-2018/04/diarrhea-для-вашего-бэкенда-на-nodejs-—-уменьшаем-вес-сборки" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2018-04-27T10:00:00.000Z"><a href="/2018/04/27/diarrhea-для-вашего-бэкенда-на-nodejs-—-уменьшаем-вес-сборки/">2018-04-27</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Diarrhea для вашего бэкенда на Node.JS — уменьшаем вес сборки</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/354504%7D">Оригинал поста на хабре</a></p>
+<p>Наверняка вы часто замечали, сколько всякого мусора лежит внутри node modules. Это тесты, бенчмарки, ридми файлы, лицензии, тайпскрипт, и ещё безумное количество мусора, который можно более-менее безопасно удалить. Что мы собственно и сделаем в этом посте.
+Картинку про вес node module я и так упоминал последние несколько публикаций, так что вот вам другая, которая в целом отражает текущую ситуацию. В качестве саундтрека к посту рекомендуется Little Big, “Life in da trash”.</p>
+<p><img src="https://habrastorage.org/webt/gq/fu/s6/gqfus66jvoefmy9jyn9al5mylkk.png"></p>
+<a id="more"></a>
+
+<h2 id="Начало"><a href="#Начало" class="headerlink" title="Начало"></a>Начало</h2><p>Итак, в очередной раз случайно зайдя внутрь node modules, я погрустил, и начал я с того, что для эксперимента руками написал несколько скриптов, которые прогнал через свой проект. Выглядели они примерно так:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">find ./ -iname <span class="string">&quot;tests&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./node_modules -iname <span class="string">&quot;test&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./node_modules -iname <span class="string">&quot;*.gif&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./node_modules -iname <span class="string">&quot;*.jpg&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./node_modules -iname <span class="string">&quot;*.jpeg&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./node_modules -iname <span class="string">&quot;*.png&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./ -iname <span class="string">&quot;*.md&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./ -iname <span class="string">&quot;*.log&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./ -iname <span class="string">&quot;LICENSE*&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./ -iname <span class="string">&quot;README*&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./ -iname <span class="string">&quot;LICENCE*&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./ -iname <span class="string">&quot;AUTHORS*&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./ -iname <span class="string">&quot;NOTICE*&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./ -iname <span class="string">&quot;changelog*&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./ -iname <span class="string">&quot;.travis.yml&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./ -iname <span class="string">&quot;.coveralls.yml&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./ -iname <span class="string">&quot;.npmignore&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./ -iname <span class="string">&quot;.gitignore&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./ -iname <span class="string">&quot;.jshintrc&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./ -iname <span class="string">&quot;.eslintrc&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./ -iname <span class="string">&quot;.jscs.json&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./ -iname <span class="string">&quot;.editorconfig&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./ -iname <span class="string">&quot;.vs&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br><span class="line">find ./ -iname <span class="string">&quot;.babelrc&quot;</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+
+<p>В целом, это было уже неплохо, и давало некую экономию, но хотелось какого-то более элегантного и общего решения. И достаточно быстро я нашёл модуль, который делает именно то, что мне хотелось - <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/modclean">ModClean</a>.</p>
+<h2 id="Modclean"><a href="#Modclean" class="headerlink" title="Modclean"></a>Modclean</h2><p>У модуля есть куча настроек, а ещё списки “лишних файлов” в виде плагинов, которые подключаются как npm пакеты. По умолчанию идёт вот <a target="_blank" rel="noopener" href="https://github.com/ModClean/modclean-patterns-default/blob/master/patterns.json">такой</a> список.</p>
+<p>В нём есть три уровня файлов по безопасности удаления - очень рекомендую посмотреть список и увидеть, что может вызвать у вас проблемы. Например, я не понял, с какой стати в список включили “semver”…</p>
+<p>Единственный минус - почему-то автор модуля не подумал, что вы так же можете захотеть удалить весь мусор перед сборкой в собственном проекте - например, вам абсолютно не нужны файлы тестов на продакшне…
+Правда, оказалось, что это легко обойти, указав в качестве директории модулей директорию проекта:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">modclean --modules-dir .</span><br></pre></td></tr></table></figure>
+
+<h2 id="Результаты"><a href="#Результаты" class="headerlink" title="Результаты"></a>Результаты</h2><p>Понятно, что результаты могут быть самые разные на разных проектах, но у меня вышло от 10% до 20% экономии. В запущенных случаях может быть и больше. Это может показаться не самой большой цифрой, но это уменьшение требуемого для хранения места на 20% и более быстрая на 20% раскатка проектов буквально из ничего - поэтому почему бы и нет?
+Для любопытных на сайте модуля так же есть бенчмарки по удалению, но лучше просто попробовать его у себя.</p>
+<h2 id="Diarrhea"><a href="#Diarrhea" class="headerlink" title="Diarrhea"></a>Diarrhea</h2><p>На этой позитивной ноте хотелось бы сказать, что я решил свою задачу, и всем рекомендую использовать этот прекрасный модуль. Но вы же видели в заголовке слово “diarrhea”, а не “modclean”, да? Это значит, что остался ещё один нюанс. Нюанс довольно толстый в прямом смысле слова - оказалось, что у модуля 123 транзитивных зависимости и он весит 4МБ. Что в целом уже считается более-менее стандартом для модулей ноды, но не может не доставить душевной боли.</p>
+<p>При этом 1.2 мегабайта занимает дико популярный модуль <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/update-notifier">update-notifier</a> , всё что он делает - это отрисовывает вот такую рамочку в случае, если доступны обновления:
+<img src="https://habrastorage.org/webt/kh/-q/em/kh-qemxza1w9fw2x6ye0kehysnw.png">
+1 мегабайт на это, Карл! Мне, как Node.JS разработчику, хочется провалиться от стыда.</p>
+<p>А большую часть остального места занимает<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/clui"> модуль clui</a>, в котором содержатся всякие украшательства для работы с терминалом - из которых используется только пара функций.</p>
+<p>В общем, я не смог этого вынести, и сделал свою сборку - без блекджека и всего остального. Уведомление об апдейтах я оттуда полностью выпилил, а нужные функции из толстых модулей с большим количеством зависимостей я собрал в минифицированный bundle при помощи webpack. В целом, можно было ещё немного поиграть и ещё уменьшить вес модуля - но я дошёл до веса в 700 килобайт и пока успокоился. Так же я добавил опцию –root, которая позволяет более очевидно чистить не зависимости, а корень вашего проекта.</p>
+<p>Issues по  всем указанным поводам я закинул в modclean, а так же сделал туда пулл реквест, и если всё будет одобрено, то я задепрекейчу этот форк в пользу основного модуля - но пока есть ощущение, что modclean заброшен - так что если будут хорошие идеи, закидывайте их ко мне.</p>
+<p>Установить мою версию можно, как всегда, <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/diarrhea">из npm</a>.</p>
+<h2 id="Предупреждение"><a href="#Предупреждение" class="headerlink" title="Предупреждение"></a>Предупреждение</h2><p>Дважды убедитесь, что вы сохранили всё нужное в репозитории - diarrhea может удалять лишние файлы, нужные файлы, зубы, и убивать котят. Снимаю за это всякую ответственность.</p>
+<h2 id="Интеграция-в-CI"><a href="#Интеграция-в-CI" class="headerlink" title="Интеграция в CI"></a>Интеграция в CI</h2><p>Лучше всего использовать diarrhea так:</p>
+<ol>
+<li>Сначала сносим весь мусор из node modules;</li>
+<li>Потом прогоняем юнит тесты, чтобы убедиться, что не снесли ничего лишнего;</li>
+<li>Потом сносим мусор из основного проекта, включая собственно тесты;</li>
+<li>Делаем npm prune –production;</li>
+<li>Собираем артефакт.</li>
+</ol>
+<h2 id="ToDo"><a href="#ToDo" class="headerlink" title="ToDo"></a>ToDo</h2><p>Модуль делался на скорую руку для личного использования, поэтому в перспективе хотелось бы добавить следующее:</p>
+<ul>
+<li>Тесты. Как ни странно, в modClean их вообще нет;</li>
+<li>Совместимость с нодой до 8ой версии. Так как там уже webpack, то не сложно;</li>
+<li>Выпилить ещё несколько зависимостей, в которых нет особого смысла;</li>
+<li>Минимальную версию без терминальных украшательств для CI</li>
+</ul>
+<h2 id="Выводы"><a href="#Выводы" class="headerlink" title="Выводы"></a>Выводы</h2><ul>
+<li>В который раз пугаюсь тому, какие жуткие вещи творит низкий порог вхождения в мою любимую экосистему. С этим определённо нужно что-то делать, и я надеюсь, что это будет как-то решено на уровне npm. Но прямо сейчас я вижу, что этот прекрасный update-notifier находится в зависимостях самого npm, что очень сильно огорчает. У этого несчастного нотифаера - 2 миллиона загрузок в неделю! 2 миллиона мегабайт (почти 2 терабайта) потрачено на долбаную рамочку с сообщением об обновлении!</li>
+<li>Всегда проверяйте вес своих зависимостей, даже на бэкенде;</li>
+<li>Чистите ваши зависимости;</li>
+<li>Как ни странно, понемного прихожу к мысли о том, что бэкендовые зависимости тоже нужно собирать в общий бандл. Что сейчас делается довольно легко и непринуждённо любым выбранным вами инструментом, и не добавляет боли при отладке - ведь можно сгенерировать сурсмапы. Единственный минус - далеко не каждый пакет можно включить в бандл, регулярно сталкиваюсь с какими-то проблемами в этом, по большей части связанными с тем, что все любят как попало подключать динамические зависимости. Например, тот же update-notifier в бандл засунуть нельзя.</li>
+</ul>
+<p>Ну что же, на этом всё.</p>
+<p>Если вам было интересно, то вам так же могут понравиться мои другие статьи по этой теме:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://habr.com/post/353912/">Проверка дублирования зависимостей </a>при помощи wtfwith;</li>
+<li><a target="_blank" rel="noopener" href="https://habr.com/post/347934/">Проверка безопасности</a> зависимостей при помощи snyk;</li>
+<li><a target="_blank" rel="noopener" href="https://habr.com/post/346492/">Рассказ</a> о том, как я майню эфир через meltdown на ваших телефонах при помощи npm.</li>
+</ul>
+<p>Так же могу рассказать ещё о различных случаях упоротого использования Node.JS на бэкенде, участвуйте в опросе, если вам интересно.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/habr/">habr</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="as_sitesearch" value="articles.jehy.ru">
+  </form>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.43px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.71px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.71px;">android</a> <a href="/tags/applet/" style="font-size: 12.14px;">applet</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.71px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15.71px;">dev</a> <a href="/tags/fun/" style="font-size: 14.29px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.29px;">habr</a> <a href="/tags/java/" style="font-size: 12.14px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.71px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/openid/" style="font-size: 10.71px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.14px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.14px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 16.43px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.14px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.71px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.43px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.57px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 15px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.14px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.71px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BB%D1%8E%D0%B4%D0%B8/" style="font-size: 10px;">люди</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.71px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.86px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 17.14px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.29px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.71px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.71px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.71px;">работа</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.14px;">таро</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.86px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.71px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.57px;">цитаты</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2020/06/26/как-активный-гражданин-приучает-людей-к-фишингу/">Как «активный гражданин» приучает людей к фишингу</a>
+      </li>
+    
+      <li>
+        <a href="/2020/02/16/снимаем-покрытие-кода-с-уже-запущенного-nodejs-приложения/">Снимаем покрытие кода с уже запущенного Node.JS приложения</a>
+      </li>
+    
+      <li>
+        <a href="/2020/01/31/как-мигрировать-с-mocha-на-jest-в-15-простых-шагов-—-и-зачем/">Как мигрировать с mocha на jest в 15 простых шагов — и зачем</a>
+      </li>
+    
+      <li>
+        <a href="/2019/12/17/зачем-нужно-столько-разработчиков/">Зачем нужно столько разработчиков?</a>
+      </li>
+    
+      <li>
+        <a href="/2019/11/22/deno-время-nodejs-уходит/">Deno - время Node.JS уходит?</a>
+      </li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><!--<div class="alignleft">
+  
+  &copy; 2020 Jehy
+  
+</div>-->
+<div class="clearfix"></div>
+</footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

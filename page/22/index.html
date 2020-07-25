@@ -53,77 +53,43 @@
 </header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
-  <article id="post-2007/08/english-lessons" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <article id="post-2008/10/delete-clean-wiki-old-revisions" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
     <header>
       
         <div class="icon"></div>
-        <time class="dt-published" datetime="2007-08-02T13:30:00.000Z"><a href="/2007/08/02/english-lessons/">2007-08-02</a></time>
+        <time class="dt-published" datetime="2008-10-06T02:39:02.000Z"><a href="/2008/10/06/delete-clean-wiki-old-revisions/">2008-10-06</a></time>
       
       
   
-    <h1 class="title"><a href="/2007/08/02/english-lessons/">Уроки английского</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p>Я в восторге - спёрто у maygutyasik:</p>
-<p>Первый урок, английский для начинающих:</p>
-<p>“Три ведьмы разглядывают трое часов “Свотч”. Какая из ведьм разглядывает какие часы?”</p>
-<p>Теперь по английски!</p>
-<p>Three witches watch three swatch watches.</p>
-<p>Which witch watches which swatch watch?</p>
-<p>Второй урок, английский для продвинутых учеников:</p>
-<p>“Три ведьмы-трансвеститки разглядывают три кнопочки на часах “Свотч”. Какая из ведьм-трансвеститок разглядывает какую кнопочку на часах “Свотч”?”</p>
-<p>Теперь по английски !</p>
-<p>Three switched witches watch three Swatch watch switches. Which switched witch watches which Swatch watch switch?</p>
-<p>Третий и последний урок, английский для абсолютных профессионалов:</p>
-<p>“Три швейцарских ведьмы-с#чки, желающих изменить свой пол, разглядывают три кнопочки на часах “Свотч”. Какая из швейцарских ведьм-с#чек, желающих изменить свой пол,разглядывает какую кнопочку на часах “Свотч”?”</p>
-<p>Теперь по английски !</p>
-<p>Three swiss witch-bitc#es, which wished to be switched swiss witch-bitc#es, watch three swiss Swatch watch switches. Which swiss witch-bitc#, which wishes to be a switched swiss witch-bitc#, wishes to watch which swiss Swatch watch switch?</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article id="post-2007/07/crazy-coctail" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2007-07-31T23:34:00.000Z"><a href="/2007/07/31/crazy-coctail/">2007-07-31</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2007/07/31/crazy-coctail/">Небольшой коктейль из маразма и паранои</a></h1>
+    <h1 class="title"><a href="/2008/10/06/delete-clean-wiki-old-revisions/">Чистка wiki от старых ревизий/Clean old wiki revisions</a></h1>
   
 
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <p>Какая всё-таки смешная штука наша память… Мы забываем имена, лица, встречи и математические формулы. Иногда утро начинается уже даже не с вопроса “где я?”, а с вопроса “кто я?”, причём он не несёт никакого философского оттенка. Прошлое всё дальше проваливается в огромную, жадную - но спокойную чёрную дыру, милостивую, всёпринимающую и обещающую спокойствие и нирвану в вечном забвении. Время идёт дальше и выкидывает новые фортели - ты начинаешь обучаться чему-то новому с той же скоростью, что вспоминаешь старое. Ты начинаешь задаваться вопросами, что из этого ты когда-то помнил, а что нет… Я уже не говорю о том, что периодически изношенные шестерёнки времени вылетают из согласованного бега и ты можешь провалиться в прошлое или будущее.</p>
-<p>Сначала кажется, что только ты подвержен этому тревожащему непостоянству. В самом деле, что скажут о тебе люди, если узнают, что своё имя ты узнаёшь каждое утро из разговоров других или случайно найденного собственного ежедневника? Но потом приходит успокоение - тогда, когда ты понимаешь, что все остальные такие же. Они читают с утра газеты, пытаясь в них что-то о себе узнать, они ведут дневники, пытаясь ими, словно оковами, сковать, связать систематизировать вьющееся и пляшущее время…
+        <p>База данных проекта, основанного на движке wiki, мгновенно разрастается до абсолютно несуразных размеров. По непонятным причинам (видимо, какие-то соображения внутренней политики) у самой wikimedia нет штатных механизмов для удаления старых версий (ревизий) статей.</p>
+<p>Но есть замечательный плагин под названием “SpecialDeleteOldRevisions”, который эту функциональность обеспечивает. С его помощью можно удалить статьи, фильтруя по<UL></p>
+<li>Категории статьи</li>
+<li>Дате создания ревизии</li>
+<li>Названию статьи</li>
+</UL>При этом можно удалять архивные (удалённые) статьи, а можно нет. Проверил на [своей вики](https://jehy.ru/wiki) - всё работает прекрасно. Но, как всегда, после некоторой работы напильником. Я её осуществил и выложил пропатченный плагин у себя.
+[Оригинальная страница плагина](http://www.mediawiki.org/wiki/Extension:SpecialDeleteOldRevisions)
+[Моя пропатченная версия для вики 13.2](https://jehy.ru/dload/specialdeleteoldrevisions.zip)
+Для того, чтобы установить плагин, скопируйте его директорию "SpecialDeleteOldRevisions" в "/extensions", после чего добавьте в файл LocalSettings.php строчки
+<pre lang="php">
+ $wgGroupPermissions['sysop']['DeleteOldRevisions'] = true;
+ include_once('extensions/SpecialDeleteOldRevisions/SpecialDeleteOldRevisions.php');
+</pre>
+После этого в списке служебных страниц появится страница "Delete old revisions" - вперёд и без испуга. Хотя лучше сначала всё-таки сделать бэкап базы ;).
       
     </div>
     <footer>
       
         
           <div class="alignleft">
-            <a href="/2007/07/31/crazy-coctail/#more" class="more-link">Read More</a>
+            <a href="/2008/10/06/delete-clean-wiki-old-revisions/#more" class="more-link">Read More</a>
           </div>
         
         
@@ -136,233 +102,40 @@
 
 
 
-  <article id="post-2007/07/pratchett" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <article id="post-2008/10/work-2" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
     <header>
       
         <div class="icon"></div>
-        <time class="dt-published" datetime="2007-07-21T18:14:00.000Z"><a href="/2007/07/21/pratchett/">2007-07-21</a></time>
+        <time class="dt-published" datetime="2008-10-06T00:57:54.000Z"><a href="/2008/10/06/work-2/">2008-10-06</a></time>
       
       
   
-    <h1 class="title"><a href="/2007/07/21/pratchett/">Плагиат у Пратчетта</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p>По выжженной красной путыне ехали маленькой, но храброй колонной четыре всадника. Они ехали в сосредоточенном молчании, увлечённые своей миссией… И лишь один из них нарушал его каждые три минуты, оживляя перепалками трагично—готический маршрут:</p>
-<p>— Ну когда, когда уже, наконец? Я жрать хочу! Здесь, сейчас, быстро! Сколько можно тянуть?! Ну дааайте хотя бы сосисочку…— Этот всадник был маленьким и толстеньким, с него градом катился пот, а цвет лица давал понять, что он ведёт не слишком здоровый образ жизни.</p>
-<p>— Молчи, Фастфуд. Ты ведёшь себя недостойно Всадника Апокалипсиса.</p>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2007/07/21/pratchett/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article id="post-2007/07/chrno-crusade" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2007-07-18T11:20:00.000Z"><a href="/2007/07/18/chrno-crusade/">2007-07-18</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2007/07/18/chrno-crusade/">Chrno Crusade</a></h1>
+    <h1 class="title"><a href="/2008/10/06/work-2/">Работодательское</a></h1>
   
 
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <p>Дочитал мангу по Chrno Crusade. Очень красивая вещь. И прорисовка и сюжет и персонажи… Хотя мангу я не особо не люблю и читаю крайне мало. А дочитываю - и того меньше. Хорошо, если пяток прочитанных наберётся…</p>
-<p>В общем, вещь стоящая. Ставлю на одном уровне с экранизацией.</p>
-<p>Ежели кто наберётся смелости читать - берём русскую версию на <a target="_blank" rel="noopener" href="https://access-manga.ru/chrno/index.html">http://access-manga.ru/chrno/index.html</a>, при этом говоря товарищам большое “аригато” за хорошие сканы и приличный перевод (хотя местами и стёбно-гоблинский:)</p>
-<p>Где сейчас взять английскую версию - не знаю, в своё время не нашёл после 6ого тома…</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article id="post-2007/07/secondary-plageat" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2007-07-15T11:57:00.000Z"><a href="/2007/07/15/secondary-plageat/">2007-07-15</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2007/07/15/secondary-plageat/">Конечно, плагиат и вторичность... Но уж очень захотелось)</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p>Когда вокруг все решают проблемы мирового масштаба, поневоле перестаёшь замечать самые обычные, небольшие и незначительные события. Между тем, в природе постоянно случаются самые необычные и необъяснимые рециркуляции.</p>
-<p>К примеру, возьмём обыкновенную глину.</p>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2007/07/15/secondary-plageat/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article id="post-2007/07/waaar-counterstrike" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2007-07-12T19:25:00.000Z"><a href="/2007/07/12/waaar-counterstrike/">2007-07-12</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2007/07/12/waaar-counterstrike/">Мессиво</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p>Уже четвёртый день подряд шла жестокая, беспощадная война. Ни одна из сторон не хотела уступить другой в находчивости и изобретательности. В ход шло всё, что только вообще можно применить - гранаты, ножи и приборы ночного видения. Глаза воюющих покраснели от недосыпа, их пальцы дёргали курок невпопад и другие становились жертвами беспощадной резни.</p>
-<p>Однако же, хоть одна сторона воевала с искренним рвением, вторая понимала свою выгоду от этой войны. И ещё она понимала, что если она будет демонстрировать своё превосходство над противником, то это закончится очень плохо…</p>
-<p>Вот так я уже четвёртый день играю на практике в каунтерстрайк, стараясь не отрываться по счёту от сотрудников - а то ведь интернет отключат, по шеям надают и пошлют полы мыть))</p>
-<p>Заодно написал им мини-хакерскую программу для автоматической регистрации в системе табелей…</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article id="post-2007/06/archive" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2007-06-26T00:45:00.000Z"><a href="/2007/06/26/archive/">2007-06-26</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2007/06/26/archive/">Архивчики</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p>Хех… Нашёл, случайно копаясь у себя в архивах, чудо с прошлого года, покуда ездили на Гражданскую Смену…
-Задача была - написать бизнес-проект в каком-то жанре. Писал за команду, как всегда, я, жанр был - оперетта. У меня было 10 минут…
-Презентовали мы это с раскрашенными гуашью лицами, хвостами и прочей мгновенно сделанной атрибутикой))
-Выкладываю специально для DARY KEY</p>
-<p><strong>Дьявол:</strong>
-Пожаловал, голубчик, в ад?
-Теперь уж нет пути назад.
-За каждый свой обман заплатишь,
-У нас не может быть иначе.</p>
-<p><strong>Предприниматель:</strong>
-Но это всё ошибка, ложь!</p>
-<p><strong>Дьявол:</strong>
-Меня так просто не возьмёшь!
-Сейчас же к палачу ведите!</p>
-<p><strong>Предприниматель:</strong>
-О нет, постойте, подождите!</p>
-<p><strong>Дьявол:</strong>
-Ну что ж, предоставим последнее слово,
-Давно не видали прохвоста такого.
-Скажи же теперь ты последнюю речь,
-Чтоб было не жалко потом сразу в печь!</p>
-<p><strong>Предприниматель:</strong>
-Спасибо. Мы все здесь серьёзные люди.
-Послушай меня, от тебя не убудет.
-Владыка, я вижу, в чертогах давно
-Тебе очень нужен глобальный ремонт.</p>
-<p>О нет, ты не думай, планировка отлична,
-Всё адски и зверски, совсем неприлично,
-Скелетов и демонов мучимых вид
-В любого вора смертный ужас вселит.</p>
-<p>Но всё же, вложив всего рубль-другой,
-Ты смог бы усилить стократ адский вой!</p>
-<p><strong>неожиданный рэп))</strong>
-Владыка, пыточная-автомат
-Усилит муки во сто крат
-Освободит многих чертят,
-Преобразит весь ад!</p>
-<p><strong>Дьявол:</strong>
-Твоим идеям был бы рад,
-Но наш бюджет не столь богат
-Хотя, оно было б не худо</p>
+        <p>Смотрю вакансии всяких фирм. Порой попадаются прекрасные перлы (каждый в каком-то отдельном месте):</p>
+<blockquote>Требования:
 <ul>
-<li>Ввести в аду такое чудо…</li>
+    <li>**Мужчина\\Женщина** - Да, боюсь, этим они сильно сузили круг соискателей...</li>
+    <li>**Опыт работы от 0,6 года** - Интересно, зачем им цифра именно 0.6*12=7.2 месяца?</li>
+    <li>**Наличие опыта работы от 2-ух лет**</li>
+    <li>**Обеспечение соответствия системных требований ожиданиям заказчика** - Гы лол. Больше ничего сказать не могу))</li>
+    <li>**Знание основных игроков по Интернет-дизайну** - я знал, что можно играть на бирже, но вот игры в дизайн для меня стали новостью...</li>
+    <li>**5 дневный рабочий день** - нет, не хотел бы я работать в этой компании!</li>
 </ul>
-<p><strong>Предприниматель:</strong>
-Конечно, сделать это можно.
-А средства получить несложно.
-Я предлагаю вам проект,
-Он прибыль даст на много лет.</p>
-<p>Ведь в вашей преисподней есть
-Столь много диких, страшных мест,
-Но, как назло, о них никто не знает
-И бесы их совсем не посещают.</p>
-<p>Везде поставим терминалы,
-Покрасив их в кроваво-алый,
-Там будут все маршруты и объекты,
-Все будут знать, куда им ехать.
-За пользование же вашей службой
-Взымать оплату, сколько нужно.</p>
-<p><strong>Дьявол:</strong>
-Отлично, адский инноватор,
-Теперь я буду твой куратор.
-Ты разработай бизнес-план,
-Понравится – и средства дам.</p>
+</blockquote>
+Ещё [классная вакансия на хедхантере](http://hh.ru/vacancy/1741519) - "Product manager, пекарь-маркетолог". Хочу на неё устроиться. В обязанности входит "Экспертный анализ продукции компаний конкурентов" и "Проведение презентационных выпечек". Ещё оттуда же
+<blockquote>профессиональная карьера в области маркетинга хлебобулочных изделий</blockquote>
+Звучит-то как!!!
+
+<p>Да, дальше лучше.</p>
+<blockquote>Компания существует на рынке более 10 лет</blockquote>
+Не работает, ничего не делает, не развивает - просто так тупо существует - стоит в сторонке. Вот у нашего соседа тоже "существует" "москвич", который стоит во дворе дома последние лет пять...
 
       
     </div>
@@ -379,33 +152,31 @@
 
 
 
-  <article id="post-2007/06/under-table" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <article id="post-2008/10/wordpress-plugin-no-external-links" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
     <header>
       
         <div class="icon"></div>
-        <time class="dt-published" datetime="2007-06-22T07:27:00.000Z"><a href="/2007/06/22/under-table/">2007-06-22</a></time>
+        <time class="dt-published" datetime="2008-10-05T01:05:29.000Z"><a href="/2008/10/05/wordpress-plugin-no-external-links/">2008-10-05</a></time>
       
       
   
-    <h1 class="title"><a href="/2007/06/22/under-table/">Меня вынесло под стол...</a></h1>
+    <h1 class="title"><a href="/2008/10/05/wordpress-plugin-no-external-links/">Есть!  Yeah! Wordpress NoExternalLinks!</a></h1>
   
 
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <p>Сегодня экзамен… Весёлый предмет <em>“Основы Проектирования Автоматизированных Систем Обработки и Управления”</em>:</p>
-<blockquote>Генетический алгоритм работает следующим образом:
-Вначале генерируется некоторая популяция случайного решения (обычно штук 500 решений). Обязательно придумывается фитнес - функция (функция жизни), с помощью которой из этой популяции удаляются наиболее плохие решения.        
-Фитнес – функция определяет качество хромосом. Эта функция вводится по двум подходам:
-1)        Критерий оптимальности;
-_**2) Придумывается из каких либо соображений.**_</blockquote>
+        <p><strong>Warning! I no longer support this plugin after version 3.5.9.9! Please ask questions on wordpress support page.</p>
+<p>Внимание! Я более не занимаюсь поддержкой этой плагина, после версии 3.5.9.9! Пожалуйста, задавайте вопросы на странице поддержки wordpress.</strong></p>
+<p>At last I made a wordpress plugin for replacing (masking) all external links into internal. Bots - DIE! No more PR leaking!
+So let the comments be here.</p>
+<hr />Написал наконец-таки плагин для wordpress для замены всех внешних ссылок на внутренние. Боты обломятся, и Тиц с PR'ом утекать больше не будут:)
 
-
-
-<p>Конечно, понятно, что имеется в виду, но формулировка “придумывается” меня здесь добила))
-Было бы “определяется” - значило бы то же самое, но смешно не было бы…</p>
+<p>Если вы волнуетесь о внешних ссылках и продаёте ссылки со своих площадок, то вам наверняка помогут биржи ссылок <a target="_blank" rel="noopener" href="http://www.sape.ru/r.f6054dfcc2.php">sape</a> (крупнейшая биржа рунета) и <a target="_blank" rel="noopener" href="http://www.linkfeed.ru/42714">linkfeed</a> (клиентов чуть меньше, зато ссылки висят стабильно).</p>
+<p>Кстати, тем, кто станет моим реферралом (процент от процента комиссии системы будет идти мне, а не системе), даю бесплатные консультации по SEO.</p>
+<p>Комментарии да будут здесь.</p>
 
       
     </div>
@@ -422,29 +193,153 @@ _**2) Придумывается из каких либо соображений
 
 
 
-  <article id="post-2007/06/games-which-play-people" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <article id="post-2008/09/mediawiki-in-safe-mode-images-deleted-thumbnails-timezone-etc" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
     <header>
       
         <div class="icon"></div>
-        <time class="dt-published" datetime="2007-06-09T10:29:00.000Z"><a href="/2007/06/09/games-which-play-people/">2007-06-09</a></time>
+        <time class="dt-published" datetime="2008-09-29T21:23:46.000Z"><a href="/2008/09/29/mediawiki-in-safe-mode-images-deleted-thumbnails-timezone-etc/">2008-09-29</a></time>
       
       
   
-    <h1 class="title"><a href="/2007/06/09/games-which-play-people/">Игры, в которые играют люди</a></h1>
+    <h1 class="title"><a href="/2008/09/29/mediawiki-in-safe-mode-images-deleted-thumbnails-timezone-etc/">Mediawiki in safe mode: images, deleted, thumbnails, etc.</a></h1>
   
 
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <p>Казалось, что одним из законов существования мира стало то, что я каждое утро выходил во двор, сжимая в руках маленькую коробочку. Я садился на скамейку около детской площадки и терпеливо ждал своего оппонента. А пока его не было, можно было лениво пожмуриться на солнце, размять деревенеющие пальцы и улыбнуться чему-то новому, что меня наверняка будет ждать. Не сегодня, так завтра, не завтра - так хоть когда-то. Долгая перспектива никогда не портила мне настроение.</p>
-<p>В это время меня всегда тянуло на составление сравнений и образов. К примеру, вы никогда не задумывались, на какую игру похожа наша повседневная жизнь?</p>
-<p>Наверняка кто-то сразу вспомнит шахматы. Но неужели ваша жизнь состоит из тщательного, многоходового расчёта, безжалостной борьбы с каким-то противником? Неужели вы постоянно что-то жертвуете, только ради того, чтобы в конце на доске не осталось ни одной фигуры? Нет, это не то.</p>
-<p>Вторыми на ум приходят карты. Но опять же, посмотрите вокруг - неужели все пытаются узнать, что у вас на руках, не прячете ли вы в рукавах какие-нибудь козыри? Если вы считаете, что все вокруг - ваши враги, которые пытаются оставить вас в дураках, то это уже клинический случай…</p>
-<p>О! Кажется, подошёл мой Вечный Противник. Сегодня ему лет под шестьдесят, он опирается на трость и, кажется, тихо скрипит, когда садится на скамейку. Но это не имеет значения. Я раскрываю коробочку и выкладываю костяшки домино, после чего их тщательно размешиваю…</p>
-<p>Да, именно. Домино - вот точнейшее описание нашей жизненной дороги. Или, если будет угодно, дорожки. Кто-то кладёт первую костяшку - это обязательно должен быть дубль, “пусто-пусто”, и с этого всё начинается. Слепой рок подсовывает каждому из игроков альтернативы возможностей, огранённые в прямоугольные фигурки - и постоянно ставит перед ними необходимость выбора. И нет никакого смысла пытаться вредить другим игрокам - их играет слишком много и нельзя предсказать последствия твоего хода. По сути, не имеет значения даже то, что другие игроки есть. Просто ты, в компании с некоторыми внешними факторами, складываешь дорожку, по которой идёшь.</p>
-<p>Внезапно, я почувствовал какой-то укол в груди, и резко глотнув воздуха, не смог его протолкнуть в лёгкие. Уже как-то немного со стороны я видел, как изношенное тело валилось на построенную дорожку, деформировав её и уничтожив. Но поскольку я знал, что каждая однажды сыгранная игра уже никогда не пропадает, то я был спокоен. Однако ужас у меня вызвало то, как оставшиеся костяшки валятся из пальцев, неспособных их более держать. Это были все мои возможности, всё, чего я хотел и мог, но не сделал. Где-то меня удержали предрассудки, на что-то не хватило смелости, другое пересилила лень… И эти костяшки упали и будут втоптаны в грязь сапогами санитаров - потому что чья-то костлявая рука поставила в конце моей дорожки пустую костяшку. Круг замкнулся, и мрачный грустный голос произнёс “Рыба”. А я с сожалением почувствовал себя настоящим козлом.</p>
+        <p>It’ really hard to set up wiki for safe mode. Not because it’s too complicated - but because of the lack of normal documentation. You can find separate pieces there and here - but not the whole manual.</p>
+<p>So.</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2008/09/29/mediawiki-in-safe-mode-images-deleted-thumbnails-timezone-etc/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article id="post-2008/09/origa-lyrics-to-aney-unborn-child" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2008-09-21T00:25:08.000Z"><a href="/2008/09/21/origa-lyrics-to-aney-unborn-child/">2008-09-21</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2008/09/21/origa-lyrics-to-aney-unborn-child/">Origa Lyrics to Aney (Unborn Child)</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><strong>To Aney</strong>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">This is not new conversation</span><br><span class="line">Many people feel this way</span><br><span class="line">History repeats itself again</span><br><span class="line">In this ruthless world, the killing</span><br><span class="line">Broken people all around</span><br><span class="line">It’s a shame, but it seems to never end</span><br><span class="line"> </span><br><span class="line">Aney, Aney, you, my unborn child</span><br><span class="line">Sorry, sorry, I can’t sing a brighter lullaby</span><br><span class="line"> </span><br><span class="line">A new day of realization</span><br><span class="line">Future mothers plead</span><br><span class="line">Let my body be a source for peace</span><br><span class="line">Feeling fear &#39;cause there’s no telling</span><br><span class="line">What will follow in the years</span><br><span class="line">Lost in doubt and hesitation, forgive me please</span><br><span class="line"> </span><br><span class="line">Aney, Aney, you, my unborn child</span><br><span class="line">Sorry, sorry, I can’t sing a brighter lullaby</span><br><span class="line"> </span><br><span class="line">I’ve never met you, though I’ve felt you in a dream</span><br><span class="line">Hearts whispered in silence, you were there</span><br><span class="line">No, I couldn’t assure you, “everything will be alright”</span><br><span class="line">For now, I walk this shadow world alone…so alone</span><br><span class="line"> </span><br><span class="line">Governments and all they promise</span><br><span class="line">I can see their lies</span><br><span class="line">Now the price is just too high to pay</span><br><span class="line">Hatred, poverty and darkness</span><br><span class="line">Who will bring us light?</span><br><span class="line">Can’t we stop the pain and just start living life?</span><br><span class="line"> </span><br><span class="line">You, generals heartless</span><br><span class="line">Make your wars, have you no god?</span><br><span class="line">Truth unite all mothers of the world</span><br><span class="line">For love, peace and freedom, we must find a better way</span><br><span class="line">Hope given back to my unborn child… every child…</span><br><span class="line"> </span><br><span class="line">Aney, Aney</span><br><span class="line">want to sing a brighter lullaby</span><br><span class="line">Aney, Aney…</span><br></pre></td></tr></table></figure></p>
+<div>_Origa (Ольга Витальевна Яковлева)_</div>
+Всё таки, не могу перестать слушать эту замечательную исполнительницу. Её голос это нечто. Под катом - сама песня+забавные мысли.
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2008/09/21/origa-lyrics-to-aney-unborn-child/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article id="post-2008/09/hikki-pics" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2008-09-20T20:38:24.000Z"><a href="/2008/09/20/hikki-pics/">2008-09-20</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2008/09/20/hikki-pics/">Жизненное...</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <img src="/2008/09/20/hikki-pics/0004pk0p.gif" class="">
+<img src="/2008/09/20/hikki-pics/00053cst.gif" class="">
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2008/09/20/hikki-pics/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article id="post-2008/09/ideal-web-site" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2008-09-17T02:28:13.000Z"><a href="/2008/09/17/ideal-web-site/">2008-09-17</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2008/09/17/ideal-web-site/">Постигая дао</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p>Кажется, я потихоньку начинаю понимать, в чём же на самом деле измеряется опыт и мастерство программиста. Думаете, в безопасности или скорости программы? А вот нифига подобного.</p>
+<p>Чем опытнее программист, тем большие куски своих наработок он может использовать в своих проектах. При этом всё равно, будь ты программистом C++, DELPHI или PHP.</p>
+<p>На мой взгляд, например, идеальный движок, написанный абсолютным вебмастером, выглядел бы примерно так:</p>
+<ol>
+<li>Ты зарегестрировал домен.</li>
+<li>Загрузил туда скрипты движка.</li>
+<li>Активировал скрипт.</li>
+</ol>
+<p>Что происходит далее:</p>
+<ol>
+<li>Скрипт смотрит свой домен. По нему осознаёт своё назначение и начинает генерировать веб сайт. Поскольку изначально пароли ему можно не указывать, он использует всевозможные дыры PHP, MySQL, хостинга на котором он оказывается, чтобы создать себе нужные файлы и структуру базы даных.</li>
+<li>Сайт генерирует себе дизайн и логотипы, оценивая при этом, как он получился при помощи многих из существующих автоматов для оценки дизайна веб сайта.</li>
+<li>Скрипт, в соответствии со статистикой поисковых систем, генерирует себе всевозможные названия страниц, кейворды, описания, регистрируется в найденных каталогах своей тематики.</li>
+<li>Теперь время наполняться контентом. В этом случае или идёт проверка на уже загруженный контет в произвольной форме - например, нормальным будет указание “сайт по автомобилям ВАЗ” - или, опять же, определяет контент по своему урлу и начинает его переворовывать, изменяя, с сайтов схожей тематики.</li>
+<li>Сайт смотрит информацию whois по своему регистратору, находит там своего автора, находит по нему информацию в интернете, находит номера его счетов - и начинает в автоматическом режиме перечислять на них получаемые от его работы деньги.</li>
+<li>В принципе, дальше он может саомстоятельно начинать создавать новые дочерние сайты…</li>
+</ol>
+<p>Да, мечты…</p>
 
       
     </div>
@@ -461,28 +356,91 @@ _**2) Придумывается из каких либо соображений
 
 
 
-  <article id="post-2007/06/fly" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <article id="post-2008/09/makarevich" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
     <header>
       
         <div class="icon"></div>
-        <time class="dt-published" datetime="2007-06-03T19:06:00.000Z"><a href="/2007/06/03/fly/">2007-06-03</a></time>
+        <time class="dt-published" datetime="2008-09-09T21:44:45.000Z"><a href="/2008/09/09/makarevich/">2008-09-09</a></time>
       
       
   
-    <h1 class="title"><a href="/2007/06/03/fly/">Полетели</a></h1>
+    <h1 class="title"><a href="/2008/09/09/makarevich/">Макаревич</a></h1>
   
 
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <img src="/2007/06/03/fly/1.jpg" class="">
+        <p>Если столько цветов… Бесполезных цветов…</p>
+<p>В бесполезных руках.</p>
 
-<p>Заместо учения военной кафедры посмотрел сегодня 26 серий аниме “Simoun”… И ничуть в этом не раскаиваюсь)
-Чудесная штука, очень вольная, приятная, вполне самобытная, с чудесными идеями. Смотреть рекомендую)
-Кстати, это шедеврально: на все 26 серий есть только один музыкальный трек. Но кааак он везде подходит!</p>
-<p>P.S. По поводу аккуратности М\Ж: тестирование выявило, что у современных девушек на столах постоянно абсолютный кавардак, в то время, как у гораздо более собранных парней царит обычный рабочий беспорядок)</p>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article id="post-2008/09/wordpress-broken-permalinks" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2008-09-06T20:09:54.000Z"><a href="/2008/09/06/wordpress-broken-permalinks/">2008-09-06</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2008/09/06/wordpress-broken-permalinks/">Wordpress rebuild broken permalinks</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p>No way (programs, plugins) to fix links automatically, use script like the following:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span></span><br><span class="line">$blog_url=’http:<span class="comment">//localhost/jehy.ru/articles/’;</span></span><br><span class="line">$prefix=’wp_’;</span><br><span class="line"> </span><br><span class="line">$sql=’SELECT `id`,`post_name` <span class="keyword">FROM</span> `’.$prefix.’posts`’;</span><br><span class="line">$result=mysql_query($sql);</span><br><span class="line"><span class="keyword">while</span>($row=mysql_fetch_array($result))</span><br><span class="line">&#123;</span><br><span class="line">$sql2=‘UPDATE `’.$prefix.‘`posts` SET `guid`=”‘.$blog_url.‘archives/’.$row[<span class="string">&#x27;id&#x27;</span>].‘/’.$row[<span class="string">&#x27;post_name&#x27;</span>].‘” where id=”‘.$row[<span class="string">&#x27;id&#x27;</span>].‘”‘;</span><br><span class="line">mysql_query($sql2);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article id="post-2008/09/alumina-english-version-lyrics-by-nightmare-deathnote-ed1-song" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2008-09-04T13:11:57.000Z"><a href="/2008/09/04/alumina-english-version-lyrics-by-nightmare-deathnote-ed1-song/">2008-09-04</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2008/09/04/alumina-english-version-lyrics-by-nightmare-deathnote-ed1-song/">Alumina (English Version) lyrics by Nightmare (DeathNote ED1 song)</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">Amidst the passing time, a twinkling and ephemeral sparkling</span><br><span class="line">I&#39;m a believer that keeps walking, to carve his memories of it into the world</span><br><span class="line"> </span><br><span class="line">Having dreams that no one else can, I cast aside the things I don&#39;t need</span><br><span class="line">Feelings that I won&#39;t surrender reside in my heart</span><br><span class="line"> </span><br><span class="line">There is still a gap between ideals and reality, even though the shackles of sacrifice prevent my feet from moving</span><br><span class="line">I can&#39;t suppress the overflowing urge, because my heart is very wanting</span><br><span class="line"> </span><br><span class="line">&quot;Lies&quot;, &quot;fear&quot;, &quot;emptiness&quot;, &quot;grief&quot;, I&#39;m not so weak that I&#39;m</span><br><span class="line">Gripped by all these kinds of negativities, I&#39;m a trickster who knows no loneliness</span><br><span class="line"> </span><br><span class="line">Flocks of buildings stab into the night sky, look up to the sky in which I can&#39;t see any stars</span><br><span class="line">I ask myself &quot;aren&#39;t you lost?&quot;</span><br><span class="line"> </span><br><span class="line">The city is smeared with overflowing things</span><br><span class="line">It&#39;s not something that&#39;s unrealistic</span><br><span class="line">At the end of the road that connects us to the future, I want to see what I&#39;ve got in my hand</span><br><span class="line"> </span><br><span class="line">Closing my eyes, I float on the sea of my senses, and envision it</span><br><span class="line">The day that I have my ideals within my grasp</span><br><span class="line"> </span><br><span class="line">It&#39;s accepted in this world that &quot;righteousness&quot; has it&#39;s limits; and withering is foolishly the same way</span><br><span class="line">Something that no one else has, toward a crystallization called &quot;myself&quot;</span><br><span class="line"> </span><br><span class="line">Piercing through simplicity, one day it will change into reality</span><br><span class="line">I want to continue to obstinately believe, it&#39;s just my faith. The absolute truth.</span><br><span class="line"> </span><br><span class="line">Amidst the passing time, a twinkling and ephemeral sparkling</span><br><span class="line">I&#39;m a believer that keeps walking, to carve his memories of it into the world</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -503,7 +461,7 @@ _**2) Придумывается из каких либо соображений
 
     <nav id="page-nav">
         
-        <a class="extend prev" rel="prev" href="/page/21/">&lt;&lt; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/23/">Next &gt;&gt;</a>
+        <a class="extend prev" rel="prev" href="/page/21/">&lt;&lt; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/23/">Next &gt;&gt;</a>
     </nav>
 
 </div></div>
@@ -522,7 +480,7 @@ _**2) Придумывается из каких либо соображений
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.54px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.77px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.77px;">android</a> <a href="/tags/applet/" style="font-size: 12.31px;">applet</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.77px;">codesigning</a> <a href="/tags/dev/" style="font-size: 16.15px;">dev</a> <a href="/tags/fun/" style="font-size: 14.62px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 12.31px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/openid/" style="font-size: 10.77px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.31px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.31px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 16.92px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.31px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.77px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.54px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.85px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 15.38px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.69px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.77px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BB%D1%8E%D0%B4%D0%B8/" style="font-size: 10px;">люди</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.77px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 18.46px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 17.69px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.62px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.77px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.77px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.77px;">работа</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.31px;">таро</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 13.08px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.77px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 19.23px;">цитаты</a>
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.43px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.71px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.71px;">android</a> <a href="/tags/applet/" style="font-size: 12.14px;">applet</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.71px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15.71px;">dev</a> <a href="/tags/fun/" style="font-size: 14.29px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.29px;">habr</a> <a href="/tags/java/" style="font-size: 12.14px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.71px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/openid/" style="font-size: 10.71px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.14px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.14px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 16.43px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.14px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.71px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.43px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.57px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 15px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.14px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.71px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BB%D1%8E%D0%B4%D0%B8/" style="font-size: 10px;">люди</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.71px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.86px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 17.14px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.29px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.71px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.71px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.71px;">работа</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.14px;">таро</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.86px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.71px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.57px;">цитаты</a>
   </div>
 </div>
 
@@ -533,23 +491,23 @@ _**2) Придумывается из каких либо соображений
   <ul class="entry">
     
       <li>
-        <a href="/2017/10/16/обычное-утро-2027-года/">Обычное утро 2027 года</a>
+        <a href="/2020/06/26/как-активный-гражданин-приучает-людей-к-фишингу/">Как «активный гражданин» приучает людей к фишингу</a>
       </li>
     
       <li>
-        <a href="/2017/09/19/предыстория-одного-мага/">Предыстория одного мага</a>
+        <a href="/2020/02/16/снимаем-покрытие-кода-с-уже-запущенного-nodejs-приложения/">Снимаем покрытие кода с уже запущенного Node.JS приложения</a>
       </li>
     
       <li>
-        <a href="/2016/07/08/ночь-в-одиноком-октябре/">Ночь в одиноком октябре</a>
+        <a href="/2020/01/31/как-мигрировать-с-mocha-на-jest-в-15-простых-шагов-—-и-зачем/">Как мигрировать с mocha на jest в 15 простых шагов — и зачем</a>
       </li>
     
       <li>
-        <a href="/2015/11/24/один-день-зимы/">Один день Зимы</a>
+        <a href="/2019/12/17/зачем-нужно-столько-разработчиков/">Зачем нужно столько разработчиков?</a>
       </li>
     
       <li>
-        <a href="/2015/07/16/бег-с-microsoft-band/">Бег с Microsoft Band</a>
+        <a href="/2019/11/22/deno-время-nodejs-уходит/">Deno - время Node.JS уходит?</a>
       </li>
     
   </ul>

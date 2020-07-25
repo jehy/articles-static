@@ -1,0 +1,268 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Снимаем покрытие кода с уже запущенного Node.JS приложения | Jehy&#39;s notes</title>
+  <meta name="author" content="Jehy">
+  
+  <meta name="description" content="Оригинал поста на хабре
+И снова я про тестирование и покрытие.
+
+Наверное, вы уже поперхнулись кофе от вопроса “Зачем снимать покрытие с запущенного приложения” - но такая потребность периодически возникает.
+Например:
+
+Узнать покрытие интеграционных тестов без инстурментализации кода, завершения приложения и выгрузки репорта какими-то сторонними средствами;
+Узнать без долгого ковыряния кода, по каким именно модулям приложения прошёл запрос;
+Определить “мёртвый” код, который по факту не используется в приложении;
+Узнать список транзитивных зависимостей, которые используются на определённые запросы.
+
+Интересно? Поехали!">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Снимаем покрытие кода с уже запущенного Node.JS приложения"/>
+  <meta property="og:site_name" content="Jehy&#39;s notes"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Jehy&#39;s notes" type="application/atom+xml">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Jehy&#39;s notes</a></h1>
+  <h2><a href="/">Insert 1 into dual</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/wishlist">Wishlist</a></li>
+    
+      <li><a href="/donate">Donate</a></li>
+    
+      <li><a href="/atom.xml">Subscribe</a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://whois.jehy.ru">Contact me</a></li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-2020/02/снимаем-покрытие-кода-с-уже-запущенного-nodejs-приложения" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2020-02-16T10:00:00.000Z"><a href="/2020/02/16/снимаем-покрытие-кода-с-уже-запущенного-nodejs-приложения/">2020-02-16</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Снимаем покрытие кода с уже запущенного Node.JS приложения</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/488544%7D">Оригинал поста на хабре</a></p>
+<p>И снова я про тестирование и покрытие.</p>
+<p><img src="https://habrastorage.org/webt/v0/ng/pf/v0ngpfcqzqkgqmfnz_asnrfbv8y.jpeg"></p>
+<p>Наверное, вы уже поперхнулись кофе от вопроса “Зачем снимать покрытие с запущенного приложения” - но такая потребность периодически возникает.</p>
+<p>Например:</p>
+<ul>
+<li>Узнать покрытие интеграционных тестов без инстурментализации кода, завершения приложения и выгрузки репорта какими-то сторонними средствами;</li>
+<li>Узнать без долгого ковыряния кода, по каким именно модулям приложения прошёл запрос;</li>
+<li>Определить “мёртвый” код, который по факту не используется в приложении;</li>
+<li>Узнать список транзитивных зависимостей, которые используются на определённые запросы.</li>
+</ul>
+<p>Интересно? Поехали!<a id="more"></a></p>
+<p>###Откуда у вас такие картинки</p>
+<p>Недавно я занимался написанием<a target="_blank" rel="noopener" href="https://habr.com/ru/post/486360/"> тест раннера для jest и mocha</a> (кстати, в итоге вышло просто отлично), и узнал, что в V8 появилась возможность снимать покрытие без применения какой-либо дополнительной инструментализации. Это показалось мне безумно крутым - хоть часть оптимизаций выключается, но производительность кода падает не так сильно, как в случае прогона его через инструментализацию бабелем. Это значит, что мы можем в любой момент включать и выключать покрытие, и выгружать его чуть ли не с продакшн серверов!</p>
+<h3 id="Что-получилось-и-как-подключить"><a href="#Что-получилось-и-как-подключить" class="headerlink" title="Что получилось и как подключить"></a>Что получилось и как подключить</h3><p>В общем, я закатал рукава и написал <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/runtime-coverage">вот такую штуку</a>.</p>
+<p>Проще всего будет показать, как она работает, на <a target="_blank" rel="noopener" href="https://github.com/jehy/runtime-coverage-sample">простом примере</a> с express.</p>
+<ol>
+<li>Подключаем библиотеку</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> runtimeCoverage = <span class="built_in">require</span>(<span class="string">&#x27;runtime-coverage&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Публикуем API endpoint, который включает покрытие:</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">&#x27;/startCoverage&#x27;</span>, <span class="keyword">async</span> (req, res) =&amp;gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> runtimeCoverage.startCoverage();</span><br><span class="line">  res.send(<span class="string">&#x27;coverage started&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>Публикуем endpoint, который выдаёт данные покрытия</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">&#x27;/getCoverage&#x27;</span>, <span class="keyword">async</span> (req, res) =&amp;gt; &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> options = &#123;</span><br><span class="line">    all: req.query.all,</span><br><span class="line">    <span class="keyword">return</span>: <span class="literal">true</span>,</span><br><span class="line">    reporters: [req.query.reporter || <span class="string">&#x27;text&#x27;</span>],</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">const</span> coverage = <span class="keyword">await</span> runtimeCoverage.getCoverage(options);</span><br><span class="line">  <span class="keyword">const</span> data = <span class="built_in">Object</span>.values(coverage)[<span class="number">0</span>];</span><br><span class="line">  res.end(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Собственно… Всё!</p>
+<p>Теперь можно дёрнуть первый endpoint, потом любые другие API, потом второй - и получить в ответ покрытие! По умолчанию в текстовом формате, но вообще поддерживаются любые стандартные форматы, например, кубертюра.</p>
+<h4 id="Примеры-работы"><a href="#Примеры-работы" class="headerlink" title="Примеры работы"></a>Примеры работы</h4><p>Например, для <a target="_blank" rel="noopener" href="https://github.com/jehy/runtime-coverage-sample">проекта-примера</a> можно дёрнуть <a target="_blank" rel="noopener" href="http://localhost:3000/startCoverage">http://localhost:3000/startCoverage</a> затем <a target="_blank" rel="noopener" href="http://localhost:3000/getCoverage">http://localhost:3000/getCoverage</a>  и получить в ответ</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">----------|---------|----------|---------|---------|---------------------</span><br><span class="line">File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s   </span><br><span class="line">----------|---------|----------|---------|---------|---------------------</span><br><span class="line">All files |   60.34 |       50 |     100 |   60.34 |                     </span><br><span class="line"> index.js |   60.34 |       50 |     100 |   60.34 | 9,27,28,32-41,46-55 </span><br><span class="line">----------|---------|----------|---------|---------|---------------------</span><br></pre></td></tr></table></figure>
+
+<p>А если чуть поиграться с настройками не убирать из покрытия node_modules, то можно узнать, по каким node modules пробегается запрос:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">-------------------------------------------------------------|---------|----------|---------|---------|-------------------------</span><br><span class="line">File                                                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s       </span><br><span class="line">-------------------------------------------------------------|---------|----------|---------|---------|-------------------------</span><br><span class="line">All files                                                    |   62.89 |       30 |   26.14 |   62.89 |                         </span><br><span class="line"> runtime-coverage-sample                                     |   62.07 |       50 |     100 |   62.07 |                         </span><br><span class="line">  index.js                                                   |   62.07 |       50 |     100 |   62.07 | 9,20-28,32-41,54,55     </span><br><span class="line"> runtime-coverage-sample&#x2F;node_modules&#x2F;content-type           |   59.46 |      100 |   28.57 |   59.46 |                         </span><br><span class="line">  index.js                                                   |   59.46 |      100 |   28.57 |   59.46 | ...-122,126-163,174-190 </span><br><span class="line"> runtime-coverage-sample&#x2F;node_modules&#x2F;debug&#x2F;src              |   42.57 |        0 |   14.29 |   42.57 |                         </span><br><span class="line">  debug.js                                                   |   42.57 |        0 |   14.29 |   42.57 | ...-166,176-189,199-202 </span><br><span class="line"> runtime-coverage-sample&#x2F;node_modules&#x2F;etag                   |   95.42 |      100 |      75 |   95.42 |                         </span><br><span class="line">  index.js                                                   |   95.42 |      100 |      75 |   95.42 | 126-131                 </span><br><span class="line"> runtime-coverage-sample&#x2F;node_modules&#x2F;express&#x2F;lib            |   64.54 |    83.33 |   15.58 |   64.54 |                         </span><br><span class="line">  application.js                                             |   62.11 |       50 |      20 |   62.11 | ...,618,628-631,638-644 </span><br><span class="line">  express.js                                                 |   81.03 |      100 |   33.33 |   81.03 | 37-57,112               </span><br><span class="line">  request.js                                                 |      76 |      100 |       0 |      76 | ...,496,507,508,519-525 </span><br><span class="line">  response.js                                                |   58.93 |      100 |   17.39 |   58.93 | ...,1016-1104,1118-1142 </span><br><span class="line">  utils.js                                                   |   64.71 |      100 |      25 |   64.71 | ...-239,274-282,304-306 </span><br><span class="line"> runtime-coverage-sample&#x2F;node_modules&#x2F;express&#x2F;lib&#x2F;middleware |    61.8 |    66.67 |      50 |    61.8 |                         </span><br><span class="line">  init.js                                                    |   69.05 |       50 |      50 |   69.05 | 29-41                   </span><br><span class="line">  query.js                                                   |   55.32 |      100 |      50 |   55.32 | 26-46                   </span><br><span class="line"> runtime-coverage-sample&#x2F;node_modules&#x2F;express&#x2F;lib&#x2F;router     |   65.82 |    66.67 |   43.33 |   65.82 |                         </span><br><span class="line">  index.js                                                   |   61.93 |      100 |   42.11 |   61.93 | ...-635,640-648,651-662 </span><br><span class="line">  layer.js                                                   |   74.59 |      100 |      40 |   74.59 | 33-50,63-74,166-181     </span><br><span class="line">  route.js                                                   |   70.37 |       50 |      50 |   70.37 | ...8-90,171-189,193-215 </span><br><span class="line"> runtime-coverage-sample&#x2F;node_modules&#x2F;finalhandler           |   60.12 |      100 |    9.09 |   60.12 |                         </span><br><span class="line">  index.js                                                   |   60.12 |      100 |    9.09 |   60.12 | ...-259,272-311,321-331 </span><br><span class="line"> runtime-coverage-sample&#x2F;node_modules&#x2F;fresh                  |   94.16 |      100 |   66.67 |   94.16 |                         </span><br><span class="line">  index.js                                                   |   94.16 |      100 |   66.67 |   94.16 | 94-101                  </span><br><span class="line"> runtime-coverage-sample&#x2F;node_modules&#x2F;mime                   |   62.96 |       25 |   33.33 |   62.96 |                         </span><br><span class="line">  mime.js                                                    |   62.96 |       25 |   33.33 |   62.96 | 4-10,22-37,49-63,79,80  </span><br><span class="line"> runtime-coverage-sample&#x2F;node_modules&#x2F;parseurl               |   87.34 |    33.33 |      75 |   87.34 |                         </span><br><span class="line">  index.js                                                   |   87.34 |    33.33 |      75 |   87.34 | 65-84                   </span><br><span class="line"> runtime-coverage-sample&#x2F;node_modules&#x2F;qs&#x2F;lib                 |   33.05 |    17.65 |   18.75 |   33.05 |                         </span><br><span class="line">  parse.js                                                   |   41.32 |      100 |   33.33 |   41.32 | ...2-97,101-132,136-186 </span><br><span class="line">  utils.js                                                   |   24.35 |    15.15 |      10 |   24.35 | ...,181-201,209-213,217 </span><br><span class="line">-------------------------------------------------------------|---------|----------|---------|---------|-------------------------</span><br></pre></td></tr></table></figure>
+<p>&lt;/spoiler&gt;</p>
+<p>На всякий случай уточню ещё раз, что это минимальные примеры - без обработки ошибок, без чтения покрытия потоком (что тоже поддерживается), без какой-либо авторизации (вы явно не хотите, чтобы этот endpoint был публичен).</p>
+<h4 id="Как-оно-работает-и-что-вам-сломает"><a href="#Как-оно-работает-и-что-вам-сломает" class="headerlink" title="Как оно работает, и что вам сломает"></a>Как оно работает, и что вам сломает</h4><p>Это параграф для любопытных. Вряд ли вас бует много, но всё же.</p>
+<p>Фактически, я закинул в один котёл библиотеки collect-v8-coverage (простая библиотека для вызова профайлера), v8-to-istanbul, istanbul-lib-coverage, istanbul-lib-report, istanbul-reports - и довольно бысто начал получать примерно то что хотел. Единственная сложность возникла с тем, что V8 выдаёт полные данные о покрытии файла только если ты его грузишь уже после включения профайлера. Иначе удастся получить только данные о покрытиии вызванной функции - а на этом отчёта не построишь.</p>
+<p>Но всё почти работало, поэтому я дописал хак - после получения фактического покрытия, мы отдельно получаем пустое, и накладываем одно на другое. Звучит довольно просто, но для получения этого самого пустого покрытия пришлось делать довольно стрёмные вещи:</p>
+<ol>
+<li>Получаем список файлов, которые нас интересуют;</li>
+<li>Включаем режим покрытия;</li>
+<li>Перезагружаем require на прокси, с геттером, который рекурсивно выдаёт себя же;</li>
+<li>Идём циклом по нужным файлам;</li>
+<li><ol>
+<li>Запоминаем кеш require, после чего убираем его;</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>Грузим модуль, и пытаемся вызвать из него экспорты, если они функции, ловим и игнорируем все ошибки;</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>Возвращаем на место старый кеш require;</li>
+</ol>
+</li>
+<li>Возвращаем на место require;</li>
+<li>Выключаем режим покрытия;</li>
+<li>Получаем покрытие, и ставим вызов всех блоков в ноль.</li>
+</ol>
+<p>В общем, звучит довольно стрёмно, но, поскольку перезагрузки выполняются синхронно и между ними ничего не может вклиниться - это более-менее безопасно - повторно загруженные ради покрытия файлы просто не смогут ничего сделать из-за фактически отключенных внешних библиотек. Разве что несколько кейсов я смог придумать:</p>
+<ol>
+<li>В случае использования глобальных переменных код таки сможет их вызвать.</li>
+<li>Могут остаться всякие демонические вещи вроде setInterval</li>
+<li>могут сыпаться ошибки вроде unhandledRejction, если есть кому их ловить.</li>
+</ol>
+<p>В общем, вроде не слишком критично, но я бы рекомендовал убивать приложение после получения данных покрытия. Чисто от греха подальше. Ну или вместо <code>forceReload</code> использовать <code>forceLineMode</code> - тогда библиотека не занимается всей этой перегрузкой, и даст примерную оценку по строкам кода.</p>
+<p>UPD. Чуть доделал - теперь для сбора пустого покрытия просто используется отдельный процесс, который изолирован от основного - так что вероятность сайд эффектов пренебрежимо мала.</p>
+<p>Если вдруг у кого есть мысли и знакомые люди, которые съели собаку на работе с покрытием (а не как я) - буду рад предложениям и пулл реквестам. Смайлик.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/habr/">habr</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="as_sitesearch" value="articles.jehy.ru">
+  </form>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.43px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.71px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.71px;">android</a> <a href="/tags/applet/" style="font-size: 12.14px;">applet</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.71px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15.71px;">dev</a> <a href="/tags/fun/" style="font-size: 14.29px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.29px;">habr</a> <a href="/tags/java/" style="font-size: 12.14px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.71px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/openid/" style="font-size: 10.71px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.14px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.14px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 16.43px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.14px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.71px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.43px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.57px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 15px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.14px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.71px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BB%D1%8E%D0%B4%D0%B8/" style="font-size: 10px;">люди</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.71px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.86px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 17.14px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.29px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.71px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.71px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.71px;">работа</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.14px;">таро</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.86px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.71px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.57px;">цитаты</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2020/06/26/как-активный-гражданин-приучает-людей-к-фишингу/">Как «активный гражданин» приучает людей к фишингу</a>
+      </li>
+    
+      <li>
+        <a href="/2020/02/16/снимаем-покрытие-кода-с-уже-запущенного-nodejs-приложения/">Снимаем покрытие кода с уже запущенного Node.JS приложения</a>
+      </li>
+    
+      <li>
+        <a href="/2020/01/31/как-мигрировать-с-mocha-на-jest-в-15-простых-шагов-—-и-зачем/">Как мигрировать с mocha на jest в 15 простых шагов — и зачем</a>
+      </li>
+    
+      <li>
+        <a href="/2019/12/17/зачем-нужно-столько-разработчиков/">Зачем нужно столько разработчиков?</a>
+      </li>
+    
+      <li>
+        <a href="/2019/11/22/deno-время-nodejs-уходит/">Deno - время Node.JS уходит?</a>
+      </li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><!--<div class="alignleft">
+  
+  &copy; 2020 Jehy
+  
+</div>-->
+<div class="clearfix"></div>
+</footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

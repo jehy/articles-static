@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://articles.jehy.ru/"/>
-  <updated>2020-07-23T23:17:30.813Z</updated>
+  <updated>2020-07-25T21:24:17.020Z</updated>
   <id>https://articles.jehy.ru/</id>
   
   <author>
@@ -17,147 +17,154 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Обычное утро 2027 года</title>
-    <link href="https://articles.jehy.ru/2017/10/16/%D0%BE%D0%B1%D1%8B%D1%87%D0%BD%D0%BE%D0%B5-%D1%83%D1%82%D1%80%D0%BE-2027-%D0%B3%D0%BE%D0%B4%D0%B0/"/>
-    <id>https://articles.jehy.ru/2017/10/16/%D0%BE%D0%B1%D1%8B%D1%87%D0%BD%D0%BE%D0%B5-%D1%83%D1%82%D1%80%D0%BE-2027-%D0%B3%D0%BE%D0%B4%D0%B0/</id>
-    <published>2017-10-16T14:32:29.000Z</published>
-    <updated>2020-07-23T23:17:30.813Z</updated>
+    <title>Как «активный гражданин» приучает людей к фишингу</title>
+    <link href="https://articles.jehy.ru/2020/06/26/%D0%BA%D0%B0%D0%BA-%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9-%D0%B3%D1%80%D0%B0%D0%B6%D0%B4%D0%B0%D0%BD%D0%B8%D0%BD-%D0%BF%D1%80%D0%B8%D1%83%D1%87%D0%B0%D0%B5%D1%82-%D0%BB%D1%8E%D0%B4%D0%B5%D0%B9-%D0%BA-%D1%84%D0%B8%D1%88%D0%B8%D0%BD%D0%B3%D1%83/"/>
+    <id>https://articles.jehy.ru/2020/06/26/%D0%BA%D0%B0%D0%BA-%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9-%D0%B3%D1%80%D0%B0%D0%B6%D0%B4%D0%B0%D0%BD%D0%B8%D0%BD-%D0%BF%D1%80%D0%B8%D1%83%D1%87%D0%B0%D0%B5%D1%82-%D0%BB%D1%8E%D0%B4%D0%B5%D0%B9-%D0%BA-%D1%84%D0%B8%D1%88%D0%B8%D0%BD%D0%B3%D1%83/</id>
+    <published>2020-06-26T10:00:00.000Z</published>
+    <updated>2020-07-25T21:24:17.020Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;Ну что же, доброе утро. Сегодня… Хмм… 23 сентября 2027 года. Надо бы посмотреть, какие на сегодня планы. О, сегодня же день рождения моего двоюродного племянника! Надо бы поздравить его. Интересно… Мы не виделись с ним уже три года. Даже не могу точно вспомнить, как он выглядит. Ну да ладно, это не проблема. Нельзя помнить всех и всё - вполне достаточно пары воспоминаний и дежурного набора слов.&lt;/p&gt;
-&lt;p&gt;Вежливость и память - наше всё. Опорная точка для здравого рассудка человека, который не может существовать в социальном вакууме. Об этом свидетельствует социальный проект “Third Life”, который был запущен пять лет назад, сразу после Второй Мировой Криптовойны, которая стоила человечеству миллионы сожженных вместе с мозгами нейроимплантов. Потери были так велики, что на освободившихся от обслуживания мощностях было решено запустить ИИ симуляторы восьмого поколения, которые, обработав полностью всю информацию о деятельности человека в сети, создавали его виртуальный образ, который мог почти полноценно участвовать в его социальной жизни.&lt;/p&gt;
+      &lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/508400%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Сначала я написал этот пост на пикабу, решив что там более релевантная аудитория и тема, но его там забанили вместе с моим аккаунтом. Что с одной стороны обидно, с другой забавно, и показывает, насколько похоже на фишинг то, чем занимается “активный гражданин”. Что даже написать об этом нельзя, чтобы тебя не посчитали мошенником.
     
     </summary>
     
     
     
-      <category term="истории" scheme="https://articles.jehy.ru/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/"/>
+      <category term="habr" scheme="https://articles.jehy.ru/tags/habr/"/>
     
   </entry>
   
   <entry>
-    <title>Предыстория одного мага</title>
-    <link href="https://articles.jehy.ru/2017/09/19/%D0%BF%D1%80%D0%B5%D0%B4%D1%8B%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F-%D0%BE%D0%B4%D0%BD%D0%BE%D0%B3%D0%BE-%D0%BC%D0%B0%D0%B3%D0%B0/"/>
-    <id>https://articles.jehy.ru/2017/09/19/%D0%BF%D1%80%D0%B5%D0%B4%D1%8B%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F-%D0%BE%D0%B4%D0%BD%D0%BE%D0%B3%D0%BE-%D0%BC%D0%B0%D0%B3%D0%B0/</id>
-    <published>2017-09-19T10:44:30.000Z</published>
-    <updated>2020-07-23T23:17:30.813Z</updated>
+    <title>Снимаем покрытие кода с уже запущенного Node.JS приложения</title>
+    <link href="https://articles.jehy.ru/2020/02/16/%D1%81%D0%BD%D0%B8%D0%BC%D0%B0%D0%B5%D0%BC-%D0%BF%D0%BE%D0%BA%D1%80%D1%8B%D1%82%D0%B8%D0%B5-%D0%BA%D0%BE%D0%B4%D0%B0-%D1%81-%D1%83%D0%B6%D0%B5-%D0%B7%D0%B0%D0%BF%D1%83%D1%89%D0%B5%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE-nodejs-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F/"/>
+    <id>https://articles.jehy.ru/2020/02/16/%D1%81%D0%BD%D0%B8%D0%BC%D0%B0%D0%B5%D0%BC-%D0%BF%D0%BE%D0%BA%D1%80%D1%8B%D1%82%D0%B8%D0%B5-%D0%BA%D0%BE%D0%B4%D0%B0-%D1%81-%D1%83%D0%B6%D0%B5-%D0%B7%D0%B0%D0%BF%D1%83%D1%89%D0%B5%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE-nodejs-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F/</id>
+    <published>2020-02-16T10:00:00.000Z</published>
+    <updated>2020-07-25T21:24:17.020Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;Небольшая предыстория мага Традиции Эвтанатос для тех, кому это может быть интересно. Орфография и построение предложений может местами страдать, так как тест является компиляцией телеграмм переписки. Итак…&lt;/p&gt;
-&lt;p&gt;Джеффри никогда не блистал отличными оценками или выдающимся умом. От сверстников его отличало одно - всепоглощающее стремление помогать живым существам. Это был именно тот ребёнок, который несколько раз за неделю приносит домой больных животных и их выхаживает. Неудивительно, что он хотел стать врачом…&lt;/p&gt;
-&lt;p&gt;В семье и вокруг всё тоже складывалось не лучшим образом. Отец был алкоголиком и часто по пьяни бил его, мать и младшую сестру. Мать была молчаливой страдалицей, и пыталась наставить Джеффри на путь христианского смирения. Он смирялся, но религиозные соображения проходили мимо, несмотря на наличие креста - Джеффри не мог понять, почему Бог хочет, чтобы вечерами его бил смрадный тупой боров.&lt;/p&gt;
-&lt;p&gt;Сестра была его маленьким ангелом. Джеффри видел, что она умна не по годам, и, когда мог, переносил гнев отца с неё на себя. Он хотел помочь ей с обучением, чтобы она выбралась из их затхлой жизни в маленькой грязной квартире, и по ночам занимался грязной работой вроде мойки машин и подметания мусора. Но ближе к окончанию школы стало понятно, что этих денег не хватит на то, чтобы отправить её в какое-то лучшее место. Всё, что зарабатывала мать и большая часть денег Джеффри уходила на поддержание их скудного существования и выпивку отца. Тогда Джеффри преступил через свою мечту о становлении врачом и начал искать постоянную работу.&lt;/p&gt;
-&lt;p&gt;В поисках работы, он нашёл непопулярную и тяжёлую задачу. Джеффри начал работать в детском хосписе, помогая детям справляться с самой тяжёлой в их недолгой жизни задачей.&lt;/p&gt;
+      &lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/488544%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;И снова я про тестирование и покрытие.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://habrastorage.org/webt/v0/ng/pf/v0ngpfcqzqkgqmfnz_asnrfbv8y.jpeg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Наверное, вы уже поперхнулись кофе от вопроса “Зачем снимать покрытие с запущенного приложения” - но такая потребность периодически возникает.&lt;/p&gt;
+&lt;p&gt;Например:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Узнать покрытие интеграционных тестов без инстурментализации кода, завершения приложения и выгрузки репорта какими-то сторонними средствами;&lt;/li&gt;
+&lt;li&gt;Узнать без долгого ковыряния кода, по каким именно модулям приложения прошёл запрос;&lt;/li&gt;
+&lt;li&gt;Определить “мёртвый” код, который по факту не используется в приложении;&lt;/li&gt;
+&lt;li&gt;Узнать список транзитивных зависимостей, которые используются на определённые запросы.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Интересно? Поехали!
     
     </summary>
     
     
     
-      <category term="mta" scheme="https://articles.jehy.ru/tags/mta/"/>
-    
-      <category term="wod" scheme="https://articles.jehy.ru/tags/wod/"/>
+      <category term="habr" scheme="https://articles.jehy.ru/tags/habr/"/>
     
   </entry>
   
   <entry>
-    <title>Ночь в одиноком октябре</title>
-    <link href="https://articles.jehy.ru/2016/07/08/%D0%BD%D0%BE%D1%87%D1%8C-%D0%B2-%D0%BE%D0%B4%D0%B8%D0%BD%D0%BE%D0%BA%D0%BE%D0%BC-%D0%BE%D0%BA%D1%82%D1%8F%D0%B1%D1%80%D0%B5/"/>
-    <id>https://articles.jehy.ru/2016/07/08/%D0%BD%D0%BE%D1%87%D1%8C-%D0%B2-%D0%BE%D0%B4%D0%B8%D0%BD%D0%BE%D0%BA%D0%BE%D0%BC-%D0%BE%D0%BA%D1%82%D1%8F%D0%B1%D1%80%D0%B5/</id>
-    <published>2016-07-08T16:42:42.000Z</published>
-    <updated>2020-07-23T23:17:30.813Z</updated>
+    <title>Как мигрировать с mocha на jest в 15 простых шагов — и зачем</title>
+    <link href="https://articles.jehy.ru/2020/01/31/%D0%BA%D0%B0%D0%BA-%D0%BC%D0%B8%D0%B3%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D1%81-mocha-%D0%BD%D0%B0-jest-%D0%B2-15-%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%8B%D1%85-%D1%88%D0%B0%D0%B3%D0%BE%D0%B2-%E2%80%94-%D0%B8-%D0%B7%D0%B0%D1%87%D0%B5%D0%BC/"/>
+    <id>https://articles.jehy.ru/2020/01/31/%D0%BA%D0%B0%D0%BA-%D0%BC%D0%B8%D0%B3%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D1%81-mocha-%D0%BD%D0%B0-jest-%D0%B2-15-%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%8B%D1%85-%D1%88%D0%B0%D0%B3%D0%BE%D0%B2-%E2%80%94-%D0%B8-%D0%B7%D0%B0%D1%87%D0%B5%D0%BC/</id>
+    <published>2020-01-31T10:00:00.000Z</published>
+    <updated>2020-07-25T21:24:17.020Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;Шёл октябрь 2017 года. В огромном здании из стекла и металла шёл какой-то бурный праздник. Люди с чёрными синяками под глазами и широкими улыбками на осунувшихся лицах поздравляли друг друга с окончанием долгой и тяжёлой работы. Наконец-то “Дженезис” будет запущен - продукт нового века с непревзойдённой скоростью обработки информации, который позволит объединить в одну огромную систему все существующие на планете электронные устройства.&lt;/p&gt;
-&lt;p&gt;Но не все радовались одинаково. Нарушая все правила безопасности, группа избранных предавалась празднику и обливала стены холодной серверной комнаты шампанским. Присмотревшись, можно было заметить некоторые странности в этой группе. У одного человека из черепа шла направленная вперёд антенна, у некоторых были татуировки с рисунками сложных схем, третьи несли свои массивные или же наоборот истощённые тела в лёгких экзоскелетах.
+      &lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/486360%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://habrastorage.org/webt/yp/sx/cq/ypsxcqq0qntlarv3avuvwqkg5pu.jpeg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Уже давно я заглядывался на фреймворк для тестирования jest, в котором есть огромное количество всяких вкусных фишек, одна из которых - многопоточное выполнение тестов. При условии того, что у меня был проект на 5000 юнит тестов, миграция обещала быть крайне полезной. Далее я расскажу 14 простых шагов, за которых мне удалось мигрировать - пусть и с некоторыми оговорками - и что мы в результате получили. Спойлер - всё получилось очень круто.
     
     </summary>
     
     
     
-      <category term="истории" scheme="https://articles.jehy.ru/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/"/>
+      <category term="habr" scheme="https://articles.jehy.ru/tags/habr/"/>
     
   </entry>
   
   <entry>
-    <title>Один день Зимы</title>
-    <link href="https://articles.jehy.ru/2015/11/24/%D0%BE%D0%B4%D0%B8%D0%BD-%D0%B4%D0%B5%D0%BD%D1%8C-%D0%B7%D0%B8%D0%BC%D1%8B/"/>
-    <id>https://articles.jehy.ru/2015/11/24/%D0%BE%D0%B4%D0%B8%D0%BD-%D0%B4%D0%B5%D0%BD%D1%8C-%D0%B7%D0%B8%D0%BC%D1%8B/</id>
-    <published>2015-11-24T12:54:46.000Z</published>
-    <updated>2020-07-23T23:17:30.813Z</updated>
+    <title>Зачем нужно столько разработчиков?</title>
+    <link href="https://articles.jehy.ru/2019/12/17/%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BD%D1%83%D0%B6%D0%BD%D0%BE-%D1%81%D1%82%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA%D0%BE%D0%B2/"/>
+    <id>https://articles.jehy.ru/2019/12/17/%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BD%D1%83%D0%B6%D0%BD%D0%BE-%D1%81%D1%82%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA%D0%BE%D0%B2/</id>
+    <published>2019-12-17T10:00:00.000Z</published>
+    <updated>2020-07-25T21:24:17.020Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;Огромные кристаллы снежинок, порхая в воздухе, неумолимо стремились к грязному асфальту, превращаясь на нём в тёмную слякоть. Они могли танцевать, застывать на предметах, резкие порывы ветра иногда вскидывали их обратно вверх - но судьба их была предрешена. Я подставил им лицо, и они таяли, оставляя на нём длинные влажные следы. Неплохая судьба, если сравнить их с теми, что были безжалостно размазаны и стекали в канализацию тёмными лужами. А ведь когда-то я шёл сквозь снег и ни одна снежинка не посмела ко мне приблизиться, словно облетая невидимую преграду.
+      &lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/480748%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Статья предназначена скорее для людей, которые напрямую не участвуют в разработке, и удивляются, почему нужно столько людей и времени чисто на поддержку проекта, который вроде как стабильно работает.&lt;/p&gt;
+&lt;p&gt;Для наглядного пояснения представим себе, что наш проект это корабль. Который мы уже некоторое время назад спустили с верфи, и он плывёт, радуя наш взор своим изящным профилем, а наш карман - золотыми дублонами. И вроде бы всё хорошо, но почему-то ему требуется куча людей только на то чтобы продолжать плыть. А хотелось бы, чтобы они вместо этого строили новые корабли….&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://habrastorage.org/webt/9m/-f/ss/9m-fssjemlfnranqe6kz3rgxzte.jpeg&quot;&gt;&lt;/p&gt;
     
     </summary>
     
     
     
-      <category term="истории" scheme="https://articles.jehy.ru/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/"/>
+      <category term="habr" scheme="https://articles.jehy.ru/tags/habr/"/>
     
   </entry>
   
   <entry>
-    <title>Бег с Microsoft Band</title>
-    <link href="https://articles.jehy.ru/2015/07/16/%D0%B1%D0%B5%D0%B3-%D1%81-microsoft-band/"/>
-    <id>https://articles.jehy.ru/2015/07/16/%D0%B1%D0%B5%D0%B3-%D1%81-microsoft-band/</id>
-    <published>2015-07-16T11:39:40.000Z</published>
-    <updated>2020-07-23T23:17:30.813Z</updated>
+    <title>Deno - время Node.JS уходит?</title>
+    <link href="https://articles.jehy.ru/2019/11/22/deno-%D0%B2%D1%80%D0%B5%D0%BC%D1%8F-nodejs-%D1%83%D1%85%D0%BE%D0%B4%D0%B8%D1%82/"/>
+    <id>https://articles.jehy.ru/2019/11/22/deno-%D0%B2%D1%80%D0%B5%D0%BC%D1%8F-nodejs-%D1%83%D1%85%D0%BE%D0%B4%D0%B8%D1%82/</id>
+    <published>2019-11-22T10:00:00.000Z</published>
+    <updated>2020-07-25T21:24:17.020Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;https://compass-ssl.surface.com/assets/57/21/572176de-d109-4101-a710-015fcb6c3c43.png#Desktop_Ksite-announce_Hero-Marquee.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Не так давно стал счастливым обладателем Microsoft Band. До него бегал сначала с Endomondo на телефоне, потом с Strava, потом получил Suunto Quest с HR датчиком, и радостно использовал его.
-Поскольку у нас пока в продаже MS Band нету, то наверняка обзор будет интересен. Если что, купить это чудо можно примерно за 10.000 рублей на ebay. Не за 17, как у нас продают :)&lt;/p&gt;
-&lt;p&gt;Итак, что же мы хотим от устройства?&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Пульс. Думаю, комментировать очевидное не стоит.&lt;/li&gt;
-&lt;li&gt;GPS. Важно знать пройденное расстояние и интересно смотреть на маршруты, которые пробежал. На той же Strava можно ещё сравнивать своё время на известном маршруте с другими бегунами. Бывает интересно - побегал в произвольной местности, а потом оказалось, что там тоже кто-то бегал. Сравниваешь, радуешься… Или огорчаешься и мотивируешься :)&lt;/li&gt;
-&lt;li&gt;Количество шагов. Не так важно, но интересно.&lt;/li&gt;
-&lt;/ol&gt;
+      &lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/476972%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://habrastorage.org/webt/ph/0g/t5/ph0gt5rsvagsf2ysoqple3gg7oo.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Прошло примерно 18 месяцев с внутреннего релиза Deno, вышел preview release, появилось несколько статей на Хабре, и Райан ездит по конференциям и рассказывает о нём. Однако я нигде так и не видел сколько-нибудь вдумчивого разбора этого проекта - почему-то все ограничиваются переводом документации…&lt;/p&gt;
+&lt;p&gt;Что же, давайте попробуем это сделать сейчас. Последние 5 лет я пишу на Node.JS, а компания OneTwoTrip, где я сейчас работаю, пишет проекты на ноде около 9 лет (да, это я писал историю про &lt;a href=&quot;https://habr.com/ru/post/459206/&quot;&gt;9 лет в монолите на ноде&lt;/a&gt;). Так что анализ должен выйти неплохой. Тем более что я его уже рассказал на &lt;a href=&quot;https://axept.timepad.ru/event/1110942/&quot;&gt;Moscow Node.JS Meetup 10&lt;/a&gt;, и было интересно. Кстати, если вам удобнее слушать, а не читать, то послушать и посмотреть &lt;a href=&quot;https://youtu.be/4414kjKYekM&quot;&gt;можно вот тут&lt;/a&gt;. Моё выступление второе, я чувак в розовой рубашке.&lt;/p&gt;
     
     </summary>
     
     
     
-      <category term="бег" scheme="https://articles.jehy.ru/tags/%D0%B1%D0%B5%D0%B3/"/>
+      <category term="habr" scheme="https://articles.jehy.ru/tags/habr/"/>
     
   </entry>
   
   <entry>
-    <title>Маскировка ссылок в произвольных полях с wp-noexternallinks</title>
-    <link href="https://articles.jehy.ru/2015/04/24/%D0%BC%D0%B0%D1%81%D0%BA%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0-%D1%81%D1%81%D1%8B%D0%BB%D0%BE%D0%BA-%D0%B2-%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%BE%D0%BB%D1%8C%D0%BD%D1%8B%D1%85-%D0%BF%D0%BE%D0%BB/"/>
-    <id>https://articles.jehy.ru/2015/04/24/%D0%BC%D0%B0%D1%81%D0%BA%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0-%D1%81%D1%81%D1%8B%D0%BB%D0%BE%D0%BA-%D0%B2-%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%BE%D0%BB%D1%8C%D0%BD%D1%8B%D1%85-%D0%BF%D0%BE%D0%BB/</id>
-    <published>2015-04-24T11:17:03.000Z</published>
-    <updated>2020-07-23T23:17:30.813Z</updated>
+    <title>9 лет в монолите на Node.JS</title>
+    <link href="https://articles.jehy.ru/2019/07/09/9-%D0%BB%D0%B5%D1%82-%D0%B2-%D0%BC%D0%BE%D0%BD%D0%BE%D0%BB%D0%B8%D1%82%D0%B5-%D0%BD%D0%B0-nodejs/"/>
+    <id>https://articles.jehy.ru/2019/07/09/9-%D0%BB%D0%B5%D1%82-%D0%B2-%D0%BC%D0%BE%D0%BD%D0%BE%D0%BB%D0%B8%D1%82%D0%B5-%D0%BD%D0%B0-nodejs/</id>
+    <published>2019-07-09T10:00:00.000Z</published>
+    <updated>2020-07-25T21:24:17.020Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;Внимание! Я более не занимаюсь поддержкой этой плагина, после версии 3.5.9.9! Пожалуйста, задавайте вопросы на странице
-        
-      
+      &lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/459206%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://habrastorage.org/webt/p-/5g/we/p-5gweh68uzyj3_baevjuocr8xi.png&quot; alt=&quot;монолит от https://reneaigner.deviantart.com&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Неделю назад я выступал на митапе по Node.JS, и многим обещал выложить запись выступления. Уже потом я понял, что мне не удалось вместить в регламентированные полчаса некоторые интересные факты. Да и сам я больше люблю читать, а не смотреть и слушать, поэтому решил выложить выступление в формате статьи. Впрочем, видео тоже будет в конце поста в разделе ссылок.&lt;/p&gt;
+&lt;p&gt;Рассказать я решил про набившую оскомину тему - жизнь в монолите. Об этом на хабре уже есть сотни статей, тысячи копий сломаны в комментах, истина давно погибла в спорах, но… Дело в том, что у нас в OneTwoTrip есть весьма специфический опыт, в отличие от многих людей, которые пишут про некие архитектурные паттерны в вакууме:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Во-первых, нашему монолиту уже 9 лет.&lt;/li&gt;
+&lt;li&gt;Во-вторых, всю жизнь он провёл под хайлоадом (сейчас это 23 млн запросов в час).&lt;/li&gt;
+&lt;li&gt;А в NaN-ых, мы пишем наш монолит на Node.JS, который за эти 9 лет изменился до неузнаваемости. Да, мы начинали писать на ноде в 2010, безумству храбрых поём мы песню!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Так что всякой специфики и реального опыта у нас довольно много. Интересно? Поехали!&lt;/p&gt;
     
     </summary>
     
     
     
-      <category term="wordpress" scheme="https://articles.jehy.ru/tags/wordpress/"/>
+      <category term="habr" scheme="https://articles.jehy.ru/tags/habr/"/>
     
   </entry>
   
   <entry>
-    <title>Masking links in custom fields with wp-noexternallinks</title>
-    <link href="https://articles.jehy.ru/2015/03/06/masking-links-in-custom-fields-with-wp-noexternallinks/"/>
-    <id>https://articles.jehy.ru/2015/03/06/masking-links-in-custom-fields-with-wp-noexternallinks/</id>
-    <published>2015-03-06T13:58:04.000Z</published>
-    <updated>2020-07-23T23:17:30.813Z</updated>
+    <title>Неприятные ошибки при написании юнит тестов</title>
+    <link href="https://articles.jehy.ru/2018/12/04/%D0%BD%D0%B5%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%BD%D1%8B%D0%B5-%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%B8-%D0%BF%D1%80%D0%B8-%D0%BD%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B8-%D1%8E%D0%BD%D0%B8%D1%82-%D1%82%D0%B5%D1%81%D1%82%D0%BE%D0%B2/"/>
+    <id>https://articles.jehy.ru/2018/12/04/%D0%BD%D0%B5%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%BD%D1%8B%D0%B5-%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%B8-%D0%BF%D1%80%D0%B8-%D0%BD%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B8-%D1%8E%D0%BD%D0%B8%D1%82-%D1%82%D0%B5%D1%81%D1%82%D0%BE%D0%B2/</id>
+    <published>2018-12-04T10:00:00.000Z</published>
+    <updated>2020-07-25T21:24:17.020Z</updated>
     
     <summary type="html">
     
@@ -165,7 +172,7 @@
       
         
         
-          &lt;p&gt;&lt;strong&gt;Warning! I no longer support this plugin after version 3.5.9.9! Please ask questions on wordpress support
+          &lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/432092%7D&quot;&gt;Оригинал поста на
         
       
     
@@ -173,16 +180,16 @@
     
     
     
-      <category term="wordpress" scheme="https://articles.jehy.ru/tags/wordpress/"/>
+      <category term="habr" scheme="https://articles.jehy.ru/tags/habr/"/>
     
   </entry>
   
   <entry>
-    <title>Encrypting links for WP-NoExternalLinks</title>
-    <link href="https://articles.jehy.ru/2014/12/09/encrypting-links-for-wp-noexternallinks/"/>
-    <id>https://articles.jehy.ru/2014/12/09/encrypting-links-for-wp-noexternallinks/</id>
-    <published>2014-12-09T15:03:33.000Z</published>
-    <updated>2020-07-23T23:17:30.813Z</updated>
+    <title>Угон сайтов на github pages</title>
+    <link href="https://articles.jehy.ru/2018/11/15/hijacking-domain-using-github-pages/"/>
+    <id>https://articles.jehy.ru/2018/11/15/hijacking-domain-using-github-pages/</id>
+    <published>2018-11-15T10:00:00.000Z</published>
+    <updated>2020-07-25T21:24:17.020Z</updated>
     
     <summary type="html">
     
@@ -190,7 +197,8 @@
       
         
         
-          &lt;p&gt;&lt;strong&gt;Warning! I no longer support this plugin after version 3.5.9.9! Please ask questions on wordpress support
+          &lt;p&gt;Написал на &lt;a href=&quot;https://medium.com/@jehy/hijacking-domain-using-github-pages-41c80ac57523&quot;&gt;медиуме&lt;/a&gt;
+небольшой пост о том, как
         
       
     
@@ -198,67 +206,63 @@
     
     
     
-      <category term="wordpress" scheme="https://articles.jehy.ru/tags/wordpress/"/>
+      <category term="dev" scheme="https://articles.jehy.ru/tags/dev/"/>
+    
+      <category term="medium" scheme="https://articles.jehy.ru/tags/medium/"/>
     
   </entry>
   
   <entry>
-    <title>Custom parser for WP-NoExternalLinks</title>
-    <link href="https://articles.jehy.ru/2014/12/08/custom-parser-for-wp-noexternallinks/"/>
-    <id>https://articles.jehy.ru/2014/12/08/custom-parser-for-wp-noexternallinks/</id>
-    <published>2014-12-08T21:49:43.000Z</published>
-    <updated>2020-07-23T23:17:30.813Z</updated>
+    <title>Атака на Github Pages с перехватом сайта на вашем домене</title>
+    <link href="https://articles.jehy.ru/2018/11/15/%D0%B0%D1%82%D0%B0%D0%BA%D0%B0-%D0%BD%D0%B0-github-pages-%D1%81-%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%B2%D0%B0%D1%82%D0%BE%D0%BC-%D1%81%D0%B0%D0%B9%D1%82%D0%B0-%D0%BD%D0%B0-%D0%B2%D0%B0%D1%88%D0%B5%D0%BC-%D0%B4%D0%BE%D0%BC%D0%B5%D0%BD%D0%B5/"/>
+    <id>https://articles.jehy.ru/2018/11/15/%D0%B0%D1%82%D0%B0%D0%BA%D0%B0-%D0%BD%D0%B0-github-pages-%D1%81-%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%B2%D0%B0%D1%82%D0%BE%D0%BC-%D1%81%D0%B0%D0%B9%D1%82%D0%B0-%D0%BD%D0%B0-%D0%B2%D0%B0%D1%88%D0%B5%D0%BC-%D0%B4%D0%BE%D0%BC%D0%B5%D0%BD%D0%B5/</id>
+    <published>2018-11-15T10:00:00.000Z</published>
+    <updated>2020-07-25T21:24:17.020Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;Warning! I no longer support this plugin after version 3.5.9.9! Please ask questions on wordpress support
-        
-      
+      &lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/429972%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://habrastorage.org/webt/lq/fp/ge/lqfpgesagpmspmleypn6djetfpm.jpeg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Большинство разработчиков знают и любят github pages. На случай, если вы не встречались с ними - этот сервис даёт возможность создать статический сайт из вашего репозитория, который будет доступен на домене smth.github.io. Это безумно удобно для всякой временной статики, документации, небольших простых сайтов и так далее. Не приходится думать о каком-то дополнительном веб сервере.&lt;/p&gt;
+&lt;p&gt;Так же там есть возможность привязать к репозиторию свой домен - тогда всё будет совсем красиво. Даже поддержка SSL есть.&lt;/p&gt;
+&lt;p&gt;После этого небольшого введения перейдём к собственно теме статьи. Совсем недавно (9 ноября) у меня приключилась интересная история. Рекомендую не читать её залпом, а периодически останавливаться и прикидывать, что же означают все полученные на текущий момент вводные. Думаю, из этого выйдет интересная тренировка, хотя сюжет моего детектива оказался и не очень длинным и закрученным.&lt;/p&gt;
     
     </summary>
     
     
     
-      <category term="wordpress" scheme="https://articles.jehy.ru/tags/wordpress/"/>
+      <category term="habr" scheme="https://articles.jehy.ru/tags/habr/"/>
     
   </entry>
   
   <entry>
-    <title>Бегущий в лабиринте - победа маркетинга над разумом</title>
-    <link href="https://articles.jehy.ru/2014/10/13/%D0%B1%D0%B5%D0%B3%D1%83%D1%89%D0%B8%D0%B9-%D0%B2-%D0%BB%D0%B0%D0%B1%D0%B8%D1%80%D0%B8%D0%BD%D1%82%D0%B5-%D0%BF%D0%BE%D0%B1%D0%B5%D0%B4%D0%B0-%D0%BC%D0%B0%D1%80%D0%BA%D0%B5%D1%82%D0%B8%D0%BD%D0%B3/"/>
-    <id>https://articles.jehy.ru/2014/10/13/%D0%B1%D0%B5%D0%B3%D1%83%D1%89%D0%B8%D0%B9-%D0%B2-%D0%BB%D0%B0%D0%B1%D0%B8%D1%80%D0%B8%D0%BD%D1%82%D0%B5-%D0%BF%D0%BE%D0%B1%D0%B5%D0%B4%D0%B0-%D0%BC%D0%B0%D1%80%D0%BA%D0%B5%D1%82%D0%B8%D0%BD%D0%B3/</id>
-    <published>2014-10-13T02:25:32.000Z</published>
-    <updated>2020-07-23T23:17:30.813Z</updated>
+    <title>Нейронные сети против цензуры хентая</title>
+    <link href="https://articles.jehy.ru/2018/11/06/%D0%BD%D0%B5%D0%B9%D1%80%D0%BE%D0%BD%D0%BD%D1%8B%D0%B5-%D1%81%D0%B5%D1%82%D0%B8-%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2-%D1%86%D0%B5%D0%BD%D0%B7%D1%83%D1%80%D1%8B-%D1%85%D0%B5%D0%BD%D1%82%D0%B0%D1%8F/"/>
+    <id>https://articles.jehy.ru/2018/11/06/%D0%BD%D0%B5%D0%B9%D1%80%D0%BE%D0%BD%D0%BD%D1%8B%D0%B5-%D1%81%D0%B5%D1%82%D0%B8-%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2-%D1%86%D0%B5%D0%BD%D0%B7%D1%83%D1%80%D1%8B-%D1%85%D0%B5%D0%BD%D1%82%D0%B0%D1%8F/</id>
+    <published>2018-11-06T10:00:00.000Z</published>
+    <updated>2020-07-25T21:24:17.020Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;Только что дочитал трилогию, по которой недавно вышел фильм, покрывший первую книгу.
-Ужасное впечатление. Похоже на подвиг
-        
-      
+      &lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/428896%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://habrastorage.org/webt/9x/op/f_/9xopf__beuw-41amoqw4lby6yx4.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&amp;gt; От переводчика: Этот забавный репозиторий уже с неделю &lt;a href=&quot;https://habrastorage.org/webt/re/d5/u0/red5u0oatpkmgjdd2cyeo1g719g.png&quot;&gt;находится&lt;/a&gt; в &lt;a href=&quot;https://github.com/explore&quot;&gt;трендах гитхаба&lt;/a&gt;, и сейчас у него фееричное количество из 5000 звёздочек и 400 форков -  поэтому я подумал, что было бы интересно перевести про него статью, хотя она короткая, да и тематика для хабра не очень стандартная.
+Если интересно, в оригинале статьи (ссылка около заголовка) есть ссылки на примеры работы программы.&lt;/p&gt;
     
     </summary>
     
     
     
-      <category term="книжное" scheme="https://articles.jehy.ru/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/"/>
+      <category term="habr" scheme="https://articles.jehy.ru/tags/habr/"/>
     
   </entry>
   
   <entry>
-    <title>Пожалуйста, не здоровайтесь со мной</title>
-    <link href="https://articles.jehy.ru/2014/06/27/%D0%BF%D0%BE%D0%B6%D0%B0%D0%BB%D1%83%D0%B9%D1%81%D1%82%D0%B0-%D0%BD%D0%B5-%D0%B7%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D0%B0%D0%B9%D1%82%D0%B5%D1%81%D1%8C-%D1%81%D0%BE-%D0%BC%D0%BD%D0%BE%D0%B9/"/>
-    <id>https://articles.jehy.ru/2014/06/27/%D0%BF%D0%BE%D0%B6%D0%B0%D0%BB%D1%83%D0%B9%D1%81%D1%82%D0%B0-%D0%BD%D0%B5-%D0%B7%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D0%B0%D0%B9%D1%82%D0%B5%D1%81%D1%8C-%D1%81%D0%BE-%D0%BC%D0%BD%D0%BE%D0%B9/</id>
-    <published>2014-06-27T16:47:22.000Z</published>
-    <updated>2020-07-23T23:17:30.813Z</updated>
+    <title>Вопросы на собеседовании Senior Node.JS разработчику</title>
+    <link href="https://articles.jehy.ru/2018/06/01/node-js-senior-interview-questions/"/>
+    <id>https://articles.jehy.ru/2018/06/01/node-js-senior-interview-questions/</id>
+    <published>2018-06-01T10:00:00.000Z</published>
+    <updated>2020-07-25T21:24:17.020Z</updated>
     
     <summary type="html">
     
@@ -266,7 +270,7 @@
       
         
         
-          &lt;p&gt;Немного о наболевшем. Есть люди, которые в рабочем общении (скажем, в скайпе) пишут тебе “привет”. И ждут потом. Могут ждать минуты,
+          &lt;p&gt;Написал на &lt;a
         
       
     
@@ -274,243 +278,204 @@
     
     
     
-      <category term="мысли" scheme="https://articles.jehy.ru/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/"/>
+      <category term="dev" scheme="https://articles.jehy.ru/tags/dev/"/>
+    
+      <category term="medium" scheme="https://articles.jehy.ru/tags/medium/"/>
     
   </entry>
   
   <entry>
-    <title>Searching through skype history</title>
-    <link href="https://articles.jehy.ru/2014/05/26/searching-through-skype-history/"/>
-    <id>https://articles.jehy.ru/2014/05/26/searching-through-skype-history/</id>
-    <published>2014-05-26T17:28:48.000Z</published>
-    <updated>2020-07-23T23:17:30.809Z</updated>
+    <title>Diarrhea для вашего бэкенда на Node.JS — уменьшаем вес сборки</title>
+    <link href="https://articles.jehy.ru/2018/04/27/diarrhea-%D0%B4%D0%BB%D1%8F-%D0%B2%D0%B0%D1%88%D0%B5%D0%B3%D0%BE-%D0%B1%D1%8D%D0%BA%D0%B5%D0%BD%D0%B4%D0%B0-%D0%BD%D0%B0-nodejs-%E2%80%94-%D1%83%D0%BC%D0%B5%D0%BD%D1%8C%D1%88%D0%B0%D0%B5%D0%BC-%D0%B2%D0%B5%D1%81-%D1%81%D0%B1%D0%BE%D1%80%D0%BA%D0%B8/"/>
+    <id>https://articles.jehy.ru/2018/04/27/diarrhea-%D0%B4%D0%BB%D1%8F-%D0%B2%D0%B0%D1%88%D0%B5%D0%B3%D0%BE-%D0%B1%D1%8D%D0%BA%D0%B5%D0%BD%D0%B4%D0%B0-%D0%BD%D0%B0-nodejs-%E2%80%94-%D1%83%D0%BC%D0%B5%D0%BD%D1%8C%D1%88%D0%B0%D0%B5%D0%BC-%D0%B2%D0%B5%D1%81-%D1%81%D0%B1%D0%BE%D1%80%D0%BA%D0%B8/</id>
+    <published>2018-04-27T10:00:00.000Z</published>
+    <updated>2020-07-25T21:24:17.020Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;If you have more then 300 contacts and they have overlapping conversations - you understand that it’s impossible to find anything with
-        
-      
+      &lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/354504%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Наверняка вы часто замечали, сколько всякого мусора лежит внутри node modules. Это тесты, бенчмарки, ридми файлы, лицензии, тайпскрипт, и ещё безумное количество мусора, который можно более-менее безопасно удалить. Что мы собственно и сделаем в этом посте.
+Картинку про вес node module я и так упоминал последние несколько публикаций, так что вот вам другая, которая в целом отражает текущую ситуацию. В качестве саундтрека к посту рекомендуется Little Big, “Life in da trash”.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://habrastorage.org/webt/gq/fu/s6/gqfus66jvoefmy9jyn9al5mylkk.png&quot;&gt;&lt;/p&gt;
     
     </summary>
     
     
     
-      <category term="skype" scheme="https://articles.jehy.ru/tags/skype/"/>
+      <category term="habr" scheme="https://articles.jehy.ru/tags/habr/"/>
     
   </entry>
   
   <entry>
-    <title>Simple bash linux script to login and update web sites from Git repositories</title>
-    <link href="https://articles.jehy.ru/2014/05/26/simple-bash-linux-script-to-login-and-update-web-sites-from-git-repositories/"/>
-    <id>https://articles.jehy.ru/2014/05/26/simple-bash-linux-script-to-login-and-update-web-sites-from-git-repositories/</id>
-    <published>2014-05-26T17:16:20.000Z</published>
-    <updated>2020-07-23T23:17:30.809Z</updated>
+    <title>Бэкап переписки в telegram</title>
+    <link href="https://articles.jehy.ru/2018/04/26/%D0%B1%D1%8D%D0%BA%D0%B0%D0%BF-%D0%BF%D0%B5%D1%80%D0%B5%D0%BF%D0%B8%D1%81%D0%BA%D0%B8-%D0%B2-telegram/"/>
+    <id>https://articles.jehy.ru/2018/04/26/%D0%B1%D1%8D%D0%BA%D0%B0%D0%BF-%D0%BF%D0%B5%D1%80%D0%B5%D0%BF%D0%B8%D1%81%D0%BA%D0%B8-%D0%B2-telegram/</id>
+    <published>2018-04-26T10:00:00.000Z</published>
+    <updated>2020-07-25T21:24:17.020Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;We have some web sites which must be updated from Git repositories by users who have no other permissions on web server. For this task,
-        
-      
+      &lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/354472%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Сразу начну с того, что я не призываю никого бежать из Мессенджера-который-нельзя-называть. Совсем даже наоборот. Просто спать гораздо спокойнее, когда одно облако у тебя забэкаплено в другом облаке. А то и облака периодически падают на грешную землю, а терять годы переписки очень обидно. Да и друг меня спросил, как сделать бэкап, а я с ходу не нашёл внятной инструкции.&lt;/p&gt;
+&lt;p&gt;Предупреждаю сразу - для бэкапа вам потребуется Linux, или хотя бы виртуалка с ним. При наличии рук можно и на Mac OS, и может даже можно на том огрызке, что нынче встроен в Windows - но я ничего не гарантирую.&lt;/p&gt;
+&lt;p&gt;Поехали!
     
     </summary>
     
     
     
-      <category term="git" scheme="https://articles.jehy.ru/tags/git/"/>
+      <category term="habr" scheme="https://articles.jehy.ru/tags/habr/"/>
     
   </entry>
   
   <entry>
-    <title>Java - loading native libraries for 32 and 64 bit OS</title>
-    <link href="https://articles.jehy.ru/2013/12/13/java-loading-native-libraries-for-32-and-64-bit-os/"/>
-    <id>https://articles.jehy.ru/2013/12/13/java-loading-native-libraries-for-32-and-64-bit-os/</id>
-    <published>2013-12-13T13:58:51.000Z</published>
-    <updated>2020-07-23T23:17:30.809Z</updated>
+    <title>Ещё один инструмент для проверки ваших npm зависимостей — wtfwith</title>
+    <link href="https://articles.jehy.ru/2018/04/20/%D0%B5%D1%89%D1%91-%D0%BE%D0%B4%D0%B8%D0%BD-%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BC%D0%B5%D0%BD%D1%82-%D0%B4%D0%BB%D1%8F-%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B8-%D0%B2%D0%B0%D1%88%D0%B8%D1%85-npm-%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B5%D0%B9-%E2%80%94-wtfwith/"/>
+    <id>https://articles.jehy.ru/2018/04/20/%D0%B5%D1%89%D1%91-%D0%BE%D0%B4%D0%B8%D0%BD-%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BC%D0%B5%D0%BD%D1%82-%D0%B4%D0%BB%D1%8F-%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B8-%D0%B2%D0%B0%D1%88%D0%B8%D1%85-npm-%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B5%D0%B9-%E2%80%94-wtfwith/</id>
+    <published>2018-04-20T10:00:00.000Z</published>
+    <updated>2020-07-25T21:24:17.020Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;Recently I had I problem with loading dll libraries for my java web start application. 32 bit library didn’t load on 64 bit OS and, of cause, vice verse.
+      &lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/353912%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Вы как-нибудь задумывались, сколько версий одной и той же библиотеки затягивает ваша клиентская или серверная сборка? Мне вот в какой-то момент стало интересно. Навскидку найти для этого готовый инструмент не получилось, а смотреть глазами package-lock слишком утомительно. Как мы знаем - в любой непонятной ситуации нужно писать свой npm пакет, поэтому я именно это и сделал… Дальше в посте я рассмотрю результат анализа живого проекта и сделаю пару спорных выводов.&lt;/p&gt;
+&lt;p&gt;Ну и никак нельзя обойтись без этой классической картинки:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://habrastorage.org/webt/fu/4y/hq/fu4yhqs70molq5wp_efppaek7a4.png&quot; align = &quot;center&quot;/&gt;
     
     </summary>
     
     
     
-      <category term="applet" scheme="https://articles.jehy.ru/tags/applet/"/>
-    
-      <category term="java" scheme="https://articles.jehy.ru/tags/java/"/>
-    
-      <category term="webstart" scheme="https://articles.jehy.ru/tags/webstart/"/>
+      <category term="habr" scheme="https://articles.jehy.ru/tags/habr/"/>
     
   </entry>
   
   <entry>
-    <title>Java applet not working after refresh</title>
-    <link href="https://articles.jehy.ru/2013/12/13/java-applet-not-working-after-refresh/"/>
-    <id>https://articles.jehy.ru/2013/12/13/java-applet-not-working-after-refresh/</id>
-    <published>2013-12-13T13:42:19.000Z</published>
-    <updated>2020-07-23T23:17:30.809Z</updated>
+    <title>Полезные фичи VPN</title>
+    <link href="https://articles.jehy.ru/2018/04/17/%D0%BF%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D1%8B%D0%B5-%D1%84%D0%B8%D1%87%D0%B8-vpn/"/>
+    <id>https://articles.jehy.ru/2018/04/17/%D0%BF%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D1%8B%D0%B5-%D1%84%D0%B8%D1%87%D0%B8-vpn/</id>
+    <published>2018-04-17T10:00:00.000Z</published>
+    <updated>2020-07-25T21:24:17.020Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;I had a funny problem with my java applet in web start application - it worked every second time I refreshed web page.&lt;/p&gt;
-&lt;p&gt;After a
-        
-      
+      &lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/353648%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Не хотелось писать статью про настройку впн, потому что их и без меня в интернете тысячи - выбирай на вкус и цвет.&lt;/p&gt;
+&lt;p&gt;Просто хотел напомнить просто несколько простых вещей, которые вызывают много недоразумений и вопросов. Понимаю, что на статью не тянет, но очень хочется до вас достучаться, а других способов в рунете особо и нет.
     
     </summary>
     
     
     
-      <category term="applet" scheme="https://articles.jehy.ru/tags/applet/"/>
-    
-      <category term="java" scheme="https://articles.jehy.ru/tags/java/"/>
-    
-      <category term="webstart" scheme="https://articles.jehy.ru/tags/webstart/"/>
-    
-      <category term="jvm" scheme="https://articles.jehy.ru/tags/jvm/"/>
+      <category term="habr" scheme="https://articles.jehy.ru/tags/habr/"/>
     
   </entry>
   
   <entry>
-    <title>Invalid signature file digest for Manifest main attributes</title>
-    <link href="https://articles.jehy.ru/2013/12/13/invalid-signature-file-digest-for-manifest-main-attributes/"/>
-    <id>https://articles.jehy.ru/2013/12/13/invalid-signature-file-digest-for-manifest-main-attributes/</id>
-    <published>2013-12-13T10:49:47.000Z</published>
-    <updated>2020-07-23T23:17:30.809Z</updated>
+    <title>Безопасный Android для ребёнка</title>
+    <link href="https://articles.jehy.ru/2018/02/07/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D1%8B%D0%B9-android-%D0%B4%D0%BB%D1%8F-%D1%80%D0%B5%D0%B1%D1%91%D0%BD%D0%BA%D0%B0/"/>
+    <id>https://articles.jehy.ru/2018/02/07/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D1%8B%D0%B9-android-%D0%B4%D0%BB%D1%8F-%D1%80%D0%B5%D0%B1%D1%91%D0%BD%D0%BA%D0%B0/</id>
+    <published>2018-02-07T10:00:00.000Z</published>
+    <updated>2020-07-25T21:24:17.020Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;Today i run into error&lt;/p&gt;
-&lt;blockquote&gt;Invalid signature file digest for Manifest main attributes&lt;/blockquote&gt;
-while running my java web
-        
-      
+      &lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/410213%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Подозреваю, что многие из читателей этой публикации в детстве не носили с собой мобильный телефон, или начали носить его только в старших классах - как ни странно, обыденные на сегодняшний момент мобильники появились не так давно. И даже после их появления в течение долгого времени мобильные телефоны были огромными и дорогими, и позволить их себе могли только серьёзные дядьки. Но на дворе 2018 год, и младшеклассники вовсю пользуются смартфонами.&lt;/p&gt;
+&lt;p&gt;Конечно, дети разные, и проблемы у всех в связи с этим возникают разные. У кого-то проблем вообще не возникает, и я могу только порадоваться за этих людей. Лучше всего, если получается договориться с ребёнком о разумном использовании телефона - но этот случай мы рассматривать не будем как довольно очевидный (договорились - молодцы). Будем рассматривать тот случай, когда нужно выдавать ребёнку смартфон, но при этом технически ограничивать его применение.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://habrastorage.org/webt/p6/jm/z0/p6jmz0w_-bxlvusn54fl1lhingq.jpeg&quot; align=&quot;center&quot;/&gt;
     
     </summary>
     
     
     
-      <category term="applet" scheme="https://articles.jehy.ru/tags/applet/"/>
-    
-      <category term="codesigning" scheme="https://articles.jehy.ru/tags/codesigning/"/>
-    
-      <category term="java" scheme="https://articles.jehy.ru/tags/java/"/>
-    
-      <category term="webstart" scheme="https://articles.jehy.ru/tags/webstart/"/>
+      <category term="habr" scheme="https://articles.jehy.ru/tags/habr/"/>
     
   </entry>
   
   <entry>
-    <title>Warning: The signer`s certificate chain is not validated</title>
-    <link href="https://articles.jehy.ru/2013/12/12/warning-the-signers-certificate-chain-is-not-validated/"/>
-    <id>https://articles.jehy.ru/2013/12/12/warning-the-signers-certificate-chain-is-not-validated/</id>
-    <published>2013-12-12T18:12:45.000Z</published>
-    <updated>2020-07-23T23:17:30.809Z</updated>
+    <title>История взлома одного WordPress плагина — или о том, как вы допускаете уязвимости в своих проектах</title>
+    <link href="https://articles.jehy.ru/2018/02/02/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F-%D0%B2%D0%B7%D0%BB%D0%BE%D0%BC%D0%B0-%D0%BE%D0%B4%D0%BD%D0%BE%D0%B3%D0%BE-wordpress-%D0%BF%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%D0%B0-%E2%80%94-%D0%B8%D0%BB%D0%B8-%D0%BE-%D1%82%D0%BE%D0%BC-%D0%BA%D0%B0%D0%BA-%D0%B2%D1%8B-%D0%B4%D0%BE%D0%BF%D1%83%D1%81%D0%BA%D0%B0%D0%B5%D1%82%D0%B5-%D1%83%D1%8F%D0%B7%D0%B2%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B8-%D0%B2-%D1%81%D0%B2%D0%BE%D0%B8%D1%85-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B0%D1%85/"/>
+    <id>https://articles.jehy.ru/2018/02/02/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F-%D0%B2%D0%B7%D0%BB%D0%BE%D0%BC%D0%B0-%D0%BE%D0%B4%D0%BD%D0%BE%D0%B3%D0%BE-wordpress-%D0%BF%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%D0%B0-%E2%80%94-%D0%B8%D0%BB%D0%B8-%D0%BE-%D1%82%D0%BE%D0%BC-%D0%BA%D0%B0%D0%BA-%D0%B2%D1%8B-%D0%B4%D0%BE%D0%BF%D1%83%D1%81%D0%BA%D0%B0%D0%B5%D1%82%D0%B5-%D1%83%D1%8F%D0%B7%D0%B2%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B8-%D0%B2-%D1%81%D0%B2%D0%BE%D0%B8%D1%85-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B0%D1%85/</id>
+    <published>2018-02-02T10:00:00.000Z</published>
+    <updated>2020-07-25T21:24:17.020Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;I had a week of trouble, signing my web start java applet.&lt;/p&gt;
-&lt;p&gt;While I signed (with a good COMODO code signing certificate), there
-        
-      
+      &lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/348142%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Давным давно, когда я был молод и писал сайты на PHP, я написал SEO плагин для маскировки внешних ссылок для Wordpress. Поскольку с воображением у меня плохо, то назвал его WP-NoExternalLinks. За всю историю у него было 360.000 установок и, кажется, до 50.000 активных установок.&lt;/p&gt;
+&lt;p&gt;Дальше я расскажу, каким именно образом он попал в недобросовестные руки и был злонамеренно использован - но для этого придётся немного погрузиться в его историю и обстановку разработки. Сразу предупрежу, что эта история абсолютно реальная.
+&lt;img src=&quot;https://habrastorage.org/webt/ll/2e/qv/ll2eqvounxfb1if1k20qmenuwqy.jpeg&quot; /&gt;&lt;/p&gt;
     
     </summary>
     
     
     
-      <category term="applet" scheme="https://articles.jehy.ru/tags/applet/"/>
-    
-      <category term="codesigning" scheme="https://articles.jehy.ru/tags/codesigning/"/>
-    
-      <category term="java" scheme="https://articles.jehy.ru/tags/java/"/>
-    
-      <category term="webstart" scheme="https://articles.jehy.ru/tags/webstart/"/>
+      <category term="habr" scheme="https://articles.jehy.ru/tags/habr/"/>
     
   </entry>
   
   <entry>
-    <title>Trouble with yum on RHEL, CentOS and Fedora</title>
-    <link href="https://articles.jehy.ru/2013/12/04/trouble-with-yum-on-rhel-centos-and-fedora/"/>
-    <id>https://articles.jehy.ru/2013/12/04/trouble-with-yum-on-rhel-centos-and-fedora/</id>
-    <published>2013-12-04T23:00:16.000Z</published>
-    <updated>2020-07-23T23:17:30.809Z</updated>
+    <title>Безопасность сторонних зависимостей — проверяем при помощи snyk</title>
+    <link href="https://articles.jehy.ru/2018/01/31/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C-%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D1%85-%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B5%D0%B9-%E2%80%94-%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D1%8F%D0%B5%D0%BC-%D0%BF%D1%80%D0%B8-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D0%B8-snyk/"/>
+    <id>https://articles.jehy.ru/2018/01/31/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C-%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D1%85-%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B5%D0%B9-%E2%80%94-%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D1%8F%D0%B5%D0%BC-%D0%BF%D1%80%D0%B8-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D0%B8-snyk/</id>
+    <published>2018-01-31T10:00:00.000Z</published>
+    <updated>2020-07-25T21:24:17.020Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;I ran into a trouble while updating my Red Hat Enterprise Linux Server release 5.8 (Tikanga).
-I could not use yum any more:
+      &lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/347934%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Недавно была прекрасная публикация &lt;a href=&quot;https://habrahabr.ru/post/346442/&quot;&gt;“Рассказ о том, как я ворую номера кредиток и пароли у посетителей ваших сайтов”&lt;/a&gt;, на которую я &lt;a href=&quot;https://habrahabr.ru/post/346492/&quot;&gt;переводил&lt;/a&gt; ответ. Автор недавно опубликовал &lt;a href=&quot;https://hackernoon.com/part-2-how-to-stop-me-harvesting-credit-card-numbers-and-passwords-from-your-site-844f739659b9&quot;&gt;вторую часть&lt;/a&gt;, но, подозреваю, что перевода не будет - там предлагается решать проблему прекрасными способами вроде перевода важных элементов ввода “в отдельный iframe” или “на особые страницы без стороннего javascript”. На этом месте те, кто повёлся на первую статью, должны бы усомниться в адекватности автора - и низкий (относительно предыдущей) рейтинг новой статьи это показывает.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;UPD&lt;/b&gt;: &lt;a href=&quot;https://habrahabr.ru/post/347958/&quot;&gt;перевели таки&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Тем не менее, проблема сторонних зависимостей есть, и решать её как-то нужно. Причём стоит она в равной степени в любой экосистеме, где используются сторонние зависимости. В комментариях к прошлому посту уже запрашивали какой-нибудь вариант решения, и я хочу представить один из них - инструмент под названием snyk.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://res.cloudinary.com/snyk/image/upload/f_auto,q_auto,w_100/v1468845259/logo/snyk-dog.svg&quot; alt=&quot;image&quot; align=&quot;center&quot;/&gt;
     
     </summary>
     
     
     
-      <category term="RHEL" scheme="https://articles.jehy.ru/tags/RHEL/"/>
-    
-      <category term="yum" scheme="https://articles.jehy.ru/tags/yum/"/>
+      <category term="habr" scheme="https://articles.jehy.ru/tags/habr/"/>
     
   </entry>
   
   <entry>
-    <title>Немного про разработку</title>
-    <link href="https://articles.jehy.ru/2013/10/07/%D0%BD%D0%B5%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE-%D0%BF%D1%80%D0%BE-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D1%83/"/>
-    <id>https://articles.jehy.ru/2013/10/07/%D0%BD%D0%B5%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE-%D0%BF%D1%80%D0%BE-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D1%83/</id>
-    <published>2013-10-07T11:38:45.000Z</published>
-    <updated>2020-07-23T23:17:30.809Z</updated>
+    <title>Я ненавидел Javascript. А теперь он мне нравится</title>
+    <link href="https://articles.jehy.ru/2018/01/29/%D1%8F-%D0%BD%D0%B5%D0%BD%D0%B0%D0%B2%D0%B8%D0%B4%D0%B5%D0%BB-javascript-%D0%B0-%D1%82%D0%B5%D0%BF%D0%B5%D1%80%D1%8C-%D0%BE%D0%BD-%D0%BC%D0%BD%D0%B5-%D0%BD%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%81%D1%8F/"/>
+    <id>https://articles.jehy.ru/2018/01/29/%D1%8F-%D0%BD%D0%B5%D0%BD%D0%B0%D0%B2%D0%B8%D0%B4%D0%B5%D0%BB-javascript-%D0%B0-%D1%82%D0%B5%D0%BF%D0%B5%D1%80%D1%8C-%D0%BE%D0%BD-%D0%BC%D0%BD%D0%B5-%D0%BD%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%81%D1%8F/</id>
+    <published>2018-01-29T10:00:00.000Z</published>
+    <updated>2020-07-25T21:24:17.020Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;Решил утащить на память к себе две чудесные статьи, которые полностью описывают моё отношение к разработке. Из первой я несогласен только с одним абзацем - который говорит про невозможность работы с неработающим кодом.&lt;/p&gt;
+      &lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/347802%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Моя карьера началась с написания программ для мобильных устройств. Я изучал C и Objective-C, чтобы работать с устройствами на iOS. У меня был чёткий контроль над программным обеспечением, я учился тому, как правильно работать с памятью, и проводил долгие часы за отладкой багов, которые возникали из-за моей небрежности (это было ещё до &lt;a href=&quot;https://en.wikipedia.org/wiki/Automatic_Reference_Counting&quot;&gt;ARC&lt;/a&gt;). Я развивался с уклоном в сторону iOS, а так же так же начал изучать Java (и совсем недавно приступил к Kotlin) для перехода на Android.&lt;/p&gt;
     
     </summary>
     
     
     
-      <category term="цитаты" scheme="https://articles.jehy.ru/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/"/>
+      <category term="habr" scheme="https://articles.jehy.ru/tags/habr/"/>
     
   </entry>
   
   <entry>
-    <title>OracleToGit: released!</title>
-    <link href="https://articles.jehy.ru/2013/10/04/oracletogit-released/"/>
-    <id>https://articles.jehy.ru/2013/10/04/oracletogit-released/</id>
-    <published>2013-10-04T16:26:33.000Z</published>
-    <updated>2020-07-23T23:17:30.809Z</updated>
+    <title>Рассказ о том, как я майню эфир через meltdown на ваших телефонах при помощи npm</title>
+    <link href="https://articles.jehy.ru/2018/01/12/%D1%80%D0%B0%D1%81%D1%81%D0%BA%D0%B0%D0%B7-%D0%BE-%D1%82%D0%BE%D0%BC-%D0%BA%D0%B0%D0%BA-%D1%8F-%D0%BC%D0%B0%D0%B9%D0%BD%D1%8E-%D1%8D%D1%84%D0%B8%D1%80-%D1%87%D0%B5%D1%80%D0%B5%D0%B7-meltdown-%D0%BD%D0%B0-%D0%B2%D0%B0%D1%88%D0%B8%D1%85-%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%D0%B0%D1%85-%D0%BF%D1%80%D0%B8-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D0%B8-npm/"/>
+    <id>https://articles.jehy.ru/2018/01/12/%D1%80%D0%B0%D1%81%D1%81%D0%BA%D0%B0%D0%B7-%D0%BE-%D1%82%D0%BE%D0%BC-%D0%BA%D0%B0%D0%BA-%D1%8F-%D0%BC%D0%B0%D0%B9%D0%BD%D1%8E-%D1%8D%D1%84%D0%B8%D1%80-%D1%87%D0%B5%D1%80%D0%B5%D0%B7-meltdown-%D0%BD%D0%B0-%D0%B2%D0%B0%D1%88%D0%B8%D1%85-%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%D0%B0%D1%85-%D0%BF%D1%80%D0%B8-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D0%B8-npm/</id>
+    <published>2018-01-12T10:00:00.000Z</published>
+    <updated>2020-07-25T21:24:17.020Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;At last, I released a useful tool for Oracle DBAs - a special customizable script which helps you to store database DDL (views, tables,
-        
-      
+      &lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/346492%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Предисловие от переводчика&lt;/h2&gt;
+Пока вы не добрались до содержимого статьи, советую отложить её, отвести взгляд от монитора, и подумать на тему того, как же это происходит. Как всегда, всё гениальное просто. Ответ на поверхности. Подумали? Тогда читайте дальше.
     
     </summary>
     
     
     
-      <category term="Oracle" scheme="https://articles.jehy.ru/tags/Oracle/"/>
+      <category term="habr" scheme="https://articles.jehy.ru/tags/habr/"/>
     
   </entry>
   

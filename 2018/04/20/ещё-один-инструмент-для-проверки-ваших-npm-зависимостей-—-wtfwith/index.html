@@ -1,0 +1,250 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Ещё один инструмент для проверки ваших npm зависимостей — wtfwith | Jehy&#39;s notes</title>
+  <meta name="author" content="Jehy">
+  
+  <meta name="description" content="Оригинал поста на хабре
+Вы как-нибудь задумывались, сколько версий одной и той же библиотеки затягивает ваша клиентская или серверная сборка? Мне вот в какой-то момент стало интересно. Навскидку найти для этого готовый инструмент не получилось, а смотреть глазами package-lock слишком утомительно. Как мы знаем - в любой непонятной ситуации нужно писать свой npm пакет, поэтому я именно это и сделал… Дальше в посте я рассмотрю результат анализа живого проекта и сделаю пару спорных выводов.
+Ну и никак нельзя обойтись без этой классической картинки:">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Ещё один инструмент для проверки ваших npm зависимостей — wtfwith"/>
+  <meta property="og:site_name" content="Jehy&#39;s notes"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Jehy&#39;s notes" type="application/atom+xml">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Jehy&#39;s notes</a></h1>
+  <h2><a href="/">Insert 1 into dual</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/wishlist">Wishlist</a></li>
+    
+      <li><a href="/donate">Donate</a></li>
+    
+      <li><a href="/atom.xml">Subscribe</a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://whois.jehy.ru">Contact me</a></li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-2018/04/ещё-один-инструмент-для-проверки-ваших-npm-зависимостей-—-wtfwith" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2018-04-20T10:00:00.000Z"><a href="/2018/04/20/ещё-один-инструмент-для-проверки-ваших-npm-зависимостей-—-wtfwith/">2018-04-20</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Ещё один инструмент для проверки ваших npm зависимостей — wtfwith</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/353912%7D">Оригинал поста на хабре</a></p>
+<p>Вы как-нибудь задумывались, сколько версий одной и той же библиотеки затягивает ваша клиентская или серверная сборка? Мне вот в какой-то момент стало интересно. Навскидку найти для этого готовый инструмент не получилось, а смотреть глазами package-lock слишком утомительно. Как мы знаем - в любой непонятной ситуации нужно писать свой npm пакет, поэтому я именно это и сделал… Дальше в посте я рассмотрю результат анализа живого проекта и сделаю пару спорных выводов.</p>
+<p>Ну и никак нельзя обойтись без этой классической картинки:</p>
+<p><img src="https://habrastorage.org/webt/fu/4y/hq/fu4yhqs70molq5wp_efppaek7a4.png" align = "center"/><a id="more"></a></p>
+<h2>Как работает</h2>
+В общем-то никакого rocket science - берём package.json и package-lock.json и пробегаем по всем зависимостям, которые там есть, собирая идентичные модули или модули-форки. Форки, ясное дело, приходится прописывать руками, поэтому сейчас в них указан только lodash и undescore. Но вы всегда можете помочь и расширить этот список.
+
+<img src="https://habrastorage.org/webt/ow/ew/7s/owew7sgqidwzkp8ejwkzfqtjemk.gif" />
+
+<h2>Как использовать</h2>
+Модуль <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/wtfwith">опубликован</a> на npm, проще всего запускать при помощи <a target="_blank" rel="noopener" href="https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner">npx</a>, хотя никто не мешает вам установить его локально или даже глобально. Дальше буду рассматривать вариант с запуском через npx. Для примера возьму один свой старый проект, который по сути является монолитом на ноде (это было ещё до микросервисного бума, а распиливать его потом было лень и нецелесообразно).
+
+<p>1. <code>npx wtfwith moduleName</code> (например, <code>npm wtfwith lodash</code>) - проверяем количество вхождений какого-то определённого модуля, выводит результаты, если их больше двух. Результат может быть, например, такой:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">npx wtfwith lodash</span><br><span class="line">npx: installed 3 in 2.047s</span><br><span class="line">Searching for lodash</span><br><span class="line">Checking path &#x2F;web&#x2F;xxx&#x2F;package-lock.json</span><br><span class="line">Huston, we have a problem:</span><br><span class="line"></span><br><span class="line">30 versions of lodash:</span><br><span class="line"> - 2.4.2 from root, cheerio@0.18.0</span><br><span class="line"> - 3.10.1 from xmlbuilder@2.6.4</span><br><span class="line"> - 4.0.0 from twilio@3.15.0</span><br><span class="line"> - 4.17.4 from graphlib@2.1.1, sway@1.0.0</span><br><span class="line"> - 4.17.5 from aws-sdk@2.211.0, xmlbuilder@4.2.1, request-promise-core@1.1.1, requestretry@1.13.0</span><br><span class="line"> - lodash.assign:4.2.0 from ioredis@3.2.2</span><br><span class="line"> - lodash.bind:4.2.1 from ioredis@3.2.2</span><br><span class="line"> - lodash.clone:4.5.0 from ioredis@3.2.2</span><br><span class="line"> - lodash.clonedeep:4.5.0 from ioredis@3.2.2</span><br><span class="line"> - lodash.defaults:4.2.0 from ioredis@3.2.2</span><br><span class="line"> - lodash.difference:4.5.0 from ioredis@3.2.2</span><br><span class="line"> - lodash.flatten:4.4.0 from ioredis@3.2.2</span><br><span class="line"> - lodash.foreach:4.5.0 from ioredis@3.2.2</span><br><span class="line"> - lodash.get:4.4.2 from z-schema@3.18.4</span><br><span class="line"> - lodash.includes:4.3.0 from jsonwebtoken@8.2.1</span><br><span class="line"> - lodash.isboolean:3.0.3 from jsonwebtoken@8.2.1</span><br><span class="line"> - lodash.isempty:4.4.0 from ioredis@3.2.2</span><br><span class="line"> - lodash.isequal:4.5.0 from z-schema@3.18.4</span><br><span class="line"> - lodash.isinteger:4.0.4 from jsonwebtoken@8.2.1</span><br><span class="line"> - lodash.isnumber:3.0.3 from jsonwebtoken@8.2.1</span><br><span class="line"> - lodash.isplainobject:4.0.6 from jsonwebtoken@8.2.1</span><br><span class="line"> - lodash.isstring:4.0.1 from jsonwebtoken@8.2.1</span><br><span class="line"> - lodash.keys:4.2.0 from ioredis@3.2.2</span><br><span class="line"> - lodash.noop:3.0.1 from ioredis@3.2.2</span><br><span class="line"> - lodash.once:4.1.1 from jsonwebtoken@8.2.1</span><br><span class="line"> - lodash.partial:4.2.1 from ioredis@3.2.2</span><br><span class="line"> - lodash.pick:4.4.0 from ioredis@3.2.2</span><br><span class="line"> - lodash.sample:4.2.1 from ioredis@3.2.2</span><br><span class="line"> - lodash.shuffle:4.2.0 from ioredis@3.2.2</span><br><span class="line"> - lodash.values:4.3.0 from ioredis@3.2.2</span><br><span class="line"></span><br><span class="line">Advice: Sometimes it is good to make a fresh start: rm .&#x2F; -rf &amp;&amp; git commit -am &#39;nevermore&#39; &amp;&amp; git push origin master&lt;&#x2F;code&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2. <code>npx wtfwith everything&lt;/code&gt;</code> (можно просто опустить аргумент и написать <code>npx wtfwith</code>, но это уныло) - проверяет вообще все зависимости, которых больше, чем две версии. Может быть, например, такой результат:</p>
+<p>Пример</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">npx wtfwith lodash</span><br><span class="line">npx: installed 3 in 1.813s</span><br><span class="line">Searching all strange things...</span><br><span class="line">Checking path &#x2F;web&#x2F;xxx&#x2F;package-lock.json</span><br><span class="line">Huston, we have a problem:</span><br><span class="line"></span><br><span class="line">30 versions of lodash:</span><br><span class="line"> &#x2F;&#x2F; ну, это вы уже видели</span><br><span class="line"></span><br><span class="line">4 versions of punycode:</span><br><span class="line"> - 1.2.4 from dkim-signer@0.1.2</span><br><span class="line"> - 1.3.2 from url@0.10.3</span><br><span class="line"> - 1.4.1 from tough-cookie@2.3.3</span><br><span class="line"> - 2.1.0 from uri-js@3.0.2</span><br><span class="line"></span><br><span class="line">4 versions of xmlbuilder:</span><br><span class="line"> - 0.4.2 from nodemailer@0.7.1, aws-sdk@2.0.5</span><br><span class="line"> - 2.6.4 from root, xml2js@0.4.8</span><br><span class="line"> - 4.2.1 from aws-sdk@2.211.0, xml2js@0.4.17</span><br><span class="line"> - 9.0.1 from twilio@3.15.0</span><br><span class="line"></span><br><span class="line">3 versions of xmldom:</span><br><span class="line"> - 0.1.19 from xml-crypto@0.10.1</span><br><span class="line"> - 0.1.27 from pdf2json@0.6.2</span><br><span class="line"> - 0.1.7 from ws.js@2.0.22</span><br><span class="line"></span><br><span class="line">3 versions of mime:</span><br><span class="line"> - 1.2.11 from mailcomposer@0.2.12</span><br><span class="line"> - 1.4.1 from superagent@3.8.0</span><br><span class="line"> - 2.3.1 from root</span><br><span class="line"></span><br><span class="line">3 versions of sax:</span><br><span class="line"> - 0.4.2 from xml2js@0.2.6</span><br><span class="line"> - 0.6.1 from xml2js@0.4.8</span><br><span class="line"> - 1.2.1 from aws-sdk@2.211.0, xml2js@0.4.17</span><br><span class="line"></span><br><span class="line">3 versions of uuid:</span><br><span class="line"> - 1.4.2 from root</span><br><span class="line"> - 3.1.0 from aws-sdk@2.211.0</span><br><span class="line"> - 3.2.1 from  request@2.83.0, request@2.85.0, requestretry@1.13.0, twilio@3.15.0</span><br><span class="line"></span><br><span class="line">3 versions of xml2js:</span><br><span class="line"> - 0.2.6 from nodemailer@0.7.1, aws-sdk@2.0.5</span><br><span class="line"> - 0.4.17 from aws-sdk@2.211.0</span><br><span class="line"> - 0.4.8 from root</span><br><span class="line"></span><br><span class="line">3 versions of moment:</span><br><span class="line"> - 2.19.3 from twilio@3.15.0</span><br><span class="line"> - 2.20.1 from  moment-timezone@0.5.14</span><br><span class="line"> - 2.22.1 from root, joi@4.9.0, moment-range@1.0.9, moment-timezone@0.4.0, moment-timezone@0.5.15</span><br><span class="line"></span><br><span class="line">3 versions of readable-stream:</span><br><span class="line"> - 1.0.34 from match-stream@0.0.2, pullstream@0.4.1, slice-stream@1.0.0, unzip@0.1.11</span><br><span class="line"> - 1.1.14 from dicer@0.2.5, ftp@0.3.10, htmlparser2@3.8.3, nodemailer@0.7.1</span><br><span class="line"> - 2.3.3 from mysql@2.14.1, superagent@3.8.0</span><br><span class="line"></span><br><span class="line">Advice: What about lunch?</span><br></pre></td></tr></table></figure>
+
+
+<p>3. Так же можно указать опцию <code>--dev</code> - в случае, если вы, например, собираете бандл из дев зависимостей. Хотя для этого лучше использовать фронтовые инструменты для анализа бандлов. Пример использования показывать не буду, команда выглядит как <code>npx wtfwith everything --dev</code>, и вы можете себе примерно представить, какой там выходит ад.</p>
+<h2>Реальные примеры</h2>
+Конечно, было бы интересно проанализировать несколько популярных пакетов, что я и сделал.
+
+<p>1. <b>express</b> - как ни удивительно, ничего интересного не нашлось.</p>
+<p>2. <b>gulp</b> - нашлись всякие мелочи:</p>
+<p>смотрим?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">4 versions of kind-of:</span><br><span class="line"> - 3.2.2 from is-accessor-descriptor@0.1.6, is-data-descriptor@0.1.4, is-number@3.0.0, make-iterator@1.0.0, object-copy@0.1.0, snapdragon-util@3.0.1, to-object-path@0.3.0</span><br><span class="line"> - 4.0.0 from has-values@1.0.0</span><br><span class="line"> - 5.1.0 from array-sort@1.0.0, class-utils@0.3.6, is-descriptor@0.1.6, default-compare@1.0.0, expand-brackets@2.1.4, snapdragon@0.8.2, static-extend@0.1.2</span><br><span class="line"> - 6.0.2 from braces@2.3.1, is-accessor-descriptor@1.0.0, is-data-descriptor@1.0.0, is-descriptor@1.0.2, micromatch@3.1.10, nanomatch@1.2.9, use@3.1.0</span><br><span class="line"></span><br><span class="line">3 versions of define-property:</span><br><span class="line"> - 0.2.5 from class-utils@0.3.6, expand-brackets@2.1.4, object-copy@0.1.0, snapdragon@0.8.2, static-extend@0.1.2</span><br><span class="line"> - 1.0.0 from base@0.11.2, braces@2.3.1, extglob@2.0.4, snapdragon-node@2.1.1</span><br><span class="line"> - 2.0.2 from micromatch@3.1.10, nanomatch@1.2.9, to-regex@3.0.2&lt;&#x2F;code&gt;</span><br></pre></td></tr></table></figure>
+
+<p>3. <b>npm</b> - довольно забавный результат:
+смотрим!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">14 versions of lodash:</span><br><span class="line"> - 3.10.1 from cli-table2@0.2.0</span><br><span class="line"> - lodash._baseindexof:3.1.0 from root</span><br><span class="line"> - lodash._baseuniq:4.6.0 from root</span><br><span class="line"> - lodash._bindcallback:3.0.1 from root</span><br><span class="line"> - lodash._cacheindexof:3.0.2 from root</span><br><span class="line"> - lodash._createcache:3.1.2 from root</span><br><span class="line"> - lodash._createset:4.0.3 from lodash._baseuniq@4.6.0</span><br><span class="line"> - lodash._getnative:3.9.1 from root, lodash._createcache@3.1.2</span><br><span class="line"> - lodash._root:3.0.1 from lodash._baseuniq@4.6.0</span><br><span class="line"> - lodash.clonedeep:4.5.0 from root</span><br><span class="line"> - lodash.restparam:3.6.1 from root</span><br><span class="line"> - lodash.union:4.6.0 from root</span><br><span class="line"> - lodash.uniq:4.5.0 from root</span><br><span class="line"> - lodash.without:4.4.0 from root</span><br><span class="line"></span><br><span class="line">3 versions of mississippi:</span><br><span class="line"> - 1.3.1 from make-fetch-happen@2.6.0</span><br><span class="line"> - 2.0.0 from cacache@10.0.4</span><br><span class="line"> - 3.0.0 from root, pacote@7.6.1</span><br><span class="line"></span><br><span class="line">3 versions of pump:</span><br><span class="line"> - 1.0.3 from mississippi@1.3.1</span><br><span class="line"> - 2.0.1 from mississippi@2.0.0, pumpify@1.4.0</span><br><span class="line"> - 3.0.0 from mississippi@3.0.0&lt;&#x2F;code&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Как минимум, забавно, что npm явно пытается минимизировать использование лодаша, но его целиком затягивает одна из его зависимостей…</p>
+<h2>Todo</h2>
+Проект писался за вечер на коленке, поэтому есть некоторые количество вещей, которые там не реализованы:
+
+<ol>
+<li>Нет работы с shrinkwrap файлом - но это не очень нужно, вы можете просто сгенерить package-lock для проверки;</li>
+<li>Поддерживается только node 6+. Тоже не очень критично, ведь есть nvm;</li>
+<li>Не поддерживается лок файл от yarn. Опять же не слишком критично;</li>
+<li>Наверняка есть некоторое количество багов и неточностей.</li>
+</ol>
+<p>В общем, если вам актуален инструмент, то pull requests приветствуются.</p>
+<h2>Выводы</h2>
+Выглядят результаты не очень красиво, но, если честно, я ожидал больше ада. Судя по всему, многие таки пользуются инструментами для анализа обновлений и защищённости зависимостей.
+
+<p>Из спорных рекомендаций:</p>
+<ol>
+<li>Я бы не рекомендовал для заведомо бэковых модулей затягивать зависимости вроде лодаша кусками - всё равно кто-то наверняка затянет к себе полную версию библиотеки. Ну и не забывайте про семантическое версионирование - конечно, без точных ограничений версий всё может в какой-то момент сломаться, но это должно решаться фиксацией зависимостей в package-lock и взаимодействием между разработчиками, а не точными ограничениям. То есть, если вы обнаружили breaking change в какой-то своей зависимости, то хорошо бы зайти к автору пакета и сказать, что он неправ - этим вы сэкономите другим много усилий и терабайты места на дисках.</li>
+</ol>
+<p>Хотя вот уважаемый мной автор ioredis делает <a target="_blank" rel="noopener" href="https://github.com/luin/ioredis/pull/494">ровно наоборот</a>.</p>
+<ol start="2">
+<li>Стоит периодически пробегать по своим зависимостям и смотреть, что в них есть подозрительного, а затем отписывать issues или делать pull requests в проблемные модули.</li>
+</ol>
+<p>Если вам близка проблема обновления зависимостей, то напоследок могу посоветовать несколько полезных инструментов:</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/npm-check-updates">npm-check-updates</a> - быстро смотрим обновления версий пакетов, быстро их ставим. Только аккуратно!</li>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/snyk">snyk</a> - проверка безопасности пакетов, про него я уже писал <a target="_blank" rel="noopener" href="https://habrahabr.ru/post/347934/">чуть раньше</a>.</li>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/nsp">node security project</a> - ещё один инструмент для проверки безопасности зависимостей, который можно считать родным для экосистемы, потому что его недавно приобрёл npm.</li>
+<li>В случае, если вы работаете с фронтом, то наверняка используете что-то вроде webpack-bundle-analyzer, который вам расскажет, что именно у вас вышло в результате. Но я с фронтом не работаю, так что здесь внятных рекомендаций дать не могу.</li>
+<li>Так же полезно иметь всякие бейджики и CI интеграции, которые вам будут наглядно показывать и оповещать, если что-то устарело или стало небезопасным. Примеров бейджиков приводить не буду, их весьма много, и часть вы можете посмотреть на <a target="_blank" rel="noopener" href="https://shields.io/">shields.io</a>. Интеграций тоже много, и, если у вас opensource проект, то travis-ci может прогонять практичски любые проверки.</li>
+</ol>
+<p>Периодически появляются подобные посты, но время идёт - так что расскажите, какие полезные проверки и инструменты вы используете в своих проектах сейчас.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/habr/">habr</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="as_sitesearch" value="articles.jehy.ru">
+  </form>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.43px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.71px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.71px;">android</a> <a href="/tags/applet/" style="font-size: 12.14px;">applet</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.71px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15.71px;">dev</a> <a href="/tags/fun/" style="font-size: 14.29px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.29px;">habr</a> <a href="/tags/java/" style="font-size: 12.14px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.71px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/openid/" style="font-size: 10.71px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.14px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.14px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 16.43px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.14px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.71px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.43px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.57px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 15px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.14px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.71px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BB%D1%8E%D0%B4%D0%B8/" style="font-size: 10px;">люди</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.71px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.86px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 17.14px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.29px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.71px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.71px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.71px;">работа</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.14px;">таро</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.86px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.71px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.57px;">цитаты</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2020/06/26/как-активный-гражданин-приучает-людей-к-фишингу/">Как «активный гражданин» приучает людей к фишингу</a>
+      </li>
+    
+      <li>
+        <a href="/2020/02/16/снимаем-покрытие-кода-с-уже-запущенного-nodejs-приложения/">Снимаем покрытие кода с уже запущенного Node.JS приложения</a>
+      </li>
+    
+      <li>
+        <a href="/2020/01/31/как-мигрировать-с-mocha-на-jest-в-15-простых-шагов-—-и-зачем/">Как мигрировать с mocha на jest в 15 простых шагов — и зачем</a>
+      </li>
+    
+      <li>
+        <a href="/2019/12/17/зачем-нужно-столько-разработчиков/">Зачем нужно столько разработчиков?</a>
+      </li>
+    
+      <li>
+        <a href="/2019/11/22/deno-время-nodejs-уходит/">Deno - время Node.JS уходит?</a>
+      </li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><!--<div class="alignleft">
+  
+  &copy; 2020 Jehy
+  
+</div>-->
+<div class="clearfix"></div>
+</footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

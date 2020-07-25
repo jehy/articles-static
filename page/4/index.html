@@ -53,351 +53,385 @@
 </header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
-  <article id="post-2013/01/resistance" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <article id="post-2016/10/лёгкая-интеграция-tor-в-android-приложение-на-примере-клиента-для-рутрекера" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
     <header>
       
         <div class="icon"></div>
-        <time class="dt-published" datetime="2013-01-13T04:52:31.000Z"><a href="/2013/01/13/resistance/">2013-01-13</a></time>
+        <time class="dt-published" datetime="2016-10-18T10:00:00.000Z"><a href="/2016/10/18/лёгкая-интеграция-tor-в-android-приложение-на-примере-клиента-для-рутрекера/">2016-10-18</a></time>
       
       
   
-    <h1 class="title"><a href="/2013/01/13/resistance/">Resistance</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p>Я просто оставлю это здесь.</p>
-<img src="/2013/01/13/resistance/1.jpg" class="">
-
-<img src="/2013/01/13/resistance/2.jpg" class="">
-
-<img src="/2013/01/13/resistance/3.jpg" class="">
-
-<img src="/2013/01/13/resistance/4.jpg" class="">
-
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article id="post-2012/11/на-стороне-сердца" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2012-11-20T01:08:56.000Z"><a href="/2012/11/20/на-стороне-сердца/">2012-11-20</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2012/11/20/на-стороне-сердца/">На стороне сердца</a></h1>
+    <h1 class="title"><a href="/2016/10/18/лёгкая-интеграция-tor-в-android-приложение-на-примере-клиента-для-рутрекера/">Лёгкая интеграция tor в android приложение на примере клиента для рутрекера</a></h1>
   
 
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <p>Наступает новая ночь, и я выбираю, на какой бок ложиться спать. Глупый, бытовой такой выбор. Казалось бы, какая разница, как повернуть эту котлету весом 80 килограмм. Но разница есть. Небольшая, но очень принципиальная. Слева у меня находится сердце.</p>
-<p>Человек ассиметричен со своим левым и правым полушарием, с его различными руками, глазами. Справа нет сердца, нет эмоций, чувств. Поэтому моя правая рука так точна. Поэтому правый глаз видит вдаль на сотни метров дальше, чем левый. Сторона сердца слаба и слепа.</p>
-<p>Можно лечь на правый бок, и проспать до рассвета крепким и здоровым сном без сновидений.</p>
-<p>Или на левый - и слушать, как тихий стук разносится по всему телу. Зачем оно стучит? По кому оно стучит? Ведь ничего не бывает просто так, само по себе. Вслушайся. Ты тоже слышишь? Они зовут нас.</p>
-<p>Наши друзья, наши враги, персонажи прочитанных и ненаписанных книг. Кто-то с тобой разговаривает, кто-то напоминает о себе. Ещё кто-то хочет тебя убить.
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2012/11/20/на-стороне-сердца/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/313030%7D">Оригинал поста на хабре</a></p>
+<p>Мне давно было интересно, можно ли легко добавить проксирование через тор в Android приложение. Вроде бы довольно очевидная задача, плюс тор браузеры уже под эту платформу давно есть… Но есть много задач, которые сложнее, чем кажутся. Для нетерпеливых сразу скажу - да, можно, и получается довольно легко, быстро и классно. В особенности если не копать с нуля, а воспользоваться моими наработками.</p>
+<p>Для примера я буду использовать приложение для работы с рутрекером - никто не любит код, который работает со сферический конём в вакууме. Раньше это приложение обходило блокировку <a target="_blank" rel="noopener" href="https://habrahabr.ru/post/279267/">при помощи Google Compression Proxy</a> - но увы - то ли рутрекер, то ли гугл выпилил возможность авторизации с этой проксёй. Сразу скажу, что, конечно, есть всякие впны и прочее, что вы используете для лёгкого обхода блокировки и просмотра сериальчиков. Но речь здесь идёт не про это. Как вы понимаете, тор можно использовать в мобильном приложении для огромного количества вещей - например, для доступа к веб сайтам в .onion или для реализации особо безопасного мессенджера.
+<cut></p>
+<h1>Как подключить библиотеку для работы с Тором</h1>
+<h2>Как собрать с нуля</h2>
+Если вас не интересует сборка с нуля, то сразу перейдите к следующему заголовку.
 
+<p>Итак, что у нас есть на эту тему из готового инструментария. Есть особый репозиторий от неких ребят под предводительством Microsoft (ссылка в подвале). Вроде бы у них всё работало - но качество и механизм сборки просто ужасают. А ещё репозиторий устарел на два года. И скомпилированный версии библиотеки там нет, есть только довольно стрёмные инструкции по тому, как собрать её самостоятельно (в стиле - “я делал так, не знаю почему, но без этого ничего не работало”). Впрочем, имеющихся инструкций вполне достаточно для того, чтобы обновить код до актуального состояния и исправить все странные косяки.</p>
+<ol><li>Клонируем себе этот репозиторий.
 
-
-
-  <article id="post-2012/11/кто-убивает-оружием-тот-забыл-лицо-сво" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2012-11-09T08:44:30.000Z"><a href="/2012/11/09/кто-убивает-оружием-тот-забыл-лицо-сво/">2012-11-09</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2012/11/09/кто-убивает-оружием-тот-забыл-лицо-сво/">кто убивает оружием, тот забыл лицо своего отца</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <img src="/2012/11/09/%D0%BA%D1%82%D0%BE-%D1%83%D0%B1%D0%B8%D0%B2%D0%B0%D0%B5%D1%82-%D0%BE%D1%80%D1%83%D0%B6%D0%B8%D0%B5%D0%BC-%D1%82%D0%BE%D1%82-%D0%B7%D0%B0%D0%B1%D1%8B%D0%BB-%D0%BB%D0%B8%D1%86%D0%BE-%D1%81%D0%B2%D0%BE/the-dark-tower2.jpg" class="">
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Я целюсь не рукой; кто целится рукой, тот забыл лицо своего отца.</span><br><span class="line">Я целюсь глазом.</span><br><span class="line">Я стреляю не рукой; кто стреляет рукой, тот забыл лицо своего отца.</span><br><span class="line">Я стреляю разумом.</span><br><span class="line">Я убиваю не оружием; кто убивает оружием, тот забыл лицо своего отца.</span><br><span class="line">Я убиваю сердцем.</span><br><span class="line">(c)</span><br></pre></td></tr></table></figure>
-
-<p>Пользуясь случаем, передаю привет стрелкам из Гилеада.
-Начинаем работать с ЭКГ.</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article id="post-2012/09/настоящая" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2012-09-25T23:53:26.000Z"><a href="/2012/09/25/настоящая/">2012-09-25</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2012/09/25/настоящая/">Настоящая</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p>Каждый вечер я жду тебя у стола, как верная супруга. Каждый вечер я надеюсь, что между нами что-то изменится, что ты станешь ближе.</p>
-<p>Но нет. Ты снова пришла в этой серой мышиной куртке, на голове - кое-как завязанный грязный пучок, на руках - обгрызенные ногти, годами не знавшие маникюра. Ты садишься, и теперь хотя бы не видно твои грязно-синие, едва достающие до щиколотки джинсы. Но некуда спрятать самое жуткое - твой близорукий затравленный взгляд и морщину на лбу, которая наверняка станет постоянной ещё через полгода. Ты спешишь ко мне, ты хочешь, чтобы я тебя утешила. Ты думаешь, что у тебя приступ вдохновения.
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2012/09/25/настоящая/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article id="post-2012/09/mediawiki-1-19-unable-to-save-thumbnail-to-destination" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2012-09-17T17:43:58.000Z"><a href="/2012/09/17/mediawiki-1-19-unable-to-save-thumbnail-to-destination/">2012-09-17</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2012/09/17/mediawiki-1-19-unable-to-save-thumbnail-to-destination/">Mediawiki 1.19 Unable to save thumbnail to destination</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p>In English:
-If you have error
-<strong>Error creating thumbnail: Unable to save thumbnail to destination</strong>
-you can solve it with
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2012/09/17/mediawiki-1-19-unable-to-save-thumbnail-to-destination/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article id="post-2012/09/маленькая-русалочка" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2012-09-16T13:51:11.000Z"><a href="/2012/09/16/маленькая-русалочка/">2012-09-16</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2012/09/16/маленькая-русалочка/">Маленькая русалочка</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p>Она решила, что пора уже что-то сделать. Каждый проклятый вечер она выплывала к берегу, чтобы вновь посмотреть на него. Он сидел на камне, и печально смотрел на неё своими большими глазами. Возможно, если бы он снял очки, его глаза стали бы меньше - но она никогда над этим всерьёз не задумывалась.</p>
-<p>Один раз она спросила себя, видит ли он её вообще и понимает ли её чувства. Но потом вспомнила, как однажды целый вечер он провёл за тем, что подбирал плоские камушки и кидал ей. Она собрала их все - маленькие знаки его внимания и любви к ней. Конечно, он видел. Конечно, он знал. Иначе и быть не могло. И кому какая разница, что он покрыт бледной кожей, а она - синей чешуёй?</p>
-<p>Она часто с ним говорила. Не то чтобы она серьёзно думала, что её слова могут достичь любимого через оглушающий шум прибоя - но она была уверена, что связь любящих сердец позволит им общаться и без передачи звуков. Она спрашивала, и она же отвечала за него. Конечно, её принц хотел сказать именно это - она даже видела иногда, как шевелится его рот. Он никогда не грубил, никогда не возражал ей. Всегда соглашался, жалел, подбадривал. Она уже и не знала, как смогла бы прожить без ежедневного общения с ним.</p>
-<p>Ей так хотелось подплыть ближе, чтобы прикоснуться к нему, чтобы посмотреть ему глаза в глаза - но увы. Около берега под водой скрывались очень острые скалы, и они бы мгновенно растерзали её тело. И так почти все силы её плавников уходили на то, чтобы продержаться на границе скал те два часа, что возлюбленный проводил здесь. Но она думала, что так даже лучше - их любовь на расстоянии с каждым днём становится крепче и чище. И всё же… Приближалось время нереста.
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2012/09/16/маленькая-русалочка/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article id="post-2012/08/оно-2012" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2012-08-07T23:34:48.000Z"><a href="/2012/08/07/оно-2012/">2012-08-07</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2012/08/07/оно-2012/">ОНО-2012</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p>Оно чувствовало приближение пищи. Давненько люди не заходили сюда, и уже вполне можно было перекусить. Странно - приближающийся человечек не боялся темноты, Оно даже подумало, что темнота ему привычнее, чем дневной свет. Ну не важно. Всё равно он обыкновенный человек, пусть даже его страхи отличаются от страхов других. Оно пустило маленький отросток в его сознание и попыталось нащупать привычные образы. Так… Мертвецы? Нет, почему-то это для него обыденно. Крысы? Нет. Оборотни? Нет… Пираньи, птицы, давние враги… Нет. Оно почувствовало неуверенность. Человек был каким-то пустым и никчёмным, даже порядочных страхов не было. Война? - Нет, не слышал. Жестокая мать и отец? - Нет, образцовое семейство. Чума, гангрена, корь, цинга? Нет, даже не представляет, что это такое. Оно почувствовало, что за человеком идут ещё двое. Но они ещё далеко, а вот человек подошёл почти к самому логову. Нужно было действовать без промедления, и Оно вместо отработанных программ начало искать пугающие его образы. Некоторые были странными, какие-то позабавили даже Оно. К сожалению, Оно никак не смогло бы представить пугающий и давящий образ “иппотеки”, например. Эх, человечишка, даже страхи у тебя мелочные.
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2012/08/07/оно-2012/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article id="post-2012/06/память" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2012-06-04T21:50:04.000Z"><a href="/2012/06/04/память/">2012-06-04</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2012/06/04/память/">Память</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p>Не люблю лето за длинные ночи. Приходится ждать столько времени, чтобы наконец опустилась тьма. А уж как у меня в печёнках сидят эти ваши мегаполисы, где в сутках не находится ни секунды тишины и покоя. Поэтому я предпочитаю такие вот маленькие города со слабыми фонарями, покосившимися домиками и тёмными улицами. К счастью, мой друг разделяет моё увлечение.</p>
-<p>Ухватившись за газовую трубу, я взобрался на подоконник,потом подтянулся на балке и залез на скат крыши. Стараясь не повредить хрупкий шифер, я дополз до окна и заглянул внутрь одним глазом. Не хватало ещё его жене меня здесь застукать.</p>
-<p>— Бдм! Динь! Трень! - возражала печатная машинка. Черноволосый парень задумчиво изучал пятна плесени на потолке, периодически прихлёбывая что-то из поллитровой банки. Он нажимал одним пальцем на разные клавиши, не глядя, и только периодически со вздохом вынимал листы, тщательно рвал их и кидал прямо на пол. Там уже набралась изрядная гора обрывков. Я медленно сполз на пол комнаты с подоконника - окно было открыто настежь, как всегда.
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2012/06/04/память/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article id="post-2012/01/отец-дмитрий-смирнов-апофтегмы" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2012-01-29T21:07:50.000Z"><a href="/2012/01/29/отец-дмитрий-смирнов-апофтегмы/">2012-01-29</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2012/01/29/отец-дмитрий-смирнов-апофтегмы/">Отец Дмитрий Смирнов. Апофтегмы</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <ul>
-<li><p>Один другому: “- Ты скотина” - “Я не скотина, потому что ты скотина!”. И никогда не сойдутся на том, что мы оба скоты.</p>
 </li>
-<li><p>Иногда мы смиряемся “ну и что мол жена такая, поживу уж как-нибудь с ней лет 26, а там глядишь и Ваганьково или Митино”</p>
+<li>Обновляем там компонент, который отвечает за управление тором - jtorctl. Они использовали форк основного репозитория с правками от briar, но эти правки уже включены в основной репозиторий, так что лучше взять с основного. Можно подключать из maven репозитория, но я такие вещи обычно забираю исходниками - можно сразу посмотреть, прогнать анализ и править на лету баги - проект-то довольно сырой, несмотря на возраст.
+
 </li>
-<li><p>Некоторые исповедываются, “батюшка, грешен я, плохо подумал про того-то того-то, да потому что он сволочь у меня часы украл!!!”</p>
+<li>Обновляем geoip и geoip6 — базы данных блоков IP-адресов с привязкой к географическому положению каждого блока для версий IPv4 и IPv6 соответственно. Для этого скачиваем на сайте тора windows expert bundle.
+
 </li>
-<li><p>Ты считаешь, что сегодня прочитал сорок молитв вместо тридцати девяти значит Богу угодил? Ты глупый совсем? С кем ты торгуешься? Богу не количество нужно, а искренность, иногда проще вообще перекреститься, но чтобы от всего сердца.</p>
+<li>Обновляем сам тор (то есть нативную библиотеку). Стандартной общедоступной нет (ну или я плохо искал) - так что идём к ребятам, которые разрабатывают тор и тор браузер под андроид (Orbot и Orfox), берём последний релиз их Orbot и вынимаем оттуда библиотеку. Тор там довольно свежий, что приятно.
+
 </li>
-<li><p>Поэтому нам и научить кого-то трудно и от нас человек часто ничего не может воспринять, даже если мы хотим чего-то объяснять. Потому что это все мы делаем с гордостью, тщеславием и с превозношением, желанием возвыситься, желанием человека унизить, растоптать, поставить его на место, доказать свою мнимую правоту и т.д. Человек не сможет это воспринять.</p>
+<li>Правим руками всё, что перестало компилироваться в нашем проекте. Несколько функций в зависимых библиотеках изменились, но в целом всё интуитивно понятно и поправимо за 5 минут.
+
 </li>
-<li><p>Много вопросов задают на экзамене? так это не засыпают, а вытягивают!</p>
+<li>Следуя рекомендациям ридми нашего проекта, создаём локальные мавен репозитории и строим из кучи кусков наш проект. Кстати, обратите внимание, что билд скрипт настолько кривой, что в одном месте включает в себя предыдущий релиз себя же. Жуть. Так что рекомендую переписать его заново, простым и понятным языком, чтобы получить на выходе обыкновенную библиотеку aar.
 </li>
-<li><p>Покаяние - это не айм сорри.
+</ol>
+<h2>Как собрать из моих наработок</h2>
+Пункты 1-6 я уже сделал за вас, так что просто соберите библиотеку из моего репозитория, или скачайте её в секции релизов. Ссылка будет в “подвале” поста. Однако обращаю внимание, что правильным будет проверить код и библиотеки на соответствие оригинальным и отсутствие закладок. Не стоит такие вещи добавлять вслепую в свои приложения.
+
+<h1>Как перестать волноваться и начать проксировать через тор</h1>
+Сначала нужно включить тор:
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int totalSecondsPerTorStartup &#x3D; 4 * 60;</span><br><span class="line">int totalTriesPerTorStartup &#x3D; 5;</span><br><span class="line">try &#123;</span><br><span class="line">  boolean ok &#x3D; onionProxyManager.startWithRepeat(totalSecondsPerTorStartup, totalTriesPerTorStartup);</span><br><span class="line">  if (!ok)</span><br><span class="line">    Log.e(&quot;TorTest&quot;, &quot;Couldn&#39;t start Tor!&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">  catch (InterruptedException | IOException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Затем подождать, пока он подцепится:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">while (!onionProxyManager.isRunning())</span><br><span class="line">  Thread.sleep(90);</span><br></pre></td></tr></table></figure>
+<p>Если всё прошло успешно - ура, он слушает у нас localhost на каком-то случайном порту:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Log.v(&quot;My App&quot;, &quot;Tor initialized on port &quot; + onionProxyManager.getIPv4LocalHostSocksPort());</span><br></pre></td></tr></table></figure>
+<p>Но это пока не всё. У нас теперь есть тор, который слушает порт в качестве Socks4a прокси. Однако далеко не все стандартные библиотеки умеют работать с Socks4a. Там из соображений анонимности требуется, чтобы резолв хоста происходил на прокси, а не ранее. Не знаю, какие из стандартных библиотек это умеют, и у меня был код, написанный с Apache HttpComponents. Я уже <a target="_blank" rel="noopener" href="https://habrahabr.ru/post/308522/">писал ранее</a>, почему их можно использовать, да и данный пост не про то. Если вы хотите, то можете реализовать то же самое на любой другой библиотеке.</p>
+<p>Итак, для использования httpComponents нам нужно переписать ConnectionSocketFactory и SSLConnectionSocketFactory.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">public class MySSLConnectionSocketFactory extends SSLConnectionSocketFactory &#123;</span><br><span class="line"></span><br><span class="line">    public MySSLConnectionSocketFactory(final SSLContext sslContext) &#123;</span><br><span class="line">        super(sslContext);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Socket createSocket(final HttpContext context) throws IOException &#123;</span><br><span class="line">        return new Socket();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Socket connectSocket(</span><br><span class="line">            int connectTimeout,</span><br><span class="line">            Socket socket,</span><br><span class="line">            final HttpHost host,</span><br><span class="line">            final InetSocketAddress remoteAddress,</span><br><span class="line">            final InetSocketAddress localAddress,</span><br><span class="line">            final HttpContext context) throws IOException &#123;</span><br><span class="line">        Args.notNull(host, &quot;HTTP host&quot;);</span><br><span class="line">        Args.notNull(remoteAddress, &quot;Remote address&quot;);</span><br><span class="line">        InetSocketAddress socksaddr &#x3D; (InetSocketAddress) context.getAttribute(&quot;socks.address&quot;);</span><br><span class="line">        socket &#x3D; new Socket();</span><br><span class="line">        connectTimeout &#x3D; 100000;</span><br><span class="line">        socket.setSoTimeout(connectTimeout);</span><br><span class="line">        socket.connect(new InetSocketAddress(socksaddr.getHostName(), socksaddr.getPort()), connectTimeout);</span><br><span class="line">        DataOutputStream outputStream &#x3D; new DataOutputStream(socket.getOutputStream());</span><br><span class="line">        outputStream.write((byte) 0x04);</span><br><span class="line">        outputStream.write((byte) 0x01);</span><br><span class="line">        outputStream.writeShort((short) host.getPort());</span><br><span class="line">        outputStream.writeInt(0x01);</span><br><span class="line">        outputStream.write((byte) 0x00);</span><br><span class="line">        outputStream.write(host.getHostName().getBytes());</span><br><span class="line">        outputStream.write((byte) 0x00);</span><br><span class="line"></span><br><span class="line">        DataInputStream inputStream &#x3D; new DataInputStream(socket.getInputStream());</span><br><span class="line">        if (inputStream.readByte() !&#x3D; (byte) 0x00 || inputStream.readByte() !&#x3D; (byte) 0x5a) &#123;</span><br><span class="line">            throw new IOException(&quot;SOCKS4a connect failed&quot;);</span><br><span class="line">        &#125; else</span><br><span class="line">            Log.v(&quot;SSLConnectionSF&quot;, &quot;SOCKS4a connect ok!&quot;);</span><br><span class="line">        inputStream.readShort();</span><br><span class="line">        inputStream.readInt();</span><br><span class="line"></span><br><span class="line">        SSLConnectionSocketFactory sslSocketFactory &#x3D; SSLConnectionSocketFactory.getSocketFactory();</span><br><span class="line">        SSLSocket sslSocket &#x3D; (SSLSocket) sslSocketFactory.createLayeredSocket(socket, host.getHostName(), host.getPort(), context);</span><br><span class="line">        prepareSocket(sslSocket);</span><br><span class="line">        return sslSocket;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public class MyConnectionSocketFactory implements ConnectionSocketFactory &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Socket createSocket(final HttpContext context) throws IOException &#123;</span><br><span class="line">        return new Socket();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Socket connectSocket(</span><br><span class="line">            int connectTimeout,</span><br><span class="line">            Socket socket,</span><br><span class="line">            final HttpHost host,</span><br><span class="line">            final InetSocketAddress remoteAddress,</span><br><span class="line">            final InetSocketAddress localAddress,</span><br><span class="line">            final HttpContext context) throws IOException, ConnectTimeoutException &#123;</span><br><span class="line"></span><br><span class="line">        InetSocketAddress socksaddr &#x3D; (InetSocketAddress) context.getAttribute(&quot;socks.address&quot;);</span><br><span class="line">        socket &#x3D; new Socket();</span><br><span class="line">        connectTimeout &#x3D; 100000;</span><br><span class="line">        socket.setSoTimeout(connectTimeout);</span><br><span class="line">        socket.connect(new InetSocketAddress(socksaddr.getHostName(), socksaddr.getPort()), connectTimeout);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        DataOutputStream outputStream &#x3D; new DataOutputStream(socket.getOutputStream());</span><br><span class="line">        outputStream.write((byte) 0x04);</span><br><span class="line">        outputStream.write((byte) 0x01);</span><br><span class="line">        outputStream.writeShort((short) host.getPort());</span><br><span class="line">        outputStream.writeInt(0x01);</span><br><span class="line">        outputStream.write((byte) 0x00);</span><br><span class="line">        outputStream.write(host.getHostName().getBytes());</span><br><span class="line">        outputStream.write((byte) 0x00);</span><br><span class="line"></span><br><span class="line">        DataInputStream inputStream &#x3D; new DataInputStream(socket.getInputStream());</span><br><span class="line">        if (inputStream.readByte() !&#x3D; (byte) 0x00 || inputStream.readByte() !&#x3D; (byte) 0x5a) &#123;</span><br><span class="line">            throw new IOException(&quot;SOCKS4a connect failed&quot;);</span><br><span class="line">        &#125; else</span><br><span class="line">            Log.v(&quot;SSLConnectionSF&quot;, &quot;SOCKS4a connect ok!&quot;);</span><br><span class="line">        inputStream.readShort();</span><br><span class="line">        inputStream.readInt();</span><br><span class="line">        return socket;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Использовать эти фабрики легко и просто. Для этого нужно создать HttpClient, который использует эти библиотеки:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public HttpClient getNewHttpClient() &#123;</span><br><span class="line"></span><br><span class="line">     Registry&lt;ConnectionSocketFactory&gt; reg &#x3D; RegistryBuilder.&lt;ConnectionSocketFactory&gt;create()</span><br><span class="line">             .register(&quot;http&quot;, new MyConnectionSocketFactory())</span><br><span class="line">             .register(&quot;https&quot;, new MySSLConnectionSocketFactory(SSLContexts.createSystemDefault()))</span><br><span class="line">             .build();</span><br><span class="line">     PoolingHttpClientConnectionManager cm &#x3D; new PoolingHttpClientConnectionManager(reg);</span><br><span class="line">     return HttpClients.custom()</span><br><span class="line">             .setConnectionManager(cm)</span><br><span class="line">             .build();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>И указать ему наш прокси сервер:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HttpClient cli &#x3D; getNewHttpClient();</span><br><span class="line"> int port &#x3D; onionProxyManager.getIPv4LocalHostSocksPort();</span><br><span class="line"> InetSocketAddress socksaddr &#x3D; new InetSocketAddress(&quot;127.0.0.1&quot;, port);</span><br><span class="line"> HttpClientContext context &#x3D; HttpClientContext.create();</span><br><span class="line"> context.setAttribute(&quot;socks.address&quot;, socksaddr);</span><br></pre></td></tr></table></figure>
+<p>Всё, теперь мы можем использовать тор так же, как если бы делали обыкновенные запросы. Более того, мы можем так же обращаться и к веб сайтам .onion.</p>
+<h1>Результат</h1>
+Получившийся код я использовал в своём приложении для рутрекера. Да, инициализация тора занимает около 20 секунд, и страницы грузятся не так быстро - но зато мы гарантированно проходим блокировку. А все ресурсы, которые не блокированы, подгружаются через обычное соединение. Можно было бы остальные ресурсы пропускать через Google Compression Proxy, но многие жаловались, что у них заблокирован этот прокси - так что я не стал этого делать. Конечно, в приложении можно было бы ещё много всего сделать - например, кэшировать статику на телефоне для экономии трафика и более быстрой работы - но это не столь критично, да и приложение я писал скорее для примера.
+
+<h1>Заключение</h1>
+Тор на андроиде - классная и удобная штука, которая достаточно работает, и её действительно можно использовать в своих приложениях. Кстати да, есть гораздо более лёгкий способ это делать - просто требовать установки Orbot, который сам поднимет вам тор. Но мне не нравятся зависимости одних приложений от других, да и 3 лишних мегабайта не так критичны в размере приложения. Так что если кому понравилось моё решение - используйте, делайте пулл реквесты, и да пребудет с вами свобода.
+
+<h1>Ссылки:</h1>
+<ol>
+    <li><a target="_blank" rel="noopener" href="https://github.com/thaliproject/Tor_Onion_Proxy_Library">Исходная библиотека</a>;</li>
+    <li><a target="_blank" rel="noopener" href="https://github.com/jehy/Tor-Onion-Proxy-Library">Моя сборка библиотеки</a>;</li>
+    <li><a target="_blank" rel="noopener" href="https://github.com/jehy/rutracker-free">Приложение для рутрекера</a>;</li>
+    <li><a target="_blank" rel="noopener" href="https://guardianproject.info">Guardian Project</a> - ребята, которым мы обязаны наличием нативной тор библиотеки.</li>
+</ol>
+<img src="https://habrastorage.org/files/195/45e/e8d/19545ee8d9e144c4860db4f6490d804a.jpg" align="center"/>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article id="post-2016/08/о-чём-молчит-google-и-почему-вам-стоит-использовать-apache-httpcomponents-в-android" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2016-08-25T10:00:00.000Z"><a href="/2016/08/25/о-чём-молчит-google-и-почему-вам-стоит-использовать-apache-httpcomponents-в-android/">2016-08-25</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/08/25/о-чём-молчит-google-и-почему-вам-стоит-использовать-apache-httpcomponents-в-android/">О чём молчит Google и почему вам стоит использовать Apache HttpComponents в Android</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/308522%7D">Оригинал поста на хабре</a></p>
+<p>Эту статью нужно было публиковать гораздо раньше (почти на шесть лет), сэкономив тем самым Android разработчикам огромное количество месяцев бессмысленной разработки - но увы, не всегда есть на это время.</p>
+<h1>Введение</h1>
+Если вы разрабатываете под Android, то наверняка сталкивались с тем, что открываете вы своё приложение, которое отлично работало несколько лет, и тут внезапно оказывается, что Apache httpComponents стали deprecated, и их не рекомендуется использовать. Сначала давайте разберём, что же произошло, а потом сделаем выводы, что делать.<habracut/>
+
+<h2>Что произошло</h2>
+Слишком далеко закапываться я не стал, однако много интересных вещей можно получить из рассылки org.apache.hc.dev и джиры Apache. Например, факт что:
+
+<blockquote>Android включал в себя старый pre-beta релиз библиотеки</blockquote>
+Более того, на протяжении всей истории версия библиотеки не менялась, и если включаете у себя apache legacy, то это всё та же pre-beta.
+
+<p>Подтверждение можно прочитать <a target="_blank" rel="noopener" href="https://hc.apache.org/httpcomponents-client-4.3.x/android-port.html">тут</a>.</p>
+<p>“Подтверждение на английском:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Google Android 1.0 was released with a pre-BETA snapshot of Apache HttpClient. To coincide with the first Android release Apache HttpClient 4.0 APIs had to be frozen prematurely, while many of interfaces and internal structures were still not fully worked out. As Apache HttpClient 4.0 was maturing the project was expecting Google to incorporate the latest code improvements into their code tree. Unfortunately it did not happen. Version of Apache HttpClient shipped with Android has effectively become a fork. Eventually Google decided to discontinue further development of their fork while refusing to upgrade to the stock version of Apache HttpClient citing compatibility concerns as a reason for such decision. As a result those Android developers who would like to continue using Apache HttpClient APIs on Android cannot take advantage of newer features, performance improvements and bug fixes.</span><br></pre></td></tr></table></figure>
+
+<blockquote>Google просто забил на проблему</blockquote>
+Разработчики из Apache активно работали над библиотекой, но назначенные им менеджеры Google не отвечали месяцами, менялись, а в конце концов сказали, что это не приоритетная задача, пользователям хватает старой версии, да и вообще надо выкинуть эту библиотеку. В подтверждение - немного из упомянутого мной листа рассылки (работа началась в 2008 году, а в 2010 внезапно проявился новый менеджер):
+
+<p>Новый менеджер признаёт, что задаче не уделяют внимания… Ну и ладно.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Jesse Wilson commented on HTTPCLIENT-898:</span><br><span class="line">I&#39;m Bob&#39;s successor on the Android team. If you&#39;ve got questions about our use of the HTTP client code, I&#39;ll do my best to answer &#39;em. I regret that we haven&#39;t given this code much attention lately; that said I&#39;m happy that it hasn&#39;t really needed it.</span><br></pre></td></tr></table></figure>
+
+<p>Тогда же прозвенел первый тревожный звоночек:</p>
+<p>Знаете, спустя два года мы решили, что ничего не надо делать.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">I&#39;m quite sorry that Android included an unreleased rev of Apache HTTP client, and I suspect we&#39;ll be paying for that mistake for quite a while.</span><br><span class="line"></span><br><span class="line">Because of the strict compatibility requirements of our platform, we will be unable to make forwards-incompatible API changes to the HTTP code. Unlike your desktop and serverside users, including the API as a part of the core platform significantly reduces our ability to make API changes.</span><br><span class="line"></span><br><span class="line">These days we aren&#39;t spending much time on the HTTP client code. Our users seem to be mostly satisfied with the ancient version in the SDK, and have been directing their complaints elsewhere (crypto, locales, XML...).</span><br><span class="line"></span><br><span class="line">That said, we do want to figure out a long term strategy for an HTTP client API that will work for both us and the Apache HTTP client team. We&#39;re considering a variety of options...</span><br><span class="line"></span><br><span class="line">  - Discouraging our users from using the built-in Apache HTTP client,    preferring the JDK&#39;s own URLConnection classes. Whether this is feasible depends mostly on whether the new APIs in Java 6 (which we&#39;re working on)   will satisfy the use cases that Apache HTTP client has covered for years.</span><br><span class="line"></span><br><span class="line">  - Replacing the Apache HTTP client API with a 3rd API in a &quot;com.google&quot;  or &quot;android.&quot; package. Such an API would likely be based on parts of your own code, but with a more limited API.</span><br><span class="line"></span><br><span class="line">  - Tidying up the version of Apache HTTP that we&#39;re already stuck with. This includes deprecating APIs that shouldn&#39;t have ever been exposed as  public, and possibly filling in any gaps using newer code from your project.</span><br><span class="line"></span><br><span class="line">But none of this work is particularly urgent since we&#39;re actively fighting fires in other areas of the core libraries.</span><br></pre></td></tr></table></figure>
+<p>Они не могут производит изменения в коде существующей библиотеки из-за несовместимостей? Oh rly? А если вынесут это в свой отдельный пакет на основе кода Apache, то внезапно смогут? Вообще, breaking changes в Android это отдельная тема, выходящая за рамки данной статьи, но чего стоит только ограничение разрешений приложений в шестёрке… При этом ребята из Apache активно старались предоставить максимальную совместимость, и было готовы сделать для этого что угодно. Но увы.</p>
+<p>Ребят, у нас мало времени, мы взяли вашу разработку и забили на неё, не беспокойте нас по пустякам.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">I explained on several earlier occasions that Android doesn&#39;t allow binary incompatibilities of any kind (not my rule). I understand that the HttpClient team is more tolerant of binary incompatibilities. While I&#39;m not saying it would be impossible to make these changes in Android, I am saying that it would take a lot of convincing (and time), it would annoy other people who are time-constrained and who have higher priorities, and it could likely fail anyway.</span><br></pre></td></tr></table></figure>
+
+<h2>Финал</h2>
+А дальше библиотеку просто без всяких адекватных объяснений выпилили с официальной рекомендацией использовать HttpUrlConnection. Вот <a target="_blank" rel="noopener" href="http://android-developers.blogspot.ru/2011/09/androids-http-clients.html">хотя бы что-то</a>, отдалённо похожее на объяснение ситуации от Джесси Вилсона, который был на то время в Dalvik team (к слову, он же и был вторым менеджером Google по связям с Apache. Запомните это имя).
+
+<p>В его статье вы можете увидеть, что среди преимуществ он видит:</p>
+<ul>
+    <li>Кеширование (которое, если надо, реализуется где угодно)</li>
+    <li>Малый вес библиотеки (да, но сомнительный аргумент)</li>
+    <li>Компрессия, которая сохраняет батарейку и ускоряет загрузку (да, но при желании мы можем использовать Google Compression Proxy и через Apache HttpComponents как обычный прокси)</li>
+</ul>
+Крайне сомнительные объяснения. Если вы сейчас сидите в шапочке из фольги, то рациональным доводом будет то, что гугл таким образом решил втихую заставить пользователей гонять весь свой трафик через свой прокси…
+<b>UPD</b>. Как мне справедливо указали, под компрессией имеется в виду не использование GCP, а использование стандартного gzip... Который у Apache есть уже много-много лет. Так что тем более странно.
+
+<p>К сожалению, большинство разработчиков слепо верят Google и сразу считают, что библиотека Apache “плохая”, и нужно бежать выкидывать её из своего кода.</p>
+<p>Разработчики из Apache прокомментировали это кратко:</p>
+<blockquote>Google has used the project when it suited their goals and screwed us afterwards. There is nothing we can do about it.</blockquote>
+
+<h2>Эпилог c OkHttp</h2>
+Если вы разрабатываете под Android, то наверняка видели рекомендации заменять Apache HttpComponents ныне популярной библиотекой OkHttp от Square.
+
+<p>А вы всё ещё помните милого парня Джесси Вилсона из Dalvik team? А вы знаете, что сейчас <a target="_blank" rel="noopener" href="https://github.com/swankjesse">он работает в Square</a>? И именно он является создателем OkHttp? Более того, вы знате, что OkHttp начинался как форк куска AOSP (Android Open Source Project), который в свою очередь брал свой код из Apache Harmony?</p>
+<p>Так что это и есть по сути создание форка Apache с последующим выкидыванием оригинала из обращения (второй вариант из озвученных ранее Джесси в общении с Apache). Звучит довольно гнусно, не правда ли? Единственное что непонятно - была ли это инициатива Google или самого Джесси. Но поступил он крайне некрасиво, выкинув конкурентов с помощью Google и придя весь в белом со своим решением.</p>
+<h1>И что же?</h1>
+Давайте разберёмся, какие есть варианты того, как жить дальше.
+
+<p><b>1. Использовать HttpUrlConnection</b>
+Рекомендованный подход Google. Действительно имеет смысл, если у вас простое приложение. Но не дай бог вам попробовать сделать что-то не совсем тривиальное. В моей практике таких случая было два - когда я пытался использовать SSL прокси и когда хотел обратиться к некоему айпишнику со своим именем хоста. Обе задачи при помощи HttpUrlConnection реализовать невозможно.</p>
+<p><b>2. Использовать другие продвинутые альтернативы</b>
+Например, тот же OkHttp. Сам его не пробовал, но говорят, что библиотека хорошая. Однако, вы потратите много времени на переписывание хорошего готового имеющегося кода (если у вас уже есть приложение). Ну и касательно именно OkHttp - я бы не стал использовать столь неприятно пахнущий форк.</p>
+<p><b>3. Использовать legacy библиотеку</b>
+Да, вы можете продолжать использовать всю ту же древнюю бету, что и раньше. Но зачем? Как быстрое затыкание дырки это решение неплохое, а если нет… То конечно нет. Обидно, что именно такой ответ является наиболее популярным решением на том же stack overflow - люди просто не понимают, что они используют версию библиотеки от 2008 года.</p>
+<p><b>4. Использовать последние версии Apache HttpComponents</b>
+В плюсах имеем то, что мы продолжаем использовать всё тот же код, не тратя время на переписывание и на изучение новой библиотеки и её багов. Более того, код написанный на HttpComponents будет у вас работать где угодно. Библиотека чудовищно мощная и позволяет вам сделать действительно что угодно.
+Вопрос - как её подключать?
+Если просто брать и подставлять в gradle, то выйдет конфликт классов с этой самой древней версией.
+В релизе 4.3 разработчики apache предлагали использовать специальные постфиксы “HC4” в классах для избегания конфликтов, но работало это как-то очень плохо.
+Зато к релизу 4.5 они уже рекомендуют другой, единственно логичный выход - использовать перепакованную под другим пространством классов библиотеку, собранную неким товарищем на гитхабе (ссылка ниже). Там, правда, на самом деле версия 4.4, а не 4.5 - но это не так принципиально. А если вас волнует, что вы используете собранную непонятно кем библиотеку (хотя она довольно популярна), то вы всегда можете собрать её сами из исходников. На данный момент я считаю это наиболее правильным выходом из сложившейся дурной ситуации (и сам делаю именно так).</p>
+<h2>Что дальше?</h2>
+Заметок по использованию пятой версии библиотеки на Android пока что нету - возможно, это объясняется тем, что она пока ещё в альфа версии. Или просто в Apache решили больше не иметь дела с Google и Android. Впрочем, даже если так - всегда найдутся энтузиасты, которые смогут корректно перепаковать последнюю версию. А работать с ней - сплошное удовольствие.
+
+<h2>Ссылки</h2>
+<ol>
+    <li><a target="_blank" rel="noopener" href="https://github.com/smarek/httpclient-android">Репозиторий</a> с перепакованной версией httpComponents;</li>
+    <li><a target="_blank" rel="noopener" href="https://hc.apache.org/httpcomponents-client-4.5.x/android-port.html">Заметки</a> о релизе 4.5, где рекомендуют использовать этот репозиторий;</li>
+    <li>Интересные <a target="_blank" rel="noopener" href="http://markmail.org/search/?q=order%3Adate-backward+list%3Aorg.apache.hc.dev+from%3ABob%2BLee+from%3AJesse%2BWilson#query:order%3Adate-backward%20list%3Aorg.apache.hc.dev%20from%3ABob%2BLee%20from%3AJesse%2BWilson+page:1+mid:2l7zed626lunw63s+state:results">фрагменты переписки</a> ребят из Apache и Google;</li>
+    <li>Любопытные задачи с комментариями в джире Apache - <a target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/HTTPCLIENT-1632">раз</a>  и <a target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/HTTPCLIENT-898">два</a>.</li>
+</ol>
+В процессе написания статьи я общался на эту тему с разработчиком из Apache, который подтвердил мои предположения, но от греха подальше упоминать его здесь не буду.
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article id="post-2016/08/хроника-взлома-pokemon-go" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2016-08-18T10:00:00.000Z"><a href="/2016/08/18/хроника-взлома-pokemon-go/">2016-08-18</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/08/18/хроника-взлома-pokemon-go/">Хроника взлома Pokemon Go</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/357166%7D">Оригинал поста на хабре</a></p>
+<h2>Введение от переводчика</h2>
+Перевёл эту историю, так как её посчитали интересной в моей <a target="_blank" rel="noopener" href="https://habrahabr.ru/post/307974/">предыдущей статье</a> по поводу взаимоотношений Niantic и разработчиков всякого дополнительного софта.
+Эта милая история не претендует на самый великий и профессиональный взлом всех времён и народов, но позволяет окунуться в уютную атмосферу open source сообщества, занятого общим делом. Возможно, кто-то вспомнит свои прошлые дни...<habracut/>
+Автор оригинала признаётся, что он не слишком хорошо разбирается в разработке, но это возможно и к лучшему - хорошо передаётся общая атмосфера без лишних технических деталей. Если вас интересуют именно технические детали, то вы можете походить по ссылкам в тексте или просто разобрать получившееся в итоге API. Да, вас может смутить, что в тексте порой говорится то о создании API, то о его взломе. Имеются в виду два разных API - API самой игры и API, которое делают разработчики для управления игрой извне. Придётся различать их по контексту. Да, так же следует учитывать, что обновления писались в спешке и порой усталым и сонным человеком - некоторые формулировки будут звучать странно. Так же прошу прощение за обилие ссылок, часть из которых уже нерабочая. Формат реддита не очень соответствует формату статьи, но мне показалось, что это будет интересно.
+
+<h2>Предыстория</h2>
+API перестало принимать запросы от всех источниках кроме обновлённого официального клиента. Теперь ему требуется "неизвестная 6", которая была и в более ранних версиях API, но не проверялась. На данный момент только официальный клиент может создать корректную "неизвестную 6". Мы не до конца уверены, что дело в "неизвестной 6”, но очень похоже на то - это фактический единственный большой кусок данных, который мы не можем пока воссоздать.
+
+<p>Мы не можем просто так взять и сравнить версии приложения до и после обновления, потому что эта переменная уже была в предыдущих версиях API, но сервер её не проверял.</p>
+<p>Само итоговое значение переменной неважно, и простой подбор не поможет - нам нужно не значение, а способ генерации “неизвестной 6”.</p>
+<p>Мы пытаемся найти, где именно она генерируется, чтобы воссоздать свою версию и восстановить работу наших API..
+Это довольно тяжело, поскольку некоторые фрагменты кода с трудом подвергаются анализу.</p>
+<h2>История</h2>
+04/08/2016 - 00:49: Видимо, изменилась логика и протокол.
+04/08/2016 - 01:37: Протокол не изменился, новых хешей не появилось. Возможно, теперь запросы подписываются какими-то криптографическими методами, но мы пока не уверены.
+04/08/2016 - 02:07: Становится очевидно, что изменение нетривиально, и реверс инжиниринг может занять много времени.
+04/08/2016 - 08:08: Все работают над определением “неизвестной 6”. Все известные данные пока собраны <a target="_blank" rel="noopener" href="https://docs.google.com/document/d/1gVySwQySdwpT96GzFT9Tq0icDiLuyW1WcOcEjVfsUu4">тут.</a>
+04/08/2016 - 15:06: Мы подтверждаем, что “неизвестная 6” ответственна за произошедшие изменения.
+5 August 2016, 14:00 - Прорыв? Разработчики, кажется, нашли, где генерируется “неизвестная 6”. Теперь нам нужно воссоздать процесс и надеяться на то, что всё заработает. И на то, что именно “неизвестная 6” нам всё сломала.
+14:30 - Канал в discord ушёл в приватный режим, потому что наш прорыв присваивают себе другие люди. Меня тоже выкинули из discord, так что апдейтов видимо больше не будет.
+(16:20) Меня пустили обратно. Мы теперь уверены, что дело именно в “неизвестной 6”. Это славно, иначе вся работа по её воссозданию была бы ненужной. Мы на верном пути.
+16:30 - Очень много сложной работы и непонятных слов. Насколько я понял, теперь мы знаем, где создаётся большая часть “неизвестной 6”. Теперь надо понять входные данные для генерации и способы дальнейшего шифрования этой неизвестной. Работы предстоит ещё довольно много...
+18:00 - Мы разобрали часть шифрования, и можем теперь частично понять исходные данные. Как только мы разберём всё шифрование, мы сможем повторить его процесс, прогнав через декомпилированный код.
+19:30 - Мы ещё на шаг ближе...
+20:30 - Прорыв #2: Мы связали вместе два куска кода, отвечающих за генерацию “неизвестной 6”. Мы нашли где вызывается функция шифрования. Как я говорил ранее, теперь у нас есть декомпилированная функция шифрования.
+21:15 - Нам осталось сделать две вещи:
+Привести декомпилированную версию шифрования в человеческий вид. Это кастомное шифрование, и декомпилированный код занял бы около 200 странц текста… Люди работают над этим - медленно, но верно. Не самая сложная часть работы, но трудоёмкая.
+Определить оставшиеся входные данные. Это может быть довольно трудно… Осталось 3-4 поля, и мы радуемся каждому маленькому прорыву.
+22:30 - Никаких новостей, кроме того, что "они работают", но я подумал, что хорошо бы что-то написать про последние сутки.
+Безумно круто наблюдать за работой программистов с реддита и их совместными усилиями по взлому “неизвестной 6”. К слову, это та самая неизвестная, на которой “сломались” хакеры Ингресса. Но коммьюнити разработчиков Pokemon Go гораздо больше. Некоторые работают над взломом уже 20 часов из тех 24, что произошли с момента изменения API. /u/keyphact уже не спал 40 часов (чувак, серьёзно - пойди поспи). Люди работают целеустремлённо и без устали. Я чувствую, что мы можем это сделать.
+
+<p>Мы нашли ядро создания “неизвестной 6” за какие-то несколько часов. Функции шифрования были декомпилированы и были найдены места их вызовов. Осталось 10% входных данных и нормальная реализация функций шифрования. Но так близко, но столь далеко. Справимся ли мы?</p>
+<p>23:30 - Мы поняли большую часть шифрования. Однако до сих не поняли, как хранятся входные данные (протобуффер), это безумно сложно. Это требуется, чтобы опередить оставшиеся входные данные. 
+01:30 - У нас есть полностью рабочее шифрование! (хотя мы его так до конца и не осознали!) Это можно считать прорывом #3. Осталось справиться с протобуффером.</p>
+<p>Это безумно интересно и познавательно и для меня тоже. Я с трудом понимаю, чем занимаются разработчики. Например, что такое “формат протобуффера”? Мне сказали, что оно где-то между входными данными и шифрованием. Оно берёт входные данные, формирует из них некий пакет и отсылает на шифрование.</p>
+<p>Теперь у нас есть шифрование, но мы не можем определить входные данные, потому что мы не знаем, как из них формируется пакет. Так что мы делаем свой формат пакета (протобуффера). Постепенно, шаг за шагом… Надеюсь, когда мы разберёмся с протобуффером, то входные данные прояснятся.
+03:30 - Никаких особых новостей. Мы работаем и продвигаемся.</p>
+<p>Следует упомянуть, что обеспечить работоспособность сообщества было безумно сложной задачей. Это был кошмар без всякого логичного решения, и у модераторов не было на него никакого “хорошего” ответа.
+Начиналось всё легко и просто - открытый канал на discord, где все могли работать вместе над починкой API. Но чуть позже стало ясно, что всё не так легко и просто…</p>
+<p>Количество людей на канале росло и росло. Что в свою очередь приводило к огромному количеству спама, вроде “Когда же будет готово API?” или “Что случилось с API?”. Работать стало невозможно, и нам пришлось ограничить права на постинг сообщений в канал.</p>
+<p>Что ещё хуже - некоторые представляли нашу работу как свою собственную и давали сообществу ложные обещания относительно того, когда будет готово новое API. А модераторов спамили запросами на право постинга в канал. Мы решили полностью скрыть канал.</p>
+<p>Мы пытались создать второй канал, в котором проверять пригодность для общей работы. Но там в итоге начались те же проблемы, что и в первом канале. А люди сердились на модераторов за то, что у них больше не было доступа к материалам первого канала, и им приходилось повторять ту работу, которую мы уже давно завершили.
+Сейчас мы опять двигаемся к прозрачности. Мы сделали первый канал снова доступным всем для чтения. Надеюсь, никто не злоупотребит этим снова. Мы так же сделали открытый для всех <a target="_blank" rel="noopener" href="https://github.com/pkmngodev/Unknown6">гитхаб</a> и <a target="_blank" rel="noopener" href="https://github.com/pkmngodev/Unknown6/wiki">вики</a>.</p>
+<p>Какие ещё выводы можем сделать из этого урока? Да никаких, наверное. Я просто хочу поблагодарить модераторов за безумное количество работы, которое они проделали, чтобы решить эту нерешаемую ситуацию.</p>
+<p>А теперь я пойду спать. Мы открыли <a target="_blank" rel="noopener" href="https://discord.gg/dKTSHZC">канал</a> для обновлений API  , поскольку сообщения в основном канале несколько осложнены для понимания всякими техническими терминами. Вернусь к вам завтра.</p>
+<p>5 August 2016, 13:00 - <a target="_blank" rel="noopener" href="https://github.com/pkmngodev/Unknown6/issues/5#issuecomment-237754201">Вот вам </a>подробное техническое описание нашей текущей проблемы.
+13:30 - Никаких особых новостей, мы работаем работу. Есть некоторый прогресс с протобуффером, мы вычленили несколько полей, но осталось пока довольно много непонятных данных. Мы так же разбираем функции шифрования, чтобы полностью осознать, как оно происходит. Реверс инжиниринг это сложная и утомительная работа
+Так же я хочу ответить на несколько комментариев. Маленький FAQ:
+Q: Я считаю, что я могу помочь, как это сделать?
+A: К сожалению, основной канал закрыт для новых разработчиков. Но вы можете помочь в нашем <a target="_blank" rel="noopener" href="https://github.com/pkmngodev/Unknown6">публичном репозитории</a> и делать пулл реквесты.
+Q: Разработчики должны попробовать x.
+A: Понятия не имею, о чём вы, но они уже наверняка это пробовали. Если вы уверены, что у вас действительно прорывная идея - отпишите её где-нибудь на discord.
+15:30 - Никаких особых новостей, всё ещё работаем работу.</p>
+<p>У нас появился <a target="_blank" rel="noopener" href="https://www.reddit.com/live/xdkgkncepvcq">новый тред</a> на реддите. Там есть больше технических деталей, в которых вы вряд ли разберётесь, если вы не программист. Если вы не видите обновлений, то это означает, что разработчики активно работают. Мы так же подняли <a target="_blank" rel="noopener" href="https://twitter.com/pkmngodev">твиттер</a>, в котором всё несколько более понятно - я буду писать туда при каждом обновлении, как только мне дадут туда доступ.</p>
+<p>Мы так же сделали инвайты на discord постоянными, их срок жизни больше не должен истекать, <em>скрестил пальцы</em>.
+Мы хотим держать вас в курсе и избежать появления фейковых твиттер аккаунтов.
+Я достиг лимита по длине текста. Дальше обновления будут <a target="_blank" rel="noopener" href="https://www.reddit.com/r/pokemongodev/comments/4w1cvr/pokemongo_current_api_status/d65qgx2">тут</a>.</p>
+<p>5 August 2016, 16:00 - мы определили ещё одно поле входных данных! Круто видеть наконец какой-то прогресс. Не надейтесь на решение вот прямо сейчас, у нас осталось ещё одно поле, но мы над ним уже работаем.
+17:00 - Мы проверили поле, которое я упоминал ранее - да, всё отлично! Настроение у всех отличное, мы продвигаемся.
+18:00 - Думаем, что последнее поле как-то связано с тем полем, которое мы только что взломали. Надеюсь, это как-то поможет.
+18:30 - Мы хотим ещё раз повторить, что сообщество взлома API не занимается поддержкой ботов. Мы просто ломаем API. Так что хотим подтвердить, что Niantic может проследить любые MITM приложения, например, те, которые модифицируют броски покеболлов чтобы они всегда были точными. Если вы используете такое приложение, Niantic об этом скорее всего уже знает.</p>
+<p>Мы не знаем, будут ли вас за это банить, мы просто удостоверились в том, что Niantic может (теоретически) это определять. Но это нас не заботит, мы занимаемся взломом API.</p>
+<p>20:00 - Никаких особых новостей на фронте разработки. Всё ещё работаем над оставшимися входными данными.
+Мы приспосабливаемся к множеству каналов, через которые общаемся с вами. У нас есть Discord, Twitter, Reddit, этот пост и гитхаб репозитории. Они просто разрываются от сообщений. Однако, внутренняя коммуникация у нас налажена гораздо лучше. Настройка и поддержка взаимодействия порой долга и трудоёмка, но это увлекательно. Приятно знать, что разработчики могут спокойно заниматься своим делом, взламывая API.
+23:30 - Я вернулся и жду обновлений, чтобы перевести их с программистского на человеческий. Мы ушли уже далеко, но до конечного пункта назначения ещё дальше.
+00:45 - Прогресс, сделанный за последние часы, можно назвать прорывом #4.
+Мы раскрыли ещё 3 входных поля. Одно из полей является шифрованной (вернее, хэшированной) версией тикета авторизации, в комбинации с GPS положением получается второе поле. Третье тоже как-то связано с тикетом авторизации.
+“Комбинация” это сильное упрощение того, что там на самом деле. Реальная сложность работы программистов сильно превыше моего уровня понимания.
+Сейчас мы работаем над оставшимся полем. Или полями.
+GMT 03:30 - Мы особо ничего ни писали, так как прогресса довольно мало.
+Мы уже 12 часов пытаемся взломать одно из полей. Мы знаем больше, чем когда начинали, но прорыва пока не было.
+Мы знаем, что поле не комбинируется с токеном авторизации, однако зависит от сессии (возможно, не напрямую). Мы так же знаем его длину (16 байт). Мы работаем над уточнением информации.
+Прямо сейчас большинство разработчиков всё же ушли спать. Надо сказать, это заслуженный отдых. Пойду и я посплю.</p>
+<p>6 august 2016, 13:00 - Так, теперь это будут чисто мои комментарии. Это единственный настоящий источник информации, остальные это подделки. Теперь я буду говорить Я про себя и ОНИ про разработчиков. Это решение было принято, чтобы убрать лишнее давление на разработчиков.</p>
+<p>Пока я спал, ничего особо не произошло, возможно потому, что разработчики тоже спали. Поле, которое доставило нам столько геморроя, заслуживает собственного имени, теперь это будет “неизвестная 22”. Дополнительную сложность доставляет то, что оно привязано к сессии, и данные собирать довольно сложно. Мы разбираем это поле и ещё одно.
+14:30 - Никаких новостей, просто хотел ответить на вопрос “как же до сих пор ничего не получилось? Вы же говорили, что осталось 3-4 поля, а взломали уже гораздо больше!”</p>
+<p>На самом деле, эти 3-4 поля оказались комбинацией из множества других полей, которые тоже нужно взломать. Нельзя ответить на вопрос, сколько же полей осталось. Мы не хотим создавать ложных ожиданий. Да и не знаем.
+17:00 - Прорыв #5: Разработчики выяснили, что “неизвестная 22” не нужна. Один из них ответил на это ожидаемым “Да твою ж мать!”. Сейчас разработчики пытаются собрать демо приложение для проверки этой гипотезы. Они очень взволнованы и молятся.
+Надо заметить, что даже если вызов API будет успешен, это всего лишь прототип, а не исправление API. Разработчики забили на довольно много полей - например, на поле, которое передаётся только с Android устройств. Чтобы его обойти, разработчики эмулируют использование iOS. Нужно сделать ещё много, чтобы это не работало так стрёмно.
+17:30 - Первые версии прототипа не работают.</p>
+<p>18:00 - Никаких новостей, я просто хотел рассказать, почему “неизвестная 22” оказалась таким геморроем - у нас появилась рабочая теория по этому поводу. “Неизвестная 22” это случайная переменная, генерирующаяся при инициализации приложения и привязываемая потом к сессии.
+Разработчики тщательно искали всё, что могло бы повлиять на “неизвестную 22”, до тех пор, пока до них постепенно не дошло, что у неё нет входных параметров. Это просто случайная величина. Я попробую объяснить, почему это было так сложно определить.</p>
+<p>Пример из реального мира: Представьте, что мы хотим определить температуру в Нью Йорке. Есть огромное количество значений, которые с ней коррелируют. Например, продажи мороженого. Когда продажи повышаются, температура растёт. Однако, вычислять температуру на основании объёмов продажи мороженого бесполезно. Корреляция не означает причинно-следственной связи. Учитывайте это при чтении про “неизвестную 22”.
+Сначала разработчики пытались менять токен автризации, и каждый раз, когда они это делали, “Неизвестная 22” так же менялась! Так что они решили проверить, что авторизация влияет на “Неизвестную 22”. Для этого им требовались данные.</p>
+<p>Сбор этих данных занял много времени, поскольку им приходилось авторизовываться и выходить обратно. Так же на “неизвестную 22” могло влиять много других полей, включая, например, SessionID, Auth_token, Auth_ticket. Они пытались понять зависимости от каждой из них, до тех пор, пока до кого-то не дошло: у “неизвестной 22” нет входных параметров.</p>
+<p>“Неизвестная 22” генерируется случайно каждый раз при старте приложения.
+Так что Niantic никоим образом не может проверить, какое значение там “должно быть” - ведь оно случайно! Так что туда можно просто пихать всё что угодно. Это пока что теория, но все разработчики придерживаются её.
+18:30 - Прорыв #6. Кажется, у нас первый успешный вызов API! Ждите обновлений, подтверждение будет в течении часа.
+18:35 - Работает! Поверьте, у меня это вызывает столько же волнения, сколько у вас.
+19:00 - Публичный чат в discord пока пуст. Всё ещё ждём обновления от разработчиков. Вы тоже обновляете чат, чтобы так же увидеть ничего?
+20:00 - Уже довольно долго не было никакой информации. Однако, они говорят, что работают над реализацией- так что видимо больше ломать нечего. Следующий апдейт должен быть большим, оставайтесь с нами…
+20:30 - Они убрали публичный гитхаб. Наверное, куда-то переезжают. Видимо, работа идёт. Обновление: репозиторий закрыт по всяким там причинам копирайта.
+22:00 - Уже начинаю сомневаться, но всё ещё верю, что они смогли тогда сделать успешный вызов API. Хотя видимо, они думают, когда, как и что им публиковать. Нелёгкая работа, учитывая то, что им закрыли гитхаб.
+С самого начала все знали, что у этой работы 2 этапа. Сперва реверс инжиниринг, затем создание нового API. Успешный тестовый вызов API важен, поскольку означает, что работа где-то на середине.</p>
+<p>Однако, это не означает, что реверс инжиниринг закончен. Некоторые обойдёнными поля не были необходимыми, но они могут таки захотеть их взломать.</p>
+<p>Я буду выглядеть идиотом, если окажется, что у них не вышел вызов API, но я готов смириться с этой возможностью.
+Дошёл до лимита количества знаков, продолжу <a target="_blank" rel="noopener" href="https://www.reddit.com/r/pokemongodev/comments/4w1cvr/pokemongo_current_api_status/d6776g2">тут</a>.</p>
+<p>Здесь я так же буду писать свои собственные мыли, как и в предыдущем комментарии. Я не продвинутый программист, но я был с группой “неизвестной 6” с самого начала.
+6 august 2016, 23:00 - Небольшое обновление. Они ищут, как обойти копирайт, чтобы их материалы опять не снесли. Так же они пишут, что работают над реализацией-  что значит, что они таки сделали успешный API запрос и уже занимаются рабочей версией API.
+00:00 - Они говорят, что остался “последний рывок”, будем надеяться, что это означает что-то хорошее.
+Их работа затрудняется диким спамом с запросом прав и обновлений. Пожалуйста, просто дайте им кодить! Быстрее они работать не станут, и поверьте, вы сможете прожить ещё один день без API.</p>
+<p>Так же некоторые обвиняют разработчиков, в том, что они делают это ради собственной выгоды. Это неправда. Я знаю многих из этих ребят, и они делают это просто ради фана, ради челенджа. Они не собираются никому продавать API.
+Так же они говорят “То, что некий платный сервис говорит, что у него есть исправление API, не говорит о том, что мы им его продали.”
+00:30 - Просто хотел сказать - я ненавижу ботов.
+00:45 - Они только что подтвердили, что API работает (НЕ ПОЛНОСТЬЮ). Но они вообще писали не об этом:</p>
+<blockquote>Для всех тех, кто распускает слухи о том, что мы сначала запустили своего бота.
+Взволнованный нашим успехом член команды использовал наше ещё не полностью готовое API в своём боте и запостил скриншот. А некоторые другие члены команды так же добавили API в проекты не связанные с ботами (например, pgoapi и RocketAPI).
+
+<p>В конце концов, как только мы закончим, у всех будет доступ к завершённой версии одновременно.</blockquote></p>
+<p>1:15 - Готово, API выпущено!
+Победа. Разработчики сломали API за 3 дня и  5 часов. Достойное достижение.
+1:30 - Это API легко отслеживается, и Niaintic может определить, что вы используете не официальный клиент. Разработчиков это вполне устраивает, и не стоит катить на них бочку.
+Например, не учитывается высота над уровнем моря. Так же все запросы якобы идут с IOS устройства, что крайне подозрительно, поскольку с очевидностью оно Android… Работы ещё много, но мы получили рабочее API и с этим наше участие в проекте завершено.</p>
+<p>1:45 - Пойду-ка я спать. В последние ночи я спал совсем мало. Хочу сказать огромное спасибо всем разработчикам, модераторам и всем остальным, кто принимал участие. И тем, кто терпеливо ждал решения проблемы.
+Ваша поддержка была удивительна. Неделю назад я не мог и представить, что буду полноценным менеджером сообщества хакеров Pokemon Go.
+Всем спасибо,
+/u/DutchDefender</p>
+<h2>От переводчика</h2>
+Как вы понимаете, история не окончена, история только начинается. Прислушается ли Niantic к просьбам о улучшениях приложения? Или попробует снова защититься? Хватит ли у сообщества сил, желания и навыков взломать новые способы защиты? Узнаем в скором времени.
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article id="post-2016/08/будущее-безопасности-мобильных-приложений-или-чему-нас-могут-научить-покемоны" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2016-08-17T10:00:00.000Z"><a href="/2016/08/17/будущее-безопасности-мобильных-приложений-или-чему-нас-могут-научить-покемоны/">2016-08-17</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/08/17/будущее-безопасности-мобильных-приложений-или-чему-нас-могут-научить-покемоны/">Будущее безопасности мобильных приложений, или чему нас могут научить покемоны</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/307974%7D">Оригинал поста на хабре</a></p>
+<p>С момента появления Pokemon Go, я с большим любопытством отслеживаю всё, касающееся этой игрушки. Как ни странно, она даёт безумное количество интересной информации - в первую очередь относительно разработки мобильных приложений. Казалось бы, занимаетесь вы разработкой банковских приложений - в чём тут может быть связь? А нет, вам тоже найдётся, чему научиться у покемонов.</p>
       
     </div>
     <footer>
       
         
           <div class="alignleft">
-            <a href="/2012/01/29/отец-дмитрий-смирнов-апофтегмы/#more" class="more-link">Read More</a>
+            <a href="/2016/08/17/будущее-безопасности-мобильных-приложений-или-чему-нас-могут-научить-покемоны/#more" class="more-link">Read More</a>
           </div>
         
         
@@ -410,31 +444,380 @@ you can solve it with
 
 
 
-  <article id="post-2011/11/страхи" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <article id="post-2016/07/ночь-в-одиноком-октябре" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
     <header>
       
         <div class="icon"></div>
-        <time class="dt-published" datetime="2011-11-25T01:46:00.000Z"><a href="/2011/11/25/страхи/">2011-11-25</a></time>
+        <time class="dt-published" datetime="2016-07-08T16:42:42.000Z"><a href="/2016/07/08/ночь-в-одиноком-октябре/">2016-07-08</a></time>
       
       
   
-    <h1 class="title"><a href="/2011/11/25/страхи/">Страхи</a></h1>
+    <h1 class="title"><a href="/2016/07/08/ночь-в-одиноком-октябре/">Ночь в одиноком октябре</a></h1>
   
 
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <img src="/2011/11/25/%D1%81%D1%82%D1%80%D0%B0%D1%85%D0%B8/Scream_Munch_orig.jpg" class="">
+        <p>Шёл октябрь 2017 года. В огромном здании из стекла и металла шёл какой-то бурный праздник. Люди с чёрными синяками под глазами и широкими улыбками на осунувшихся лицах поздравляли друг друга с окончанием долгой и тяжёлой работы. Наконец-то “Дженезис” будет запущен - продукт нового века с непревзойдённой скоростью обработки информации, который позволит объединить в одну огромную систему все существующие на планете электронные устройства.</p>
+<p>Но не все радовались одинаково. Нарушая все правила безопасности, группа избранных предавалась празднику и обливала стены холодной серверной комнаты шампанским. Присмотревшись, можно было заметить некоторые странности в этой группе. У одного человека из черепа шла направленная вперёд антенна, у некоторых были татуировки с рисунками сложных схем, третьи несли свои массивные или же наоборот истощённые тела в лёгких экзоскелетах.
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/07/08/ночь-в-одиноком-октябре/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
 
-<p>А знаете, чего я боюсь больше всего?</p>
-<p>Стать ещё одним человеком, которых увы много среди моих знакомых, которые рассказывают о своих потенциально офигенных идеях, но у них постоянно якобы нет времени на их реализацию.</p>
-<p>Некоторые идеи правда офигительны, но, когда ты слушаешь про них третий год, мнение о человеке падает с высот в самые низменные глубины. Ты смотришь на него с грустной иронией и сожалением. Ты уже видишь, что он <strong>НИКОГДА</strong>не сделает того, о чём говорит. И говорит он только для поддержания своего имиджа, для того, чтобы в глубине души считать себя не измученным унылым офисным работником, а латентным инноватором.</p>
-<p>Это <strong>ужасно</strong>, это просто <strong>ЖУТКО</strong>!</p>
-<p>Так что прощайте меня и не обращайте внимания, если я внезапно куда-то пропадаю на дни и недели, чтобы наконец что-то сделать. Я просто очень боюсь. Боюсь завертеться в ежедневной рутине, в планах, в обещаниях, в обязательных мероприятиях и кругах посещения, и так навсегда и остаться милым бесполезным мечтателем.</p>
-<p>Выгнать себя из зоны комфорта, сказать, что занимаешься самообманом, налить до краёв чашку кофе и электронную трубку и <strong>ДЕЛАТЬ</strong>.</p>
-<p>Сейчас я как нельзя более уважаю людей, которые <strong>ДЕЛАЮТ</strong>, а не <strong>МЕЧТАЮТ</strong>и <strong>ПЛАНИРУЮТ</strong>. От последнего меня тошнит. Особенно в себе.</p>
+
+
+
+  <article id="post-2016/03/чего-ждёт-yandex-или-статус-yandexstore" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2016-03-22T10:00:00.000Z"><a href="/2016/03/22/чего-ждёт-yandex-или-статус-yandexstore/">2016-03-22</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/03/22/чего-ждёт-yandex-или-статус-yandexstore/">Чего ждёт Yandex? Или статус Yandex.Store</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/299540%7D">Оригинал поста на хабре</a></p>
+<p>Наверное, многие недоуменно наморщили лбы - что это такое, “Yandex.Store”? И недаром. Вокруг этого сервиса было огромное количество шумихи, а потом всё внезапно прекратилось и затихло. Почему? Попробуем разобраться.</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/03/22/чего-ждёт-yandex-или-статус-yandexstore/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article id="post-2016/03/хабростатистика-часть-2-—-опровержение-с-графиками" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2016-03-21T10:00:00.000Z"><a href="/2016/03/21/хабростатистика-часть-2-—-опровержение-с-графиками/">2016-03-21</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/03/21/хабростатистика-часть-2-—-опровержение-с-графиками/">Хабростатистика, часть 2 — опровержение с графиками</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/279769%7D">Оригинал поста на хабре</a></p>
+<p>Вчера я публиковал <a target="_blank" rel="noopener" href="https://habrahabr.ru/post/279607/">статью</a> на тему того, когда лучше публиковаться на хабре. С тех пор мой паук собрал статистику за весь 2015 год, и картинка немного изменилась. Так же я построил несколько графиков, и в целом картина прояснилась. Осторожно, трафик!</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/03/21/хабростатистика-часть-2-—-опровержение-с-графиками/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article id="post-2016/03/хабростатистика-—-в-какое-время-лучше-публиковать-статью-на-хабре" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2016-03-18T10:00:00.000Z"><a href="/2016/03/18/хабростатистика-—-в-какое-время-лучше-публиковать-статью-на-хабре/">2016-03-18</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/03/18/хабростатистика-—-в-какое-время-лучше-публиковать-статью-на-хабре/">ХаброСтатистика — в какое время лучше публиковать статью на хабре?</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/279607%7D">Оригинал поста на хабре</a></p>
+<p>Астрологи объявили месяц статистики, и пожалуй я присоединюсь на сегодня к авторам статистических статей.</p>
+<p>Наверняка вы задумывались - когда лучше публиковать статью? В выходные, чтобы её внимательно читали? В пятницу, чтобы у всех было хорошее настроение? В понедельник, когда после выходных все выползают читать хабр? А может быть, лучше выбрать время обеденного перерыва? Сразу оговорюсь, что данный вопрос имеет значение не только для хабра - примерно то же самое можно сказать про почти любые публикации, если нету какой-то совсем суровой конкретики. У меня есть своя гипотеза, о ней я расскажу в конце статьи.</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/03/18/хабростатистика-—-в-какое-время-лучше-публиковать-статью-на-хабре/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article id="post-2016/03/есть-ли-жизнь-без-google-play-альтернативы-и-обновление-приложений" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2016-03-17T10:00:00.000Z"><a href="/2016/03/17/есть-ли-жизнь-без-google-play-альтернативы-и-обновление-приложений/">2016-03-17</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/03/17/есть-ли-жизнь-без-google-play-альтернативы-и-обновление-приложений/">Есть ли жизнь без Google Play? Альтернативы и обновление приложений</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/279553%7D">Оригинал поста на хабре</a></p>
+<img src="https://habrastorage.org/files/47c/5fe/bcd/47c5febcdd804edc85acb6aa044fbb47.jpg"/>
+
+<p>На днях я сделал <a target="_blank" rel="noopener" href="https://habrahabr.ru/post/279267/">приложение</a> для обхода блокировки rutracker, однако уже дважды получил от Google отбой по разным надуманным причинам. Это очень огорчило, и возник вопрос - что делать? Поиск по хабру показал, что такие проблемы возникли очень у многих (пруфы: <a target="_blank" rel="noopener" href="https://habrahabr.ru/company/freeamp/blog/230293/">один</a>, <a target="_blank" rel="noopener" href="https://habrahabr.ru/post/242885/">два</a>, <a target="_blank" rel="noopener" href="https://habrahabr.ru/post/265163/">три</a>, <a target="_blank" rel="noopener" href="https://habrahabr.ru/post/275691/">четыре</a>… Тысячи их).
+А помимо бана есть ещё много причин, по которым ваше приложение может оказаться “за бортом” Google Play - например, если оно предназначено для использования только в компании, для друзей или для другого круга лиц. Так же возможно, что ваше приложение по определению не может быть выложено на Google Play - например, если оно является само по себе установщиком приложений.</p>
+<p>Готовой статьи на эту тему я не нашёл, так что решил, что верным решением будет разобраться и написать свою. Итак, принципиальных варианта есть всего два.
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/03/17/есть-ли-жизнь-без-google-play-альтернативы-и-обновление-приложений/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article id="post-2016/03/android-клиент-для-rutracker-обходим-блокировку-при-помощи-google-compression-proxy" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2016-03-15T10:00:00.000Z"><a href="/2016/03/15/android-клиент-для-rutracker-обходим-блокировку-при-помощи-google-compression-proxy/">2016-03-15</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/03/15/android-клиент-для-rutracker-обходим-блокировку-при-помощи-google-compression-proxy/">Android клиент для rutracker - обходим блокировку при помощи Google Compression proxy</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/279267%7D">Оригинал поста на хабре</a></p>
+<p>Полагаю, что все пользователя хабра так или иначе нашли способ попадать на рутрекер, но порой бывает лень включать свой тор, прокси, впн или что либо ещё. Мне вот стало лень, и поэтому я решил написать свой маленький клиент. Для обхода блокировок я решил использовать google compression proxy. Интересная, хорошая и полезная штука - странно, что по её поводу на хабре не было статей. Забегая вперёд, сразу скажу, что всё получилось, и работающую версию можно попробовать на своём девайсе. Однако в процессе возникло много всяких интересных нюансов, которые любопытны несколько больше, чем само приложение. Итак, начнём!
+<cut text="Подробности" /></p>
+<h1>Google Compression proxy</h1>
+Чтобы не повторять гугловые мануалы (все ссылки вы можете найти в конце статьи), просто скажу, что этот прокси сервер позволяет вашему Google Chrome значительно уменьшать количество воспринимаемого трафика за счёт его сжатия серверами Google. Работать прокси умеет по HTTP и по HTTPS. В первом случае используется адрес compress.googlezip.net, во втором - proxy.googlezip.net. Интересно, что для прокси требуется свой заголовок. В официальной документации его нет, однако можно найти исходники от гугла и немного в них покопаться. Выглядят они вот <a target="_blank" rel="noopener" href="https://github.com/jehy/datacompressionproxy/blob/master/background.js">так </a>(ссылка на самый интересный файл, размещено уже у меня на гихабе, поскольку в <a target="_blank" rel="noopener" href="https://code.google.com/archive/p/datacompressionproxy/ ">официальном репозитории</a> на google code уже ничего посмотреть нельзя).
+Оттуда получаем такое добро:
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> authHeader = function() &#123;</span><br><span class="line">    <span class="keyword">var</span> authValue = <span class="string">&#x27;ac4500dd3b7579186c1b0620614fdb1f7d61f944&#x27;</span>;</span><br><span class="line">    <span class="keyword">var</span> timestamp = Date.now().toString().substring(<span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line">    <span class="keyword">var</span> chromeVersion = navigator.appVersion.match(/Chrome\/(\d+)\.(\d+)\.(\d+)\.(\d+)/);</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        name: <span class="string">&#x27;Chrome-Proxy&#x27;</span>,</span><br><span class="line">        value: <span class="string">&#x27;ps=&#x27;</span> + timestamp + <span class="string">&#x27;-&#x27;</span> + Math.floor(Math.random() * <span class="number">1000000000</span>) + <span class="string">&#x27;-&#x27;</span> + Math.floor(Math.random() * <span class="number">1000000000</span>) + <span class="string">&#x27;-&#x27;</span> + Math.floor(Math.random() * <span class="number">1000000000</span>) + <span class="string">&#x27;, sid=&#x27;</span> + MD5(timestamp + authValue + timestamp) + <span class="string">&#x27;, b=&#x27;</span> + chromeVersion[<span class="number">3</span>] + <span class="string">&#x27;, p=&#x27;</span> + chromeVersion[<span class="number">4</span>] + <span class="string">&#x27;, c=win&#x27;</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Всё довольно очевидно, но можно остановиться подробнее.</p>
+<p>Для каждого запроса должен присутствовать заголовок Chrome-Proxy.
+В нём должна быть следующая строка:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps&#x3D;&lt;timestamp&gt;-&lt;num1&gt;-&lt;num2&gt;-&lt;num3&gt;, sid&#x3D;&lt;md5 string&gt;, b&#x3D;&lt;build&gt;, p&#x3D;&lt;patch&gt;, c&#x3D;&lt;platform&gt;</span><br></pre></td></tr></table></figure>
+<p>где:</p>
+<p>timestamp: время в linux timestamp
+num1, num2, num3: некие случайные числа, которые можно поставить в 0
+md5 string: md5 хэш строки авторизации
+auth string: <code>&quot;&lt;timestamp&gt;&quot; + &quot;&lt;auth key&gt;&quot; + &quot;&lt;timestamp&gt;&quot;</code>
+auth key: ac4500dd3b7579186c1b0620614fdb1f7d61f944 - просто некий ключ… Один на всех, и все на одного.
+build: номер билда хрома  - например, 2214
+patch: номер патча хрома - например, 115
+platform: платформа - например, “win”
+В качестве полного примера можно привести такой заголовок:
+<code>Chrome-Proxy: ps=1439961190-0-0-0, sid=9fb96126616582c4be88ab7fe26ef593, b=2214, p=115, c=win</code></p>
+<p>Как ни странно и не смешно, можно использовать эту самую строку при любом количестве запросов без всяких изменений… Например, на этом основано расширение для Firefox, которое занимается пересжатием трафика. Видимо, просто делалась защита от ленивого дурака.
+Однако, честным вариантом будет переписать это на Java так:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public static String[] authHeader() &#123;</span><br><span class="line">    String[] result &#x3D; new String[2];</span><br><span class="line">    result[0] &#x3D; &quot;Chrome-Proxy&quot;;</span><br><span class="line">    String authValue &#x3D; &quot;ac4500dd3b7579186c1b0620614fdb1f7d61f944&quot;;</span><br><span class="line">    String timestamp &#x3D; Long.toString(System.currentTimeMillis()).substring(0, 10);</span><br><span class="line">    String[] chromeVersion &#x3D; &#123;&quot;49&quot;, &quot;0&quot;, &quot;2623&quot;, &quot;87&quot;&#125;;</span><br><span class="line">    String sid &#x3D; (timestamp + authValue + timestamp);</span><br><span class="line">    sid &#x3D; Utils.md5(sid);</span><br><span class="line">    result[1] &#x3D; &quot;ps&#x3D;&quot; + timestamp + &quot;-&quot; + Integer.toString((int) (Math.random() * 1000000000)) + &quot;-&quot; + Integer.toString((int) (Math.random() * 1000000000)) + &quot;-&quot; + Integer.toString((int) (Math.random() * 1000000000)) + &quot;, sid&#x3D;&quot; + sid + &quot;, b&#x3D;&quot; + chromeVersion[2] + &quot;, p&#x3D;&quot; + chromeVersion[3] + &quot;, c&#x3D;win&quot;;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Далее надо выбрать, какой именно вариант для проксирования мы выбираем. Мой провайдер суров, и блокирует запросы, если они идут по HTTP через гугловую проксю, так что пришлось идти правильным путём через SSL.</p>
+<h1>WebView через SSL</h1>
+Чтобы не идти долгим и печальным путём написания клиента с нуля, я решил "просто" показывать всё как есть через стандартный WebView, благо ранее уже писал простое-клиент, которое делает примерно то же самое, и шустро работает даже на тяжёлом веб сайте. Кажется - работы на полчаса. Как же я ошибался... Если посмотреть решения по проксированию WebView в интернете, то становится очень грустно - все делают примерно так:
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setKitKatWebViewProxy</span><span class="params">(Context appContext, String host, <span class="keyword">int</span> port, String exclusionList)</span> </span>&#123;</span><br><span class="line">    Properties properties = System.getProperties();</span><br><span class="line">    properties.setProperty(<span class="string">&quot;http.proxyHost&quot;</span>, host);</span><br><span class="line">    properties.setProperty(<span class="string">&quot;http.proxyPort&quot;</span>, port + <span class="string">&quot;&quot;</span>);</span><br><span class="line">    properties.setProperty(<span class="string">&quot;https.proxyHost&quot;</span>, host);</span><br><span class="line">    properties.setProperty(<span class="string">&quot;https.proxyPort&quot;</span>, port + <span class="string">&quot;&quot;</span>);</span><br><span class="line">    properties.setProperty(<span class="string">&quot;http.nonProxyHosts&quot;</span>, exclusionList);</span><br><span class="line">    properties.setProperty(<span class="string">&quot;https.nonProxyHosts&quot;</span>, exclusionList);</span><br><span class="line"><span class="comment">/// ... such much shit</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Оставшуюся часть намеренно опустил - там идёт ещё около сотни строк с условиями по версии андроида и жутким шаманством. При этом у многих это всё равно не работает, плюс есть проблемы с переключением режима проксирования - и её “решают” путём установки Thread.Sleep(1000) между операциями. Хотя я не являюсь Java разработчиком, а просто иногда балуюсь, мне поплохело. Здравый смысл подсказал мне, что нужно перехватывать запросы из Webview (для этого у WebViewClient есть чудесная функция shouldInterceptRequest), и далее самому заниматься проксированием. Это у меня даже вполне получилось:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Proxy proxy = <span class="keyword">new</span> Proxy(Proxy.Type.HTTP, <span class="keyword">new</span> InetSocketAddress(<span class="string">&quot;compress.googlezip.net&quot;</span>, <span class="number">80</span>));</span><br><span class="line">HttpURLConnection connection = (HttpURLConnection) <span class="keyword">new</span> URL(url).openConnection(proxy);</span><br></pre></td></tr></table></figure>
+
+<p>Всё отлично, всё работает! Только одна проблема. Как заметили внимательные читатели, в параметрах функции указан 80ый порт. По довольно смешной причине. А именно - потому что HttpURLConnection не умеет работать с HTTPS проксями. Совсем. Никак. У меня ушло куча времени, чтобы понять, что всё настолько плохо, и что нельзя сделать HTTPS прокси ни через HttpURLConnection, ни через популярный okHttp . Я немного призадумался, затем решительным жестом отмёл все доводы Google о том, что библиотеки Apache не подходят для Android, стряхнул пыль с проверенных jar’ов и решительно подключил их к проекту. И всё получилось! Пятый и шестой андроид на ура восприняли такой ужасный проступок. Если кто-то знает, как можно было решить проблему без использования библиотек Apache - расскажите. Конечно, можно было бы сделать всё на сокетах, но это довольно печально.</p>
+<p>Итак, мы наконец смогли отобразить главную страницу рутрекера. Казалось бы, победа близко. Как же я ошибался.</p>
+<h1>Реклама</h1>
+Практически с первой попытки отладки я столкнулся с тем, что всё чудовищно тормозит. Причина довольно очевидна - безумное количество рекламы всевозможных видов. Мне очень не хотелось с ней что-то делать - все мы знаем положение рутрекера, и чувакам явно нужно много золота для защиты от DDOS'a и родного государства - но с рекламой приложением было пользоваться вообще нереально. Правильным решением было бы находить её и вырезать из тела страницы, но более быстрым для реализации подходом было просто порезать её по хостам:
+
+<p>довольно очевидный код:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public static boolean is_adv(Uri url) &#123;</span><br><span class="line">    String[] adv_hosts &#x3D; &#123;&quot;marketgid.com&quot;, &quot;adriver.ru&quot;, &quot;thisclick.network&quot;, &quot;hghit.com&quot;,</span><br><span class="line">            &quot;onedmp.com&quot;, &quot;acint.net&quot;, &quot;yadro.ru&quot;, &quot;tovarro.com&quot;, &quot;marketgid.com&quot;, &quot;rtb.com&quot;, &quot;adx1.com&quot;,</span><br><span class="line">            &quot;directadvert.ru&quot;, &quot;rambler.ru&quot;&#125;;</span><br><span class="line">    String[] adv_paths &#x3D; &#123;&quot;brand&quot;, &quot;iframe&quot;&#125;;</span><br><span class="line">    String host &#x3D; url.getHost();</span><br><span class="line">    for (String item : adv_hosts) &#123;</span><br><span class="line">        if (StringUtils.containsIgnoreCase(host, item)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (StringUtils.containsIgnoreCase(url.getHost(), &quot;rutracker.org&quot;)) &#123;</span><br><span class="line">        String path &#x3D; url.getPath();</span><br><span class="line">        for (String item : adv_paths) &#123;</span><br><span class="line">            &#123;</span><br><span class="line">                if (StringUtils.containsIgnoreCase(path, item)) &#123;</span><br><span class="line">                    return true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>И после этого мы просто обрубаем её получение:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (Utils.is_adv(url)) &#123;</span><br><span class="line">    Log.d(<span class="string">&quot;WebView&quot;</span>, <span class="string">&quot;Not fetching advertisment&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> WebResourceResponse(<span class="string">&quot;text/javascript&quot;</span>, <span class="string">&quot;UTF-8&quot;</span>, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Задним умом я только что подумал, что возможно было бы проще сделать список разрешённых хостов… Но этим самым умом все сильны.
+Теперь приложение стало работать не то что с приемлимой, а с очень бодрой и приятной скоростью. Если владельцев рутрекера это огорчит, то блокировку уберу - но скорее всего вместе с приложением. С чудовищными тормозами в нём просто не будет смысла.</p>
+<h1>Отправка форм</h1>
+Довольно откинувшись на стул, я обнаружил... Что не работает авторизация. Что было на самом деле весьма очевидно - поскольку в перехватываемом мной и передаваемом далее запросе я не отправлял данные, которые должны уйти в POST. Казалось бы, пара минут - и всё будет хорошо. Как же я ошибался...
+Выяснилось, что способов перехватить POST из WebView нету. Совсем. Никак. Лучшие рекомендованные практики - внедрять в страницу свой javascript и вызывать из него специальные Java методы. Или переводить сервер на GET запросы. От первого варианта мне несколько поплохело, а второй недоступен по понятным причинам. Да и был бы некорректен. Почесав голову и попробовав отловить POST ещё в нескольких местах, я пришёл к выводу, что нормального решения всё же нет. В результате сделал решение смешное. А именно - при получении страницы менять метод всех форм с POST на GET. А после этого при следующем обращении конвертировать переданные в адресной строке параметры в тело POST запроса. Звучит ужасно, но всё не так плохо, если у вас нет адресной строки, в которой можно опозориться, больших переменных или файлов для передачи. Хотя нет, вру конечно. Всё очень плохо, но другого адекватного пути я не нашёл.
+
+<p>довольно очевидный код:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> UrlEncodedFormEntity <span class="title">get2post</span><span class="params">(Uri url)</span> </span>&#123;</span><br><span class="line">    Set&lt;String&gt; params = url.getQueryParameterNames();</span><br><span class="line">    <span class="keyword">if</span> (params.isEmpty())</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    List&lt;NameValuePair&gt; paramsArray = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (String name : params) &#123;</span><br><span class="line">        Log.d(<span class="string">&quot;Utils&quot;</span>, <span class="string">&quot;converting parameter &quot;</span> + name + <span class="string">&quot; to post&quot;</span>);</span><br><span class="line">        paramsArray.add(<span class="keyword">new</span> BasicNameValuePair(name, url.getQueryParameter(name)));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> UrlEncodedFormEntity(paramsArray, <span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1>Где мои куки, чувак?</h1>
+Когда я в очередной раз откинулся на спинку кресла после успешно пройденной авторизации и кликнул следующую ссылку, я обнаружил, что авторизация умирает на следующей странице. Что в общем тоже довольно логично, поскольку никто волшебно куками не управляет, а посылаем мы все заголовки вручную. Но здесь я в кои-то веки не ошибся в том, что дописать будет просто.
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (Utils.is_login_form(url)) &#123;</span><br><span class="line"></span><br><span class="line">    Header[] all = response.getAllHeaders();</span><br><span class="line">    <span class="keyword">for</span> (Header header1 : all) &#123;</span><br><span class="line">        Log.d(<span class="string">&quot;WebView&quot;</span>, <span class="string">&quot;LOGIN HEADER: &quot;</span> + header1.getName() + <span class="string">&quot; : &quot;</span> + header1.getValue());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    Header[] cookies = response.getHeaders(<span class="string">&quot;set-cookie&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (cookies.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        String val = cookies[<span class="number">0</span>].getValue();</span><br><span class="line">        val = val.substring(<span class="number">0</span>, val.indexOf(<span class="string">&quot;;&quot;</span>));</span><br><span class="line">        authCookie = val.trim();</span><br><span class="line">        CookieManager.put(MainContext, authCookie);</span><br><span class="line">        Log.d(<span class="string">&quot;WebView&quot;</span>, <span class="string">&quot;=== Auth cookie: ===&#x27;&quot;</span> + val + <span class="string">&quot;&#x27;&quot;</span>);</span><br><span class="line">        <span class="comment">//redirect does not work o_O</span></span><br><span class="line">        String msgText = <span class="string">&quot;&lt;script&gt;window.location = \&quot;http://rutracker.org/forum/index.php\&quot;&lt;/script&gt;&quot;</span>;</span><br><span class="line">        ByteArrayInputStream msgStream = <span class="keyword">new</span> ByteArrayInputStream(msgText.getBytes(<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> WebResourceResponse(<span class="string">&quot;text/html&quot;</span>, <span class="string">&quot;UTF-8&quot;</span>, msgStream);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Правда, внимательный читатель обнаружит, что там идёт какая-то странная переадресация яваскриптом. Да, всё так. В ответе должен был быть 302 заголовок авторизации, но почему-то его никуда не приходило. В результате я оказывался на странице форума по некорректному адресу с доменом login.rutracker.org - всё работало, но, поскольку ссылки везде относительные, при следующем же клике наступал облом. Кстати, здесь же можно заметить, что пользовательскую куку мы бережно сохраняем, чтобы не пришлось потом заново авторизоваться.</p>
+<h1>Теперь-то всё?!</h1>
+Именно с этим вопросом я в который раз открывал страничку, уже уверенный, что ничего не упустил. Как же я... В общем, можно было свободно искать через нативный поиск или через гугловый без авторизации, можно было смотреть любую тему, нельзя было только одно... Скачать торрент. Поскольку по нажатию ссылок ничего хорошего не происходит. Но в этот раз всё тоже было несложно - в интерфейс добавилась программная менюшка с кнопочкой Share, которая позволяет отправить куда угодно Magnet ссылку. Было бы удобнее кидать ссылку на торрент файл, но он у вас явно будет блокирован. Конечно, можно было бы скачивать торрент файл и передавать его через шаринг - но это как-нибудь в другой раз.
+
+
+<h1>Результат</h1>
+Можно посмотреть по скринам - <a target="_blank" rel="noopener" href="https://habrastorage.org/files/1d7/650/2ac/1d76502ac6e547c3bdd9ea22a15e593d.png">главная страница</a> и <a target="_blank" rel="noopener" href="https://habrastorage.org/files/a09/ca2/fc2/a09ca2fc22a143429ded78b4c669a2f1.png">расшаривание magnet ссылки из топика</a>.
+
+<h1>Осталось только опубликовать</h1>
+На основании тех странных android приложений, которые я выкладывал раньше, у меня сложилось ощущение, что они пропускают вообще всё. Так что я с лёгким сердцем отправил приложение на публикацию и сел писать статью. Обычно приложение появлялось на google play в течении пары часов, так что времени как раз хватало. К сожалению, в этот раз прошло 8 часов. И в ответ пришло
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">After review, Rutracker free - unofficial, ru.jehy.proxy_rutracker, has been suspended and removed from Google Play as a policy strike because it violates the &lt;strong&gt;impersonation&lt;&#x2F;strong&gt; policy.</span><br><span class="line">&lt;strong&gt;Next Steps&lt;&#x2F;strong&gt;</span><br><span class="line">&lt;ol&gt;  &lt;li&gt; Read through the &lt;a href&#x3D;&quot;https:&#x2F;&#x2F;play.google.com&#x2F;about&#x2F;spam.html#impersonation-intellectual-property:impersonation&quot;&gt;Impersonation&lt;&#x2F;a&gt; article for more details and examples of policy violations.&lt;&#x2F;li&gt;</span><br><span class="line">&lt;li&gt; Make sure your app is compliant with the &lt;a href&#x3D;&quot;https:&#x2F;&#x2F;play.google.com&#x2F;about&#x2F;spam.html#impersonation-intellectual-property&quot;&gt;Impersonation and Intellectual Property&lt;&#x2F;a&gt; policy and all other policies listed in the &lt;a href&#x3D;&quot;https:&#x2F;&#x2F;play.google.com&#x2F;about&#x2F;developer-content-policy.html&quot;&gt;Developer Program Policies&lt;&#x2F;a&gt;. Remember additional enforcement could occur if there are further policy issues with your apps.&lt;&#x2F;li&gt;</span><br><span class="line">&lt;li&gt; &lt;a href&#x3D;&quot;https:&#x2F;&#x2F;play.google.com&#x2F;apps&#x2F;publish&quot;&gt;Sign in to your Developer Console&lt;&#x2F;a&gt; and submit the policy compliant app using a new package name and a new app name.&lt;&#x2F;li&gt;&lt;&#x2F;ol&gt;</span><br><span class="line">&lt;strong&gt;What if I have permission to use the content?&lt;&#x2F;strong&gt;</span><br><span class="line"></span><br><span class="line">&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;support.google.com&#x2F;googleplay&#x2F;android-developer&#x2F;troubleshooter&#x2F;2993242&quot;&gt;Contact our support team&lt;&#x2F;a&gt; to provide a justification for its use. Justification may include providing proof that you are authorized to use the content in your app or some other legal justification.Additional suspensions of any nature may result in the termination of your developer account, and investigation and possible termination of related Google accounts. If your account is terminated, payments will cease and Google may recover the proceeds of any past sales and&#x2F;or the cost of any associated fees (such as chargebacks and transaction fees) from you.If you&amp;rsquo;ve reviewed the policy and feel this suspension may have been in error,please reach out to our &lt;a href&#x3D;&quot;https:&#x2F;&#x2F;support.google.com&#x2F;googleplay&#x2F;android-developer&#x2F;troubleshooter&#x2F;2993242&quot;&gt;policy support team&lt;&#x2F;a&gt;. One of my colleagues will get back to you within 2 business days.</span><br></pre></td></tr></table></figure>
+
+<p>Не совсем понятно, кто кого имперсонифицировал, но у меня было три варианта, что же не понравилось Google:</p>
+<ol>
+<li>Что я взял откуда-то иконки;</li>
+<li>Что я упомянул в комментариях, что приложение работает через google compression proxy;</li>
+<li>Что в качестве банеров я использовал варианты смешных логотипов рутрекера с нового конкурса;</li>
+</ol>
+Конечно,в  любом случае довольно неприятно, что нужно зачем-то переименовывать pakage и закачивать его заново. Да тебя ещё и предупреждают, что "я тебя запомнил, и ещё раз так сделаешь - забаню". Ну как-то по гопнически. Не ожидал, прям обидно.
+Из упомянутых выше вариантов я решил, что скорее всего виноват второй - упоминание Google всуе. Ну ладно, как скажете - не стал писать, как работает приложение. Просто "приложение с проксированием, которое позволяет обходить блокировку rutracker.org". Ну и заодно поставил кривые нарисованные за пять минут иконки и аналогичные банеры. И что вы думаете - мои усилия были вознаграждены! Дальше мне пришёл следующий ответ.
+
+<pre><code>After review, Rutracker free, ru.jehy.rutracker_free, has been suspended and removed from Google Play as a policy strike because it violates the webviews and affiliate spam policy.
+
+Next Steps
+
+Read through the Webviews and Affiliate Spam article for more details and examples of policy violations.
+Make sure your app is compliant with the Spam policy and all other policies listed in the Developer Program Policies. Remember that additional enforcement could occur if there are further policy issues with your apps.
+If it’s possible to bring your app into compliance, you can sign in to your Developer Console and submit the policy compliant app using a new package name and a new app name.
+
+В общем, меня обвинили в том, что не то приложение только реферральные ссылки передаёт, то ли ничего кроме вебвьюва не делает. Ничего &quot;левого&quot; в приложении нет, а называть это &quot;обычным отображением&quot; тоже неверно - идёт довольно много работы по проксированию. Ну и особенно это меня удивило в свете того, что я уже успешно закачивал на Google Play приложения, которые фактически только состоят из вебвью на сайт. Нюансов было два - в приложении была авторизация, и я был хозяином сайта, на который шёл вебвью. Но я это никак не указывал, и Google узнать этого не мог.
+В общем, на оба этих обвинения я ответил просьбой разобраться - сутки ответа нет, может быть ответ придёт ещё через сутки. Хотя надежды как-то мало. Так что ставим пока что приложение из APK. Если оно таки появится на Google Play, то можно будет обновиться оттуда.
+
+&lt;h1&gt;ToDo&lt;/h1&gt;
+Если делать полноценное приятное приложение, то можно было бы добавить много всего хорошего. В том числе
+&lt;ol&gt;
+&lt;li&gt;Стили с адаптацией к просмотру с телефона и планшета; &lt;b&gt;UPD: сделано в какой-то степени;&lt;/b&gt;&lt;/li&gt;
+&lt;li&gt;Автоматическое обновление; &lt;b&gt;UPD: сделано;&lt;/b&gt;&lt;/li&gt;
+&lt;li&gt;Корректное вырезание рекламы;&lt;/li&gt;
+&lt;li&gt;Передачу торрентов торрент файлами, а не magnet ссылками;&lt;/li&gt;
+&lt;li&gt;Выход из авторизованного состояния на рутрекере (да, сейчас ты там авторизуешься навсегда);&lt;/li&gt;
+&lt;li&gt;Какие-то осмысленные сообщения о вероятных ошибках;&lt;/li&gt;
+&lt;li&gt;Совместимость с большим количеством устройств - сейчас можно попробовать запустить на Android от 4.0 до 6 - но результат непредсказуем - надо много тестировать. У меня работает на Nexus 5 с Android 6 и на Sony Xperia Z3 с Android 5;&lt;/li&gt;
+&lt;li&gt;Удобный ввод авторизации и поиска без того, чтобы тыкать на ужасные маленькие элементы веб формы;&lt;/li&gt;
+&lt;li&gt;Убрать из кода некоторое количество копи-пейста;&lt;/li&gt;
+&lt;li&gt;Добавить шифрование хранимой пользовательской куки уникальным для устройства ключом на случай, если данные с телефона украдут;&lt;/li&gt;
+&lt;li&gt;Реализовать монетизацию приложения, свои всплывающие банеры и ссылки, которые принесли бы мне тонны золота.&lt;/li&gt;
+&lt;/ol&gt;
+Но, к сожалению, у меня нет времени этим серьёзно заниматься - хотелось просто сделать некий работающий прототип - чтобы показать, что веб приложения в приложениях Android работают, работают хорошо и быстро. Попутно, правда, подтвердилось мнение о том, что среднее по больнице качество разработки на Android довольно сильно страдает, стандартные библиотеки не покрывают всех кейсов, и есть большое количество странных задач, которые никем толково не реализованы.
+Буду рад, если кто-то возьмёт этот код для разработки более серьёзного приложения или же зашлёт пулл реквестов - обещаю их внимательно отсматривать и применять.
+
+&lt;h1&gt;Q&amp;amp;A&lt;/h1&gt;
+
+ - Но ведь гораздо проще зайти на рутрекер через ХХХ (например, просто включив экономию трафика на телефоне или в браузере).
+ - Да.
+
+ - А что если гугл заблокирует у себя рутрекер?
+ - Вполне может быть, у них в политике прописано, что они блокируют ресурсы, которые запрещены в вашей стране. Ну ничего страшного - путей обхода тысячи.
+
+ - А если рутрекер заблокирует гугл за большое количество заходов с их прокси?
+ - К ним и так сейчас через неё ходят, просто используя хром. Так что вряд ли. И вообще, банить всех подряд - плохая идея, так можно и чиновником стать.
+
+ - Ваш код ужасен!
+ - Да, я уже упоминал, что я не Java разработчик.
+
+ - У меня не заработало.
+ - Да, это общая проблема Android - полноценное приложение надо тестировать в 10 раз дольше, чем писать. Увы, у меня такой возможности не было. Присылайте ошибки, пулл реквесты - поправим.
+
+ - А можно вообще так использовать Google Compression Proxy?
+ - Пока непонятно - приложение забанили ещё до этого потенциального вопроса.
+
+ - Я не доверяю вам, наверняка вы крадёте все мои пароли и скачиваете себе мои торренты.
+ - Пожалуйста - соберите приложение себе из исходников.
+
+ - А почему иконки такие страшные?
+ - Посмотрите под заголовком &quot;осталось только опубликовать&quot; - там всё объясняется.
+
+ - Это же раздолье для злых роботов и пауков!
+ - Да нет, не обольщайтесь. С очевидностью, там тоже есть свои лимиты и проверки на роботов. Есть гораздо более простые пути для ботов.
+
+ - Сайт криво отображается.
+ - Да, местами есть проблемы. Но связанные скорее с некачественной вёрсткой.
+
+&lt;h1&gt;Привет рутрекеру&lt;/h1&gt;
+Отдельно - несколько пожеланий для администрации рутрекера на случай, если вдруг они сюда заглянут
+
+&lt;ol&gt;
+&lt;li&gt;Пожалуйста, подумайте о альтернативных вариантах монетизации. Всё равно большинство пользователей обходят эти жуткие гирлянды банеров адблоком.&lt;/li&gt;
+&lt;li&gt;Было бы хорошо внедрить различных провайдеров авторизации - гуглового или фейсбучного, например.&lt;/li&gt;
+&lt;li&gt;Обновите вёрстку и внешний вид до чего-то более красивого, удобного и желательно с мобильной версией.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1&gt;Ссылки&lt;/h1&gt;
+&lt;b&gt;UPD&lt;/b&gt;: &lt;a href=&quot;https://habrahabr.ru/post/279553/&quot;&gt;пост &lt;/a&gt;про то, как реализовано обновление, и как вообще жить без Google Play;
+
+&lt;ol&gt;
+&lt;li&gt;Для тех, кто не осилил целиком текст - ещё раз скрины: &lt;a href=&quot;https://habrastorage.org/files/1d7/650/2ac/1d76502ac6e547c3bdd9ea22a15e593d.png&quot;&gt;главная страница&lt;/a&gt; и &lt;a href=&quot;https://habrastorage.org/files/a09/ca2/fc2/a09ca2fc22a143429ded78b4c669a2f1.png&quot;&gt;расшаривание magnet ссылки из топика&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Актуальные &lt;a href=&quot;https://github.com/jehy/rutracker-free&quot;&gt;исходники&lt;/a&gt; и &lt;a href=&quot;https://github.com/jehy/rutracker-free/releases&quot;&gt;релизы &lt;/a&gt;на гитхабе;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://whois.jehy.ru/&quot;&gt;Тут &lt;/a&gt;можно взять меня на работу - да, я её ищу;&lt;/li&gt;
+&lt;li&gt;Забавная &lt;a href=&quot;http://wirama.web.id/using-google-chromes-compression-proxy-for-every-browser/ &quot;&gt;статья &lt;/a&gt;о том, как использовать Google Compression Proxy+Squid. С неё я и начинал;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://code.google.com/archive/p/datacompressionproxy/&quot;&gt;Тут &lt;/a&gt;лежат исходники от compression proxy от гугла. Поскольку google code не даёт их посмотреть, можно посмотреть на &lt;a href=&quot;https://github.com/jehy/datacompressionproxy/blob/master/background.js&quot;&gt;моём гитхабе&lt;/a&gt;. Его я и разбирал;&lt;/li&gt;
+&lt;li&gt;Что такое google compression proxy &lt;a href=&quot;https://developer.chrome.com/multidevice/data-compression&quot;&gt;для пользователя&lt;/a&gt; и &lt;a href=&quot;https://developer.chrome.com/multidevice/data-compression-for-isps&quot;&gt;для администратора&lt;/a&gt;;&lt;/li&gt;
+&lt;li&gt;Хороший &lt;a href=&quot;http://superuser.com/questions/945924/how-do-i-use-google-data-compression-proxy-on-firefox&quot;&gt;ответ и разбор стандарта google compression proxy&lt;/a&gt;, правда только для HTTP траффика, не HTTPS. Есть пример реализации для firefox. Его я и переводил для статьи;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/miku-nyan/DCP-bridge&quot;&gt;Реализация прокси на Java&lt;/a&gt;, которая проксирует через google data compression server. Сделано для какого-то image board. Хороший код, есть что посмотреть;&lt;/li&gt;
+&lt;li&gt;Единственный найденный мной вариант по &lt;a href=&quot;http://stackoverflow.com/questions/15048102/httprouteplanner-how-does-it-work-with-an-https-proxy&quot;&gt;проксированию HTTP трафика через HTTPS прокси&lt;/a&gt; при помощи библиотек apache. Его я и дорабатывал.&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
 
       
     </div>
@@ -455,7 +838,7 @@ you can solve it with
 
     <nav id="page-nav">
         
-        <a class="extend prev" rel="prev" href="/page/3/">&lt;&lt; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/5/">Next &gt;&gt;</a>
+        <a class="extend prev" rel="prev" href="/page/3/">&lt;&lt; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/5/">Next &gt;&gt;</a>
     </nav>
 
 </div></div>
@@ -474,7 +857,7 @@ you can solve it with
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.54px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.77px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.77px;">android</a> <a href="/tags/applet/" style="font-size: 12.31px;">applet</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.77px;">codesigning</a> <a href="/tags/dev/" style="font-size: 16.15px;">dev</a> <a href="/tags/fun/" style="font-size: 14.62px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 12.31px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/openid/" style="font-size: 10.77px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.31px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.31px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 16.92px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.31px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.77px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.54px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.85px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 15.38px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.69px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.77px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BB%D1%8E%D0%B4%D0%B8/" style="font-size: 10px;">люди</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.77px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 18.46px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 17.69px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.62px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.77px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.77px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.77px;">работа</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.31px;">таро</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 13.08px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.77px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 19.23px;">цитаты</a>
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.43px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.71px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.71px;">android</a> <a href="/tags/applet/" style="font-size: 12.14px;">applet</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.71px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15.71px;">dev</a> <a href="/tags/fun/" style="font-size: 14.29px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.29px;">habr</a> <a href="/tags/java/" style="font-size: 12.14px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.71px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/openid/" style="font-size: 10.71px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.14px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.14px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 16.43px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.14px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.71px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.43px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.57px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 15px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.14px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.71px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BB%D1%8E%D0%B4%D0%B8/" style="font-size: 10px;">люди</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.71px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.86px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 17.14px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.29px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.71px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.71px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.71px;">работа</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.14px;">таро</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.86px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.71px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.57px;">цитаты</a>
   </div>
 </div>
 
@@ -485,23 +868,23 @@ you can solve it with
   <ul class="entry">
     
       <li>
-        <a href="/2017/10/16/обычное-утро-2027-года/">Обычное утро 2027 года</a>
+        <a href="/2020/06/26/как-активный-гражданин-приучает-людей-к-фишингу/">Как «активный гражданин» приучает людей к фишингу</a>
       </li>
     
       <li>
-        <a href="/2017/09/19/предыстория-одного-мага/">Предыстория одного мага</a>
+        <a href="/2020/02/16/снимаем-покрытие-кода-с-уже-запущенного-nodejs-приложения/">Снимаем покрытие кода с уже запущенного Node.JS приложения</a>
       </li>
     
       <li>
-        <a href="/2016/07/08/ночь-в-одиноком-октябре/">Ночь в одиноком октябре</a>
+        <a href="/2020/01/31/как-мигрировать-с-mocha-на-jest-в-15-простых-шагов-—-и-зачем/">Как мигрировать с mocha на jest в 15 простых шагов — и зачем</a>
       </li>
     
       <li>
-        <a href="/2015/11/24/один-день-зимы/">Один день Зимы</a>
+        <a href="/2019/12/17/зачем-нужно-столько-разработчиков/">Зачем нужно столько разработчиков?</a>
       </li>
     
       <li>
-        <a href="/2015/07/16/бег-с-microsoft-band/">Бег с Microsoft Band</a>
+        <a href="/2019/11/22/deno-время-nodejs-уходит/">Deno - время Node.JS уходит?</a>
       </li>
     
   </ul>
