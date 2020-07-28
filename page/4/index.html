@@ -53,45 +53,6 @@
 </header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
-  <article id="post-2016/12/как-на-самом-деле-пишут-софт-в-2016-году" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2016-12-02T10:00:00.000Z"><a href="/2016/12/02/как-на-самом-деле-пишут-софт-в-2016-году/">2016-12-02</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/12/02/как-на-самом-деле-пишут-софт-в-2016-году/">Как на самом деле пишут софт в 2016 году</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/399747%7D">Оригинал поста на хабре</a></p>
-<p>Многие годы софтварные компании скрывали от нас это. Читайте скорее, пока не удалили, и распространяйте как можно шире.</p>
-<p>Вы до сих пор думаете, что огромные корпорации обладают большим штатом разработчиков, которые пишут им программный код руками? Наивно. На дворе 2016 год, и правила полностью изменились. Сейчас легко доступны чудовищные вычислительные мощности, о которых 10 лет назад нельзя было и заикнуться. Ваш телефон мощнее, чем вычислительные модули, которые ставили на космические корабли. А человеческое время стоит страшно дорого - в особенности время квалифицированных программистов, которыми, словно пчёлами, якобы набиты офисы технологических гигантов.
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2016/12/02/как-на-самом-деле-пишут-софт-в-2016-году/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-<!--  -->
-
-
-
   <article id="post-2016/10/лёгкая-интеграция-tor-в-android-приложение-на-примере-клиента-для-рутрекера" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
@@ -682,11 +643,212 @@ GMT 03:30 - Мы особо ничего ни писали, так как про
 
 
 
+  <article id="post-2016/03/android-клиент-для-rutracker-обходим-блокировку-при-помощи-google-compression-proxy" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2016-03-15T10:00:00.000Z"><a href="/2016/03/15/android-клиент-для-rutracker-обходим-блокировку-при-помощи-google-compression-proxy/">2016-03-15</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/03/15/android-клиент-для-rutracker-обходим-блокировку-при-помощи-google-compression-proxy/">Android клиент для rutracker - обходим блокировку при помощи Google Compression proxy</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/279267%7D">Оригинал поста на хабре</a></p>
+<p>Полагаю, что все пользователя хабра так или иначе нашли способ попадать на рутрекер, но порой бывает лень включать свой тор, прокси, впн или что либо ещё. Мне вот стало лень, и поэтому я решил написать свой маленький клиент. Для обхода блокировок я решил использовать google compression proxy. Интересная, хорошая и полезная штука - странно, что по её поводу на хабре не было статей. Забегая вперёд, сразу скажу, что всё получилось, и работающую версию можно попробовать на своём девайсе. Однако в процессе возникло много всяких интересных нюансов, которые любопытны несколько больше, чем само приложение. Итак, начнём!
+<cut text="Подробности" /></p>
+<h1>Google Compression proxy</h1>
+Чтобы не повторять гугловые мануалы (все ссылки вы можете найти в конце статьи), просто скажу, что этот прокси сервер позволяет вашему Google Chrome значительно уменьшать количество воспринимаемого трафика за счёт его сжатия серверами Google. Работать прокси умеет по HTTP и по HTTPS. В первом случае используется адрес compress.googlezip.net, во втором - proxy.googlezip.net. Интересно, что для прокси требуется свой заголовок. В официальной документации его нет, однако можно найти исходники от гугла и немного в них покопаться. Выглядят они вот <a target="_blank" rel="noopener" href="https://github.com/jehy/datacompressionproxy/blob/master/background.js">так </a>(ссылка на самый интересный файл, размещено уже у меня на гихабе, поскольку в <a target="_blank" rel="noopener" href="https://code.google.com/archive/p/datacompressionproxy/ ">официальном репозитории</a> на google code уже ничего посмотреть нельзя).
+Оттуда получаем такое добро:
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> authHeader = function() &#123;</span><br><span class="line">    <span class="keyword">var</span> authValue = <span class="string">&#x27;ac4500dd3b7579186c1b0620614fdb1f7d61f944&#x27;</span>;</span><br><span class="line">    <span class="keyword">var</span> timestamp = Date.now().toString().substring(<span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line">    <span class="keyword">var</span> chromeVersion = navigator.appVersion.match(/Chrome\/(\d+)\.(\d+)\.(\d+)\.(\d+)/);</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        name: <span class="string">&#x27;Chrome-Proxy&#x27;</span>,</span><br><span class="line">        value: <span class="string">&#x27;ps=&#x27;</span> + timestamp + <span class="string">&#x27;-&#x27;</span> + Math.floor(Math.random() * <span class="number">1000000000</span>) + <span class="string">&#x27;-&#x27;</span> + Math.floor(Math.random() * <span class="number">1000000000</span>) + <span class="string">&#x27;-&#x27;</span> + Math.floor(Math.random() * <span class="number">1000000000</span>) + <span class="string">&#x27;, sid=&#x27;</span> + MD5(timestamp + authValue + timestamp) + <span class="string">&#x27;, b=&#x27;</span> + chromeVersion[<span class="number">3</span>] + <span class="string">&#x27;, p=&#x27;</span> + chromeVersion[<span class="number">4</span>] + <span class="string">&#x27;, c=win&#x27;</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Всё довольно очевидно, но можно остановиться подробнее.</p>
+<p>Для каждого запроса должен присутствовать заголовок Chrome-Proxy.
+В нём должна быть следующая строка:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps&#x3D;&lt;timestamp&gt;-&lt;num1&gt;-&lt;num2&gt;-&lt;num3&gt;, sid&#x3D;&lt;md5 string&gt;, b&#x3D;&lt;build&gt;, p&#x3D;&lt;patch&gt;, c&#x3D;&lt;platform&gt;</span><br></pre></td></tr></table></figure>
+<p>где:</p>
+<p>timestamp: время в linux timestamp
+num1, num2, num3: некие случайные числа, которые можно поставить в 0
+md5 string: md5 хэш строки авторизации
+auth string: <code>&quot;&lt;timestamp&gt;&quot; + &quot;&lt;auth key&gt;&quot; + &quot;&lt;timestamp&gt;&quot;</code>
+auth key: ac4500dd3b7579186c1b0620614fdb1f7d61f944 - просто некий ключ… Один на всех, и все на одного.
+build: номер билда хрома  - например, 2214
+patch: номер патча хрома - например, 115
+platform: платформа - например, “win”
+В качестве полного примера можно привести такой заголовок:
+<code>Chrome-Proxy: ps=1439961190-0-0-0, sid=9fb96126616582c4be88ab7fe26ef593, b=2214, p=115, c=win</code></p>
+<p>Как ни странно и не смешно, можно использовать эту самую строку при любом количестве запросов без всяких изменений… Например, на этом основано расширение для Firefox, которое занимается пересжатием трафика. Видимо, просто делалась защита от ленивого дурака.
+Однако, честным вариантом будет переписать это на Java так:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public static String[] authHeader() &#123;</span><br><span class="line">    String[] result &#x3D; new String[2];</span><br><span class="line">    result[0] &#x3D; &quot;Chrome-Proxy&quot;;</span><br><span class="line">    String authValue &#x3D; &quot;ac4500dd3b7579186c1b0620614fdb1f7d61f944&quot;;</span><br><span class="line">    String timestamp &#x3D; Long.toString(System.currentTimeMillis()).substring(0, 10);</span><br><span class="line">    String[] chromeVersion &#x3D; &#123;&quot;49&quot;, &quot;0&quot;, &quot;2623&quot;, &quot;87&quot;&#125;;</span><br><span class="line">    String sid &#x3D; (timestamp + authValue + timestamp);</span><br><span class="line">    sid &#x3D; Utils.md5(sid);</span><br><span class="line">    result[1] &#x3D; &quot;ps&#x3D;&quot; + timestamp + &quot;-&quot; + Integer.toString((int) (Math.random() * 1000000000)) + &quot;-&quot; + Integer.toString((int) (Math.random() * 1000000000)) + &quot;-&quot; + Integer.toString((int) (Math.random() * 1000000000)) + &quot;, sid&#x3D;&quot; + sid + &quot;, b&#x3D;&quot; + chromeVersion[2] + &quot;, p&#x3D;&quot; + chromeVersion[3] + &quot;, c&#x3D;win&quot;;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Далее надо выбрать, какой именно вариант для проксирования мы выбираем. Мой провайдер суров, и блокирует запросы, если они идут по HTTP через гугловую проксю, так что пришлось идти правильным путём через SSL.</p>
+<h1>WebView через SSL</h1>
+Чтобы не идти долгим и печальным путём написания клиента с нуля, я решил "просто" показывать всё как есть через стандартный WebView, благо ранее уже писал простое-клиент, которое делает примерно то же самое, и шустро работает даже на тяжёлом веб сайте. Кажется - работы на полчаса. Как же я ошибался... Если посмотреть решения по проксированию WebView в интернете, то становится очень грустно - все делают примерно так:
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setKitKatWebViewProxy</span><span class="params">(Context appContext, String host, <span class="keyword">int</span> port, String exclusionList)</span> </span>&#123;</span><br><span class="line">    Properties properties = System.getProperties();</span><br><span class="line">    properties.setProperty(<span class="string">&quot;http.proxyHost&quot;</span>, host);</span><br><span class="line">    properties.setProperty(<span class="string">&quot;http.proxyPort&quot;</span>, port + <span class="string">&quot;&quot;</span>);</span><br><span class="line">    properties.setProperty(<span class="string">&quot;https.proxyHost&quot;</span>, host);</span><br><span class="line">    properties.setProperty(<span class="string">&quot;https.proxyPort&quot;</span>, port + <span class="string">&quot;&quot;</span>);</span><br><span class="line">    properties.setProperty(<span class="string">&quot;http.nonProxyHosts&quot;</span>, exclusionList);</span><br><span class="line">    properties.setProperty(<span class="string">&quot;https.nonProxyHosts&quot;</span>, exclusionList);</span><br><span class="line"><span class="comment">/// ... such much shit</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Оставшуюся часть намеренно опустил - там идёт ещё около сотни строк с условиями по версии андроида и жутким шаманством. При этом у многих это всё равно не работает, плюс есть проблемы с переключением режима проксирования - и её “решают” путём установки Thread.Sleep(1000) между операциями. Хотя я не являюсь Java разработчиком, а просто иногда балуюсь, мне поплохело. Здравый смысл подсказал мне, что нужно перехватывать запросы из Webview (для этого у WebViewClient есть чудесная функция shouldInterceptRequest), и далее самому заниматься проксированием. Это у меня даже вполне получилось:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Proxy proxy = <span class="keyword">new</span> Proxy(Proxy.Type.HTTP, <span class="keyword">new</span> InetSocketAddress(<span class="string">&quot;compress.googlezip.net&quot;</span>, <span class="number">80</span>));</span><br><span class="line">HttpURLConnection connection = (HttpURLConnection) <span class="keyword">new</span> URL(url).openConnection(proxy);</span><br></pre></td></tr></table></figure>
+
+<p>Всё отлично, всё работает! Только одна проблема. Как заметили внимательные читатели, в параметрах функции указан 80ый порт. По довольно смешной причине. А именно - потому что HttpURLConnection не умеет работать с HTTPS проксями. Совсем. Никак. У меня ушло куча времени, чтобы понять, что всё настолько плохо, и что нельзя сделать HTTPS прокси ни через HttpURLConnection, ни через популярный okHttp . Я немного призадумался, затем решительным жестом отмёл все доводы Google о том, что библиотеки Apache не подходят для Android, стряхнул пыль с проверенных jar’ов и решительно подключил их к проекту. И всё получилось! Пятый и шестой андроид на ура восприняли такой ужасный проступок. Если кто-то знает, как можно было решить проблему без использования библиотек Apache - расскажите. Конечно, можно было бы сделать всё на сокетах, но это довольно печально.</p>
+<p>Итак, мы наконец смогли отобразить главную страницу рутрекера. Казалось бы, победа близко. Как же я ошибался.</p>
+<h1>Реклама</h1>
+Практически с первой попытки отладки я столкнулся с тем, что всё чудовищно тормозит. Причина довольно очевидна - безумное количество рекламы всевозможных видов. Мне очень не хотелось с ней что-то делать - все мы знаем положение рутрекера, и чувакам явно нужно много золота для защиты от DDOS'a и родного государства - но с рекламой приложением было пользоваться вообще нереально. Правильным решением было бы находить её и вырезать из тела страницы, но более быстрым для реализации подходом было просто порезать её по хостам:
+
+<p>довольно очевидный код:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public static boolean is_adv(Uri url) &#123;</span><br><span class="line">    String[] adv_hosts &#x3D; &#123;&quot;marketgid.com&quot;, &quot;adriver.ru&quot;, &quot;thisclick.network&quot;, &quot;hghit.com&quot;,</span><br><span class="line">            &quot;onedmp.com&quot;, &quot;acint.net&quot;, &quot;yadro.ru&quot;, &quot;tovarro.com&quot;, &quot;marketgid.com&quot;, &quot;rtb.com&quot;, &quot;adx1.com&quot;,</span><br><span class="line">            &quot;directadvert.ru&quot;, &quot;rambler.ru&quot;&#125;;</span><br><span class="line">    String[] adv_paths &#x3D; &#123;&quot;brand&quot;, &quot;iframe&quot;&#125;;</span><br><span class="line">    String host &#x3D; url.getHost();</span><br><span class="line">    for (String item : adv_hosts) &#123;</span><br><span class="line">        if (StringUtils.containsIgnoreCase(host, item)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (StringUtils.containsIgnoreCase(url.getHost(), &quot;rutracker.org&quot;)) &#123;</span><br><span class="line">        String path &#x3D; url.getPath();</span><br><span class="line">        for (String item : adv_paths) &#123;</span><br><span class="line">            &#123;</span><br><span class="line">                if (StringUtils.containsIgnoreCase(path, item)) &#123;</span><br><span class="line">                    return true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>И после этого мы просто обрубаем её получение:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (Utils.is_adv(url)) &#123;</span><br><span class="line">    Log.d(<span class="string">&quot;WebView&quot;</span>, <span class="string">&quot;Not fetching advertisment&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> WebResourceResponse(<span class="string">&quot;text/javascript&quot;</span>, <span class="string">&quot;UTF-8&quot;</span>, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Задним умом я только что подумал, что возможно было бы проще сделать список разрешённых хостов… Но этим самым умом все сильны.
+Теперь приложение стало работать не то что с приемлимой, а с очень бодрой и приятной скоростью. Если владельцев рутрекера это огорчит, то блокировку уберу - но скорее всего вместе с приложением. С чудовищными тормозами в нём просто не будет смысла.</p>
+<h1>Отправка форм</h1>
+Довольно откинувшись на стул, я обнаружил... Что не работает авторизация. Что было на самом деле весьма очевидно - поскольку в перехватываемом мной и передаваемом далее запросе я не отправлял данные, которые должны уйти в POST. Казалось бы, пара минут - и всё будет хорошо. Как же я ошибался...
+Выяснилось, что способов перехватить POST из WebView нету. Совсем. Никак. Лучшие рекомендованные практики - внедрять в страницу свой javascript и вызывать из него специальные Java методы. Или переводить сервер на GET запросы. От первого варианта мне несколько поплохело, а второй недоступен по понятным причинам. Да и был бы некорректен. Почесав голову и попробовав отловить POST ещё в нескольких местах, я пришёл к выводу, что нормального решения всё же нет. В результате сделал решение смешное. А именно - при получении страницы менять метод всех форм с POST на GET. А после этого при следующем обращении конвертировать переданные в адресной строке параметры в тело POST запроса. Звучит ужасно, но всё не так плохо, если у вас нет адресной строки, в которой можно опозориться, больших переменных или файлов для передачи. Хотя нет, вру конечно. Всё очень плохо, но другого адекватного пути я не нашёл.
+
+<p>довольно очевидный код:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> UrlEncodedFormEntity <span class="title">get2post</span><span class="params">(Uri url)</span> </span>&#123;</span><br><span class="line">    Set&lt;String&gt; params = url.getQueryParameterNames();</span><br><span class="line">    <span class="keyword">if</span> (params.isEmpty())</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    List&lt;NameValuePair&gt; paramsArray = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (String name : params) &#123;</span><br><span class="line">        Log.d(<span class="string">&quot;Utils&quot;</span>, <span class="string">&quot;converting parameter &quot;</span> + name + <span class="string">&quot; to post&quot;</span>);</span><br><span class="line">        paramsArray.add(<span class="keyword">new</span> BasicNameValuePair(name, url.getQueryParameter(name)));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> UrlEncodedFormEntity(paramsArray, <span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1>Где мои куки, чувак?</h1>
+Когда я в очередной раз откинулся на спинку кресла после успешно пройденной авторизации и кликнул следующую ссылку, я обнаружил, что авторизация умирает на следующей странице. Что в общем тоже довольно логично, поскольку никто волшебно куками не управляет, а посылаем мы все заголовки вручную. Но здесь я в кои-то веки не ошибся в том, что дописать будет просто.
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (Utils.is_login_form(url)) &#123;</span><br><span class="line"></span><br><span class="line">    Header[] all = response.getAllHeaders();</span><br><span class="line">    <span class="keyword">for</span> (Header header1 : all) &#123;</span><br><span class="line">        Log.d(<span class="string">&quot;WebView&quot;</span>, <span class="string">&quot;LOGIN HEADER: &quot;</span> + header1.getName() + <span class="string">&quot; : &quot;</span> + header1.getValue());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    Header[] cookies = response.getHeaders(<span class="string">&quot;set-cookie&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (cookies.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        String val = cookies[<span class="number">0</span>].getValue();</span><br><span class="line">        val = val.substring(<span class="number">0</span>, val.indexOf(<span class="string">&quot;;&quot;</span>));</span><br><span class="line">        authCookie = val.trim();</span><br><span class="line">        CookieManager.put(MainContext, authCookie);</span><br><span class="line">        Log.d(<span class="string">&quot;WebView&quot;</span>, <span class="string">&quot;=== Auth cookie: ===&#x27;&quot;</span> + val + <span class="string">&quot;&#x27;&quot;</span>);</span><br><span class="line">        <span class="comment">//redirect does not work o_O</span></span><br><span class="line">        String msgText = <span class="string">&quot;&lt;script&gt;window.location = \&quot;http://rutracker.org/forum/index.php\&quot;&lt;/script&gt;&quot;</span>;</span><br><span class="line">        ByteArrayInputStream msgStream = <span class="keyword">new</span> ByteArrayInputStream(msgText.getBytes(<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> WebResourceResponse(<span class="string">&quot;text/html&quot;</span>, <span class="string">&quot;UTF-8&quot;</span>, msgStream);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Правда, внимательный читатель обнаружит, что там идёт какая-то странная переадресация яваскриптом. Да, всё так. В ответе должен был быть 302 заголовок авторизации, но почему-то его никуда не приходило. В результате я оказывался на странице форума по некорректному адресу с доменом login.rutracker.org - всё работало, но, поскольку ссылки везде относительные, при следующем же клике наступал облом. Кстати, здесь же можно заметить, что пользовательскую куку мы бережно сохраняем, чтобы не пришлось потом заново авторизоваться.</p>
+<h1>Теперь-то всё?!</h1>
+Именно с этим вопросом я в который раз открывал страничку, уже уверенный, что ничего не упустил. Как же я... В общем, можно было свободно искать через нативный поиск или через гугловый без авторизации, можно было смотреть любую тему, нельзя было только одно... Скачать торрент. Поскольку по нажатию ссылок ничего хорошего не происходит. Но в этот раз всё тоже было несложно - в интерфейс добавилась программная менюшка с кнопочкой Share, которая позволяет отправить куда угодно Magnet ссылку. Было бы удобнее кидать ссылку на торрент файл, но он у вас явно будет блокирован. Конечно, можно было бы скачивать торрент файл и передавать его через шаринг - но это как-нибудь в другой раз.
+
+
+<h1>Результат</h1>
+Можно посмотреть по скринам - <a target="_blank" rel="noopener" href="https://habrastorage.org/files/1d7/650/2ac/1d76502ac6e547c3bdd9ea22a15e593d.png">главная страница</a> и <a target="_blank" rel="noopener" href="https://habrastorage.org/files/a09/ca2/fc2/a09ca2fc22a143429ded78b4c669a2f1.png">расшаривание magnet ссылки из топика</a>.
+
+<h1>Осталось только опубликовать</h1>
+На основании тех странных android приложений, которые я выкладывал раньше, у меня сложилось ощущение, что они пропускают вообще всё. Так что я с лёгким сердцем отправил приложение на публикацию и сел писать статью. Обычно приложение появлялось на google play в течении пары часов, так что времени как раз хватало. К сожалению, в этот раз прошло 8 часов. И в ответ пришло
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">After review, Rutracker free - unofficial, ru.jehy.proxy_rutracker, has been suspended and removed from Google Play as a policy strike because it violates the &lt;strong&gt;impersonation&lt;&#x2F;strong&gt; policy.</span><br><span class="line">&lt;strong&gt;Next Steps&lt;&#x2F;strong&gt;</span><br><span class="line">&lt;ol&gt;  &lt;li&gt; Read through the &lt;a href&#x3D;&quot;https:&#x2F;&#x2F;play.google.com&#x2F;about&#x2F;spam.html#impersonation-intellectual-property:impersonation&quot;&gt;Impersonation&lt;&#x2F;a&gt; article for more details and examples of policy violations.&lt;&#x2F;li&gt;</span><br><span class="line">&lt;li&gt; Make sure your app is compliant with the &lt;a href&#x3D;&quot;https:&#x2F;&#x2F;play.google.com&#x2F;about&#x2F;spam.html#impersonation-intellectual-property&quot;&gt;Impersonation and Intellectual Property&lt;&#x2F;a&gt; policy and all other policies listed in the &lt;a href&#x3D;&quot;https:&#x2F;&#x2F;play.google.com&#x2F;about&#x2F;developer-content-policy.html&quot;&gt;Developer Program Policies&lt;&#x2F;a&gt;. Remember additional enforcement could occur if there are further policy issues with your apps.&lt;&#x2F;li&gt;</span><br><span class="line">&lt;li&gt; &lt;a href&#x3D;&quot;https:&#x2F;&#x2F;play.google.com&#x2F;apps&#x2F;publish&quot;&gt;Sign in to your Developer Console&lt;&#x2F;a&gt; and submit the policy compliant app using a new package name and a new app name.&lt;&#x2F;li&gt;&lt;&#x2F;ol&gt;</span><br><span class="line">&lt;strong&gt;What if I have permission to use the content?&lt;&#x2F;strong&gt;</span><br><span class="line"></span><br><span class="line">&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;support.google.com&#x2F;googleplay&#x2F;android-developer&#x2F;troubleshooter&#x2F;2993242&quot;&gt;Contact our support team&lt;&#x2F;a&gt; to provide a justification for its use. Justification may include providing proof that you are authorized to use the content in your app or some other legal justification.Additional suspensions of any nature may result in the termination of your developer account, and investigation and possible termination of related Google accounts. If your account is terminated, payments will cease and Google may recover the proceeds of any past sales and&#x2F;or the cost of any associated fees (such as chargebacks and transaction fees) from you.If you&amp;rsquo;ve reviewed the policy and feel this suspension may have been in error,please reach out to our &lt;a href&#x3D;&quot;https:&#x2F;&#x2F;support.google.com&#x2F;googleplay&#x2F;android-developer&#x2F;troubleshooter&#x2F;2993242&quot;&gt;policy support team&lt;&#x2F;a&gt;. One of my colleagues will get back to you within 2 business days.</span><br></pre></td></tr></table></figure>
+
+<p>Не совсем понятно, кто кого имперсонифицировал, но у меня было три варианта, что же не понравилось Google:</p>
+<ol>
+<li>Что я взял откуда-то иконки;</li>
+<li>Что я упомянул в комментариях, что приложение работает через google compression proxy;</li>
+<li>Что в качестве банеров я использовал варианты смешных логотипов рутрекера с нового конкурса;</li>
+</ol>
+Конечно,в  любом случае довольно неприятно, что нужно зачем-то переименовывать pakage и закачивать его заново. Да тебя ещё и предупреждают, что "я тебя запомнил, и ещё раз так сделаешь - забаню". Ну как-то по гопнически. Не ожидал, прям обидно.
+Из упомянутых выше вариантов я решил, что скорее всего виноват второй - упоминание Google всуе. Ну ладно, как скажете - не стал писать, как работает приложение. Просто "приложение с проксированием, которое позволяет обходить блокировку rutracker.org". Ну и заодно поставил кривые нарисованные за пять минут иконки и аналогичные банеры. И что вы думаете - мои усилия были вознаграждены! Дальше мне пришёл следующий ответ.
+
+<pre><code>After review, Rutracker free, ru.jehy.rutracker_free, has been suspended and removed from Google Play as a policy strike because it violates the webviews and affiliate spam policy.
+
+Next Steps
+
+Read through the Webviews and Affiliate Spam article for more details and examples of policy violations.
+Make sure your app is compliant with the Spam policy and all other policies listed in the Developer Program Policies. Remember that additional enforcement could occur if there are further policy issues with your apps.
+If it’s possible to bring your app into compliance, you can sign in to your Developer Console and submit the policy compliant app using a new package name and a new app name.
+
+В общем, меня обвинили в том, что не то приложение только реферральные ссылки передаёт, то ли ничего кроме вебвьюва не делает. Ничего &quot;левого&quot; в приложении нет, а называть это &quot;обычным отображением&quot; тоже неверно - идёт довольно много работы по проксированию. Ну и особенно это меня удивило в свете того, что я уже успешно закачивал на Google Play приложения, которые фактически только состоят из вебвью на сайт. Нюансов было два - в приложении была авторизация, и я был хозяином сайта, на который шёл вебвью. Но я это никак не указывал, и Google узнать этого не мог.
+В общем, на оба этих обвинения я ответил просьбой разобраться - сутки ответа нет, может быть ответ придёт ещё через сутки. Хотя надежды как-то мало. Так что ставим пока что приложение из APK. Если оно таки появится на Google Play, то можно будет обновиться оттуда.
+
+&lt;h1&gt;ToDo&lt;/h1&gt;
+Если делать полноценное приятное приложение, то можно было бы добавить много всего хорошего. В том числе
+&lt;ol&gt;
+&lt;li&gt;Стили с адаптацией к просмотру с телефона и планшета; &lt;b&gt;UPD: сделано в какой-то степени;&lt;/b&gt;&lt;/li&gt;
+&lt;li&gt;Автоматическое обновление; &lt;b&gt;UPD: сделано;&lt;/b&gt;&lt;/li&gt;
+&lt;li&gt;Корректное вырезание рекламы;&lt;/li&gt;
+&lt;li&gt;Передачу торрентов торрент файлами, а не magnet ссылками;&lt;/li&gt;
+&lt;li&gt;Выход из авторизованного состояния на рутрекере (да, сейчас ты там авторизуешься навсегда);&lt;/li&gt;
+&lt;li&gt;Какие-то осмысленные сообщения о вероятных ошибках;&lt;/li&gt;
+&lt;li&gt;Совместимость с большим количеством устройств - сейчас можно попробовать запустить на Android от 4.0 до 6 - но результат непредсказуем - надо много тестировать. У меня работает на Nexus 5 с Android 6 и на Sony Xperia Z3 с Android 5;&lt;/li&gt;
+&lt;li&gt;Удобный ввод авторизации и поиска без того, чтобы тыкать на ужасные маленькие элементы веб формы;&lt;/li&gt;
+&lt;li&gt;Убрать из кода некоторое количество копи-пейста;&lt;/li&gt;
+&lt;li&gt;Добавить шифрование хранимой пользовательской куки уникальным для устройства ключом на случай, если данные с телефона украдут;&lt;/li&gt;
+&lt;li&gt;Реализовать монетизацию приложения, свои всплывающие банеры и ссылки, которые принесли бы мне тонны золота.&lt;/li&gt;
+&lt;/ol&gt;
+Но, к сожалению, у меня нет времени этим серьёзно заниматься - хотелось просто сделать некий работающий прототип - чтобы показать, что веб приложения в приложениях Android работают, работают хорошо и быстро. Попутно, правда, подтвердилось мнение о том, что среднее по больнице качество разработки на Android довольно сильно страдает, стандартные библиотеки не покрывают всех кейсов, и есть большое количество странных задач, которые никем толково не реализованы.
+Буду рад, если кто-то возьмёт этот код для разработки более серьёзного приложения или же зашлёт пулл реквестов - обещаю их внимательно отсматривать и применять.
+
+&lt;h1&gt;Q&amp;amp;A&lt;/h1&gt;
+
+ - Но ведь гораздо проще зайти на рутрекер через ХХХ (например, просто включив экономию трафика на телефоне или в браузере).
+ - Да.
+
+ - А что если гугл заблокирует у себя рутрекер?
+ - Вполне может быть, у них в политике прописано, что они блокируют ресурсы, которые запрещены в вашей стране. Ну ничего страшного - путей обхода тысячи.
+
+ - А если рутрекер заблокирует гугл за большое количество заходов с их прокси?
+ - К ним и так сейчас через неё ходят, просто используя хром. Так что вряд ли. И вообще, банить всех подряд - плохая идея, так можно и чиновником стать.
+
+ - Ваш код ужасен!
+ - Да, я уже упоминал, что я не Java разработчик.
+
+ - У меня не заработало.
+ - Да, это общая проблема Android - полноценное приложение надо тестировать в 10 раз дольше, чем писать. Увы, у меня такой возможности не было. Присылайте ошибки, пулл реквесты - поправим.
+
+ - А можно вообще так использовать Google Compression Proxy?
+ - Пока непонятно - приложение забанили ещё до этого потенциального вопроса.
+
+ - Я не доверяю вам, наверняка вы крадёте все мои пароли и скачиваете себе мои торренты.
+ - Пожалуйста - соберите приложение себе из исходников.
+
+ - А почему иконки такие страшные?
+ - Посмотрите под заголовком &quot;осталось только опубликовать&quot; - там всё объясняется.
+
+ - Это же раздолье для злых роботов и пауков!
+ - Да нет, не обольщайтесь. С очевидностью, там тоже есть свои лимиты и проверки на роботов. Есть гораздо более простые пути для ботов.
+
+ - Сайт криво отображается.
+ - Да, местами есть проблемы. Но связанные скорее с некачественной вёрсткой.
+
+&lt;h1&gt;Привет рутрекеру&lt;/h1&gt;
+Отдельно - несколько пожеланий для администрации рутрекера на случай, если вдруг они сюда заглянут
+
+&lt;ol&gt;
+&lt;li&gt;Пожалуйста, подумайте о альтернативных вариантах монетизации. Всё равно большинство пользователей обходят эти жуткие гирлянды банеров адблоком.&lt;/li&gt;
+&lt;li&gt;Было бы хорошо внедрить различных провайдеров авторизации - гуглового или фейсбучного, например.&lt;/li&gt;
+&lt;li&gt;Обновите вёрстку и внешний вид до чего-то более красивого, удобного и желательно с мобильной версией.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1&gt;Ссылки&lt;/h1&gt;
+&lt;b&gt;UPD&lt;/b&gt;: &lt;a href=&quot;https://habrahabr.ru/post/279553/&quot;&gt;пост &lt;/a&gt;про то, как реализовано обновление, и как вообще жить без Google Play;
+
+&lt;ol&gt;
+&lt;li&gt;Для тех, кто не осилил целиком текст - ещё раз скрины: &lt;a href=&quot;https://habrastorage.org/files/1d7/650/2ac/1d76502ac6e547c3bdd9ea22a15e593d.png&quot;&gt;главная страница&lt;/a&gt; и &lt;a href=&quot;https://habrastorage.org/files/a09/ca2/fc2/a09ca2fc22a143429ded78b4c669a2f1.png&quot;&gt;расшаривание magnet ссылки из топика&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Актуальные &lt;a href=&quot;https://github.com/jehy/rutracker-free&quot;&gt;исходники&lt;/a&gt; и &lt;a href=&quot;https://github.com/jehy/rutracker-free/releases&quot;&gt;релизы &lt;/a&gt;на гитхабе;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://whois.jehy.ru/&quot;&gt;Тут &lt;/a&gt;можно взять меня на работу - да, я её ищу;&lt;/li&gt;
+&lt;li&gt;Забавная &lt;a href=&quot;http://wirama.web.id/using-google-chromes-compression-proxy-for-every-browser/ &quot;&gt;статья &lt;/a&gt;о том, как использовать Google Compression Proxy+Squid. С неё я и начинал;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://code.google.com/archive/p/datacompressionproxy/&quot;&gt;Тут &lt;/a&gt;лежат исходники от compression proxy от гугла. Поскольку google code не даёт их посмотреть, можно посмотреть на &lt;a href=&quot;https://github.com/jehy/datacompressionproxy/blob/master/background.js&quot;&gt;моём гитхабе&lt;/a&gt;. Его я и разбирал;&lt;/li&gt;
+&lt;li&gt;Что такое google compression proxy &lt;a href=&quot;https://developer.chrome.com/multidevice/data-compression&quot;&gt;для пользователя&lt;/a&gt; и &lt;a href=&quot;https://developer.chrome.com/multidevice/data-compression-for-isps&quot;&gt;для администратора&lt;/a&gt;;&lt;/li&gt;
+&lt;li&gt;Хороший &lt;a href=&quot;http://superuser.com/questions/945924/how-do-i-use-google-data-compression-proxy-on-firefox&quot;&gt;ответ и разбор стандарта google compression proxy&lt;/a&gt;, правда только для HTTP траффика, не HTTPS. Есть пример реализации для firefox. Его я и переводил для статьи;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/miku-nyan/DCP-bridge&quot;&gt;Реализация прокси на Java&lt;/a&gt;, которая проксирует через google data compression server. Сделано для какого-то image board. Хороший код, есть что посмотреть;&lt;/li&gt;
+&lt;li&gt;Единственный найденный мной вариант по &lt;a href=&quot;http://stackoverflow.com/questions/15048102/httprouteplanner-how-does-it-work-with-an-https-proxy&quot;&gt;проксированию HTTP трафика через HTTPS прокси&lt;/a&gt; при помощи библиотек apache. Его я и дорабатывал.&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!--  -->
+
+
+
 
 
     <nav id="page-nav">
         
-        <a class="extend prev" rel="prev" href="/page/3/">&lt;&lt; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/5/">Next &gt;&gt;</a>
+        <a class="extend prev" rel="prev" href="/page/3/">&lt;&lt; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/5/">Next &gt;&gt;</a>
     </nav>
 
 </div></div>
@@ -705,7 +867,7 @@ GMT 03:30 - Мы особо ничего ни писали, так как про
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.54px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.77px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.77px;">android</a> <a href="/tags/applet/" style="font-size: 12.31px;">applet</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.77px;">codesigning</a> <a href="/tags/dev/" style="font-size: 16.15px;">dev</a> <a href="/tags/fun/" style="font-size: 14.62px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.23px;">habr</a> <a href="/tags/java/" style="font-size: 12.31px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.77px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/openid/" style="font-size: 10.77px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.31px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.31px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 16.15px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.31px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.77px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.54px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.85px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 15.38px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 16.92px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.77px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BB%D1%8E%D0%B4%D0%B8/" style="font-size: 10px;">люди</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.77px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.69px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 16.92px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.62px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.77px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.77px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.77px;">работа</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.31px;">таро</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 13.08px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.77px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.46px;">цитаты</a>
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.43px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.71px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.71px;">android</a> <a href="/tags/applet/" style="font-size: 12.14px;">applet</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.71px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15.71px;">dev</a> <a href="/tags/fun/" style="font-size: 14.29px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.29px;">habr</a> <a href="/tags/java/" style="font-size: 12.14px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.71px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/openid/" style="font-size: 10.71px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.14px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.14px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 16.43px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.14px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.71px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.43px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.57px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 15px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.14px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.71px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BB%D1%8E%D0%B4%D0%B8/" style="font-size: 10px;">люди</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.71px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.86px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 17.14px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.29px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.71px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.71px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.71px;">работа</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.14px;">таро</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.86px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.71px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.57px;">цитаты</a>
   </div>
 </div>
 
@@ -714,10 +876,6 @@ GMT 03:30 - Мы особо ничего ни писали, так как про
 <div class="widget tag">
   <h3 class="title">Recent Posts</h3>
   <ul class="entry">
-    
-      <li>
-        <a href="/2020/07/27/palantir-closed/">каталог закрыт</a>
-      </li>
     
       <li>
         <a href="/2020/06/26/как-активный-гражданин-приучает-людей-к-фишингу/">Как «активный гражданин» приучает людей к фишингу</a>
@@ -733,6 +891,10 @@ GMT 03:30 - Мы особо ничего ни писали, так как про
     
       <li>
         <a href="/2019/12/17/зачем-нужно-столько-разработчиков/">Зачем нужно столько разработчиков?</a>
+      </li>
+    
+      <li>
+        <a href="/2019/11/22/deno-время-nodejs-уходит/">Deno - время Node.JS уходит?</a>
       </li>
     
   </ul>
