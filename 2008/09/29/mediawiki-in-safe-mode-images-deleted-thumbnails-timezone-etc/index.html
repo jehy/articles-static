@@ -94,11 +94,10 @@ There are two options:
 <ol>
 <li><p>Do not save them at all
 <code>$wgSaveDeletedFiles = false;</code>(possibly, doesn’t work in new versions of wiki)</p>
-<ol start="2">
-<li>Save them in the root of the “deleted” folder:<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$wgSaveDeletedFiles = <span class="literal">true</span>;</span><br><span class="line">$wgFileStore[<span class="string">&#x27;deleted&#x27;</span>][<span class="string">&#x27;directory&#x27;</span>] = <span class="literal">false</span>;<span class="comment">// Defaults to $wgUploadDirectory/deleted</span></span><br><span class="line">$wgFileStore[<span class="string">&#x27;deleted&#x27;</span>][<span class="string">&#x27;url&#x27;</span>] = <span class="literal">null</span>;       <span class="comment">// Private, so set to null</span></span><br><span class="line">$wgFileStore[<span class="string">&#x27;deleted&#x27;</span>][<span class="string">&#x27;hash&#x27;</span>] = <span class="number">0</span>;         <span class="comment">// 0-level subdirectory split</span></span><br></pre></td></tr></table></figure>
-
 </li>
-</ol>
+<li><p>Save them in the root of the “deleted” folder:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$wgSaveDeletedFiles = <span class="literal">true</span>;</span><br><span class="line">$wgFileStore[<span class="string">&#x27;deleted&#x27;</span>][<span class="string">&#x27;directory&#x27;</span>] = <span class="literal">false</span>;<span class="comment">// Defaults to $wgUploadDirectory/deleted</span></span><br><span class="line">$wgFileStore[<span class="string">&#x27;deleted&#x27;</span>][<span class="string">&#x27;url&#x27;</span>] = <span class="literal">null</span>;       <span class="comment">// Private, so set to null</span></span><br><span class="line">$wgFileStore[<span class="string">&#x27;deleted&#x27;</span>][<span class="string">&#x27;hash&#x27;</span>] = <span class="number">0</span>;         <span class="comment">// 0-level subdirectory split</span></span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
 <h2>Thumbnails</h2>
