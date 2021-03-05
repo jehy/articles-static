@@ -42,7 +42,7 @@ So, let’s begin.">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 5.1.1"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -102,26 +102,27 @@ I hope it will be useful for someone, and I don’t want to forget it myself :)<
 <li>MS SQL Management Studio can do export to Oracle. Theoretically. On practice, it can’t.</li>
 </ol>
 <p>So, let’s begin.</p>
-<a id="more"></a>
+<span id="more"></span>
 <h2>1) Import .mdf file.</h2>
 The simplest way is to launch MS SQL Management Studio, set up connection to database and right click on "Databases" folder inside the connection tree. After it, choose "restore database", click "from device" and choose .mdb file. Everything should go fine.
-
+ 
 <h2>2) Export from MS SQL 2008 to MS SQL 2005</h2>
 You must have MS SQL 2008 and 2005 server installed for my method. Launch MS SQL Management Studio, connect both MS SQL 2008 and 2005, and right click on database you need to export. Choose "Tasks &gt; Export data", and proceed, everything should be obvious at this moment.
-
+ 
 <h2>3) Export from MS SQL 2005 to Oracle</h2>
 You should have MS SQL 2005 installed. Also, you need **Oracle SQL Developer** tool (can be downloaded from Oracle web site) with extension "**JTDC JDBC driver**" (Can be downloaded from Oracle SQL Developer interface after installation).
 Your MS SQL server should be configured to use both Windows & SQL authenification and your "sa" account should be configured (Windows authenification does not work with Oracle SQL Developer).
 Also, you need MS SQL server to be configured to accept TCP/IP connections. 
-
-<p>If you can’t launch MS SQL configure tool (“Cannot Connect to WMI Provider. You do not have permissions of the server is unreachable” error), you can go to registry to</p>
+ 
+If you can't launch MS SQL configure tool ("Cannot Connect to WMI Provider. You do not have permissions of the server is unreachable" error), you can go to registry to
 <blockquote>HKEY_LOCAL_MACHINE/Software/Microsoft/Microsoft SQL Server/_(your server internal name, for example, MSSQL.1)_/MSSQLServer/SuperSocketNetLib/Tcp</blockquote>
 and configure it manually (Set up "enable" as "1" and ports).
-
-<p>If you met all those requirements, launch Oracle SQL Developer, set up connection to Oracle and MS SQL, click on MS SQL connection and select “Quick migrate MS SQL Server”. After it, everything is also obvious.</p>
-<p>Helpful links from Oracle:
-<a target="_blank" rel="noopener" href="http://www.oracle.com/technology/software/products/sql/index.html">Download Oracle SQL Developer</a>.
-<a target="_blank" rel="noopener" href="http://www.oracle.com/technology/tech/migration/workbench/files/omwb_getstarted.html">Getting started with Sql Developer Migrations</a>.</p>
+ 
+If you met all those requirements, launch Oracle SQL Developer, set up connection to Oracle and MS SQL, click on MS SQL connection and select "Quick migrate MS SQL Server". After it, everything is also obvious.
+ 
+Helpful links from Oracle:
+[Download Oracle SQL Developer](http://www.oracle.com/technology/software/products/sql/index.html).
+[Getting started with Sql Developer Migrations](http://www.oracle.com/technology/tech/migration/workbench/files/omwb_getstarted.html).
 
       
     </div>
@@ -203,7 +204,7 @@ and configure it manually (Set up "enable" as "1" and ports).
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2020 Jehy
+  &copy; 2021 Jehy
   
 </div>-->
 <div class="clearfix"></div>

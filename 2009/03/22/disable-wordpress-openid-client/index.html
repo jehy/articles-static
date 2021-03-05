@@ -28,7 +28,7 @@ Wordpress allow">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 5.1.1"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -94,28 +94,28 @@ Version: 0.01
 Author: Jehy
 Author URI: https://jehy.ru
 */
-
-<p>add_action(‘init’,’remove_openid_client’,99);
+ 
+add_action('init','remove_openid_client',99);
 function remove_openid_client()
 {
-  remove_action( ‘preprocess_comment’, ‘openid_process_comment’, -90);
-  add_action(‘preprocess_comment’, ‘akismet_auto_check_comment’, 1);
-  remove_action( ‘akismet_spam_caught’, ‘openid_akismet_spam_caught’);
-  remove_action( ‘comment_post’, ‘update_comment_openid’, 5 );
-  remove_filter( ‘option_require_name_email’, ‘openid_option_require_name_email’ );
-  remove_action( ‘sanitize_comment_cookies’, ‘openid_sanitize_comment_cookies’, 15);
-  remove_action( ‘openid_finish_auth’, ‘openid_finish_comment’, 10, 2 );
-  remove_filter(‘pre_comment_approved’, ‘openid_comment_approval’);
-  remove_filter( ‘get_comment_author_link’, ‘openid_comment_author_link’);
-  remove_action( ‘wp_head’, ‘openid_js_setup’, 9);
-  remove_action( ‘wp_footer’, ‘openid_comment_profilelink’, 10);
-  remove_action( ‘wp_footer’, ‘openid_comment_form’, 10);
-  remove_filter( ‘openid_user_data’, ‘openid_get_user_data_form’, 6, 2);
-  remove_action( ‘delete_comment’, ‘unset_comment_openid’ );
-  remove_action( ‘init’, ‘openid_recent_comments’);
+  remove_action( 'preprocess_comment', 'openid_process_comment', -90);
+  add_action('preprocess_comment', 'akismet_auto_check_comment', 1);
+  remove_action( 'akismet_spam_caught', 'openid_akismet_spam_caught');
+  remove_action( 'comment_post', 'update_comment_openid', 5 );
+  remove_filter( 'option_require_name_email', 'openid_option_require_name_email' );
+  remove_action( 'sanitize_comment_cookies', 'openid_sanitize_comment_cookies', 15);
+  remove_action( 'openid_finish_auth', 'openid_finish_comment', 10, 2 );
+  remove_filter('pre_comment_approved', 'openid_comment_approval');
+  remove_filter( 'get_comment_author_link', 'openid_comment_author_link');
+  remove_action( 'wp_head', 'openid_js_setup', 9);
+  remove_action( 'wp_footer', 'openid_comment_profilelink', 10);
+  remove_action( 'wp_footer', 'openid_comment_form', 10);
+  remove_filter( 'openid_user_data', 'openid_get_user_data_form', 6, 2);
+  remove_action( 'delete_comment', 'unset_comment_openid' );
+  remove_action( 'init', 'openid_recent_comments');
 }
-?&gt;
-</pre></p>
+?>
+</pre>
 
       
     </div>
@@ -197,7 +197,7 @@ function remove_openid_client()
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2020 Jehy
+  &copy; 2021 Jehy
   
 </div>-->
 <div class="clearfix"></div>

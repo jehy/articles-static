@@ -28,7 +28,7 @@ This article is based on this one and ">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 5.1.1"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -89,7 +89,6 @@ sudo apt-get install php5-mcrypt
 <pre lang="bash">
 extension=php_mcrypt.dll
 </pre>
-
 <ol start="2">
 <li>Create file <strong>wp-content/uploads/custom-parser.php</strong> and add here the following:</li>
 </ol>
@@ -97,10 +96,10 @@ extension=php_mcrypt.dll
 <?php
 if(!defined('DB_NAME'))
   die('Error: Plugin "wp-noexternallinks" does not support standalone calls, damned hacker.');
-
+ 
 #include base parser
 include_once(ABSPATH . 'wp-content/plugins/wp-noexternallinks/wp-noexternallinks-parser.php');
-
+ 
 class custom_parser extends wp_noexternallinks_parser
 {
   var $salt,$iv;
@@ -126,7 +125,6 @@ class custom_parser extends wp_noexternallinks_parser
 }
 ?>
 </pre>
-
 <p>Do not forget to change <strong>$salt</strong> to any custom value! Also, add statistic handling from the original function if you use statistics.</p>
 
       
@@ -209,7 +207,7 @@ class custom_parser extends wp_noexternallinks_parser
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2020 Jehy
+  &copy; 2021 Jehy
   
 </div>-->
 <div class="clearfix"></div>

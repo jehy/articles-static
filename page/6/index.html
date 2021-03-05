@@ -25,7 +25,7 @@
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 5.1.1"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -72,16 +72,11 @@
       
         <p>Немного о наболевшем. Есть люди, которые в рабочем общении (скажем, в скайпе) пишут тебе “привет”. И ждут потом. Могут ждать минуты, часы, дни. А суть вопроса так и не напишут. Видимо, они считают это вежливым общением - то ли просто не делают разницу между живым и электронным общением. Мне очень хочется, чтобы к концу прочтения этой статьи они так уже не считали.</p>
 <ol>
-<li><p>Когда вы пишете “привет”, я знаю, что вам от меня что-то нужно. И вы не просто так здороваетесь и интересуетесь, что у меня нового. Так что всё это лирическое вступление без какого-либо рабочего наполнения по определению является мусором.</p>
-</li>
-<li><p>Вы пишете штук пять бессмысленных тирад, и на каждую из них мне приходится переключиться, чтобы выдать вам бессмысленный ответ. Это занимает время на то, чтобы переключиться на вас, прочитать бессмысленный текст, придумать пустой ответ и попытаться вернуться к своей задаче. Таким образом, на эти предварительные ласки у меня может уйти 5-10 минут, в течении которых я мог бы в концентрации делать свои задачи. Я понимаю, что вам наплевать на моё время, но мне-то нет.</p>
-</li>
-<li><p>Вы упрямо ждёте, что я окажусь онлайн вместе с вами. А что если нет? Тогда мы потратим трое суток на обмен любезностями, прежде чем вы мне наконец расскажете, в чём дело?</p>
-</li>
-<li><p>Когда мы наконец перейдём к сути вопроса, вы будете выдавливать в чат по одному предложению, заставляя меня таращиться на этот грёбаный карандаш. Скайп будет непрерывно булькать, чат-мигать, и я вообще ничего не смогу делать. Ещё 10 минут на этот бардак.</p>
-</li>
-<li><p>Не знаю, как у вас, а со мной так здороваются в день несколько человек. И никто их них почему-то не понимает, когда я прошу этого не делать. И каждый продолжает тратить моё время. В итоге, у меня час уходит на пустое бульканье чата.</p>
-</li>
+<li>Когда вы пишете “привет”, я знаю, что вам от меня что-то нужно. И вы не просто так здороваетесь и интересуетесь, что у меня нового. Так что всё это лирическое вступление без какого-либо рабочего наполнения по определению является мусором.</li>
+<li>Вы пишете штук пять бессмысленных тирад, и на каждую из них мне приходится переключиться, чтобы выдать вам бессмысленный ответ. Это занимает время на то, чтобы переключиться на вас, прочитать бессмысленный текст, придумать пустой ответ и попытаться вернуться к своей задаче. Таким образом, на эти предварительные ласки у меня может уйти 5-10 минут, в течении которых я мог бы в концентрации делать свои задачи. Я понимаю, что вам наплевать на моё время, но мне-то нет.</li>
+<li>Вы упрямо ждёте, что я окажусь онлайн вместе с вами. А что если нет? Тогда мы потратим трое суток на обмен любезностями, прежде чем вы мне наконец расскажете, в чём дело?</li>
+<li>Когда мы наконец перейдём к сути вопроса, вы будете выдавливать в чат по одному предложению, заставляя меня таращиться на этот грёбаный карандаш. Скайп будет непрерывно булькать, чат-мигать, и я вообще ничего не смогу делать. Ещё 10 минут на этот бардак.</li>
+<li>Не знаю, как у вас, а со мной так здороваются в день несколько человек. И никто их них почему-то не понимает, когда я прошу этого не делать. И каждый продолжает тратить моё время. В итоге, у меня час уходит на пустое бульканье чата.</li>
 </ol>
 <p>Вместо заключения.</p>
 <p>Быть вежливым очень просто - пожалуйста, пишите сразу и своё приветствие и суть вашего вопроса. Целиком, одним сообщением. Подробно. Со всем, что, как вы знаете, я у вас спрошу. Если у вас не работает программа - не надо писать “у меня не работает программа”. Вы же не только что с горшка встали. Вы можете написать мне её лог, текст или номер ошибки, в конце концов - скриншот.</p>
@@ -169,7 +164,7 @@ Find the main.db file in the folder, this file is your chat history.</blockquote
         <p>We have some web sites which must be updated from Git repositories by users who have no other permissions on web server. For this task, I imported SSH key to server for authorizing on bitbucket and wrote a simple bash script for four different repos:</p>
 <pre lang="bash" line="1">
 #!/bin/bash
-
+ 
 while true; do
 echo "Please choose api to update (enter number)"
 select repo in "dev" "a" "b" "test" "EXIT"; do
@@ -185,7 +180,6 @@ echo "Update finished. Want to update more?"
 echo ""
 done
 </pre>
-
 <p>This bash script is set as login shell for those users - so they can login and update their servers.</p>
 
       
@@ -261,7 +255,6 @@ done
 <p>After a little debug I found out that java machine didn’t make it in time to shutdown, start and show applet.</p>
 <p>Solution was rather fun:</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">&quot;separate_jvm&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>It helped because now new instance off applet launched in a new JVM, simultaneously with closing old instance of applet in old JVM.</p>
 <p>But be careful if your applet writes something to user disk or etc - both old and new instance can be doing is for a little time!</p>
 
@@ -300,10 +293,11 @@ done
         <p>Today i run into error</p>
 <blockquote>Invalid signature file digest for Manifest main attributes</blockquote>
 while running my java web start applet.
-
-<p>I wondered for a while and finally found the reason - yesterday I modified my .pfx key for signing applet, but manifests in jars merge with each other - so I really had jar with invalid digest.</p>
-<p>To <strong>fix it</strong>, I just had to remove META-INF folder from all my jars, add them manifest again and re-sign them.
-You can remove it with any archiver - for example, with 7-zip.</p>
+ 
+I wondered for a while and finally found the reason - yesterday I modified my .pfx key for signing applet, but manifests in jars merge with each other - so I really had jar with invalid digest.
+ 
+To **fix it**, I just had to remove META-INF folder from all my jars, add them manifest again and re-sign them.
+You can remove it with any archiver - for example, with 7-zip.
 
       
     </div>
@@ -341,22 +335,20 @@ You can remove it with any archiver - for example, with 7-zip.</p>
 <p>While I signed (with a good COMODO code signing certificate), there was </p>
 <blockquote>**Warning: The signer's certificate chain is not validated.**</blockquote>
 But I didn't pay much attention to it.
-
-<p>And my signed applet appeared to be of unknown publisher even through “Show details” in browser showed me that applet is signed with the correct certificate. Of cause, it was much restricted - and I need to read user disc, etc… It could be solved my directly installing CA to user computer - but that’s unreasonable to request every user to do it manually. So I suffered for a week and suddenly came up with a solution, inspired by <a target="_blank" rel="noopener" href="http://communities.serena.com/serena/topics/your_security_settings_have_blocked_an_application_from_running_with_insecure_or_expired_jre">this post</a> (thank you, 
-Supriya Roy):</p>
-<ol>
-<li><p>Install your .pfx certificate with the <strong>“Mark this key as exportable. This will allow you to back up or transport your keys at a later time”</strong> and <strong>“Include all extended properties”</strong> checked.</p>
-</li>
-<li><p>Check that that you have full certificate chain for this certificate and it is valid. Otherwise, install neccessary CA.</p>
-</li>
-<li><p>Export the installed certificate with <strong>“Yes, export the private key”</strong> option and <strong>“Include all certificates in the certification path if possible”</strong> and <strong>“Export all extended properties”</strong> checked under the option .PFX or PKCS #12.</p>
-</li>
-<li><p>Use exported .pfx file to sign the JAR. Don’t forget that it could change alias - get new one with</p>
+ 
+And my signed applet appeared to be of unknown publisher even through "Show details" in browser showed me that applet is signed with the correct certificate. Of cause, it was much restricted - and I need to read user disc, etc... It could be solved my directly installing CA to user computer - but that's unreasonable to request every user to do it manually. So I suffered for a week and suddenly came up with a solution, inspired by [this post](http://communities.serena.com/serena/topics/your_security_settings_have_blocked_an_application_from_running_with_insecure_or_expired_jre) (thank you, 
+Supriya Roy):
+ 
+1) Install your .pfx certificate with the **"Mark this key as exportable. This will allow you to back up or transport your keys at a later time"** and **"Include all extended properties"** checked.
+ 
+2) Check that that you have full certificate chain for this certificate and it is valid. Otherwise, install neccessary CA.
+ 
+3) Export the installed certificate with **"Yes, export the private key"** option and **"Include all certificates in the certification path if possible"** and **"Export all extended properties"** checked under the option .PFX or PKCS #12.
+ 
+4) Use exported .pfx file to sign the JAR. Don't forget that it could change alias - get new one with
 <pre lang="bash">keytool.exe -list -keystore D:\keys\code.pfx -storetype pkcs12</pre>
-
-</li>
-</ol>
-<p>Worked like magic - warning disappeared and my jars are trusted now!</p>
+ 
+Worked like magic - warning disappeared and my jars are trusted now!
 
       
     </div>
@@ -546,7 +538,7 @@ I could not use yum any more:
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2020 Jehy
+  &copy; 2021 Jehy
   
 </div>-->
 <div class="clearfix"></div>

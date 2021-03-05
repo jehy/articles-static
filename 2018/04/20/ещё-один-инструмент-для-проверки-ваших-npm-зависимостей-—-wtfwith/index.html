@@ -29,7 +29,7 @@
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 5.1.1"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -76,7 +76,7 @@
         <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/353912%7D">Оригинал поста на хабре</a></p>
 <p>Вы как-нибудь задумывались, сколько версий одной и той же библиотеки затягивает ваша клиентская или серверная сборка? Мне вот в какой-то момент стало интересно. Навскидку найти для этого готовый инструмент не получилось, а смотреть глазами package-lock слишком утомительно. Как мы знаем - в любой непонятной ситуации нужно писать свой npm пакет, поэтому я именно это и сделал… Дальше в посте я рассмотрю результат анализа живого проекта и сделаю пару спорных выводов.</p>
 <p>Ну и никак нельзя обойтись без этой классической картинки:</p>
-<p><img src="https://habrastorage.org/webt/fu/4y/hq/fu4yhqs70molq5wp_efppaek7a4.png" align = "center"/><a id="more"></a></p>
+<p><img src="https://habrastorage.org/webt/fu/4y/hq/fu4yhqs70molq5wp_efppaek7a4.png" align = "center"/><span id="more"></span></p>
 <h2>Как работает</h2>
 В общем-то никакого rocket science - берём package.json и package-lock.json и пробегаем по всем зависимостям, которые там есть, собирая идентичные модули или модули-форки. Форки, ясное дело, приходится прописывать руками, поэтому сейчас в них указан только lodash и undescore. Но вы всегда можете помочь и расширить этот список.
 
@@ -218,7 +218,7 @@
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2020 Jehy
+  &copy; 2021 Jehy
   
 </div>-->
 <div class="clearfix"></div>

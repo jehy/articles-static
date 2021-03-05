@@ -27,7 +27,7 @@
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 5.1.1"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -71,20 +71,17 @@
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <p>Recently I had I problem with loading dll libraries for my java web start application. 32 bit library didn’t load on 64 bit OS and, of cause, vice verse.<a id="more"></a></p>
+        <p>Recently I had I problem with loading dll libraries for my java web start application. 32 bit library didn’t load on 64 bit OS and, of cause, vice verse.<span id="more"></span></p>
 <p>Java has “arch” option for resources, and you can try to use it…</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resources</span> <span class="attr">os</span>=<span class="string">&quot;Windows&quot;</span> <span class="attr">arch</span>=<span class="string">&quot;x86&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">nativelib</span> <span class="attr">href</span>=<span class="string">&quot;native-x86.jar&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resources</span> <span class="attr">os</span>=<span class="string">&quot;Windows&quot;</span> <span class="attr">arch</span>=<span class="string">&quot;x86_64&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">nativelib</span> <span class="attr">href</span>=<span class="string">&quot;native-x86_64.jar&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resources</span> <span class="attr">os</span>=<span class="string">&quot;Windows&quot;</span> <span class="attr">arch</span>=<span class="string">&quot;amd64&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">nativelib</span> <span class="attr">href</span>=<span class="string">&quot;native-amd64.jar&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>But funny problem is that 64x Windows user sometimes installs 32 bit java machine. And it won’t load your 64 bit dll.
 Also, solution with</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.getProperty(<span class="string">&quot;os.arch&quot;</span>);</span><br></pre></td></tr></table></figure>
 <p>doesn’t help you for same reason - it shows OS version, not version of java machine.</p>
 <p>You can try a bit cheating with</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">is64bit = (System.getenv(<span class="string">&quot;ProgramFiles(x86)&quot;</span>) != <span class="keyword">null</span>);</span><br><span class="line">&lt;/pre&gt;</span><br><span class="line">but it really looks ugly and you will only be able to load library after running the main jar <span class="keyword">module</span>.</span><br><span class="line"> </span><br><span class="line">So I decided to make a really fun solution:</span><br><span class="line">```xml</span><br><span class="line">  &lt;resources os=<span class="string">&quot;Windows&quot;</span>&gt;</span><br><span class="line">    &lt;nativelib href=<span class="string">&quot;native.64.dll.jar&quot;</span>/&gt;</span><br><span class="line">    &lt;nativelib href=<span class="string">&quot;native.32.dll.jar&quot;</span>/&gt;</span><br><span class="line">  &lt;/resources&gt;</span><br></pre></td></tr></table></figure>
-
 <p>and</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">   System.loadLibrary(<span class="string">&quot;native.64&quot;</span>);</span><br><span class="line"> &#125; <span class="keyword">catch</span> (Throwable t) &#123;</span><br><span class="line">   System.out.println(<span class="string">&quot;Failed to load library 64x&quot;</span>);</span><br><span class="line">   t.printStackTrace(System.out);</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> <span class="keyword">try</span> &#123;</span><br><span class="line">   System.loadLibrary(<span class="string">&quot;native.32&quot;</span>);</span><br><span class="line"> &#125; <span class="keyword">catch</span> (Throwable t) &#123;</span><br><span class="line">   System.out.println(<span class="string">&quot;Failed to load library 32x&quot;</span>);</span><br><span class="line">   t.printStackTrace(System.out);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
 <p>One of the libraries loads anyway : )</p>
 <p>Of cause, this solution is not cool and won’be acceptable if you have really large library files… But in most cases it’s fine.</p>
 
@@ -168,7 +165,7 @@ Also, solution with</p>
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2020 Jehy
+  &copy; 2021 Jehy
   
 </div>-->
 <div class="clearfix"></div>

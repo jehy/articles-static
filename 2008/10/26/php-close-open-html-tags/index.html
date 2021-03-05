@@ -29,7 +29,7 @@
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 5.1.1"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -76,7 +76,7 @@
         <p>На случай, если мы доверяем пользовательскому коду - но он может порушить нам структуру страницы, и надо его слегка поправить.</p>
 <p>Да, не забудьте проверку на &lt;SCRIPT&gt;, а то можно и XSS словить…
 Функция закрывает все открытые HTML теги.</p>
-<a id="more"></a>
+<span id="more"></span>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">close_dangling_tags</span>(<span class="params">$html</span>)</span>&#123;</span><br><span class="line">  <span class="comment">#put all opened tags into an array</span></span><br><span class="line">  preg_match_all(<span class="string">&quot;#&lt;([a-z]+)( .*)?(?!/)&gt;#iU&quot;</span>,$html,$result);</span><br><span class="line">  $openedtags=$result[<span class="number">1</span>];</span><br><span class="line"> </span><br><span class="line">  <span class="comment">#put all closed tags into an array</span></span><br><span class="line">  preg_match_all(<span class="string">&quot;#&lt;/([a-z]+)&gt;#iU&quot;</span>,$html,$result);</span><br><span class="line">  $closedtags=$result[<span class="number">1</span>];</span><br><span class="line">  $len_opened = count($openedtags);</span><br><span class="line">  <span class="comment"># all tags are closed</span></span><br><span class="line">  <span class="keyword">if</span>(count($closedtags) == $len_opened)&#123;</span><br><span class="line">    <span class="keyword">return</span> $html;</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  $openedtags = array_reverse($openedtags);</span><br><span class="line">  <span class="comment"># close tags</span></span><br><span class="line">  <span class="keyword">for</span>($i=<span class="number">0</span>;$i &lt; $len_opened;$i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!in_array($openedtags[$i],$closedtags))&#123;</span><br><span class="line">      $html .= <span class="string">&#x27;&lt;/&#x27;</span>.$openedtags[$i].<span class="string">&#x27;&gt;&#x27;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">unset</span>($closedtags[array_search($openedtags[$i],$closedtags)]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> $html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Украл у <a target="_blank" rel="noopener" href="http://codesnippets.joyent.com/user/jamiew">jamiew</a>.</p>
 
@@ -160,7 +160,7 @@
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2020 Jehy
+  &copy; 2021 Jehy
   
 </div>-->
 <div class="clearfix"></div>

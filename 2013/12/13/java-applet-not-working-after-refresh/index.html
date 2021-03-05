@@ -28,7 +28,7 @@ After a little debug I found ou">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 5.1.1"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -76,7 +76,6 @@ After a little debug I found ou">
 <p>After a little debug I found out that java machine didn’t make it in time to shutdown, start and show applet.</p>
 <p>Solution was rather fun:</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">&quot;separate_jvm&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>It helped because now new instance off applet launched in a new JVM, simultaneously with closing old instance of applet in old JVM.</p>
 <p>But be careful if your applet writes something to user disk or etc - both old and new instance can be doing is for a little time!</p>
 
@@ -160,7 +159,7 @@ After a little debug I found ou">
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2020 Jehy
+  &copy; 2021 Jehy
   
 </div>-->
 <div class="clearfix"></div>

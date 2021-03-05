@@ -28,7 +28,7 @@ I could not use yum any more:">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 5.1.1"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -73,7 +73,7 @@ I could not use yum any more:">
     <div class="e-content entry" itemprop="articleBody">
       
         <p>I ran into a trouble while updating my Red Hat Enterprise Linux Server release 5.8 (Tikanga).
-I could not use yum any more:<a id="more"></a></p>
+I could not use yum any more:<span id="more"></span></p>
 <pre lang="bash">
 [root@ohs mnt] yum update
 el5_latest                                                                                    | 1.4 kB     00:00
@@ -102,10 +102,8 @@ Traceback (most recent call last):
   File "/usr/lib64/python2.4/site-packages/sqlitecachec.py", line 42, in getPrimary
     self.repoid))
 TypeError: Parsing primary.xml error: Start tag expected, '<' not found
-
+ 
 </pre>
-
-
 <p>There are several reasons for this problem.</p>
 <ol>
 <li>Check if you are behind a firewall, blocking connection to mirror.</li>
@@ -201,7 +199,7 @@ and test your yum.</li>
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2020 Jehy
+  &copy; 2021 Jehy
   
 </div>-->
 <div class="clearfix"></div>

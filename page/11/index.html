@@ -25,7 +25,7 @@
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 5.1.1"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -72,7 +72,6 @@
       
         <p>Sometimes when you update wordpress or plugins, especially if you use safe mode, you can get errors like this:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Enabling Maintenance mode.</span><br><span class="line"> </span><br><span class="line">Downloading update from http:&#x2F;&#x2F;downloads.wordpress.org&#x2F;plugin&#x2F;all-in-one-seo-pack.zip.</span><br><span class="line">wp-content&#x2F;uploads&#x2F;all-in-one-seo-pack.tmp</span><br><span class="line">Warning: touch() [function.touch]: Unable to create file wp-content&#x2F;uploads&#x2F;all-in-one-seo-pack.tmp because No such file or directory in **\*\*\***&#x2F;wp-admin&#x2F;includes&#x2F;file.php on line 185</span><br><span class="line"> </span><br><span class="line">Download failed. Could not create Temporary file</span><br></pre></td></tr></table></figure>
-
 <p>That’s because wordpress uses strange things for temporary directory.
 To cure it with non intrusive methods,  just add</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="string">&#x27;WP_TEMP_DIR&#x27;</span>,ABSPATH.<span class="string">&#x27;wp-content/uploads/&#x27;</span>);</span><br></pre></td></tr></table></figure>
@@ -118,15 +117,15 @@ Took me about two hours to figure out -_-</p>
     <div class="e-content entry" itemprop="articleBody">
       
         <blockquote> - И все же почему Вы не пошли вверх по иерархической лестнице, ну, скажем, до протодиакона или иерея?
-
-<p> – Нет, ну “прото-” — это уж совсем от меня не зависит. Впрочем, я мечтаю об одном отличии. Знаете, высшей наградой епископа является “право ношения двух панагий”; высшим отличием священника является “право ношения двух крестов”… Так вот я мечтаю о том, чтобы меня наградили “правом каждения двумя кадилами”! Представляете, как красиво это смотрелось бы: выходит диакон на амвон, в каждой руке по дымящемуся кадилу, и он машет ими, как китаец нунчаками! Просто супердиакон!</blockquote></p>
+ 
+ – Нет, ну “прото-” — это уж совсем от меня не зависит. Впрочем, я мечтаю об одном отличии. Знаете, высшей наградой епископа является “право ношения двух панагий”; высшим отличием священника является “право ношения двух крестов”... Так вот я мечтаю о том, чтобы меня наградили “правом каждения двумя кадилами”! Представляете, как красиво это смотрелось бы: выходит диакон на амвон, в каждой руке по дымящемуся кадилу, и он машет ими, как китаец нунчаками! Просто супердиакон!</blockquote>
 <blockquote>
 Как-то еду в метро. Полупустой вагон, но все сидячие места заняты. Стою, книжку читаю. Вдруг нависает надо мной матерый и, мягко говоря, не вполне трезвый человечище с бритым затылком… Златая цепь на дубе том… И громко, на весь вагон, спрашивает: “Батюшка, что мне делать? Я семь человек зарезал”. Смотрю — скамеечка опустела, можно присесть и по душам поговорить.
-
-<p> – Хорошее место для исповеди он выбрал. Что же Вы ему посоветовали?
+ 
+ – Хорошее место для исповеди он выбрал. Что же Вы ему посоветовали?
  – Послал его.
  – Куда?
- –  В храм, естественно.</p>
+ –  В храм, естественно.
 </blockquote>
       
     </div>
@@ -433,8 +432,8 @@ Took me about two hours to figure out -_-</p>
       
         <p>Андрей Кураев, <a target="_blank" rel="noopener" href="https://youtube.com/watch?v=I6T7Ae1pIuI&feature=related">по поводу сил зла, экстрасенсов и прочего</a>.</p>
 <blockquote>То, на что ты смотришь, входит в тебя. Лучше во всём видеть Бога.</blockquote>
-
-<p>Из Марины Цветаевой:</p>
+ 
+Из Марины Цветаевой:
 <blockquote>У меня есть право не быть собственным современником.</blockquote>
 
       
@@ -514,7 +513,7 @@ Took me about two hours to figure out -_-</p>
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2020 Jehy
+  &copy; 2021 Jehy
   
 </div>-->
 <div class="clearfix"></div>

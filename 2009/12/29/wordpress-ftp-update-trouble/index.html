@@ -28,7 +28,7 @@
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 5.1.1"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -74,7 +74,6 @@
       
         <p>Sometimes when you update wordpress or plugins, especially if you use safe mode, you can get errors like this:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Enabling Maintenance mode.</span><br><span class="line"> </span><br><span class="line">Downloading update from http:&#x2F;&#x2F;downloads.wordpress.org&#x2F;plugin&#x2F;all-in-one-seo-pack.zip.</span><br><span class="line">wp-content&#x2F;uploads&#x2F;all-in-one-seo-pack.tmp</span><br><span class="line">Warning: touch() [function.touch]: Unable to create file wp-content&#x2F;uploads&#x2F;all-in-one-seo-pack.tmp because No such file or directory in **\*\*\***&#x2F;wp-admin&#x2F;includes&#x2F;file.php on line 185</span><br><span class="line"> </span><br><span class="line">Download failed. Could not create Temporary file</span><br></pre></td></tr></table></figure>
-
 <p>That’s because wordpress uses strange things for temporary directory.
 To cure it with non intrusive methods,  just add</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="string">&#x27;WP_TEMP_DIR&#x27;</span>,ABSPATH.<span class="string">&#x27;wp-content/uploads/&#x27;</span>);</span><br></pre></td></tr></table></figure>
@@ -167,7 +166,7 @@ Took me about two hours to figure out -_-</p>
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2020 Jehy
+  &copy; 2021 Jehy
   
 </div>-->
 <div class="clearfix"></div>

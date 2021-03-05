@@ -27,7 +27,7 @@
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 5.1.1"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -74,7 +74,7 @@
         <p>We have some web sites which must be updated from Git repositories by users who have no other permissions on web server. For this task, I imported SSH key to server for authorizing on bitbucket and wrote a simple bash script for four different repos:</p>
 <pre lang="bash" line="1">
 #!/bin/bash
-
+ 
 while true; do
 echo "Please choose api to update (enter number)"
 select repo in "dev" "a" "b" "test" "EXIT"; do
@@ -90,7 +90,6 @@ echo "Update finished. Want to update more?"
 echo ""
 done
 </pre>
-
 <p>This bash script is set as login shell for those users - so they can login and update their servers.</p>
 
       
@@ -173,7 +172,7 @@ done
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2020 Jehy
+  &copy; 2021 Jehy
   
 </div>-->
 <div class="clearfix"></div>

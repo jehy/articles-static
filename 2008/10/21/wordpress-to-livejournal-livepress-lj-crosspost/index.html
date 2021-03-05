@@ -37,7 +37,7 @@ LJ crosspost. Не такой красивый, меньше опций. Одн�
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 5.1.1"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -92,7 +92,7 @@ If you need the same feature - just replace the first code fragment with the sec
 <li><p><strong>Live+Press</strong> очень красивый, со множеством настроек, полностью заменяющий интерфейсы жж… Только вот с русским языком он не работает. А я так и не смогла его отстроить для этого. В интернете тоже решений нет. Обещают в следующей версии сделать поддержку.</p>
 </li>
 <li><p><strong>LJ crosspost</strong>. Не такой красивый, меньше опций. Однако работает по ощущениям быстрее и не так заси… засоряет базу :) И вдобавок работает с русским языком. Сразу и без ковыряния. Ещё один плюс - для него есть русификация. Ссылку искать не буду так как у меня все интерфейсы на английском.</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>Единственный момент - LJ crosspost имеет два варианта:</p>
 </li>
 <li><p>Целиком копировать запись в жж</p>
@@ -117,11 +117,11 @@ If you need the same feature - just replace the first code fragment with the sec
                 break;
             case "link":
                 $the_event .= sprintf('
-
+ 
 <a href="%s#more-%s">', get_permalink($post_id), $post_id) .
                     __('Read the rest of this entry &raquo;', LJXP_DOMAIN) .
                     '</a>
-
+ 
 ';
                 break;
             case "lj-cut":
@@ -222,7 +222,7 @@ $the_event=apply_filters('the_content',$post->post_excerpt).'<a href="'.get_perm
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2020 Jehy
+  &copy; 2021 Jehy
   
 </div>-->
 <div class="clearfix"></div>

@@ -28,7 +28,7 @@
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 5.1.1"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -78,7 +78,6 @@
 <pre lang="php" line="1">
 echo get_post_meta(get_the_ID(), 'имя_вашего_поля', 1);
 </pre>
-
 <p>Затем редактируем его, чтобы он выглядел так:</p>
 <pre lang="php" line="1">
 //получить содержимое поля
@@ -89,14 +88,12 @@ $text_filtered=apply_filters('the_content',$text);
 //Вывести отфильтрованный текст:
 echo $text_filtered;
 </pre>
-
 <p>Заметьте, что если вы не маскируете ссылки в тексте поста, а маскируете их в комментариях, то пятая строчка должна выглядеть так:</p>
 <pre lang="php" line="3">
 //Использовать на содержимом поля все те же фильтры, что на стандартном выводе комментария пользователя
 //В эти фильтры так же входит фильтр wp-noexternallinks:
 $text_filtered=apply_filters('comment_text',$text);
 </pre>
-
 <p>Заметьте, что если произвольное поле выводится при помощи плагина, то вам придётся править его код или как-то ещё обрабатывать его вывод.</p>
 <p><strong>Обновление</strong>
 Я так же добавил фильтр, который можно вызывать в коде без остальных, вот так:</p>
@@ -184,7 +181,7 @@ $text_filtered=apply_filters('wp_noexternallinks',$text);
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2020 Jehy
+  &copy; 2021 Jehy
   
 </div>-->
 <div class="clearfix"></div>

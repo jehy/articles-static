@@ -40,7 +40,7 @@ Step by step guide:">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 5.1.1"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -97,7 +97,7 @@ It is made for android 2.3 gingerbread and using android 4 may be easier. But ch
 <li>Centreon writes notification log in JSON to phone card.</li>
 <li>Persistent service on android smartphone reads JSON, composes a messages and sends it.</li>
 </ol>
-<p><strong>Step by step guide:</strong><a id="more"></a></p>
+<p><strong>Step by step guide:</strong><span id="more"></span></p>
 <ol>
 <li><p>Use adb shell \ terminal emulator \ SSH shell to issue command “mount”. You will see partition type and mount point for device. For example, it can be <strong>vfat</strong>and <strong>/dev/block/vold/179:1</strong>.</p>
 </li>
@@ -105,17 +105,14 @@ It is made for android 2.3 gingerbread and using android 4 may be easier. But ch
 </li>
 <li><p>Download <a target="_blank" rel="noopener" href="https://github.com/jehy/SmsInformer">android service for sending Centreon notifications</a> and compile it, replacing mount point in code with your own. Install it on your phone.</p>
 </li>
-</ol>
-<ol start="5">
-<li>Connect your phone to Centreon server. Mount phone card to server file system, like this:</li>
+<li><p>Connect your phone to Centreon server. Mount phone card to server file system, like this:</p>
+</li>
 </ol>
 <pre lang="bash">mount -t vfat -o rw  umask=0666 /dev/sdc /mnt/phone/</pre>
-
 <ol start="6">
 <li>Configure centreon notification (Configuration - Commands - Notifications). It should issue the following command:</li>
 </ol>
 <pre lang="bash">printf "{\"Notification Type\": \"$NOTIFICATIONTYPE$\", \"Service description\" : \"$SERVICEDESC$\", \"Host\" : \"$HOSTNAME$\",\"Host alias\" : \"$HOSTALIAS$\",\"Address\": \"$HOSTADDRESS$\",\"State\" : \"$SERVICESTATE$\", \"PHONE\": \"$CONTACTPAGER$\", \"TIME\": \"`date '+%s'`\"}," >> /mnt/phone/SmsInformer/messages.txt</pre>
-
 <ol start="6">
 <li>Launch SMS Informer application - you are ready to receive notifications!</li>
 </ol>
@@ -201,7 +198,7 @@ It is made for android 2.3 gingerbread and using android 4 may be easier. But ch
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2020 Jehy
+  &copy; 2021 Jehy
   
 </div>-->
 <div class="clearfix"></div>
