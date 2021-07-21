@@ -73,7 +73,7 @@
     <div class="e-content entry" itemprop="articleBody">
       
         <p>If you need drop too many tables to do it manually, you can use query like this:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select &#x27;drop table &#x27;||table_name||&#x27;;&#x27; from all_tables where table_name like &#x27;T_%&#x27;;&lt;/blockquote&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="string">&#x27;drop table &#x27;</span><span class="operator">||</span>table_name<span class="operator">||</span><span class="string">&#x27;;&#x27;</span> <span class="keyword">from</span> all_tables <span class="keyword">where</span> table_name <span class="keyword">like</span> <span class="string">&#x27;T_%&#x27;</span>;<span class="operator">&lt;</span><span class="operator">/</span>blockquote<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
 <p>It will create SQL queries. You can edit them and them run to delete all you want.</p>
 
       
