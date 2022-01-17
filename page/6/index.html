@@ -25,7 +25,7 @@
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 6.0.0"></head>
 
 
 <body>
@@ -342,10 +342,9 @@ done
 <blockquote>Invalid signature file digest for Manifest main attributes</blockquote>
 while running my java web start applet.
  
-I wondered for a while and finally found the reason - yesterday I modified my .pfx key for signing applet, but manifests in jars merge with each other - so I really had jar with invalid digest.
- 
-To **fix it**, I just had to remove META-INF folder from all my jars, add them manifest again and re-sign them.
-You can remove it with any archiver - for example, with 7-zip.
+<p>I wondered for a while and finally found the reason - yesterday I modified my .pfx key for signing applet, but manifests in jars merge with each other - so I really had jar with invalid digest.</p>
+<p>To <strong>fix it</strong>, I just had to remove META-INF folder from all my jars, add them manifest again and re-sign them.
+You can remove it with any archiver - for example, with 7-zip.</p>
 
       
     </div>
@@ -384,19 +383,15 @@ You can remove it with any archiver - for example, with 7-zip.
 <blockquote>**Warning: The signer's certificate chain is not validated.**</blockquote>
 But I didn't pay much attention to it.
  
-And my signed applet appeared to be of unknown publisher even through "Show details" in browser showed me that applet is signed with the correct certificate. Of cause, it was much restricted - and I need to read user disc, etc... It could be solved my directly installing CA to user computer - but that's unreasonable to request every user to do it manually. So I suffered for a week and suddenly came up with a solution, inspired by [this post](http://communities.serena.com/serena/topics/your_security_settings_have_blocked_an_application_from_running_with_insecure_or_expired_jre) (thank you, 
-Supriya Roy):
- 
-1) Install your .pfx certificate with the **"Mark this key as exportable. This will allow you to back up or transport your keys at a later time"** and **"Include all extended properties"** checked.
- 
-2) Check that that you have full certificate chain for this certificate and it is valid. Otherwise, install neccessary CA.
- 
-3) Export the installed certificate with **"Yes, export the private key"** option and **"Include all certificates in the certification path if possible"** and **"Export all extended properties"** checked under the option .PFX or PKCS #12.
- 
-4) Use exported .pfx file to sign the JAR. Don't forget that it could change alias - get new one with
-<pre lang="bash">keytool.exe -list -keystore D:\keys\code.pfx -storetype pkcs12</pre>
- 
-Worked like magic - warning disappeared and my jars are trusted now!
+<p>And my signed applet appeared to be of unknown publisher even through “Show details” in browser showed me that applet is signed with the correct certificate. Of cause, it was much restricted - and I need to read user disc, etc… It could be solved my directly installing CA to user computer - but that’s unreasonable to request every user to do it manually. So I suffered for a week and suddenly came up with a solution, inspired by <a target="_blank" rel="noopener" href="http://communities.serena.com/serena/topics/your_security_settings_have_blocked_an_application_from_running_with_insecure_or_expired_jre">this post</a> (thank you, 
+Supriya Roy):</p>
+<ol>
+<li>Install your .pfx certificate with the <strong>“Mark this key as exportable. This will allow you to back up or transport your keys at a later time”</strong> and <strong>“Include all extended properties”</strong> checked.</li>
+<li>Check that that you have full certificate chain for this certificate and it is valid. Otherwise, install neccessary CA.</li>
+<li>Export the installed certificate with <strong>“Yes, export the private key”</strong> option and <strong>“Include all certificates in the certification path if possible”</strong> and <strong>“Export all extended properties”</strong> checked under the option .PFX or PKCS #12.</li>
+<li>Use exported .pfx file to sign the JAR. Don’t forget that it could change alias - get new one with<pre lang="bash">keytool.exe -list -keystore D:\keys\code.pfx -storetype pkcs12</pre></li>
+</ol>
+<p>Worked like magic - warning disappeared and my jars are trusted now!</p>
 
       
     </div>
@@ -493,7 +488,7 @@ I could not use yum any more:
 
     <nav id="page-nav">
         
-        <a class="extend prev" rel="prev" href="/page/5/">&lt;&lt; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/7/">Next &gt;&gt;</a>
+        <a class="extend prev" rel="prev" href="/page/5/">&lt;&lt; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/7/">Next &gt;&gt;</a>
     </nav>
 
 </div></div>
@@ -550,7 +545,7 @@ I could not use yum any more:
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2021 Jehy
+  &copy; 2022 Jehy
   
 </div>-->
 <div class="clearfix"></div>

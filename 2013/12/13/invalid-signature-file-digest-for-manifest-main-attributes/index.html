@@ -31,7 +31,7 @@ I wondered for a while and">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 6.0.0"></head>
 
 
 <body>
@@ -79,10 +79,9 @@ I wondered for a while and">
 <blockquote>Invalid signature file digest for Manifest main attributes</blockquote>
 while running my java web start applet.
  
-I wondered for a while and finally found the reason - yesterday I modified my .pfx key for signing applet, but manifests in jars merge with each other - so I really had jar with invalid digest.
- 
-To **fix it**, I just had to remove META-INF folder from all my jars, add them manifest again and re-sign them.
-You can remove it with any archiver - for example, with 7-zip.
+<p>I wondered for a while and finally found the reason - yesterday I modified my .pfx key for signing applet, but manifests in jars merge with each other - so I really had jar with invalid digest.</p>
+<p>To <strong>fix it</strong>, I just had to remove META-INF folder from all my jars, add them manifest again and re-sign them.
+You can remove it with any archiver - for example, with 7-zip.</p>
 
       
     </div>
@@ -164,7 +163,7 @@ You can remove it with any archiver - for example, with 7-zip.
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2021 Jehy
+  &copy; 2022 Jehy
   
 </div>-->
 <div class="clearfix"></div>

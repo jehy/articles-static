@@ -25,7 +25,7 @@
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 6.0.0"></head>
 
 
 <body>
@@ -131,27 +131,27 @@ Author: Jehy
 Author URI: https://jehy.ru
 */
  
-add_action('init','remove_openid_client',99);
+<p>add_action(‘init’,’remove_openid_client’,99);
 function remove_openid_client()
 {
-  remove_action( 'preprocess_comment', 'openid_process_comment', -90);
-  add_action('preprocess_comment', 'akismet_auto_check_comment', 1);
-  remove_action( 'akismet_spam_caught', 'openid_akismet_spam_caught');
-  remove_action( 'comment_post', 'update_comment_openid', 5 );
-  remove_filter( 'option_require_name_email', 'openid_option_require_name_email' );
-  remove_action( 'sanitize_comment_cookies', 'openid_sanitize_comment_cookies', 15);
-  remove_action( 'openid_finish_auth', 'openid_finish_comment', 10, 2 );
-  remove_filter('pre_comment_approved', 'openid_comment_approval');
-  remove_filter( 'get_comment_author_link', 'openid_comment_author_link');
-  remove_action( 'wp_head', 'openid_js_setup', 9);
-  remove_action( 'wp_footer', 'openid_comment_profilelink', 10);
-  remove_action( 'wp_footer', 'openid_comment_form', 10);
-  remove_filter( 'openid_user_data', 'openid_get_user_data_form', 6, 2);
-  remove_action( 'delete_comment', 'unset_comment_openid' );
-  remove_action( 'init', 'openid_recent_comments');
+  remove_action( ‘preprocess_comment’, ‘openid_process_comment’, -90);
+  add_action(‘preprocess_comment’, ‘akismet_auto_check_comment’, 1);
+  remove_action( ‘akismet_spam_caught’, ‘openid_akismet_spam_caught’);
+  remove_action( ‘comment_post’, ‘update_comment_openid’, 5 );
+  remove_filter( ‘option_require_name_email’, ‘openid_option_require_name_email’ );
+  remove_action( ‘sanitize_comment_cookies’, ‘openid_sanitize_comment_cookies’, 15);
+  remove_action( ‘openid_finish_auth’, ‘openid_finish_comment’, 10, 2 );
+  remove_filter(‘pre_comment_approved’, ‘openid_comment_approval’);
+  remove_filter( ‘get_comment_author_link’, ‘openid_comment_author_link’);
+  remove_action( ‘wp_head’, ‘openid_js_setup’, 9);
+  remove_action( ‘wp_footer’, ‘openid_comment_profilelink’, 10);
+  remove_action( ‘wp_footer’, ‘openid_comment_form’, 10);
+  remove_filter( ‘openid_user_data’, ‘openid_get_user_data_form’, 6, 2);
+  remove_action( ‘delete_comment’, ‘unset_comment_openid’ );
+  remove_action( ‘init’, ‘openid_recent_comments’);
 }
-?>
-</pre>
+?&gt;
+</pre></p>
 
       
     </div>
@@ -226,7 +226,7 @@ function remove_openid_client()
  
 <blockquote>Должна соблюдаться Нейтральная Точка Зрения — требуется полное отсутствие лулзов</blockquote>
  
-Порадовало то, что [энциклонги таки стали мемом](http://lurkmore.ru/%D0%AD%D0%BD%D1%86%D0%B8%D0%BA%D0%BB%D0%BE%D0%BD%D0%B3%D0%B8).
+<p>Порадовало то, что <a target="_blank" rel="noopener" href="http://lurkmore.ru/%D0%AD%D0%BD%D1%86%D0%B8%D0%BA%D0%BB%D0%BE%D0%BD%D0%B3%D0%B8">энциклонги таки стали мемом</a>.</p>
 
       
     </div>
@@ -340,17 +340,13 @@ function remove_openid_client()
 Спасибо morretta.</p>
 <blockquote>**1\. И охота тебе всякой фигнёй заниматься? Расслабься, найди себе девушку, гульни, насладжайся жизнью – молодость ведь уходит!**
  
-**_Перевод:_**
- 
-Нас беспокоит твой образ жизни, и мы видим в нём угрозу для привычного нам бытового уклада. Перестань использовать своё время на размышления и изучение окружающего мира – таким образом ты можешь стать опасным для быдла индивидом. Вместо этого ты должен установить для себя модель поведения, ничем не отличающегося от поведения всех остальных окружающих тебя человеческих особей, найти самку для спаривания, произвести потомство, дабы у последнего была возможность занять всё твоё оставшееся свободное время, блокировав тем самым возможность стать опасным для быдла индивидом.
- 
-2. **Ничего. Это всего лишь юношеский максимализм. Вот повзрослеешь – поймёшь.**
- 
-_\*\*Перевод:\*\*_
- 
-Мы рады статистике, которая говорит о том, что большинство биологических особей ломаются под воздействием внешних факторов и раздражителей, стремящихся физически и психологически ослабить этих особей.  Мы также рады высокой вероятности того, что ты попадёшь в категорию сломавшихся особей и, руководствуясь инстинктом самосохранения, поспешишь внедриться в наше сообщество, кое-как способное влачить существование в этом суровом мире. Мы рады тому факту, что ради внедрения в наше сообщество ты откажешься от своих нынешних идей и ценностей, скатишься до нашего уровня и примешь те ценности, которые на данный момент называешь ценностями тебе чуждыми. Дабы не раздражать самих себя беспокойством о вероятности того, что ты всё-таки выстоишь перед ожидающими тебя в жизни трудностями и станешь чужеродным для нас индивидом, мы полностью исключаем эту ситуацию и приписываем ей нулевую вероятность. 
- 
-
+<p><strong><em>Перевод:</em></strong></p>
+<p>Нас беспокоит твой образ жизни, и мы видим в нём угрозу для привычного нам бытового уклада. Перестань использовать своё время на размышления и изучение окружающего мира – таким образом ты можешь стать опасным для быдла индивидом. Вместо этого ты должен установить для себя модель поведения, ничем не отличающегося от поведения всех остальных окружающих тебя человеческих особей, найти самку для спаривания, произвести потомство, дабы у последнего была возможность занять всё твоё оставшееся свободное время, блокировав тем самым возможность стать опасным для быдла индивидом.</p>
+<ol start="2">
+<li><strong>Ничего. Это всего лишь юношеский максимализм. Вот повзрослеешь – поймёшь.</strong></li>
+</ol>
+<p><em>**Перевод:**</em></p>
+<p>Мы рады статистике, которая говорит о том, что большинство биологических особей ломаются под воздействием внешних факторов и раздражителей, стремящихся физически и психологически ослабить этих особей.  Мы также рады высокой вероятности того, что ты попадёшь в категорию сломавшихся особей и, руководствуясь инстинктом самосохранения, поспешишь внедриться в наше сообщество, кое-как способное влачить существование в этом суровом мире. Мы рады тому факту, что ради внедрения в наше сообщество ты откажешься от своих нынешних идей и ценностей, скатишься до нашего уровня и примешь те ценности, которые на данный момент называешь ценностями тебе чуждыми. Дабы не раздражать самих себя беспокойством о вероятности того, что ты всё-таки выстоишь перед ожидающими тебя в жизни трудностями и станешь чужеродным для нас индивидом, мы полностью исключаем эту ситуацию и приписываем ей нулевую вероятность. </p>
 <ol start="24">
 <li><strong>Не заведёшь детей – некому будет подать тебе стакан воды в старости!</strong></li>
 </ol>
@@ -403,9 +399,8 @@ _\*\*Перевод:\*\*_
 <blockquote>
 — В «Хранителях» весь фильм по экрану ходит абсолютно голый синий мужчина, воображающий себя Богом. Это реальный актер Билли Крудап или персонаж, созданный на компьютере?
  
-— От Билли у него лишь голова. Все остальное дорисовано на компьютере. В июле я выпущу полную режиссерскую версию, которая будет идти больше трех часов. В нем будет еще больше голого доктора Манхэттена.</blockquote>
-Ценняк, да =_=
-
+<p>— От Билли у него лишь голова. Все остальное дорисовано на компьютере. В июле я выпущу полную режиссерскую версию, которая будет идти больше трех часов. В нем будет еще больше голого доктора Манхэттена.</blockquote>
+Ценняк, да =_=</p>
 <p>З.З.Ы. А самую классную, единственную пафосную героиню убили в первые пять минут (</p>
 <p>З.З.З.Ы. В кинотеатре увидела рекламу “Росомахи” (предыстория по Х-менам). Реклама симпатичная, пойдём туда в следующий раз =)</p>
 
@@ -513,7 +508,7 @@ _\*\*Перевод:\*\*_
 
     <nav id="page-nav">
         
-        <a class="extend prev" rel="prev" href="/page/14/">&lt;&lt; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/16/">Next &gt;&gt;</a>
+        <a class="extend prev" rel="prev" href="/page/14/">&lt;&lt; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/16/">Next &gt;&gt;</a>
     </nav>
 
 </div></div>
@@ -570,7 +565,7 @@ _\*\*Перевод:\*\*_
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2021 Jehy
+  &copy; 2022 Jehy
   
 </div>-->
 <div class="clearfix"></div>
