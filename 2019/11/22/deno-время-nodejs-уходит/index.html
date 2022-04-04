@@ -30,7 +30,7 @@
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.1.0"></head>
 
 
 <body>
@@ -81,7 +81,7 @@
 <span id="more"></span>
 <p>Как ни странно, для того, чтобы понять, откуда и зачем возник проект, надо провалиться в прошлое. Так что вкидываем немного плутония, поднимаем двери нашего делореана, и пускаемся в путешествие - посмотрим на важные 10 лет, которые сделали Node.JS такой, как мы видим сейчас.</p>
 <p><img src="https://habrastorage.org/webt/sv/f7/xa/svf7xamhyfsi4rzxzdkwxlkfum0.jpeg"></p>
-<h2 id="Вперёд-в-прошлое"><a href="#Вперёд-в-прошлое" class="headerlink" title="Вперёд в прошлое"></a>Вперёд в прошлое</h2><h3 id="2009"><a href="#2009" class="headerlink" title="2009"></a>2009</h3><p>Райан Дал анонсирует Node.JS, &lt;a href=”<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ztspvPYybIY&quot;&gt;%D0%B2%D0%BE%D1%82">https://www.youtube.com/watch?v=ztspvPYybIY&quot;&gt;вот</a> она&lt;/a&gt; - самая первая презентация на JSConf 2009.</p>
+<h2 id="Вперёд-в-прошлое"><a href="#Вперёд-в-прошлое" class="headerlink" title="Вперёд в прошлое"></a>Вперёд в прошлое</h2><h3 id="2009"><a href="#2009" class="headerlink" title="2009"></a>2009</h3><p>Райан Дал анонсирует Node.JS, &lt;a href&#x3D;”<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ztspvPYybIY&quot;&gt;%D0%B2%D0%BE%D1%82">https://www.youtube.com/watch?v=ztspvPYybIY&quot;&gt;вот</a> она&lt;&#x2F;a&gt; - самая первая презентация на JSConf 2009.</p>
 <h3 id="2010"><a href="#2010" class="headerlink" title="2010"></a>2010</h3><p>Появляются express, socket.io - основные на текущий момент кирпичики почти любого сервиса.</p>
 <p>Появляются сумасшедшие люди, которые реально пишут на этом серверный код!</p>
 <h3 id="2011"><a href="#2011" class="headerlink" title="2011"></a>2011</h3><p>С Node.JS начинают заигрывать крупные ребята - в том числе Uber и Linkedin.</p>
@@ -123,25 +123,16 @@
 <p><strong>TypeScript</strong>. Опять же - я ничего не имею против TS. Его использует огромное количество компаний и разработчиков, и он уже показал свою состоятельность. Но Deno всего лишь прячет транспилятор в бинарник, а транспилированный код - в особые директории. То есть под капотом происходит всё то же самое, и выгоды в этом нет, за исключением эстетической. Зато есть минус - версия транспилятора оказывается намертво прибита к версии Deno. Не уверен, что это хорошо - легко представить себе ситуацию, когда вам хочется обновить либо транспилятор либо рантайм. Но не и то и другое сразу.</p>
 <p>Так что пока ничего вкусного не видно. Пойдём дальше, заглянем в основные фичи.</p>
 <h2 id="Основные-отличия-Deno-и-Node-JS"><a href="#Основные-отличия-Deno-и-Node-JS" class="headerlink" title="Основные отличия Deno и Node.JS"></a>Основные отличия Deno и Node.JS</h2><h3 id="Deno-не-использует-npm-Нет-централизованного-реестра-Модули-импортируются-по-URL-Нет-package-json"><a href="#Deno-не-использует-npm-Нет-централизованного-реестра-Модули-импортируются-по-URL-Нет-package-json" class="headerlink" title="Deno не использует npm. Нет централизованного реестра. Модули импортируются по URL. Нет package.json."></a>Deno не использует npm. Нет централизованного реестра. Модули импортируются по URL. Нет package.json.</h3><p>То есть, код выглядит примерно так:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; test, runIfMain &#125; <span class="keyword">from</span> <span class="string">&quot;https://deno.land/std/testing/mod.ts&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; assertEquals &#125; <span class="keyword">from</span> <span class="string">&quot;https://deno.land/std/testing/asserts.ts&quot;</span>;</span><br><span class="line"></span><br><span class="line">test(<span class="function"><span class="keyword">function</span> <span class="title">t1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  assertEquals(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;hello&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; test, runIfMain &#125; <span class="keyword">from</span> <span class="string">&quot;https://deno.land/std/testing/mod.ts&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; assertEquals &#125; <span class="keyword">from</span> <span class="string">&quot;https://deno.land/std/testing/asserts.ts&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>(<span class="keyword">function</span> <span class="title function_">t1</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">assertEquals</span>(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;hello&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>При первом запуске код загружается и кешируется, а потом используется кеш. Версионность поддерживается при помощи указания версии в урлах. Не знаю, почему это вызывает у всех столько восторга. Я вижу всего два варианта развития событий:</p>
 <ol>
 <li>Всё пойдёт так как того хочет Райан. Разработчики будут заливать код компонентов на личные веб сайты, создавать папки с версиями, и все будут качать пакеты оттуда. Гмм. Мне кажется, это решительный скачок в прошлое:</li>
-<li><ol>
-<li>Любой код, в том числе с указанной версией, может бесконтрольно меняться на сервере автора.</li>
 </ol>
-</li>
-<li><ol start="2">
-<li>Не будет никакого источника, из которого можно узнать о стабильности пакета, о количестве его переиспользований, о наличии в нём закладок и проблем.</li>
-</ol>
-</li>
-<li><ol start="3">
-<li>Автору пакета придётся самому заботиться о том, чтобы его сервер держал нагрузку от скачивающих пакеты разработчиков. Неужели мы этого не наелись около 2012 года, когда npm чаще лежал, чем работал? Как говорят наклейки на автомобилях, “можем повторить”?</li>
-</ol>
-</li>
-<li>Другой вариант, более реальный. Разработчики будут класть пакеты на github, gitlab, или любой другой репозиторий, который держит нагрузку и прозрачен для комьюнити. Вроде всё хорошо. Остаётся один вопрос. От npm мы, предположим, откажемся - но какая разница, какой именно будет централизованный репозиторий? Будет всё ровно то же самое - просто вид сбоку. Даже проект децентрализованных репозиториев Entropic, который, кажется, тихо скончался - и то выглядел интереснее.</li>
-</ol>
+<p>1.1. Любой код, в том числе с указанной версией, может бесконтрольно меняться на сервере автора.
+1.2. Не будет никакого источника, из которого можно узнать о стабильности пакета, о количестве его переиспользований, о наличии в нём закладок и проблем.
+1.3. Автору пакета придётся самому заботиться о том, чтобы его сервер держал нагрузку от скачивающих пакеты разработчиков. Неужели мы этого не наелись около 2012 года, когда npm чаще лежал, чем работал? Как говорят наклейки на автомобилях, “можем повторить”?
+2. Другой вариант, более реальный. Разработчики будут класть пакеты на github, gitlab, или любой другой репозиторий, который держит нагрузку и прозрачен для комьюнити. Вроде всё хорошо. Остаётся один вопрос. От npm мы, предположим, откажемся - но какая разница, какой именно будет централизованный репозиторий? Будет всё ровно то же самое - просто вид сбоку. Даже проект децентрализованных репозиториев Entropic, который, кажется, тихо скончался - и то выглядел интереснее.</p>
 <p>Отдельного рассмотрения стоит вопрос воспроизводимых билдов. Поскольку никто не гарантирует, что вы скачаете с какого-то левого сервера одно и то же (в особенности если не указали в урле версию) - то Райан предлагает… Хранить исходный код импортируемых пакетов в репозитории проекта… На дворе точно 2019? Может, Райан не в курсе, что с 2012 года в Node.JS появился сначала shrinkwrap, а потом lock file? Которые решают эту проблему гораздо проще, нагляднее и экономичнее?</p>
 <p>На мой взгляд, загрузка модулей по URL - очень странное и спорное решение, основное достоинство которого - вау эффект для джуниор разработчиков.</p>
 <h3 id="Все-асинхронные-операции-в-Deno-возвращают-Promise"><a href="#Все-асинхронные-операции-в-Deno-возвращают-Promise" class="headerlink" title="Все асинхронные операции в Deno возвращают Promise."></a>Все асинхронные операции в Deno возвращают Promise.</h3><p>В целом круто, да. Но с 2012 года утекло реально много воды - и в ноде все вменяемые библиотеки давно работают на промисах. И даже системные библиотеки на них почти переползли. Поэтому это сложно считать каким-то конкурентным преимуществом.</p>

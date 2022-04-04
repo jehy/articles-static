@@ -25,7 +25,7 @@
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.1.0"></head>
 
 
 <body>
@@ -163,13 +163,13 @@ P.S. Прошу не троллить в её уютной жжшечке )</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Enabling Maintenance mode.</span><br><span class="line"> </span><br><span class="line">Downloading update from http://downloads.wordpress.org/plugin/all-in-one-seo-pack.zip.</span><br><span class="line">wp-content/uploads/all-in-one-seo-pack.tmp</span><br><span class="line">Warning: touch() [function.touch]: Unable to create file wp-content/uploads/all-in-one-seo-pack.tmp because No such file or directory in **\*\*\***/wp-admin/includes/file.php on line 185</span><br><span class="line"> </span><br><span class="line">Download failed. Could not create Temporary file</span><br></pre></td></tr></table></figure>
 <p>That’s because wordpress uses strange things for temporary directory.
 To cure it with non intrusive methods,  just add</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="string">&#x27;WP_TEMP_DIR&#x27;</span>,ABSPATH.<span class="string">&#x27;wp-content/uploads/&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">define</span>(<span class="string">&#x27;WP_TEMP_DIR&#x27;</span>,ABSPATH.<span class="string">&#x27;wp-content/uploads/&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
 <p>to the bottom of your wp-config-file.
 That’s it.
 Took me about two hours to figure out -_-</p>
 <p>UPD. If you have an error “Division by Zero” - then try using the following modification:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$path</span> = <span class="variable">$ABSPATH</span> .’wp-content/uploads/’;</span><br><span class="line">define(‘WP_TEMP_DIR’,<span class="variable">$path</span>’);</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$path</span> = <span class="variable">$ABSPATH</span> .’wp-content/uploads/’;</span><br><span class="line"><span class="title function_ invoke__">define</span>(‘WP_TEMP_DIR’,<span class="variable">$path</span>’);</span><br></pre></td></tr></table></figure>
 
 <p>Thank for this goes to Rookian (Rookian.com).</p>
 

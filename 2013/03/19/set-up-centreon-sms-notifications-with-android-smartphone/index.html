@@ -40,7 +40,7 @@ Step by step guide:">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.1.0"></head>
 
 
 <body>
@@ -99,7 +99,7 @@ It is made for android 2.3 gingerbread and using android 4 may be easier. But ch
 </ol>
 <p><strong>Step by step guide:</strong><span id="more"></span></p>
 <ol>
-<li><p>Use adb shell \ terminal emulator \ SSH shell to issue command “mount”. You will see partition type and mount point for device. For example, it can be <strong>vfat</strong>and <strong>/dev/block/vold/179:1</strong>.</p>
+<li><p>Use adb shell \ terminal emulator \ SSH shell to issue command “mount”. You will see partition type and mount point for device. For example, it can be <strong>vfat</strong>and <strong>&#x2F;dev&#x2F;block&#x2F;vold&#x2F;179:1</strong>.</p>
 </li>
 <li><p>Download <a target="_blank" rel="noopener" href="https://github.com/jehy/mount_sd">android program for mounting SD card</a> and compile it, replacing mount point in code with your own. Install it on your phone. Try connecting phone to your computer and selecting USB storage mode. After it, your card will be umounted - so use compiled program to mount in again read only. Use file explorer in root mode (for example, total commander) to make sure that your SD is really mounted. Repeat until successful : )</p>
 </li>

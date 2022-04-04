@@ -30,7 +30,7 @@ you can solve it with">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.1.0"></head>
 
 
 <body>
@@ -83,7 +83,7 @@ you can solve it with<span id="more"></span></p>
 (apache must be able to write in this folder)</li>
 <li>OR Put another code in your LocalSettings.php:<pre lang="php">putenv('TMPDIR=/path/to/my/temp/folder');</pre>
 (apache must be able to write in this folder)</li>
-<li>Or, if you are running a really strict server with safemode and so on - edit file includes/GlobalFunctions.php and replace piece<pre lang="php" line="2493">if( function_exists( 'sys_get_temp_dir' ) ) {
+<li>Or, if you are running a really strict server with safemode and so on - edit file includes&#x2F;GlobalFunctions.php and replace piece<pre lang="php" line="2493">if( function_exists( 'sys_get_temp_dir' ) ) {
             return sys_get_temp_dir();
      }</pre>
 with<pre lang="php">return ini_get('upload_tmp_dir');</pre>
@@ -97,14 +97,17 @@ I had to make 1) and 3) to return my thumbnails…</li>
 <ol>
 <li>Добавьте код в LocalSettings.php:<pre lang="php">$wgTmpDirectory = "$IP/images/temp";</pre>
 (у сервера должны быть права записи в указанную папку)</li>
-<li>Или добавьте другой код в LocalSettings.php:<pre lang="php">putenv('TMPDIR=/path/to/my/temp/folder');</pre>
-(у сервера должны быть права записи в указанную папку)</li>
-<li>Или, если мы на суровом сервере в сейф моде - берём файл includes/GlobalFunctions.php и заменяем<pre lang="php" line="2493">if( function_exists( 'sys_get_temp_dir' ) ) {
-            return sys_get_temp_dir();
-     }</pre>
-на<pre lang="php">return ini_get('upload_tmp_dir');</pre>
-Что-нибудь из этого поможет наверняка. Мне помогла совокупность 1) и 3)</li>
 </ol>
+<p>2)Или добавьте другой код в LocalSettings.php:</p>
+<pre lang="php">putenv('TMPDIR=/path/to/my/temp/folder');</pre>
+<p>(у сервера должны быть права записи в указанную папку)
+3) Или, если мы на суровом сервере в сейф моде - берём файл includes&#x2F;GlobalFunctions.php и заменяем</p>
+<pre lang="php" line="2493">if( function_exists( 'sys_get_temp_dir' ) ) {
+               return sys_get_temp_dir();
+        }</pre>
+<p>на</p>
+<pre lang="php">return ini_get('upload_tmp_dir');</pre>
+<p>Что-нибудь из этого поможет наверняка. Мне помогла совокупность 1) и 3)</p>
 
       
     </div>
