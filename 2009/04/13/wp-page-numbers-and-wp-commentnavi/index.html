@@ -99,7 +99,7 @@ If you use <a target="_blank" rel="noopener" href="http://wordpress.org/extend/p
 add_action('wp_head', 'commentnavi_css');
 function commentnavi_css() {
     if(@file_exists(TEMPLATEPATH.'/commentnavi-css.css')) {
-        wp_register_style('wp-commentnavi', get_stylesheet_directory_uri().'/commentnavi-css.css', false, '1.00', 'all');        
+        wp_register_style('wp-commentnavi', get_stylesheet_directory_uri().'/commentnavi-css.css', false, '1.00', 'all');		
     } else {
         wp_register_style('wp-commentnavi', plugins_url('wp-commentnavi/commentnavi-css.css'), false, '1.00', 'all');
     }
@@ -147,7 +147,7 @@ function wp_commentnavi($before = '', $after = '') {
         echo $before.'<div id="wp_page_numbers"><ul>'."\n";
                 if(!empty($pages_text)) {
                     echo '<li class="page_info">&#8201;'.$pages_text.'&#8201;</li>';
-                }                    
+                }					
                 if ($start_page >= 2 && $pages_to_show < $max_page) {
                     $first_page_text = str_replace("%TOTAL_PAGES%", number_format_i18n($max_page), $commentnavi_options['first_text']);
                     echo '<li class="first_last_page"><a href="'.clean_url(get_comments_pagenum_link()).'" title="'.$first_page_text.'">&#8201;'.$first_page_text.'&#8201;</a></li>';
@@ -158,7 +158,7 @@ function wp_commentnavi($before = '', $after = '') {
                 echo'<li>';
                 previous_comments_link($commentnavi_options['prev_text']);
                 echo'</li>';
-                for($i = $start_page; $i  <= $end_page; $i++) {                        
+                for($i = $start_page; $i  <= $end_page; $i++) {						
                     if($i == $paged) {
                         $current_page_text = str_replace("%PAGE_NUMBER%", number_format_i18n($i), $commentnavi_options['current_text']);
                         #echo '<li class="active_page">&#8201;'.$current_page_text.'&#8201;</li>';
