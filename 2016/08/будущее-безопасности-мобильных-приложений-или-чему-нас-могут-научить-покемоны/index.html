@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="verify-admitad" content="71b6485389" />
+  
+  <title>Будущее безопасности мобильных приложений, или чему нас могут научить покемоны | Jehy&#39;s notes</title>
+  <meta name="author" content="Jehy">
+  
+  <meta name="description" content="Оригинал поста на хабре
+С момента появления Pokemon Go, я с большим любопытством отслеживаю всё, касающееся этой игрушки. Как ни странно, она даёт безумное количество интересной информации - в первую очередь относительно разработки мобильных приложений. Казалось бы, занимаетесь вы разработкой банковских приложений - в чём тут может быть связь? А нет, вам тоже найдётся, чему научиться у покемонов.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Будущее безопасности мобильных приложений, или чему нас могут научить покемоны"/>
+  <meta property="og:site_name" content="Jehy&#39;s notes"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Jehy&#39;s notes" type="application/atom+xml">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Jehy&#39;s notes</a></h1>
+  <h2><a href="/">Insert 1 into dual</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/wishlist">Wishlist</a></li>
+    
+      <li><a href="/donate">Donate</a></li>
+    
+      <li><a href="/atom.xml">Subscribe</a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://whois.jehy.ru">Contact me</a></li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-2016/08/будущее-безопасности-мобильных-приложений-или-чему-нас-могут-научить-покемоны" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2016-08-17T07:00:00.000Z"><a href="/2016/08/будущее-безопасности-мобильных-приложений-или-чему-нас-могут-научить-покемоны/">2016-08-17</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Будущее безопасности мобильных приложений, или чему нас могут научить покемоны</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/307974%7D">Оригинал поста на хабре</a></p>
+<p>С момента появления Pokemon Go, я с большим любопытством отслеживаю всё, касающееся этой игрушки. Как ни странно, она даёт безумное количество интересной информации - в первую очередь относительно разработки мобильных приложений. Казалось бы, занимаетесь вы разработкой банковских приложений - в чём тут может быть связь? А нет, вам тоже найдётся, чему научиться у покемонов.</p>
+<span id="more"></span>
+<p>Сегодня хотелось бы остановиться всего лишь на одном из интересных наблюдений - а именно - на защищённости мобильного приложения. Не то чтобы Niantic являлся иконой для всех мировых разработчиков, но давайте исходить из того, что их уровень разработки довольно высок, и их ошибки и недочёты будут справедливы и для большинства других мобильных приложений. Постараюсь излагать так, чтобы было интересно и понятно всем разработчикам, а не только тем, кто играл или читал что-то про игрушку.</p>
+<h1>Акт первый. Боты для всех, и никто не уйдёт обиженным</h1>
+Первые версии приложения были очень слабо защищены от реверс инжиниринга, и с огромной скоростью появились гики-разработчики, которые разбирали механику игры или добавляли туда дополнительные фичи или хаки. Когда мне стало интересно, сколько всего разработчиков вовлечены эту забаву, я открыл гитхаб и мне немного поплохело:
+<img src="https://habrastorage.org/files/cf5/574/a78/cf5574a788c344918ba90fe46d8988fb.png"/>
+Да, глаза вас не обманули. 1644 репозитория. Наверное, стоит уточнить, что там:
+
+<ul>
+    <li>Боты - куда же без них;</li>
+    <li>Чистые варианты реализации API на любых языках и платформах;</li>
+    <li>Подборки данных и механик, вытянутые из приложения;</li>
+    <li>Приложения для поиска покемонов вокруг;</li>
+    <li>Приложения для автоматизации действий вроде массовой эволюции покемонов;</li>
+    <li>Приложения для просмотра спрятанных свойств покемонов (IV);</li>
+    <li>Приложения для просчёта оптимальных боёв;</li>
+    <li>Просто версии игры с пониженными системными требованиями.</li>
+</ul>
+Следует отметить, что многие приложения обязаны своим появлением тому, что в игре очень плохо реализованы или объяснены многие моменты - вполне естественно, что находчивые разработчики решили на скорую руку сколотить себе несколько костылей.
+
+<h1>Акт второй. Робкая попытка защиты</h1>
+В какой-то момент приложение резко перестало показывать удалённость покемонов (ранее были показаны три степени удалённости). Как вы думаете, с чем это связано? Подумайте пару минут. Ваше самое худшее предположение окажется правдой - удалённость рассчитывалась в клиентском приложении, которому передавались координаты находящихся рядом покемонов - что изрядно увеличивало радиус обнаружения для резвящихся ботов. Не совсем понятно, по какой причине Niantic решил полностью убрать эту фичу вместо того, чтобы перенести рассчёт на сторону сервера… Ну да ладно, это мы вряд ли когда-нибудь узнаем. Возможно, они решили не добавлять дополнительной нагрузки на и без того трещащие от натуги сервера. В эту статью не входит вопрос о том, как дочерняя компания Google так облажалась с масштабированием игры с настолько малой связностью данных, но всё же…
+
+<h1>Акт третий. Смешная попытка защиты</h1>
+Чуть позже время обнаружения покемонов после появления игрока в локации увеличилось вдвое - насколько я помню, с 5 до 10 секунд. Похоже на какие-то панические меры защиты, которые, конечно, не могли принести внятных результатов - боты точно так же увеличили вдвое таймаут.
+
+<h1>Акт четвёртый. Защита!</h1>
+Наконец настал день, когда боты и сканеры разом перестали работать. Честные игроки вздохнули с облегчением - конкурировать с ботами, многие из которых набрали недоступный игроку 30+ уровень, было очень утомительно, да и просто грустно. Но что же… Облегчение длилось всего трое суток. Энтузиасты с реддита за это время разобрали нативную C++ библиотеку, входящую в состав приложения, подобрали необходимые данные и шифрование и вновь выкатили работающую версию API, которую в течении суток подхватили боты и сканеры.
+
+<h1>Акт пятый. Нападение!</h1>
+Справедливости ради стоит заметить, что пятый и четвёртый акт шли параллельно, но мне хотелось их логически разделить.
+
+<p>В этом акте Google начал банить без разбору любые приложения на Google Play, которые имели хоть какое-то отношение к покемонам. Банхаммер работал без отдыха и разбора. Как пример неправедно пострадавших приложений, можно привести</p>
+<ul>
+    <li><a target="_blank" rel="noopener" href="https://github.com/farkam135/GoIV">Приложение</a> для вычисления спрятанных характеристик покемонов. Забанено за "violating the device and network abuse". Что является откровенной ложью, поскольку принцип работы приложения - распознавание картинки из игры и анализ показателей. У приложения даже нет прав на то, чтобы отправлять данные в интернет…
+
+<pre><code>&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/jehy/Pokemon-Go-Weakness-calculator&quot;&gt;Простенький калькулятор&lt;/a&gt; для просчёта оптимального покемона для борьбы с выбранным. Забанено потому что “violates the impersonation policy”. Что вообще является любимой фразой от Google, поскольку понять и исправить ошибку невозможно (поверьте, я пытался сделать это с другим приложением).&lt;/li&gt;
+</code></pre>
+</ul>
+
+<h1>Акт шестой и последний. Позор.</h1>
+Сложно назвать этот акт иначе. После того, как популярные приложения были убраны с google play, разработчики дружно выложили их в open source на github. Вообще, инфраструктура мобильных приложений на гитхабе довольно интересна - 2016 год позволяет делать автоматическое обновление с гитхаба, отправлять куда угодно сообщения об ошибках и в целом довольно неплохо жить без Google Play. Более того, доверие к приложению становится не меньше, а больше, чем если бы оно было выложено на Google Play…
+
+<p>И что же произошло? Довольно ожидаемая, но от этого не менее печальная вещь. Niantic пошёл жаловаться на репозитории. В результате большинство авторов удалили свой код (надо сказать, не полностью, а просто затёрли его последним коммитом) с примерно таким сообщением:</p>
+<blockquote>I've received a notice to cease and desist from Niantic Labs, and I've decided to comply with their requests. I'd like to clarify that the main reason I chose to shut it down was because I’ve lost interest rather than legal concerns. Niantic’s actions towards 3rd party developers have been very off-putting and it has killed my personal motivation to work on this project. This was a fun weekend project for a game I enjoyed, and now I’ve lost interest in both. I won’t resume development, but there are active forks of this project you could use.</blockquote>
+Не то чтобы авторы испугались обращений Niantic, но их политика просто огорчила разработчиков до глубины души. Код приложений остался на гитхабе, форки множатся, и злонамеренное использование по-прежнему процветает. Niantic не смогли ни предоставить собственного адекватного инструментария для работы с игрой, ни защитить игру от стороннего вмешательства. И просто пошли строчить жалобы. Ну что же… Не так чтобы это было неожиданно в свете аналогичной судьбы гораздо менее популярного Ingress, но жалко, что компания, которая претендует на революцию в игровой индустрии, не учится на своих ошибках, и даже не признаёт их. Хотя радует, что есть ребята вроде Blizzard, которые понимают, насколько полезно дать игрокам возможность влиять на общий игровой мир и дорабатывать его.
+<b>UPDATE</b>. В комментариях говорят, что я не совсем прав, или даже совсем не прав. Но Blizzard таки даёт возможность влиять хотя бы на пользовательский интерфейс. Мотив закрытия альтернативных серверов и клиентов довольно понятен - это прямая потеря прибыли.
+
+<h1>Выводы.</h1>
+Что мы можем вынести из этой печальной истории?
+
+<ol>
+    <li>Код мобильного приложения невозможно защитить. В лучшем случае, вы окажетесь просто никому не нужны - тогда вам не о чём заботиться. В ином случае, при выкладывании приложения лучше считать, что вы выложили его исходники в open source - с этой позиции гораздо проще оценивать последствия и возможные меры противодействия взлому.</li>
+    <li>Мобильные приложения без Google Play могут существовать, и, судя по всему, в будущем их будет всё больше.</li>
+    <li>Вы можете приобрести огромное количество помощников, если выложите своё приложение в open source. Вы боитесь? Ну что же, тогда продолжайте тешить себя иллюзией защиты. И ваши потенциальные помощники окажутся по другую сторону баррикад.</li>
+</ol>
+
+<h1>Ссылки</h1>
+<li> <a target="_blank" rel="noopener" href="https://www.reddit.com/r/pokemongodev/comments/4w1cvr/pokemongo_current_api_status">Подробности</a> с реддита про разбор нового API</li>
+
+<h1>Ещё?</h1>
+<b>Update</b>. Сначала стормозил и не сделал опроса с вариантами того, о чём рассказать ещё, поэтому в комментариях появились соответствующие пункты. Теперь можно просто проголосовать.
+
+<p><b>Update 2.</b> Добавлен <a target="_blank" rel="noopener" href="https://geektimes.ru/post/279604/">перевод</a> истории взлома.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/habr/">habr</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!-- 
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+</section>
+ -->
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="as_sitesearch" value="articles.jehy.ru">
+  </form>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.43px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.71px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.71px;">android</a> <a href="/tags/applet/" style="font-size: 12.14px;">applet</a> <a href="/tags/arduino/" style="font-size: 10.71px;">arduino</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.71px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15px;">dev</a> <a href="/tags/esphome/" style="font-size: 10px;">esphome</a> <a href="/tags/fun/" style="font-size: 14.29px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.29px;">habr</a> <a href="/tags/home-assistant/" style="font-size: 10.71px;">home assistant</a> <a href="/tags/java/" style="font-size: 12.14px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.71px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/openid/" style="font-size: 10.71px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.14px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.14px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 15.71px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.14px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.71px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.43px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.57px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 14.29px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.14px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.71px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.71px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.86px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 16.43px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.29px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.71px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.71px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.71px;">работа</a> <a href="/tags/%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%8B%D0%B5-%D0%B8%D0%B3%D1%80%D1%8B/" style="font-size: 10px;">ролевые игры</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.14px;">таро</a> <a href="/tags/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC/" style="font-size: 10.71px;">умный дом</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.86px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.71px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.57px;">цитаты</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2022/05/умный-дом-у-геккона/">Умный дом - теперь и у геккона</a>
+      </li>
+    
+      <li>
+        <a href="/2022/02/алиса-открой-ворота/">Алиса, открой ворота - или MVP умного дома за пару вечеров</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/шедоуран-2021-отчет/">Шедоуран 2021 отчёт</a>
+      </li>
+    
+      <li>
+        <a href="/2020/06/как-активный-гражданин-приучает-людей-к-фишингу/">Как «активный гражданин» приучает людей к фишингу</a>
+      </li>
+    
+      <li>
+        <a href="/2020/02/снимаем-покрытие-кода-с-уже-запущенного-nodejs-приложения/">Снимаем покрытие кода с уже запущенного Node.JS приложения</a>
+      </li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><!--<div class="alignleft">
+  
+  &copy; 2022 Jehy
+  
+</div>-->
+<div class="clearfix"></div>
+</footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

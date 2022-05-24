@@ -1,0 +1,286 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="verify-admitad" content="71b6485389" />
+  
+  <title>Deno - время Node.JS уходит? | Jehy&#39;s notes</title>
+  <meta name="author" content="Jehy">
+  
+  <meta name="description" content="Оригинал поста на хабре
+
+Прошло примерно 18 месяцев с внутреннего релиза Deno, вышел preview release, появилось несколько статей на Хабре, и Райан ездит по конференциям и рассказывает о нём. Однако я нигде так и не видел сколько-нибудь вдумчивого разбора этого проекта - почему-то все ограничиваются переводом документации…
+Что же, давайте попробуем это сделать сейчас. Последние 5 лет я пишу на Node.JS, а компания OneTwoTrip, где я сейчас работаю, пишет проекты на ноде около 9 лет (да, это я писал историю про 9 лет в монолите на ноде). Так что анализ должен выйти неплохой. Тем более что я его уже рассказал на Moscow Node.JS Meetup 10, и было интересно. Кстати, если вам удобнее слушать, а не читать, то послушать и посмотреть можно вот тут. Моё выступление второе, я чувак в розовой рубашке.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Deno - время Node.JS уходит?"/>
+  <meta property="og:site_name" content="Jehy&#39;s notes"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Jehy&#39;s notes" type="application/atom+xml">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Jehy&#39;s notes</a></h1>
+  <h2><a href="/">Insert 1 into dual</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/wishlist">Wishlist</a></li>
+    
+      <li><a href="/donate">Donate</a></li>
+    
+      <li><a href="/atom.xml">Subscribe</a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://whois.jehy.ru">Contact me</a></li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-2019/11/deno-время-nodejs-уходит" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2019-11-22T07:00:00.000Z"><a href="/2019/11/deno-время-nodejs-уходит/">2019-11-22</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Deno - время Node.JS уходит?</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/476972%7D">Оригинал поста на хабре</a></p>
+<p><img src="https://habrastorage.org/webt/ph/0g/t5/ph0gt5rsvagsf2ysoqple3gg7oo.png"></p>
+<p>Прошло примерно 18 месяцев с внутреннего релиза Deno, вышел preview release, появилось несколько статей на Хабре, и Райан ездит по конференциям и рассказывает о нём. Однако я нигде так и не видел сколько-нибудь вдумчивого разбора этого проекта - почему-то все ограничиваются переводом документации…</p>
+<p>Что же, давайте попробуем это сделать сейчас. Последние 5 лет я пишу на Node.JS, а компания OneTwoTrip, где я сейчас работаю, пишет проекты на ноде около 9 лет (да, это я писал историю про <a target="_blank" rel="noopener" href="https://habr.com/ru/post/459206/">9 лет в монолите на ноде</a>). Так что анализ должен выйти неплохой. Тем более что я его уже рассказал на <a target="_blank" rel="noopener" href="https://axept.timepad.ru/event/1110942/">Moscow Node.JS Meetup 10</a>, и было интересно. Кстати, если вам удобнее слушать, а не читать, то послушать и посмотреть <a target="_blank" rel="noopener" href="https://youtu.be/4414kjKYekM">можно вот тут</a>. Моё выступление второе, я чувак в розовой рубашке.</p>
+<span id="more"></span>
+<p>Как ни странно, для того, чтобы понять, откуда и зачем возник проект, надо провалиться в прошлое. Так что вкидываем немного плутония, поднимаем двери нашего делореана, и пускаемся в путешествие - посмотрим на важные 10 лет, которые сделали Node.JS такой, как мы видим сейчас.</p>
+<p><img src="https://habrastorage.org/webt/sv/f7/xa/svf7xamhyfsi4rzxzdkwxlkfum0.jpeg"></p>
+<h2 id="Вперёд-в-прошлое"><a href="#Вперёд-в-прошлое" class="headerlink" title="Вперёд в прошлое"></a>Вперёд в прошлое</h2><h3 id="2009"><a href="#2009" class="headerlink" title="2009"></a>2009</h3><p>Райан Дал анонсирует Node.JS, &lt;a href&#x3D;”<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ztspvPYybIY&quot;&gt;%D0%B2%D0%BE%D1%82">https://www.youtube.com/watch?v=ztspvPYybIY&quot;&gt;вот</a> она&lt;&#x2F;a&gt; - самая первая презентация на JSConf 2009.</p>
+<h3 id="2010"><a href="#2010" class="headerlink" title="2010"></a>2010</h3><p>Появляются express, socket.io - основные на текущий момент кирпичики почти любого сервиса.</p>
+<p>Появляются сумасшедшие люди, которые реально пишут на этом серверный код!</p>
+<h3 id="2011"><a href="#2011" class="headerlink" title="2011"></a>2011</h3><p>С Node.JS начинают заигрывать крупные ребята - в том числе Uber и Linkedin.</p>
+<p>Релиз npm 1.0.</p>
+<p>Node начинает работать на Windows.</p>
+<h3 id="2012"><a href="#2012" class="headerlink" title="2012"></a>2012</h3><p>Райан уходит от разработки Node.JS. <strong>Запомните</strong>. Это был 2012 год. Так что Райан безусловно является создателем, и многое сделал для экосистемы - но последующие 7 лет прошли <strong>без</strong> его участия.</p>
+<h3 id="2013"><a href="#2013" class="headerlink" title="2013"></a>2013</h3><p>Node в Paypal, Walmart, eBay.</p>
+<p>Появляется Koa - помните, сколько копий было сломано о генераторы?</p>
+<h3 id="2014"><a href="#2014" class="headerlink" title="2014"></a>2014</h3><p>Node в Netflix. Начинаются попытки оформить проект в что-то более взрослое, с открытой моделью управления консультативным советом. Наблюдается техническая стагнация, приведшая к появлению форка io.js.</p>
+<h3 id="2015"><a href="#2015" class="headerlink" title="2015"></a>2015</h3><p>Работа над ошибками. Слияние io.js и Node  в экстазе под эгидой Node Foundation и выход Node 4. Надо сказать, именно эту версию я считаю первой, на которой реально можно было что-то разрабатывать. Если кто писал на версиях 0.xx - то вы помните про var, callback hell, кучу разных библиотек для упрощения асинхронной работы (вроде step и async. Да, async - это не только async await, но ещё и npm библиотека).</p>
+<h3 id="2016"><a href="#2016" class="headerlink" title="2016"></a>2016</h3><p>Инцидент с leftpad, который до сих пор злые языки припоминают экосистеме. Сколько же было статей и нападок. Ну, haters gonna hate. Однако, важные уроки из этого были вынесены.</p>
+<h3 id="2017"><a href="#2017" class="headerlink" title="2017"></a>2017</h3><p>Прорывной год. Я не буду упоминать все релизы ноды и рост количества установок модулей с npm, однако именно в этом году количество сервисов на Node.JS превысило 8 миллионов, а количество установок - 3 миллиарда в неделю. Абсолютно космические цифры, которые сложно даже представить.</p>
+<p>Так же появился N-API, и Node.JS был снова форкнут в Ayo.js. Очень смешная и поучительная история про SJW - она стоит отдельной статьи, поэтому не буду на ней останавливаться - просто рекомендую прочитать на досуге. Только проспойлерю, что форк благополучно умер.</p>
+<h3 id="2018"><a href="#2018" class="headerlink" title="2018"></a>2018</h3><p>Вторая массовая истерия со времени leftpad - теперь про то как event-stream ворует биткоины. Сотни постов про небезопасность экосистемы. Посты-фантазии про то как npm пакеты воруют данные кредитных карт. Комьюнити поливают грязью как из шланга. Надо сказать, это было очень полезно, и выводы так же были сделаны - о них чуть позже.</p>
+<p>Так же Райан внезапно взрывает комьюнити постами про то, что серьёзные сервисы стоит писать на Go, описывает 10 вещей в Node, о которых он сожалеет, и анонсирует Deno, который решает все проблемы.</p>
+<h3 id="2019"><a href="#2019" class="headerlink" title="2019"></a>2019</h3><p>Deno выходит в preview release, появляется куча статей на хабре, и вот вы сейчас читаете одну из них.</p>
+<p><img src="https://habrastorage.org/webt/r2/df/4i/r2df4igff7g0bhkz6a0sl0hq_cs.jpeg"></p>
+<h2 id="Назад-в-настоящее"><a href="#Назад-в-настоящее" class="headerlink" title="Назад в настоящее"></a>Назад в настоящее</h2><p>Надеюсь, после этой экскурсии стало более понятно, какие были больные места у экосистемы, и как она развивалась - имея данный контекст, гораздо проще понимать, что происходит сейчас.</p>
+<h2 id="10-вещей-в-Node-JS-о-которых-сожалеет-Райан-Дал"><a href="#10-вещей-в-Node-JS-о-которых-сожалеет-Райан-Дал" class="headerlink" title="10 вещей в Node.JS, о которых сожалеет Райан Дал"></a>10 вещей в Node.JS, о которых сожалеет Райан Дал</h2><p>К сожалению, я не нашёл навскидку статью с переводом доклада, так что перечислю их здесь вкратце, и здесь же откомментирую.</p>
+<ol>
+<li><strong>Отсутствие поддержки промисов в начале пути</strong>. Да, всё было бы проще, если бы Райан не выпилил промисы, сочтя их за лишнее усложнение, которое не взлетало в начале разработки ноды. Потерянного времени на весь этот callback hell конечно жалко - но в 2019 году у всех вменяемых библиотек промисы являются основным интерфейсом. Более того, даже системные библиотеки наконец предоставляют промисы.</li>
+<li><strong>Безопасность системных вызовов и обращений по сети.</strong> С одной стороны - да, хорошо когда всё безопасно. С другой стороны - непонятно, чем в этом плане нода оказалась хуже любой другой среды….</li>
+<li><strong>Сборка нативных модулей при помощи GYP.</strong> Да, наверное, это было лишним, но кто мог знать, что хром с неё уйдёт. Опять же - если хром ушёл, значит, сможем уйти и мы….</li>
+<li><strong>Излишество package.json. NPM как монопольное регистри.</strong> Аргумент про package.json немного странный. Например, Райан говорит, что там есть всякий мусор вроде лицензии. Но если бы её там не было - как вы могли бы быстро узнать лицензии модулей, используемых в вашем проекте?.. Аргумент насчёт NPM больше похож на правду, но остановимся на этом подробнее позже.</li>
+<li><strong>Node modules. Сложное разрешение зависимостей, работает не так как в браузере.</strong> Да, всё так. Стабильно зависимости начали ставиться без всяких чудес только на 4-5 версии npm. Но механизм работает, и позволяет делать удивительные вещи - на текущий момент это прекрасно. Что же касается совместимостью с браузером - что бы вы ни делали, всё равно будут этапы обработки кода вроде транспиляции и сбора бандла. Так что вряд ли node modules имеет какое-то значение в данном контексте.</li>
+<li><strong>Require без расширения и его неопределённость</strong>. Да, наверное, плохо. Но не настолько, чтобы об этом упоминать…</li>
+<li><strong>index.js как лишнее усложнение.</strong> Тоже слишком тривиальный и скучный пункт, чтобы его описывать.</li>
+</ol>
+<p>Кстати, заметьте, я говорил, что Райан сожалеет о 10 вещах, а пунктов всего 7. Это не ошибка, я несколько раз пересматривал его доклад, и обзоры доклада. То ли это была сложная шутка на тему обработки числовых значений, то ли Райан просто постеснялся назвать ещё 3 пункта…</p>
+<p>Но ладно, поняли проблемы, поехали дальше. Логично, что в Deno Райан решил избавиться от всех проблем Node.JS. Посмотрим, что у него вышло.</p>
+<h2 id="Из-чего-состоит-Deno"><a href="#Из-чего-состоит-Deno" class="headerlink" title="Из чего состоит Deno"></a>Из чего состоит Deno</h2><ol>
+<li>Deno написан на Rust.</li>
+<li>В качестве Event loop в Deno используется Tokio, написанный опять же на Rust.</li>
+<li>Deno поддерживает Typescript “из коробки”.</li>
+<li>Ну а код исполняется при помощи того же V8, который захватил весь мир.</li>
+</ol>
+<p>На первый взгляд звучит неплохо, однако рассмотрим эти пункты ближе.</p>
+<p><strong>Rust</strong>. Не, прошу понять меня правильно - я считаю, что Rust и Go это прекрасные языки, и я искренне рад, что они есть. Они дают возможность писать низкоуровневый код быстрее и безопаснее, чем на С++. Однако, есть нюанс - в лучшем случае он будет не медленнее реализации на С++. Так что смысла писать полный аналог системных обвязок и ивент лупа лично я не вижу - вряд ли это может принести какую-то реальную пользу, поскольку это те вещи, которые в какой-то момент просто доходят до оптимального состояния, и дальше фактически не оптимизируются.</p>
+<p><strong>TypeScript</strong>. Опять же - я ничего не имею против TS. Его использует огромное количество компаний и разработчиков, и он уже показал свою состоятельность. Но Deno всего лишь прячет транспилятор в бинарник, а транспилированный код - в особые директории. То есть под капотом происходит всё то же самое, и выгоды в этом нет, за исключением эстетической. Зато есть минус - версия транспилятора оказывается намертво прибита к версии Deno. Не уверен, что это хорошо - легко представить себе ситуацию, когда вам хочется обновить либо транспилятор либо рантайм. Но не и то и другое сразу.</p>
+<p>Так что пока ничего вкусного не видно. Пойдём дальше, заглянем в основные фичи.</p>
+<h2 id="Основные-отличия-Deno-и-Node-JS"><a href="#Основные-отличия-Deno-и-Node-JS" class="headerlink" title="Основные отличия Deno и Node.JS"></a>Основные отличия Deno и Node.JS</h2><h3 id="Deno-не-использует-npm-Нет-централизованного-реестра-Модули-импортируются-по-URL-Нет-package-json"><a href="#Deno-не-использует-npm-Нет-централизованного-реестра-Модули-импортируются-по-URL-Нет-package-json" class="headerlink" title="Deno не использует npm. Нет централизованного реестра. Модули импортируются по URL. Нет package.json."></a>Deno не использует npm. Нет централизованного реестра. Модули импортируются по URL. Нет package.json.</h3><p>То есть, код выглядит примерно так:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; test, runIfMain &#125; <span class="keyword">from</span> <span class="string">&quot;https://deno.land/std/testing/mod.ts&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; assertEquals &#125; <span class="keyword">from</span> <span class="string">&quot;https://deno.land/std/testing/asserts.ts&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>(<span class="keyword">function</span> <span class="title function_">t1</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">assertEquals</span>(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;hello&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>При первом запуске код загружается и кешируется, а потом используется кеш. Версионность поддерживается при помощи указания версии в урлах. Не знаю, почему это вызывает у всех столько восторга. Я вижу всего два варианта развития событий:</p>
+<ol>
+<li>Всё пойдёт так как того хочет Райан. Разработчики будут заливать код компонентов на личные веб сайты, создавать папки с версиями, и все будут качать пакеты оттуда. Гмм. Мне кажется, это решительный скачок в прошлое:</li>
+</ol>
+<p>1.1. Любой код, в том числе с указанной версией, может бесконтрольно меняться на сервере автора.
+1.2. Не будет никакого источника, из которого можно узнать о стабильности пакета, о количестве его переиспользований, о наличии в нём закладок и проблем.
+1.3. Автору пакета придётся самому заботиться о том, чтобы его сервер держал нагрузку от скачивающих пакеты разработчиков. Неужели мы этого не наелись около 2012 года, когда npm чаще лежал, чем работал? Как говорят наклейки на автомобилях, “можем повторить”?
+2. Другой вариант, более реальный. Разработчики будут класть пакеты на github, gitlab, или любой другой репозиторий, который держит нагрузку и прозрачен для комьюнити. Вроде всё хорошо. Остаётся один вопрос. От npm мы, предположим, откажемся - но какая разница, какой именно будет централизованный репозиторий? Будет всё ровно то же самое - просто вид сбоку. Даже проект децентрализованных репозиториев Entropic, который, кажется, тихо скончался - и то выглядел интереснее.</p>
+<p>Отдельного рассмотрения стоит вопрос воспроизводимых билдов. Поскольку никто не гарантирует, что вы скачаете с какого-то левого сервера одно и то же (в особенности если не указали в урле версию) - то Райан предлагает… Хранить исходный код импортируемых пакетов в репозитории проекта… На дворе точно 2019? Может, Райан не в курсе, что с 2012 года в Node.JS появился сначала shrinkwrap, а потом lock file? Которые решают эту проблему гораздо проще, нагляднее и экономичнее?</p>
+<p>На мой взгляд, загрузка модулей по URL - очень странное и спорное решение, основное достоинство которого - вау эффект для джуниор разработчиков.</p>
+<h3 id="Все-асинхронные-операции-в-Deno-возвращают-Promise"><a href="#Все-асинхронные-операции-в-Deno-возвращают-Promise" class="headerlink" title="Все асинхронные операции в Deno возвращают Promise."></a>Все асинхронные операции в Deno возвращают Promise.</h3><p>В целом круто, да. Но с 2012 года утекло реально много воды - и в ноде все вменяемые библиотеки давно работают на промисах. И даже системные библиотеки на них почти переползли. Поэтому это сложно считать каким-то конкурентным преимуществом.</p>
+<h3 id="Deno-всегда-завершает-работу-на-Uncaught-Errors"><a href="#Deno-всегда-завершает-работу-на-Uncaught-Errors" class="headerlink" title="Deno всегда завершает работу на Uncaught Errors"></a>Deno всегда завершает работу на Uncaught Errors</h3><p>Странно видеть это в списке значимых отличий. В Node.JS вы можете делать ровно то же самое. Если вам это нужно.</p>
+<h3 id="Используются-ES-Modules-а-не-require"><a href="#Используются-ES-Modules-а-не-require" class="headerlink" title="Используются ES Modules, а не require"></a>Используются ES Modules, а не require</h3><p>Да, хорошо, что бэк и фронт переходят на один формат. Но знаете, в Node.JS сейчас тоже есть поддержка ES Modules…</p>
+<h3 id="Deno-требует-разрешения-на-работу-с-сетью-файлами-и-переменными-окружения"><a href="#Deno-требует-разрешения-на-работу-с-сетью-файлами-и-переменными-окружения" class="headerlink" title="Deno требует разрешения на работу с сетью, файлами и переменными окружения."></a>Deno требует разрешения на работу с сетью, файлами и переменными окружения.</h3><p>Звучит классно! Но реализация… Реализация - это просто набор флагов allow-read, allow-net, allow-run, allow-env. Выглядит это как-то так:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deno --allow-read=/etc https://deno.land/std/examples/cat.ts /etc/passwd</span><br></pre></td></tr></table></figure>
+
+<p>Это опять же вызывает у меня вопросы:</p>
+<ol>
+<li>В большом приложении скрипт запуска превратится в помойку флагов.</li>
+<li>Скорее всего, эти ограничения просто превратятся в практику запуска с флагом –allow-all.</li>
+<li>Практически ни в какой другой среде нет подобных ограничений. И все отлично с этим живут. По той простой причине, что уже много лет как правами на доступ к файлам можно управлять на уровне разрешений пользователя, от которого запущен процесс. А вопрос сетевого взаимодействия отлично решается файрволами. Почему Райан решил, что это вопрос рантайма - мне глубоко непонятно.</li>
+<li>Ну и последнее. Контейнеры не только появились, они прочно вошли в употребление, и даже перестали быть хайповой темой. И они отлично решают эти вопросы. Появляется ощущение, что Райан вошёл в 2019 год на машине времени прямо из 2012, и только это всё объясняет - тогда до релиза докера был ещё целый год…</li>
+</ol>
+<h2 id="Наше-время-Наши-дни-NPM"><a href="#Наше-время-Наши-дни-NPM" class="headerlink" title="Наше время. Наши дни. NPM."></a>Наше время. Наши дни. NPM.</h2><p><img src="https://habrastorage.org/webt/zk/gz/ei/zkgzeiqxfwe_gxqhgbndrhi3sem.png"></p>
+<p>Ну и в целом мне хотелось напомнить, что произошло с npm с 2012 года:</p>
+<ol>
+<li>Пакеты не исчезают. Удаление и изменение загруженной версии запрещено.</li>
+<li>Lock file обеспечивает воспроизводимые сборки.</li>
+<li>Есть аудит безопасности. Причём с помощью github, snyk и самого npm.</li>
+<li>Есть статистика использования и зависимостей.</li>
+<li>Есть альтернативные клиенты.</li>
+<li>Есть возможность ставить пакеты из иных источников - гит, гитхаб, что угодно.</li>
+<li>Есть прокси регистри.</li>
+</ol>
+<p>А главным достоинством npm я считаю… То, что его в любой момент можно выкинуть из экосистемы. Есть протокол, есть клиенты, есть другие регистри… Как только “Акела промахнётся”, любая большая компания может поднять альтернативный регистри - facebook, google, microsoft, gitlab… Пока что этого не случалось ровно по той причине, что npm работает достаточно стабильно и отвечает потребностям сообщества.</p>
+<h2 id="Подводя-итоги"><a href="#Подводя-итоги" class="headerlink" title="Подводя итоги"></a>Подводя итоги</h2><p>Пройдём по пунктам:</p>
+<ol>
+<li>Rust - не преимущество.</li>
+<li>TypeScript - не преимущество.</li>
+<li>Загрузка модулей по URL без NPM - скорее два шага назад.</li>
+<li>Улучшения безопасности - выглядит ужасно.</li>
+<li>Остальные отличия непринципиальны. Разве что лого. Лого офигенное. Люблю динозавров!</li>
+</ol>
+<p><img src="https://habrastorage.org/webt/qw/v8/qc/qwv8qcrwbqujdxridpefbeet4-0.png"></p>
+<p>В итоге я просто не вижу смысла в использовании Deno. Терпеть не могу позицию “не пробовал, но осуждаю” - но, пока что даже Райан говорит, что Deno ещё сырой - поэтому пробовать я его не стал.</p>
+<p>Однако я очень хотел найти антагониста, который бы сказал мне, что я не прав, что Райан сделал крутую штуку, и что я не понял её применения. Я много обсуждал Deno  с коллегами, друзьями, и рассказывал всё это на Moscow Node.JS Meetup - и никто не высказал мне альтернативного мнения. Отчасти поэтому я пишу статью на хабр - скажите, может я всё же что-то не понял или не заметил?</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/habr/">habr</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!-- 
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+</section>
+ -->
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="as_sitesearch" value="articles.jehy.ru">
+  </form>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.43px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.71px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.71px;">android</a> <a href="/tags/applet/" style="font-size: 12.14px;">applet</a> <a href="/tags/arduino/" style="font-size: 10.71px;">arduino</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.71px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15px;">dev</a> <a href="/tags/esphome/" style="font-size: 10px;">esphome</a> <a href="/tags/fun/" style="font-size: 14.29px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.29px;">habr</a> <a href="/tags/home-assistant/" style="font-size: 10.71px;">home assistant</a> <a href="/tags/java/" style="font-size: 12.14px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.71px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/openid/" style="font-size: 10.71px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.14px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.14px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 15.71px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.14px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.71px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.43px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.57px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 14.29px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.14px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.71px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.71px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.86px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 16.43px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.29px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.71px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.71px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.71px;">работа</a> <a href="/tags/%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%8B%D0%B5-%D0%B8%D0%B3%D1%80%D1%8B/" style="font-size: 10px;">ролевые игры</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.14px;">таро</a> <a href="/tags/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC/" style="font-size: 10.71px;">умный дом</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.86px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.71px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.57px;">цитаты</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2022/05/умный-дом-у-геккона/">Умный дом - теперь и у геккона</a>
+      </li>
+    
+      <li>
+        <a href="/2022/02/алиса-открой-ворота/">Алиса, открой ворота - или MVP умного дома за пару вечеров</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/шедоуран-2021-отчет/">Шедоуран 2021 отчёт</a>
+      </li>
+    
+      <li>
+        <a href="/2020/06/как-активный-гражданин-приучает-людей-к-фишингу/">Как «активный гражданин» приучает людей к фишингу</a>
+      </li>
+    
+      <li>
+        <a href="/2020/02/снимаем-покрытие-кода-с-уже-запущенного-nodejs-приложения/">Снимаем покрытие кода с уже запущенного Node.JS приложения</a>
+      </li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><!--<div class="alignleft">
+  
+  &copy; 2022 Jehy
+  
+</div>-->
+<div class="clearfix"></div>
+</footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

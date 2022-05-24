@@ -1,0 +1,226 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="verify-admitad" content="71b6485389" />
+  
+  <title>Автоматизированное тестирование ботов для Telegram | Jehy&#39;s notes</title>
+  <meta name="author" content="Jehy">
+  
+  <meta name="description" content="Оригинал поста на хабре
+
+
+Кажется, что время - это река, которую внезапно переклинило, и она решила течь по кругу. Именно такое впечатление складывается на первый взгляд, когда видишь, что вновь стали популярны боты в мессенджерах. Но это впечатление обманчиво. Изменилось очень многое - мощности, которые стоят за ботами, возможность обработки ими мультимедиа информации, наличие информации о пользователях, круг охвата… В общем, это явно не ностальгический тренд, а реально полезная технология, которая будет развиваться и дальше.
+Боты становятся всё сложнее, они берут на себя многие функции других каналов. Например, вместо того, чтобы звонить по телефону и слушать по полчаса записанную девушку, которая говорит тебе перейти в тоновый режим и набрать волшебную последовательность символов, всё то же самое можно сделать при помощи бота. И это будет быстрее, удобнее, гибче и дешевле.
+Для некоего личного проекта мне захотелось написать бота с довольно сложной ветвящейся логикой (например, это может быть система поддержки или диагностики с глубокой вложенностью). При этом граф данной логики имеет огромное количество разветвлений. В общем, быстро стало очевидно, что без автоматизированного тестирования не обойтись - иначе что-то точно упущу из внимания. И насколько же сильно я удивился, когда узнал, что способа тестировать логику ботов просто нет!
+Конечно, можно зарегистрировать дополнительного бота для тестирования, но это вариант кривой и некрасивый. Обращение ко внешнему апи во время тестов, заглушка, которая не даст общаться с ботом кому попало, ограничение на скорость отправки сообщений раз в секунду… Если слать сообщение раз в секунду, то граф из каких-то 60 вершин будет тестироваться уже больше минуты! И я уже не говорю о том, что у нас нет никакой возможности смоделировать возросшую нагрузку на бота, при которой он упрётся в ограничение в 30 сообщений в секунду… В общем, я понял, что опять придётся делать что-то своё.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Автоматизированное тестирование ботов для Telegram"/>
+  <meta property="og:site_name" content="Jehy&#39;s notes"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Jehy&#39;s notes" type="application/atom+xml">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Jehy&#39;s notes</a></h1>
+  <h2><a href="/">Insert 1 into dual</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/wishlist">Wishlist</a></li>
+    
+      <li><a href="/donate">Donate</a></li>
+    
+      <li><a href="/atom.xml">Subscribe</a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://whois.jehy.ru">Contact me</a></li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-2017/02/автоматизированное-тестирование-ботов-для-telegram" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2017-02-28T07:00:00.000Z"><a href="/2017/02/автоматизированное-тестирование-ботов-для-telegram/">2017-02-28</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Автоматизированное тестирование ботов для Telegram</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/322816%7D">Оригинал поста на хабре</a></p>
+<img src="https://habrastorage.org/files/a96/477/6d8/a964776d86b8468186fd9ef7f749fe0f.gif" align="left"/>
+
+<p>Кажется, что время - это река, которую внезапно переклинило, и она решила течь по кругу. Именно такое впечатление складывается на первый взгляд, когда видишь, что вновь стали популярны боты в мессенджерах. Но это впечатление обманчиво. Изменилось очень многое - мощности, которые стоят за ботами, возможность обработки ими мультимедиа информации, наличие информации о пользователях, круг охвата… В общем, это явно не ностальгический тренд, а реально полезная технология, которая будет развиваться и дальше.</p>
+<p>Боты становятся всё сложнее, они берут на себя многие функции других каналов. Например, вместо того, чтобы звонить по телефону и слушать по полчаса записанную девушку, которая говорит тебе перейти в тоновый режим и набрать волшебную последовательность символов, всё то же самое можно сделать при помощи бота. И это будет быстрее, удобнее, гибче и дешевле.</p>
+<p>Для некоего личного проекта мне захотелось написать бота с довольно сложной ветвящейся логикой (например, это может быть система поддержки или диагностики с глубокой вложенностью). При этом граф данной логики имеет огромное количество разветвлений. В общем, быстро стало очевидно, что без автоматизированного тестирования не обойтись - иначе что-то точно упущу из внимания. И насколько же сильно я удивился, когда узнал, что способа тестировать логику ботов <a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/36891407/use-telegram-client-for-bot-testing-not-bot-api/42489240">просто нет</a>!</p>
+<p>Конечно, можно зарегистрировать дополнительного бота для тестирования, но это вариант кривой и некрасивый. Обращение ко внешнему апи во время тестов, заглушка, которая не даст общаться с ботом кому попало, ограничение на скорость отправки сообщений раз в секунду… Если слать сообщение раз в секунду, то граф из каких-то 60 вершин будет тестироваться уже больше минуты! И я уже не говорю о том, что у нас нет никакой возможности смоделировать возросшую нагрузку на бота, при которой он упрётся в ограничение в 30 сообщений в секунду… В общем, я понял, что опять придётся делать что-то своё.</p>
+<span id="more"></span>
+<h2>Два решения задачи</h2>
+<h3>Надстройка</h3>
+Первый вариант с огромной скоростью реализации - это просто надстройка над самой популярной Node.JS библиотекой для реализации Telegram ботов - <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/node-telegram-bot-api">node-telegram-bot-api</a>. Сделано довольно просто - переписывается обработчик события на отсылку данных, после чего мы обрабатываем данные своим методом и посылаем вручную сгенерированный запрос. Выходит примерно так:
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">describe</span>(<span class="string">&#x27;Telegram Test&#x27;</span>, <span class="function">()=&gt;</span> &#123;</span><br><span class="line"> <span class="keyword">const</span> myBot = <span class="keyword">new</span> <span class="title class_">TestBot</span>(telegramBot);</span><br><span class="line"> <span class="keyword">let</span> testChat = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"> <span class="title function_">it</span>(<span class="string">&#x27;should greet Masha&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">const</span> telegramTest = <span class="keyword">new</span> <span class="title class_">TelegramTest</span>(telegramBot);</span><br><span class="line">   testChat++;</span><br><span class="line">   <span class="keyword">return</span> telegramTest.<span class="title function_">sendUpdate</span>(testChat, <span class="string">&#x27;/ping&#x27;</span>)</span><br><span class="line">     .<span class="title function_">then</span>(<span class="function">(<span class="params">data</span>)=&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">if</span> (data.<span class="property">text</span> === <span class="string">&#x27;pong&#x27;</span>) &#123;</span><br><span class="line">         <span class="keyword">return</span> telegramTest.<span class="title function_">sendUpdate</span>(testChat, <span class="string">&#x27;/start&#x27;</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">`Wrong answer for ping! (was  <span class="subst">$&#123;data.text&#125;</span>)`</span>);</span><br><span class="line">     &#125;)</span><br><span class="line">     .<span class="title function_">then</span>(<span class="function"><span class="params">data</span>=&gt;</span> telegramTest.<span class="title function_">sendUpdate</span>(testChat, data.<span class="property">keyboard</span>[<span class="number">0</span>][<span class="number">0</span>].<span class="property">text</span>))</span><br><span class="line">     .<span class="title function_">then</span>(<span class="function">(<span class="params">data</span>)=&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">if</span> (data.<span class="property">text</span> === <span class="string">&#x27;Hello, Masha!&#x27;</span>) &#123;</span><br><span class="line">         <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;Wrong greeting!&#x27;</span>);</span><br><span class="line">     &#125;);</span><br><span class="line"> &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Бота, который используется для данного примера, вы можете найти на страничке библиотеки, как и собственно этот пример - не хочется приводить лишнего копи-пейста.</p>
+<h3>Свой сервер API Telegram</h3>
+Решение выше хорошо для быстрого тестирования каких-то простых вещей и покроет большинство потребностей тестирования. Однако что делать, если мы хотим, скажем, тестировать, как наш бот работает под большой нагрузкой? В этом случае единственный логичный выход - это реализовать свой вариант Telegram API. Звучит довольно страшно, но на самом деле нам нужна простая реализация, которая совместима с текущими библиотеками для ботов и позволяет отправлять клиентские запросы. Кстати, как побочная фича - получается, что мы делаем полноценный сервер, с которым можно работать из любого другого стека технологий - хоть питон, хоть C#, хоть что.
+
+<p>To make the long story short, я сделал и такой вариант. С ним тестирование логики того же бота выглядит примерно так:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">it</span>(<span class="string">&#x27;should greet Masha&#x27;</span>, <span class="keyword">function</span> <span class="title function_">testFull</span>(<span class="params"></span>) &#123;</span><br><span class="line">   <span class="variable language_">this</span>.<span class="title function_">slow</span>(<span class="number">400</span>);</span><br><span class="line">   <span class="variable language_">this</span>.<span class="title function_">timeout</span>(<span class="number">800</span>);</span><br><span class="line">   <span class="keyword">let</span> serverConfig = &#123;<span class="attr">port</span>: <span class="number">9000</span>&#125;;</span><br><span class="line">   <span class="keyword">let</span> server = <span class="keyword">new</span> <span class="title class_">TelegramServer</span>(serverConfig);</span><br><span class="line">   <span class="keyword">let</span> token = <span class="string">&#x27;sampleToken&#x27;</span>;</span><br><span class="line">   <span class="keyword">let</span> client = server.<span class="title function_">getClient</span>(token);</span><br><span class="line">   <span class="keyword">let</span> message = client.<span class="title function_">makeMessage</span>(<span class="string">&#x27;/start&#x27;</span>);</span><br><span class="line">   <span class="keyword">let</span> telegramBot,</span><br><span class="line">       testBot;</span><br><span class="line">   <span class="keyword">return</span> server.<span class="title function_">start</span>()</span><br><span class="line">     .<span class="title function_">then</span>(<span class="function">()=&gt;</span> client.<span class="title function_">sendMessage</span>(message))</span><br><span class="line">     .<span class="title function_">then</span>(<span class="function">()=&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">let</span> botOptions = &#123;<span class="attr">polling</span>: <span class="literal">true</span>, <span class="attr">baseApiUrl</span>: server.<span class="property">ApiURL</span>&#125;;</span><br><span class="line">       telegramBot = <span class="keyword">new</span> <span class="title class_">TelegramBot</span>(token, botOptions);</span><br><span class="line">       testBot = <span class="keyword">new</span> <span class="title class_">TestBot</span>(telegramBot);</span><br><span class="line">       <span class="keyword">return</span> client.<span class="title function_">getUpdates</span>();</span><br><span class="line">     &#125;)</span><br><span class="line">     .<span class="title function_">then</span>(<span class="function">(<span class="params">updates</span>)=&gt;</span> &#123;</span><br><span class="line">       <span class="variable language_">console</span>.<span class="title function_">log</span>(colors.<span class="title function_">blue</span>(<span class="string">`Client received messages: <span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(updates.result)&#125;</span>`</span>));</span><br><span class="line">       <span class="keyword">if</span> (updates.<span class="property">result</span>.<span class="property">length</span> !== <span class="number">1</span>) &#123;</span><br><span class="line">         <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;updates queue should contain one message!&#x27;</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">let</span> keyboard = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(updates.<span class="property">result</span>[<span class="number">0</span>].<span class="property">message</span>.<span class="property">reply_markup</span>).<span class="property">keyboard</span>;</span><br><span class="line">       message = client.<span class="title function_">makeMessage</span>(keyboard[<span class="number">0</span>][<span class="number">0</span>].<span class="property">text</span>);</span><br><span class="line">       client.<span class="title function_">sendMessage</span>(message);</span><br><span class="line">       <span class="keyword">return</span> client.<span class="title function_">getUpdates</span>();</span><br><span class="line">     &#125;)</span><br><span class="line">     .<span class="title function_">then</span>(<span class="function">(<span class="params">updates</span>)=&gt;</span> &#123;</span><br><span class="line">       <span class="variable language_">console</span>.<span class="title function_">log</span>(colors.<span class="title function_">blue</span>(<span class="string">`Client received messages: <span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(updates.result)&#125;</span>`</span>));</span><br><span class="line">       <span class="keyword">if</span> (updates.<span class="property">result</span>.<span class="property">length</span> !== <span class="number">1</span>) &#123;</span><br><span class="line">         <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;updates queue should contain one message!&#x27;</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> (updates.<span class="property">result</span>[<span class="number">0</span>].<span class="property">message</span>.<span class="property">text</span> !== <span class="string">&#x27;Hello, Masha!&#x27;</span>) &#123;</span><br><span class="line">         <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;Wrong greeting message!&#x27;</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">     &#125;)</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>То есть, мы поднимаем у себя на локальном порту сервер, дальше стандартным образом настраиваем бота на работу с этим сервером, и просто шлём ему сообщения от ботов и клиентов. Объект клиента можно получить прямо из сервера, или можно написать своего клиента - сервер просто принимает сообщения в стандартном JSON формате по определённому адресу.</p>
+<h2>TODO</h2>
+Конечно, осталось огромное количество всяких полезных вещей, которые можно добавить. К примеру, сейчас очередь сообщений хранится просто в массиве в оперативной памяти. Не реализовано эмулирование таймаутов, и поддерживается работа только с одним клиентом одновременно (сервер просто высылает все сообщения клиенту, который обратился к нему за данными от определённого бота, идентифицируемого по токену). Так же есть поддержка только отправки текстовых сообщений. Связано это с тем, что меня на текущий момент интересует только текст.
+
+<p>Первому проекту особо добавить нечего, а второй скорее всего будет развиваться в сторону моих личных потребностей. Но я немного рассчитываю на поддержку open source сообщества. Лицензия MIT, поддержка Node.js 4 и 6 (5 тоже будет работать, но на ней не пройдут тесты, поскольку используемый для теста бот несовместим с Node 5. Впрочем, я уже создал на это <a target="_blank" rel="noopener" href="https://github.com/yagop/node-telegram-bot-api/pull/298">pull request</a>), репозитории ждут ваших пулл реквестов с кодом, оформленным по включённой в проект конфигурации линтера. Некое количество тестов тоже есть. Возможно, со временем будет поддержка ботов и для других мессенджеров.</p>
+<p>Если вам интересна сама тема ботов, то оставайтесь на связи. Будет интересно.</p>
+<h2>Ссылки</h2>
+<ol>
+    <li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/telegram-test">Первая реализация</a> (надстройка над node-telegram-bot-api);</li>
+    <li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/telegram-test-api">Вторая реализация</a> (эмуляция Telegram API);</li>
+    <li><a target="_blank" rel="noopener" href="https://habrahabr.ru/post/317666/">Хорошая статья</a> про борьбу с ограничениями на скорость отправки сообщений на go;</li>
+    <li><a target="_blank" rel="noopener" href="https://core.telegram.org/bots/faq#my-bot-is-hitting-limits-how-do-i-avoid-this">Официальные ограничения</a> на скорость отправки сообщений.</li>
+</ol>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/habr/">habr</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!-- 
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+</section>
+ -->
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="as_sitesearch" value="articles.jehy.ru">
+  </form>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.43px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.71px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.71px;">android</a> <a href="/tags/applet/" style="font-size: 12.14px;">applet</a> <a href="/tags/arduino/" style="font-size: 10.71px;">arduino</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.71px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15px;">dev</a> <a href="/tags/esphome/" style="font-size: 10px;">esphome</a> <a href="/tags/fun/" style="font-size: 14.29px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.29px;">habr</a> <a href="/tags/home-assistant/" style="font-size: 10.71px;">home assistant</a> <a href="/tags/java/" style="font-size: 12.14px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.71px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/openid/" style="font-size: 10.71px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.14px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.14px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 15.71px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.14px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.71px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.43px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.57px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 14.29px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.14px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.71px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.71px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.86px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 16.43px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.29px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.71px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.71px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.71px;">работа</a> <a href="/tags/%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%8B%D0%B5-%D0%B8%D0%B3%D1%80%D1%8B/" style="font-size: 10px;">ролевые игры</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.14px;">таро</a> <a href="/tags/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC/" style="font-size: 10.71px;">умный дом</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.86px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.71px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.57px;">цитаты</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2022/05/умный-дом-у-геккона/">Умный дом - теперь и у геккона</a>
+      </li>
+    
+      <li>
+        <a href="/2022/02/алиса-открой-ворота/">Алиса, открой ворота - или MVP умного дома за пару вечеров</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/шедоуран-2021-отчет/">Шедоуран 2021 отчёт</a>
+      </li>
+    
+      <li>
+        <a href="/2020/06/как-активный-гражданин-приучает-людей-к-фишингу/">Как «активный гражданин» приучает людей к фишингу</a>
+      </li>
+    
+      <li>
+        <a href="/2020/02/снимаем-покрытие-кода-с-уже-запущенного-nodejs-приложения/">Снимаем покрытие кода с уже запущенного Node.JS приложения</a>
+      </li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><!--<div class="alignleft">
+  
+  &copy; 2022 Jehy
+  
+</div>-->
+<div class="clearfix"></div>
+</footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="verify-admitad" content="71b6485389" />
+  
+  <title>Я ненавидел Javascript. А теперь он мне нравится | Jehy&#39;s notes</title>
+  <meta name="author" content="Jehy">
+  
+  <meta name="description" content="Оригинал поста на хабре
+Моя карьера началась с написания программ для мобильных устройств. Я изучал C и Objective-C, чтобы работать с устройствами на iOS. У меня был чёткий контроль над программным обеспечением, я учился тому, как правильно работать с памятью, и проводил долгие часы за отладкой багов, которые возникали из-за моей небрежности (это было ещё до ARC). Я развивался с уклоном в сторону iOS, а так же так же начал изучать Java (и совсем недавно приступил к Kotlin) для перехода на Android.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Я ненавидел Javascript. А теперь он мне нравится"/>
+  <meta property="og:site_name" content="Jehy&#39;s notes"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Jehy&#39;s notes" type="application/atom+xml">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Jehy&#39;s notes</a></h1>
+  <h2><a href="/">Insert 1 into dual</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/wishlist">Wishlist</a></li>
+    
+      <li><a href="/donate">Donate</a></li>
+    
+      <li><a href="/atom.xml">Subscribe</a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://whois.jehy.ru">Contact me</a></li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-2018/01/я-ненавидел-javascript-а-теперь-он-мне-нравится" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2018-01-29T07:00:00.000Z"><a href="/2018/01/я-ненавидел-javascript-а-теперь-он-мне-нравится/">2018-01-29</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Я ненавидел Javascript. А теперь он мне нравится</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/347802%7D">Оригинал поста на хабре</a></p>
+<p>Моя карьера началась с написания программ для мобильных устройств. Я изучал C и Objective-C, чтобы работать с устройствами на iOS. У меня был чёткий контроль над программным обеспечением, я учился тому, как правильно работать с памятью, и проводил долгие часы за отладкой багов, которые возникали из-за моей небрежности (это было ещё до <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Automatic_Reference_Counting">ARC</a>). Я развивался с уклоном в сторону iOS, а так же так же начал изучать Java (и совсем недавно приступил к Kotlin) для перехода на Android.</p>
+<span id="more"></span>
+<p>В разработке под Android с памятью было несколько проще из-за гуманного сборщика мусора. Однако я всё равно обладал контролем над циклом работы приложения, и мне пришлось осваивать разницу между двумя основными мобильными платформами, их интерфейсами и различиями в работе.</p>
+<p>Всё это время я оставался в своём приятном розовом мире, издеваясь над  JavaScript разработчиками и насмехаясь над ужасной производительностью веб-приложений. Я отказывался даже трогать Javascript, и если мне всё же приходилось, то выбирал более привычный TypeScript. Конечно, это тот же Javascript, но хотя бы с типизацией. Мне нравится, когда у моих переменных и констант есть точный тип. Годы прямой работы с памятью поймали меня в ментальную ловушку.</p>
+<p>Если у вас есть машина, то высока вероятность того, что вы не любите велосипедистов. Это известная психологическая проблема, и мне потребовалось довольно много времени, чтобы понять, что именно из-за неё я так не люблю Javascript. Я потратил годы обучения, усилий и боли на то, чтобы научиться правильно работать с памятью и этапами жизни приложения. И втайне я думал “Какого чёрта эти парни с Javascript называются разработчиками, при этом не разбираясь в управлении памятью? ”</p>
+<img src="https://habrastorage.org/webt/yl/tr/fa/yltrfabqnqgqqd7vw0vil3s4exu.jpeg" />
+
+<p>Но я рос, меня интересовали совершенно разные вещи, хотелось воплощать новые идеи - и как-то мне потребовалось сделать веб приложение для нескольких простых задач, включающих управление доступом и авторизацию. Там требовалось всего несколько точек входа и ресурсов. Тогда я подумал про Node.JS, и решил - почему бы и нет? Всё выглядело достаточно просто и было бы легко это поддерживать.</p>
+<p>За один вечер я написал нужное мне приложение. За один вечер.</p>
+<p>Что мне потребовалось:</p>
+<ul>
+    <li>NodeJS</li>
+    <li>mLab (Mongo DB)</li>
+    <li>PugJS (язык разметки)</li>
+    <li>Несколько раз написать npm install --save xxx</li>
+</ul>
+Через несколько часов у меня было полностью рабочее приложение с авторизацией и контролем доступа.В тот момент меня ещё не заботил Redis, Docker, K8s и прочие хорошие вещи. Мой MVP был готов. Я мог его тестировать.
+
+<p>У меня была тестовая база без бэкапов и неслакируемый продукт на Digital Ocean. Но я уже тестировал моё приложение на живых пользователях, и я понял, что оно не такое волшебное, как мне показалось. Ну да ладно, ничего не потеряно - я просто немного поучился.</p>
+<p>Дальше я стал дальше разбираться с Javascript и его незнакомой экосистемой. Когда ты пишешь под iOS и Android, то у тебя будет всего несколько зависимостей вроде Alamofire и Retrofit. Я ожидал увидеть что-то похожее. Как же я был неправ. Я понял, что же такое на самом деле World Wide Web. Это была огромнейшая паутина зависимостей. Это меня не на шутку испугало.</p>
+<img src="https://habrastorage.org/webt/il/up/es/ilupesrwlvob1npuavh-kkyzpgq.jpeg" />
+
+<p>Однако, когда я разобрался с несколькими простыми практиками вроде использования полифиллов, транспилеров, стандартных зависимостей, и вообще вник в общую экосистему, мне стало несколько проще и комфортнее. Теперь я мог создать MVP чего угодно за несколько дней. Это было удивительно, и в этом была исключительно заслуга NodeJS.</p>
+<p>Как только у меня получался MVP, я мог двигаться дальше и вкладывать время куда-то ещё. Мне нужно было думать о своих проектах, и Node.JS не оказался серебряной пулей. Ему есть очень крутые области применения, как и у любого другого языка, но не стоит писать на нём всё подряд только потому, что можешь.</p>
+<p>Касательно самого языка, Javascript мне всегда внушал отвращение. Наверное, потому, что когда-то я писал на ActionScript 3.0. Вроде бы и JS и AS3 это ECMAScript  - так какого чёрта AS3 настолько лучше, чем JavaScript? Ответ пришёл ко мне не сразу. Совместимость. Очень долго я не понимал, что для JS очень важна совместимость с браузерами. Но, когда появился Babel, Javascript начал меняться с огромной скоростью. Это было круто. Я начал наслаждаться тем, что пишу на Javascript, будучи при этом уверенным, что он прозрачно будет транспилирован для совместимости с чем угодно.</p>
+<p>Этот пост я пишу преимущественно для людей, которые издеваются над Javascript. Мне вот до сих пор не нравится идея “нативных” JS приложений. Однако я понимаю, сколько гибкости это даёт мобильным и десктопным приложениям, и было бы лицемерно с моей стороны сидеть на своём VSCode и осуждать их. Так же мне нравится уже довольно популярная идея производительных гибридных приложений, где только компоненты ядра написаны на низкоуровневом языке.</p>
+<p>Если вы видите разработчика, который ненавидит Javascript, то, скорее всего, он просто воспринимает вас как велосипедиста, который занял его дорожное полотно.</p>
+<hr>
+Из комментариев к оригиналу статьи (Tim):
+<blockquote>Я начинал писать код на C для встраиваемых платформ. Затем я провёл 10 лет, разрабатывая на C# десктопные приложения, при этом периодически погружаясь с головой в C/C++.
+
+<p>Всё это время я смотрел, как маленькие компании пытаются делать кроссплатформенные приложения. Кто-то портировал C# приложения на Mac и Linux, и это ужасно выглядело и плохо работало. Кто-то пытался создать точно такое же нативное приложение… И не мог это завершить, будучи не в состояниях поддерживать развитие сразу трёх разных приложений на трёх платформах.</p>
+<p>Когда я открыл для себя Electron, мой руководитель рассмеялся над идеей создания приложений на технологиях для веб сайтов. Я ушёл с работы, обучился TypeScript&#x2F;JavaScript, нескольким фреймворкам, и написал приложение для визуализации данных, работающее с USB железом. В конце концов я неплохо заработал, продав это приложение предыдущему работодателю.</p>
+<p>“Но Javascript гораздо медленнее, чем Х” - обязательно скажете вы. Конечно. Но вы всегда можете написать любые сложные вычисления на C++ и пользоваться этим из Javascript, получая лучшее из обоих миров.</p>
+<p>Используйте каждый язык разработки уместно, и всё будет хорошо.</blockquote></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/habr/">habr</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!-- 
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+</section>
+ -->
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="as_sitesearch" value="articles.jehy.ru">
+  </form>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.43px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.71px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.71px;">android</a> <a href="/tags/applet/" style="font-size: 12.14px;">applet</a> <a href="/tags/arduino/" style="font-size: 10.71px;">arduino</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.71px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15px;">dev</a> <a href="/tags/esphome/" style="font-size: 10px;">esphome</a> <a href="/tags/fun/" style="font-size: 14.29px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.29px;">habr</a> <a href="/tags/home-assistant/" style="font-size: 10.71px;">home assistant</a> <a href="/tags/java/" style="font-size: 12.14px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.71px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/openid/" style="font-size: 10.71px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.14px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.14px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 15.71px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.14px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.71px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.43px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.57px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 14.29px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.14px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.71px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.71px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.86px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 16.43px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.29px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.71px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.71px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.71px;">работа</a> <a href="/tags/%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%8B%D0%B5-%D0%B8%D0%B3%D1%80%D1%8B/" style="font-size: 10px;">ролевые игры</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.14px;">таро</a> <a href="/tags/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC/" style="font-size: 10.71px;">умный дом</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.86px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.71px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.57px;">цитаты</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2022/05/умный-дом-у-геккона/">Умный дом - теперь и у геккона</a>
+      </li>
+    
+      <li>
+        <a href="/2022/02/алиса-открой-ворота/">Алиса, открой ворота - или MVP умного дома за пару вечеров</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/шедоуран-2021-отчет/">Шедоуран 2021 отчёт</a>
+      </li>
+    
+      <li>
+        <a href="/2020/06/как-активный-гражданин-приучает-людей-к-фишингу/">Как «активный гражданин» приучает людей к фишингу</a>
+      </li>
+    
+      <li>
+        <a href="/2020/02/снимаем-покрытие-кода-с-уже-запущенного-nodejs-приложения/">Снимаем покрытие кода с уже запущенного Node.JS приложения</a>
+      </li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><!--<div class="alignleft">
+  
+  &copy; 2022 Jehy
+  
+</div>-->
+<div class="clearfix"></div>
+</footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

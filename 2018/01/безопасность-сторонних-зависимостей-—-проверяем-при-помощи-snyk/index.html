@@ -1,0 +1,294 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="verify-admitad" content="71b6485389" />
+  
+  <title>Безопасность сторонних зависимостей — проверяем при помощи snyk | Jehy&#39;s notes</title>
+  <meta name="author" content="Jehy">
+  
+  <meta name="description" content="Оригинал поста на хабре
+Недавно была прекрасная публикация “Рассказ о том, как я ворую номера кредиток и пароли у посетителей ваших сайтов”, на которую я переводил ответ. Автор недавно опубликовал вторую часть, но, подозреваю, что перевода не будет - там предлагается решать проблему прекрасными способами вроде перевода важных элементов ввода “в отдельный iframe” или “на особые страницы без стороннего javascript”. На этом месте те, кто повёлся на первую статью, должны бы усомниться в адекватности автора - и низкий (относительно предыдущей) рейтинг новой статьи это показывает.
+UPD: перевели таки.
+Тем не менее, проблема сторонних зависимостей есть, и решать её как-то нужно. Причём стоит она в равной степени в любой экосистеме, где используются сторонние зависимости. В комментариях к прошлому посту уже запрашивали какой-нибудь вариант решения, и я хочу представить один из них - инструмент под названием snyk.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Безопасность сторонних зависимостей — проверяем при помощи snyk"/>
+  <meta property="og:site_name" content="Jehy&#39;s notes"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Jehy&#39;s notes" type="application/atom+xml">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Jehy&#39;s notes</a></h1>
+  <h2><a href="/">Insert 1 into dual</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/wishlist">Wishlist</a></li>
+    
+      <li><a href="/donate">Donate</a></li>
+    
+      <li><a href="/atom.xml">Subscribe</a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://whois.jehy.ru">Contact me</a></li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-2018/01/безопасность-сторонних-зависимостей-—-проверяем-при-помощи-snyk" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2018-01-31T07:00:00.000Z"><a href="/2018/01/безопасность-сторонних-зависимостей-—-проверяем-при-помощи-snyk/">2018-01-31</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Безопасность сторонних зависимостей — проверяем при помощи snyk</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/347934%7D">Оригинал поста на хабре</a></p>
+<p>Недавно была прекрасная публикация <a target="_blank" rel="noopener" href="https://habrahabr.ru/post/346442/">“Рассказ о том, как я ворую номера кредиток и пароли у посетителей ваших сайтов”</a>, на которую я <a target="_blank" rel="noopener" href="https://habrahabr.ru/post/346492/">переводил</a> ответ. Автор недавно опубликовал <a target="_blank" rel="noopener" href="https://hackernoon.com/part-2-how-to-stop-me-harvesting-credit-card-numbers-and-passwords-from-your-site-844f739659b9">вторую часть</a>, но, подозреваю, что перевода не будет - там предлагается решать проблему прекрасными способами вроде перевода важных элементов ввода “в отдельный iframe” или “на особые страницы без стороннего javascript”. На этом месте те, кто повёлся на первую статью, должны бы усомниться в адекватности автора - и низкий (относительно предыдущей) рейтинг новой статьи это показывает.</p>
+<p><b>UPD</b>: <a target="_blank" rel="noopener" href="https://habrahabr.ru/post/347958/">перевели таки</a>.</p>
+<p>Тем не менее, проблема сторонних зависимостей есть, и решать её как-то нужно. Причём стоит она в равной степени в любой экосистеме, где используются сторонние зависимости. В комментариях к прошлому посту уже запрашивали какой-нибудь вариант решения, и я хочу представить один из них - инструмент под названием snyk.</p>
+<p><img src="https://res.cloudinary.com/snyk/image/upload/f_auto,q_auto,w_100/v1468845259/logo/snyk-dog.svg" alt="image" align="center"/><span id="more"></span></p>
+<p><a target="_blank" rel="noopener" href="https://snyk.io">Snyk</a> это довольно популярный инструмент, но на хабре я пока не встречал его упоминаний. Он умеет проверять зависимости для многих экосистем (Javascript, Ruby, Python, Scala and Java) по своей базе - и авторы уверяют, что их база уязвимостей большая. Можно <a target="_blank" rel="noopener" href="https://snyk.io/vuln/?packageManager=all">посмотреть</a> на неё своими глазами. Код проекта открыт, лежит на гитхабе и у него довольно много звёздочек и форков:</p>
+<img src="https://habrastorage.org/webt/ip/x8/4n/ipx84n_htxbe0lk6pjf6vogxlcw.png" align="center"/>
+
+<h3>Основные возможности</h3>
+Описание взято с <a target="_blank" rel="noopener" href="https://snyk.io/features">сайта проекта</a>, делаем скидку на marketing bullshit, повторения есть и в оригинале. Личные впечатления будут ниже.
+
+<h4>Поиск</h4>
+<ul>
+    <li>Поиск уязвимостей в Javascript, Ruby, Python, Scala и Java</li>
+    <li>Проверка GitHub репозиториев</li>
+    <li>Проверка open source пакетов перед использованием</li>
+    <li>Используется собственная база уязвимостей Snyk</li>
+</ul>
+
+<img src="https://res.cloudinary.com/snyk/image/upload/f_auto,q_auto,w_560/v1491410285/home/projects.png" alt="image" align="center"/>
+
+<h4>Мониторинг</h4>
+<ul>
+    <li>Проверка зависимостей приложения</li>
+    <li>Интеграция в CI процессы</li>
+    <li>Предупреждения о новых уязвимостях в реальном времени</li>
+    <li>Поддержка приложений на AWS Lambda и Heroku</li>
+</ul>
+
+<img src="https://res.cloudinary.com/snyk/image/upload/f_auto,q_auto,w_560/v1493142741/integrations.png" alt="image" align="center"/>
+
+<h4>Исправление</h4>
+<ul>
+    <li>Обновление или исправление уязвимых зависимостей</li>
+    <li>Автоматические пулл реквесты от Snyk в gihub репозитории на Node.js и Ruby</li>
+    <li>Пулл реквесты с выбранными исправлениями</li>
+    <li>Интерактивный помощник для быстрого применения исправлений</li>
+    <li>Уведомление о новых уязвимостях, которые затрагивают ваши проекты</li>
+    <li>Уведомления в Slack и по емейлу о уязвимостях и их исправлении</li>
+    <li>Понятный анализ узвимостей</li>
+</ul>
+<blockquote>? High severity vuln found in handlebars@3.0.0,
+  introduced via handlebars@3.0.0
+- desc: Content Injection (XSS)
+- info: https://snyk.io/vuln/npm:handlebars:20151207
+  Remediation options
+> Upgrade to handlebars@4.0.0 (potentially breaking change)
+  Patch (no patch available, we'll notify you when there is one)
+  Set to ignore for 30 days (updates policy)
+  Skip</blockquote>
+<h4>Предотвращение</h4>
+<ul>
+    <li>Snyk может проверять пулл реквесты, которые могут сделать уязвимыми ваши приложения на Node.js, Ruby, Python, Scala и Java</li>
+    <li>Можно использовать Snyk в CI для автоматизированых тестов</li>
+    <li>Можно настраивать желаемый уровень безопасности для своих нужд и приоритетов</li>
+</ul>
+
+<img src="https://res.cloudinary.com/snyk/image/upload/f_auto,q_auto,w_560/v1468839471/features/features-alert.png" alt="image" align="center"/>
+
+<h4>Интеграция</h4>
+<ul>
+    <li>Автоматический мониторинг ваших github репозиториев</li>
+    <li>Добавление Snyk в CI процессы</li>
+    <li>Гибкие политики, настраиваемые под вашу команду</li>
+</ul>
+
+<img src="https://res.cloudinary.com/snyk/image/upload/f_auto,q_auto,w_560/v1468839382/features/features-integrate.png" alt="image" align="center"/>
+
+<h4>Совместная работа</h4>
+<ul>
+    <li>Используйте Snyk Organisations для работы в команде</li>
+    <li>Роли администратора и участника</li>
+    <li>Любой в команде может искать и исправлять уязвимости</li>
+    <li>Только нужные люди будут оповещены о новых уязвимостях</li>
+</ul>
+
+<img src="https://res.cloudinary.com/snyk/image/upload/f_auto,q_auto,w_560/v1468839473/features/features-collaborate.png" alt="image" align="center"/>
+
+<h4>Обучение</h4>
+<ul>
+    <li>Подписывайтесь на базу уязвимостей, чтобы вовремя о них узнавать</li>
+    <li>Узнавайте о способах эксплуатации уязвимостей и об их исправлении</li>
+</ul>
+
+<img src="https://res.cloudinary.com/snyk/image/upload/f_auto,q_auto,w_560/v1478712840/features/vulndb.png" alt="image" align="center"/>
+
+<h3>Личные впечатления</h3>
+<h4>Установка</h4>
+Попробовать эту штуку можно очень быстро - просто делаем
+
+<source lang="bash">npm install -g snyk
+cd ~/projects/myproj/
+snyk test</source>
+Да, как вы поняли, сам инструмент написан на Node.JS, и вам потребуется npm. Так же нужно будет авторизоваться на сайте, это можно сделать через несколько сервисов - github, google, bitbucket. Кроме этого, можно протестировать пакет и без установки, прямо на сайте - и получить внятный отчёт <a target="_blank" rel="noopener" href="https://snyk.io/test/npm/express/3.0.x?severity=high&amp;severity=medium&amp;severity=low">вроде этого</a>. Ну и, конечно, можно получить красивый бейджик вроде такого:
+
+<p><a target="_blank" rel="noopener" href="https://snyk.io/test/npm/telegram-test/0.1.5"><img src="https://snyk.io/test/npm/telegram-test/0.1.5/badge.svg" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/npm/telegram-test/0.1.5" style="max-width:100%;"></a></p>
+<p>Естественно, можно это так же интегрировать в свой CI, но всё настолько очевидно, что не хочется об этом писать.</p>
+<h4>Использование</h4>
+После того, как вы установили snyk, он просто работает. Пока что я его попробовал только на Node.JS проектах, и некоторое неприятное послевкусие осталось. Как минимум, заметил, что при отсутствии или при пустой директории node_modules проверка считает, что зависимостей нет, и это значит, что в проекте всё отлично. То, что вы могли снести их руками, они могли не полностью установиться, и так далее - не учитывается. Но в целом отчёт получился неплохой - хотя по сути всё сводится к тому, что нужно держать зависимости up to date. Что весьма очевидно и без специального инструмента. Однако все мы знаем, что не всегда можно "просто взять и обновиться" на новую мажорную версию, и наличие критической уязвимости, о которой вовремя предупредил инструмент для мониторинга, может служить хорошим стимулом не откладывать это на продолжительное "завтра".
+
+<img src="https://habrastorage.org/webt/ke/i6/qe/kei6qeotfzsv7iwdq1rqhzjxv9e.jpeg" align="center"/>
+
+<p>Ещё несколько огорчило качество кода самого проекта. Меня не очень смущает, что он написан на ES5 (хотя зачем тогда в проекте бабель?) - но сам код выглядит не очень красиво. Так же огорчает, что я не вижу активной работы с пулл реквестами (<a target="_blank" rel="noopener" href="https://github.com/snyk/snyk/pull/128">на примере моего</a>, где я как раз правил описанную выше проблему с node_modules - да и вообще, кажется, <a target="_blank" rel="noopener" href="https://github.com/snyk/snyk/pulls?q=is%3Apr+is%3Aclosed">было принято 2 из 23</a>). Ну и странно, что проект, связанный с обновлением и безопасностью модулей, сам содержит кучу устаревших зависимостей, и в нём встречается большое количество различных “велосипедов”.</p>
+<p>Опять же, меня несколько смущает количество маркетинга в проекте. Например, то, что сам процесс проверки называется проверкой на уязвимости, и бейджик показывает количество уязвимостей. Это не так. Максимум, что проверяет snyk - это уязвимые зависимости, но никак не уязвимости. Эти понятия просто нельзя подменять. И точно так же нельзя показывать, что проект, не содержащий зависимостей, не обладает уязвимостями. Это ужасная подмена понятий. Хотя возможно, что это всего лишь моя паранойя - я до сих пор считаю ужасно лицемерным зелёный замок и надпись “Secure” в браузере при использовании SSL…</p>
+<p>Как бы то ни было, у этого проекта есть большой плюс - он работает. Он востребован и развивается. Так что я от всей души желаю ему становиться лучше, и надеюсь, что у нас когда-нибудь будет хорошее и надёжное решение для глобальной проблемы уязвимости зависимостей в наших проектах.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/habr/">habr</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!-- 
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+</section>
+ -->
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="as_sitesearch" value="articles.jehy.ru">
+  </form>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.43px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.71px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.71px;">android</a> <a href="/tags/applet/" style="font-size: 12.14px;">applet</a> <a href="/tags/arduino/" style="font-size: 10.71px;">arduino</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.71px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15px;">dev</a> <a href="/tags/esphome/" style="font-size: 10px;">esphome</a> <a href="/tags/fun/" style="font-size: 14.29px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.29px;">habr</a> <a href="/tags/home-assistant/" style="font-size: 10.71px;">home assistant</a> <a href="/tags/java/" style="font-size: 12.14px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.71px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/openid/" style="font-size: 10.71px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.14px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.14px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 15.71px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.14px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.71px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.43px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.57px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 14.29px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.14px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.71px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.71px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.86px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 16.43px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.29px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.71px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.71px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.71px;">работа</a> <a href="/tags/%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%8B%D0%B5-%D0%B8%D0%B3%D1%80%D1%8B/" style="font-size: 10px;">ролевые игры</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.14px;">таро</a> <a href="/tags/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC/" style="font-size: 10.71px;">умный дом</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.86px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.71px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.57px;">цитаты</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2022/05/умный-дом-у-геккона/">Умный дом - теперь и у геккона</a>
+      </li>
+    
+      <li>
+        <a href="/2022/02/алиса-открой-ворота/">Алиса, открой ворота - или MVP умного дома за пару вечеров</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/шедоуран-2021-отчет/">Шедоуран 2021 отчёт</a>
+      </li>
+    
+      <li>
+        <a href="/2020/06/как-активный-гражданин-приучает-людей-к-фишингу/">Как «активный гражданин» приучает людей к фишингу</a>
+      </li>
+    
+      <li>
+        <a href="/2020/02/снимаем-покрытие-кода-с-уже-запущенного-nodejs-приложения/">Снимаем покрытие кода с уже запущенного Node.JS приложения</a>
+      </li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><!--<div class="alignleft">
+  
+  &copy; 2022 Jehy
+  
+</div>-->
+<div class="clearfix"></div>
+</footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

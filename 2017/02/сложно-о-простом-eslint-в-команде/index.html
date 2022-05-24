@@ -1,0 +1,242 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="verify-admitad" content="71b6485389" />
+  
+  <title>Сложно о простом - ESLint в команде | Jehy&#39;s notes</title>
+  <meta name="author" content="Jehy">
+  
+  <meta name="description" content="Оригинал поста на хабре
+Маленькое введение. Скорее всего этот пост будет интересен только тем, кто знает, что такое ESLint, но всё же сделаю небольшую вводную - а то сам сильно расстраиваюсь, когда открываю публикацию, и она начинается словами “уже 10 лет мы используем ххх, о котором вы конечно же знаете, а написать мы решили про xxx.yyy, что никто никогда не делал, но наверняка это очень круто”.
+Итак, ESLint это крутой инструмент, который позволяет проводить анализ качества вашего кода, написанного на любом выбранном стандарте JavaScript. Он приводит код к более-менее единому стилю, помогает избежать глупых ошибок, умеет автоматически исправлять многие из найденных проблем и отлично интегрируется со многими инструментами разработки (привет, Jetbrains, мы любим вас!). Кстати, он, как и другие линтеры, не обязывает вас к одному какому-то конкретному стилю. Наоборот - вы можете выбрать что-то из лучших практик и доработать по своему усмотрению!">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Сложно о простом - ESLint в команде"/>
+  <meta property="og:site_name" content="Jehy&#39;s notes"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Jehy&#39;s notes" type="application/atom+xml">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Jehy&#39;s notes</a></h1>
+  <h2><a href="/">Insert 1 into dual</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/wishlist">Wishlist</a></li>
+    
+      <li><a href="/donate">Donate</a></li>
+    
+      <li><a href="/atom.xml">Subscribe</a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://whois.jehy.ru">Contact me</a></li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-2017/02/сложно-о-простом-eslint-в-команде" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2017-02-25T07:00:00.000Z"><a href="/2017/02/сложно-о-простом-eslint-в-команде/">2017-02-25</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Сложно о простом - ESLint в команде</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/322550%7D">Оригинал поста на хабре</a></p>
+<p>Маленькое введение. Скорее всего этот пост будет интересен только тем, кто знает, что такое ESLint, но всё же сделаю небольшую вводную - а то сам сильно расстраиваюсь, когда открываю публикацию, и она начинается словами “уже 10 лет мы используем ххх, о котором вы конечно же знаете, а написать мы решили про xxx.yyy, что никто никогда не делал, но наверняка это очень круто”.</p>
+<p>Итак, <a target="_blank" rel="noopener" href="http://eslint.org/">ESLint </a>это крутой инструмент, который позволяет проводить анализ качества вашего кода, написанного на любом выбранном стандарте JavaScript. Он приводит код к более-менее единому стилю, помогает избежать глупых ошибок, умеет автоматически исправлять многие из найденных проблем и отлично интегрируется со многими инструментами разработки (привет, Jetbrains, мы любим вас!). Кстати, он, как и другие линтеры, не обязывает вас к одному какому-то конкретному стилю. Наоборот - вы можете выбрать что-то из лучших практик и доработать по своему усмотрению!</p>
+<p><img src="https://habrastorage.org/files/4b8/28f/bca/4b828fbca6014be3b83a75421016e8d4.jpg" align="center"/><span id="more"></span>
+Среди применений можно найти довольно неожиданные кейсы - например, легаси код может быть легче прогнать автоматическим исправлением линтера, приведя к современным стандартам, в которых лучше видны ошибки, чем пытаться это править как есть. В результате вполне могут получиться невалидные конструкты - но по нашим наблюдениям это означает, что до преобразования там был просто отвратительный код.</p>
+<p>В общем, жить без линтера в Node.JS в 2017 году - это всё равно что писать код в notepad, при этом сидя на одной руке.</p>
+<p>А сегодня я расскажу вам, как мы решили его внедрить, чтобы эффективно работать с ним в команде, а не по одиночке.</p>
+<p>Большие ребята делают проверку линтером как часть процесса их CI, и мы до этого скоро дойдём. Но пока что нам нужно реализовать первичную необходимость - запуск линтера у разработчика, с гарантией, что всё взлетит и будет работать более-менее одинаково.</p>
+<p>Казалось бы - что такого, добавляешь .eslintrc.json в проект, и поехали! Однако возникает вопрос - а как, куда и кем должен ставиться ESLint и пачка необходимых для нашего code style плагинов? Обычно для этого используется три подхода:</p>
+<ol>
+    <li>Давайте положим их в devDependency;</li>
+    <li>Давайте никуда их не положим. Пускай у каждого будет глобально стоять mocha\eslint\прочее.</li>
+    <li>Пускай всё ставить и прогонять проверки будут таск менеджеры вроде gulp или grunt.</li>
+</ol>
+Второй вариант отметается сразу - думаю, понятно, что таким образом у нас пропадает версионирование самого инструмента от проекта к проекту, да и просто ставить глобально кучу инструментов и плагинов - совсем не круто.
+
+<p>Третий вариант неплох, но до сих пор мы как-то обходились без таск менеджеров. Добавлять их в проекты ради такой задачи это явный overkill.</p>
+<p>Первый вариант в целом является оптимальным для проектов на гитхабе, но плохо подходит для коммерческой разработки. Наш CI предусматривает проведение автотестов на тестовых серверах, а тестовые зависимости прописать кроме devDependencies просто некуда. Но проблема не в этом, а в том, что, в отличие от автотестов, инструменты для линтера не должны попадать на тестовые сервера. Хотя бы по той причине, что тогда проект при раскатке резко начинает весить 200 с лишним мегабайт вместо 30. Кому-то это может показаться незначительным, но для соблюдения PCI DSS стандартов у нас повсеместно используется довольно серьёзное шифрование любой информации, так что раскатка обновления на 200 мегабайт занимает драгоценные минуты. Так что первый вариант нас тоже не устраивает. Подытожим:</p>
+<ul>
+    <li>Линтер и его плагины не должны стоять глобально;</li>
+    <li>Конкретный проект должен иметь привязки к конкретным версиям инструментов;</li>
+    <li>Эти инструменты не должны быть ни в dependencies, ни в devDependencies.</li>
+</ul>
+На первый взгляд напрашивается простое решение - сделать npm скрипт, например, npm run lint-install, который будет дёргать баш скрипт, который ставит через командную строку все пакеты указанных версий. Но, помимо топорности такого решения, так же получается, что часть зависимостей (пусть и девелоперских) выезжает из package.json в некий отдельный баш скрипт… И это вот совсем не круто. Думаем дальше, вспоминаем спецификации package.json. В общем, никто нам не помешает добавить туда и свои какие угодно секции - но хотелось бы следовать неким стандартам.
+
+<p>Из <a target="_blank" rel="noopener" href="https://docs.npmjs.com/files/package.json">спецификации package.json</a> вспоминаем, что есть такая довольно странная и редко используемая секция, как <b>peerDependencies</b>:</p>
+<blockquote>In some cases, you want to express the compatibility of your package with a host tool or library, while not necessarily doing a require of this host. This is usually referred to as a plugin. Notably, your module may be exposing a specific interface, expected and specified by the host documentation.</blockquote>
+Автоматически они не ставятся, за исключением небольшого подводного камня:
+<blockquote>
+NOTE: npm versions 1 and 2 will automatically install peerDependencies if they are not explicitly depended upon higher in the dependency tree. In the next major version of npm (npm@3), this will no longer be the case. You will receive a warning that the peerDependency is not installed instead. The behavior in npms 1 &amp; 2 was frequently confusing and could easily put you into dependency hell, a situation that npm is designed to avoid as much as possible.
+</blockquote>
+К счастью, npm у нас был уже не 2ой, так что можно было смело использовать данную секцию, не опасаясь внезапных последствий. Но проблема пришла откуда не ждали… Оказалось, что при удалении автоматической установки peerDependencies, авторы npm… Не сделали никакого способа поставить их вручную. Так что всё, что сейчас есть для секции peerDependencies - это предупреждение о том, что они не установлены. Отчасти эти объяснимо, поскольку зависимости эти опциональны, но всё же. У меня есть подозрение, что после такого изменения все разработчики просто перенесли всё в devDependencies… И dependency hell никуда не делся.
+Кстати, не одному мне отсутствие такой опции показалось странным. Есть даже <a target="_blank" rel="noopener" href="https://github.com/npm/npm/issues/11213">issue по этому поводу</a> - она закрыта, но помечена как patch-welcome. То есть авторы npm в целом согласны, что это косяк - просто у них не хватает времени на исправление…
+
+<p>Итак, у нас теперь есть секция, но непонятно, как её использовать. 18 лайков той же самой issue есть на вот такое решение:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm info . peerDependencies | sed -n &#x27;s/^&#123;\&#123;0,1\&#125;[[:space:]]*&#x27;\&#x27;&#x27;\&#123;0,1\&#125;\([^:&#x27;\&#x27;&#x27;]*\)&#x27;\&#x27;&#x27;\&#123;0,1\&#125;:[[:space:]]&#x27;\&#x27;&#x27;\([^&#x27;\&#x27;&#x27;]*\).*$/\1@\2/p&#x27; | xargs npm i</span><br></pre></td></tr></table></figure>
+
+<p>По-моему, ад. Как тимлид, я просто не могу позволить, чтобы такое пришло в наши проекты…</p>
+<p>В общем, дальше идея пошла в сторону написания или нахождения инструмента, который сам умеет парсить package.json и вызывать npm install - но не так жёстко, как скрипт, описанный выше. Более-менее менее меня удовлетворил npm-install-peers. Минуса у него два:</p>
+<ol>
+    <li>Если он по какой-то причине не находит установленный в системе npm (через который его сейчас вообще-то ставят), то он… Ставит его заново локально, что вызывает расход времени, трафика, и иногда всякие адовые ошибки. </li>
+    <li>Он не поддерживает какие бы то ни было аргументы. Если симлинки на windows уже можно включить, и --no-bin-links уже не очень актуален, то --production всё же хочется. Для тех же зависимостей линтера это бы сильно сэкономило время установки.</li>
+</ol>
+Наверное, в близком будущем я просто сделаю аналогичный инсталлер, который делает то же самое, но дёргает npm не как модуль, а через bash. Пусть не так красиво, зато всё понятно с аргументами, и второй раз npm ставить не нужно. А аргументы передавать хочется - хотя бы чтобы не ставить devDependencies от eslint и его плагинов.
+
+<p>Дальше встаёт вопрос - а как собственно глобально ставить npm-install-peers? Считать, что он есть по умолчанию? Ставить молча при выполнении скрипта? Ставить локально в devDependencies? Мне ни один из вариантов не понравился. В результате удовлетворился вот таким простым решением:</p>
+<p><code>&quot;lint-install&quot;: &quot;npm-install-peers || echo &#39;Please run npm install -g npm-install-peers first&#39;&quot;,</code>
+Такой вариант мне показался наиболее прозрачным для разработчика.</p>
+<p>И всё, что остаётся - добавить скрипт для запуска линтера и собственно нужные нам peerDependencies. Скрипт:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;lint&quot;: &quot;./node_modules/eslint/bin/eslint.js app.js routes modules test App.js&quot;</span><br></pre></td></tr></table></figure>
+<p>Зависимости:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&quot;peerDependencies&quot;: &#123;</span><br><span class="line">    &quot;babel-cli&quot;: &quot;^6.23.0&quot;,</span><br><span class="line">    &quot;babel-preset-es2015&quot;: &quot;^6.22.0&quot;,</span><br><span class="line">    &quot;eslint&quot;: &quot;^3.16.0&quot;,</span><br><span class="line">    &quot;eslint-config-airbnb&quot;: &quot;^14.1.0&quot;,</span><br><span class="line">    &quot;eslint-plugin-import&quot;: &quot;^2.2.0&quot;,</span><br><span class="line">    &quot;eslint-plugin-jsx-a11y&quot;: &quot;^4.0.0&quot;,</span><br><span class="line">    &quot;eslint-plugin-promise&quot;: &quot;^3.4.2&quot;,</span><br><span class="line">    &quot;eslint-plugin-react&quot;: &quot;^6.10.0&quot;,</span><br><span class="line">    &quot;eslint-plugin-standard&quot;: &quot;^2.0.1&quot;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>Кстати, как побочную фичу, мы теперь можем вынести в peerDependencies всякие прочие зависимости, которые не относятся к тестам - например, божественный <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/jsdoc-to-markdown">jsdoc-to-markdown</a>.</p>
+<p>Казалось бы - простая задача… Но всяких интересных нюансов оказалось довольно много. И я вполне допускаю, что можно было сделать проще и лучше. А как вы у себя используете линтеры для корпоративных проектов?</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/habr/">habr</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!-- 
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+</section>
+ -->
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="as_sitesearch" value="articles.jehy.ru">
+  </form>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.43px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.71px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.71px;">android</a> <a href="/tags/applet/" style="font-size: 12.14px;">applet</a> <a href="/tags/arduino/" style="font-size: 10.71px;">arduino</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.71px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15px;">dev</a> <a href="/tags/esphome/" style="font-size: 10px;">esphome</a> <a href="/tags/fun/" style="font-size: 14.29px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.29px;">habr</a> <a href="/tags/home-assistant/" style="font-size: 10.71px;">home assistant</a> <a href="/tags/java/" style="font-size: 12.14px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.71px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/openid/" style="font-size: 10.71px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.14px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.14px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 15.71px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.14px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.71px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.43px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.57px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 14.29px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.14px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.71px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.71px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.86px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 16.43px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.29px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.71px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.71px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.71px;">работа</a> <a href="/tags/%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%8B%D0%B5-%D0%B8%D0%B3%D1%80%D1%8B/" style="font-size: 10px;">ролевые игры</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.14px;">таро</a> <a href="/tags/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC/" style="font-size: 10.71px;">умный дом</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.86px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.71px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.57px;">цитаты</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2022/05/умный-дом-у-геккона/">Умный дом - теперь и у геккона</a>
+      </li>
+    
+      <li>
+        <a href="/2022/02/алиса-открой-ворота/">Алиса, открой ворота - или MVP умного дома за пару вечеров</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/шедоуран-2021-отчет/">Шедоуран 2021 отчёт</a>
+      </li>
+    
+      <li>
+        <a href="/2020/06/как-активный-гражданин-приучает-людей-к-фишингу/">Как «активный гражданин» приучает людей к фишингу</a>
+      </li>
+    
+      <li>
+        <a href="/2020/02/снимаем-покрытие-кода-с-уже-запущенного-nodejs-приложения/">Снимаем покрытие кода с уже запущенного Node.JS приложения</a>
+      </li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><!--<div class="alignleft">
+  
+  &copy; 2022 Jehy
+  
+</div>-->
+<div class="clearfix"></div>
+</footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

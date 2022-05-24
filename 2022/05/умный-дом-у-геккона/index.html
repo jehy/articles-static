@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="verify-admitad" content="71b6485389" />
+  
+  <title>Умный дом - теперь и у геккона | Jehy&#39;s notes</title>
+  <meta name="author" content="Jehy">
+  
+  <meta name="description" content="Оригинал поста на хабре
+Недавно при странных обстоятельствах у меня появился вот такой зверь:
+
+В целом он довольно неприхотлив, но хотелось обеспечить ему самые приятные условия для его хладнокровного существования. Не то чтобы это были какие-то нетривиальные задачи, мне просто показалось интересным, что у технологий есть ещё и такое внезапное применение.
+Что нужно было сделать:
+
+Поддерживать ему минимальную температуру ночью, но так, чтобы он не перегрелся
+
+Поддерживать минимальную влажность
+
+Включать ему ультрафиолетовую лампу в 5 утра, когда он любит выползать поваляться на камушке.
+
+
+Вроде бы несложно. У меня был мешок реле, датчиков, Home Assistant и Arduino. Но если ты начал собирать умный дом, становится трудно остановиться. Единственное, что у меня вызывало опасение - это Arduino. Нет ничего более беспомощного, безответственного и испорченного, чем Arduino. Я знал, что рано или поздно я перейду и на эту дрянь.
+Казалось бы, всё просто - засунь туда датчиков, подключи к ESP, да щёлкай релешками. Но хотелось точных датчиков, маленьких и автономных, и достаточно стабильной работы, чтобы не сварить и не заморозить животное. И тут оказался прям большой простор для разных вопросов и работы.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Умный дом - теперь и у геккона"/>
+  <meta property="og:site_name" content="Jehy&#39;s notes"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Jehy&#39;s notes" type="application/atom+xml">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Jehy&#39;s notes</a></h1>
+  <h2><a href="/">Insert 1 into dual</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/wishlist">Wishlist</a></li>
+    
+      <li><a href="/donate">Donate</a></li>
+    
+      <li><a href="/atom.xml">Subscribe</a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://whois.jehy.ru">Contact me</a></li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-2022/05/умный-дом-у-геккона" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2022-05-24T10:59:54.000Z"><a href="/2022/05/умный-дом-у-геккона/">2022-05-24</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Умный дом - теперь и у геккона</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/666980%7D">Оригинал поста на хабре</a></p>
+<p>Недавно при странных обстоятельствах у меня появился вот такой зверь:</p>
+<p><img src="/2022/05/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC-%D1%83-%D0%B3%D0%B5%D0%BA%D0%BA%D0%BE%D0%BD%D0%B0/kris.png"></p>
+<p>В целом он довольно неприхотлив, но хотелось обеспечить ему самые приятные условия для его хладнокровного существования. Не то чтобы это были какие-то нетривиальные задачи, мне просто показалось интересным, что у технологий есть ещё и такое внезапное применение.</p>
+<p>Что нужно было сделать:</p>
+<ul>
+<li><p>Поддерживать ему минимальную температуру ночью, но так, чтобы он не перегрелся</p>
+</li>
+<li><p>Поддерживать минимальную влажность</p>
+</li>
+<li><p>Включать ему ультрафиолетовую лампу в 5 утра, когда он любит выползать поваляться на камушке.</p>
+</li>
+</ul>
+<p>Вроде бы несложно. У меня был мешок реле, датчиков, Home Assistant и Arduino. Но если ты начал собирать умный дом, становится трудно остановиться. Единственное, что у меня вызывало опасение - это Arduino. Нет ничего более беспомощного, безответственного и испорченного, чем Arduino. Я знал, что рано или поздно я перейду и на эту дрянь.</p>
+<p>Казалось бы, всё просто - засунь туда датчиков, подключи к ESP, да щёлкай релешками. Но хотелось точных датчиков, маленьких и автономных, и достаточно стабильной работы, чтобы не сварить и не заморозить животное. И тут оказался прям большой простор для разных вопросов и работы.</p>
+<span id="more"></span>
+<h2 id="Дисклеймер"><a href="#Дисклеймер" class="headerlink" title="Дисклеймер"></a>Дисклеймер</h2><p>Прежде, чем читать дальше, давайте уточню, что я не герпетолог и не электрик. Я простой бекенд разработчик. И ни за что бы не доверил жизнь животного автоматике, если бы не мог её постоянно контролировать глазами. Пожалуйста, будьте осторожны, и не копируйте бездумно то, что я здесь написал. Я предупредил, и не буду чувствовать себя виноватым, если вы, например, сварите своих аквариумных рыбок.</p>
+<h2 id="Датчики"><a href="#Датчики" class="headerlink" title="Датчики"></a>Датчики</h2><p>Итак, вернёмся к теме. Для измерения температуры и влажности я выбрал Aqara Temperature and Humidity Sensor на Zigbee - они маленькие, красивые, и автономно работают от батареек-таблеток. Да, именно “они” - поскольку температуру нужно мерять и в холодном и в горячем углу. Кроме этого у меня ещё был похожий датчик Mija, только с LCD и работающий по BLE, а не Zigbee. Он висел сверху, и я его там и оставил, как дублирующий - много датчиков не бывает!</p>
+<p>Для того, чтобы всё это прокинуть в Home Assistant, я использовал Xiaomi Gateway 3, специально прикупленный для этих целей. Привязываем к нему датчики, ставим нужный custom component в Home Assistant, и получаем все нужные данные! Прям сказка.</p>
+<h2 id="Обогрев"><a href="#Обогрев" class="headerlink" title="Обогрев"></a>Обогрев</h2><p>Для обогрева мне приглянулась керамическая лампочка. Она не производит лишнего света и по идее живёт вечно. Правда, я погорячился и взял её на 100Вт. Даже через диммер она выдаёт слишком много тепла, так что сейчас я жду, пока мне придёт такая же на 50.</p>
+<h2 id="Увлажнение"><a href="#Увлажнение" class="headerlink" title="Увлажнение"></a>Увлажнение</h2><p>Для этого я поставил обычный ультразвуковой увлажнитель, направив его носиком в террариум.</p>
+<h2 id="Ультрафиолет"><a href="#Ультрафиолет" class="headerlink" title="Ультрафиолет"></a>Ультрафиолет</h2><p>Для этого ставят специальные лампы для рептилий. Не знаю, насколько это маркетинг, но несколько герпетологов порекомендовали поставить, и я решил поверить им на слово.</p>
+<h2 id="Реле"><a href="#Реле" class="headerlink" title="Реле"></a>Реле</h2><p>Девайсы подготовлены, датчики тоже. Теперь надо всё это чем-то включать. Навскидку у меня не получилось найти трёхканальных умных реле за вменяемые деньги, так что я просто взял стандартные пятивольтовые реле для ардуинок с али. Немного неудобно тем, что я не знаю, как с них снимать ток, а так же я подумываю о замене их на твердотельные… Но пока это не вызвало каких-то проблем, и я стараюсь вкладывать усилия по мере необходимости.</p>
+<h2 id="Контроллер"><a href="#Контроллер" class="headerlink" title="Контроллер"></a>Контроллер</h2><p>Дома лежит мешок NodeMCU, Wemos D1 R1 и Wemos 32, так что я взял старый добрый D1 R1 на ESP8266 и решил наконец пощупать ESPHome. До этого я прошивал контроллеры через Arduino IDE по USB и использовал руками настроенные MQTT топики, а тут решил, что хватит это терпеть - есть подходящий повод разобраться.</p>
+<p>В общем, ESPHome оказался просто волшебной штукой. Пишешь простой YAML, всё прошивается по воздуху, все топики и прочее добро создаются за тебя, и девайс сам обнаруживается в Home Assistant. Просто магия! Фактически вся настойка реле выглядела вот так:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">switch:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">platform:</span> <span class="string">gpio</span></span><br><span class="line">  <span class="attr">pin:</span> <span class="string">D2</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">Relay1</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">relay1</span></span><br><span class="line">  <span class="attr">inverted:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">platform:</span> <span class="string">gpio</span></span><br><span class="line">  <span class="attr">pin:</span> <span class="string">D3</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">Relay2</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">relay2</span></span><br><span class="line">  <span class="attr">inverted:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">platform:</span> <span class="string">gpio</span></span><br><span class="line">  <span class="attr">pin:</span> <span class="string">D4</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">Relay3</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">relay3</span></span><br><span class="line">  <span class="attr">inverted:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Триггеры"><a href="#Триггеры" class="headerlink" title="Триггеры"></a>Триггеры</h2><p>Отлично, теперь есть всё железо и софт, можно включать и выключать всё через Home Assistant, однако… Ничего ещё не автоматизировано.</p>
+<p>И в этом помогают Automations от Home Assistant. В целом они вышли довольно тривиальные:</p>
+<ul>
+<li>Если температура ниже x, то включить обогрев</li>
+<li>если температура выше x, то выключить обогрев</li>
+<li>то же самое для влажности</li>
+<li>в 5 утра включить лампу, в 17 выключить</li>
+<li>если температура критически низкая или высокая, то послать уведомление в телеграмм</li>
+</ul>
+<p>Ура, кажется, на этом наш MVP готов. Всё работает и рисует красивые полезные графики:</p>
+<p><img src="/2022/05/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC-%D1%83-%D0%B3%D0%B5%D0%BA%D0%BA%D0%BE%D0%BD%D0%B0/chart.png"></p>
+<p>Но есть нюанс!
+Пока это не выглядит достаточно безопасным. Что, если реле залипнет, пока я сплю и не услышу уведомление в телеграмм? Я совсем не хочу получить на завтрак жареного геккона!</p>
+<p>Тогда я понял, что нужен дополнительный способ алертинга. Можно было бы для этого переиспользовать умные колонки с Алисой, но они стоят только у детей (жаба давит ставить в каждую комнату), и не хотелось бы их пугать по ночам, если что.</p>
+<p>Ну что же. Если у тебя в руках ардуина, то всё вокруг кажется гвоздём. Берём её, втыкаем в неё пищалку, и настраиваем её как включаемую сирену с полифонической мелодией. Добавляем включение этой сирены как переключатель в Home Assistant. Попутно ещё я закинул туда сервис для Home Assistant, который даёт играть на ней любую мелодию. Ну, потому что мог. Наверное, это единственная штука, которая была не совсем тривиальной, поэтому даже закину код:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">esphome:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">alam</span></span><br><span class="line">  <span class="attr">on_loop:</span></span><br><span class="line">  <span class="attr">then:</span></span><br><span class="line">    <span class="attr">if:</span></span><br><span class="line">    <span class="attr">condition:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">switch.is_on:</span> <span class="string">alarm_sensor</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">not:</span></span><br><span class="line">      <span class="string">rtttl.is_playing</span></span><br><span class="line">    <span class="attr">then:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">rtttl.play:</span> <span class="string">&#x27;MissionImp:d=16,o=6,b=95:32d,32d#,32d,32d#,32d,32d#,32d,32d#,32d,32d,32d#,32e,32f,32f#,32g,g,8p,g,8p,a#,p,c7,p,g,8p,g,8p,f,p,f#,p,g,8p,g,8p,a#,p,c7,p,g,8p,g,8p,f,p,f#,p,a#,g,2d,32p,a#,g,2c#,32p,a#,g,2c,a#5,8c,2p,32p,a#5,g5,2f#,32p,a#5,g5,2f,32p,a#5,g5,2e,d#,8d&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">switch:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">platform:</span> <span class="string">template</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">&quot;Alarm Switch&quot;</span></span><br><span class="line">  <span class="attr">optimistic:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">alarm_sensor</span></span><br><span class="line">  <span class="attr">internal:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="attr">output:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">platform:</span> <span class="string">ledc</span></span><br><span class="line">  <span class="attr">pin:</span> <span class="string">GPIO18</span></span><br><span class="line">  <span class="attr">inverted:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">rtttl_out</span></span><br><span class="line"></span><br><span class="line"><span class="attr">rtttl:</span></span><br><span class="line">  <span class="attr">output:</span> <span class="string">rtttl_out</span></span><br><span class="line">  <span class="attr">on_finished_playback:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">logger.log:</span> <span class="string">&#x27;Song ended!&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">api:</span></span><br><span class="line">  <span class="attr">services:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">service:</span> <span class="string">play_rtttl</span></span><br><span class="line">  <span class="attr">variables:</span></span><br><span class="line">  <span class="attr">song_str:</span> <span class="string">string</span></span><br><span class="line">  <span class="attr">then:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">rtttl.play:</span></span><br><span class="line">  <span class="attr">rtttl:</span> <span class="type">!lambda</span> <span class="string">&#x27;return song_str;&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>Вот так в 40 строчек программирования на ямлах получается вполне сносная сирена, которую слышно по всему дому.</p>
+<p>Помимо этого, я подумал про случай, когда реле включилось, и на этом мой сервер Home Assistant умер и не выключил его. Я по прежнему не хочу жареного геккона, так что добавил туда простую проверку - реле обогревателя выключается через 20 минут после включения. А если вокруг правда мороз и оно всё ещё должно быть включено - не беда, Home Assistant включит его обратно!</p>
+<p>Код такой проверки на ямлах написать у меня не получилось, и я запользовал так называемую лямбду в ESPHome:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">on_loop:</span></span><br><span class="line">  <span class="attr">then:</span></span><br><span class="line">  <span class="attr">lambda:</span> <span class="string">|-</span></span><br><span class="line"><span class="string">    static unsigned long last_update = 0;</span></span><br><span class="line"><span class="string">    static unsigned long enabledForTime = 0;</span></span><br><span class="line"><span class="string">    int iteration = 5000; // every 5 sec</span></span><br><span class="line"><span class="string">    if((last_update + iteration) &lt; millis())&#123;</span></span><br><span class="line"><span class="string">      last_update = millis();</span></span><br><span class="line"><span class="string">      if(id(relay2).state)&#123;</span></span><br><span class="line"><span class="string">        enabledForTime+=iteration;</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">      else&#123;</span></span><br><span class="line"><span class="string">        enabledForTime = 0;</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">      ESP_LOGD(&quot;ERM&quot;, &quot;Heat relay enabled for: %lu&quot;, enabledForTime);</span></span><br><span class="line"><span class="string">      if(enabledForTime&gt; 1000*60*20)&#123; // 20 min, safety measure</span></span><br><span class="line"><span class="string">        ESP_LOGD(&quot;ERM&quot;, &quot;Turning off heat relay&quot;);</span></span><br><span class="line"><span class="string">        id(relay2).turn_off();</span></span><br><span class="line"><span class="string">        enabledForTime = 0; // avoid confusion when HA turns on relay back</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br></pre></td></tr></table></figure>
+<p>Вот теперь, кажется, всё. Возникает мысль добавить перед реле ещё яндекс розетку (которая у меня тоже управляется локально, поскольку она туя), чтобы через неё перезапустить контроллер, если что… Но не хочется добавлять точек отказа без необходимости. Да и на крайний случай всегда можно призвать соседку проверить зверя. В конце концов, мне не нужны пять девяток в стабильности, я не Яндекс.геккона делаю.</p>
+<h2 id="Вопросики"><a href="#Вопросики" class="headerlink" title="Вопросики"></a>Вопросики</h2><p>В процессе я задавал себе вопросы, какие у меня могут выйти сценарии, и как их избежать. Возможно, это тоже будет интересно, так как помогает понять, как у меня в голове выстраивалась модель.</p>
+<p>Q: А что если пропадёт интернет?</p>
+<p>A: Ничего. Всё будет продолжать работать как работало. Только извне показания датчиков нельзя будет узнать и получить уведомления в телеграмм. Если бы интернет падал часто и это было бы супер критично, можно было бы настроить резервный канал. Но… И так сойдёт.</p>
+<p>Q: А если пропадёт электричество?</p>
+<p>A: Хуже, чем без умного дома, не будет. Как только электричество появится - всё восстановится. В целом дома тепло, но если бы хотелось гарантий обогрева - можно было бы поставить бесперебойник на роутер, сервер HA и реле с потребителями.</p>
+<p>Q: А если сдохнет батарейка в датчике?</p>
+<p>A: Триггеры опираются на показания трёх датчиков. Три одновременно - не сдохнут.</p>
+<p>Q: И всё же. Что если залипнет реле или повиснет микроконтроллер?</p>
+<p>A: Залипание реле можно пролечить удалённой перезагрузкой микроконтроллера. Зависание микроконтроллера - вариантом с внешней умной розеткой. Но вообще это кажется пренебрежимо редким кейсом, с которым справится уведомление, сирена, и на худой конец - визит друга.</p>
+<h2 id="Итоги"><a href="#Итоги" class="headerlink" title="Итоги"></a>Итоги</h2><p>Мне определённо понравилось то, что получилось. Умный дом для геккона сделал жизнь приятнее и комфортнее и мне и ему.</p>
+<p>Вся эта машинерия определённо не стоит свеч, если у вас ничего дома нет из умного дома. Наверняка проще поставить готовое решение для террариума. Но если у вас уже есть экосистема - то получается хорошее решение по цене пары датчиков, одного-двух контроллеров и пищалки.</p>
+<p>Безусловно, ничего технически сложного в проделанной работе нет, и я предвижу вопросы “зачем это тут?”. Однако, мне кажется интересным именно синергетический эффект простых вещей, которые вместе дают сделать довольно прикольные штуки. Раньше я уже описывал открытие ворот, полив цветочков, управление ёлкой и детские игры на умном доме. Кажется, что со временем будет появляться всё больше таких решений, причём не для бородатых нердов, а для нормальных людей, и они будут классно и красиво работать из коробки.</p>
+<p>Можно ли было сделать лучше и проще? Возможно, я что-то не учёл? Да наверняка. Надеюсь, вы подскажете мне в комментариях.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/habr/">habr</a>, <a href="/tags/умный-дом/">умный дом</a>, <a href="/tags/arduino/">arduino</a>, <a href="/tags/home-assistant/">home assistant</a>, <a href="/tags/esphome/">esphome</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!-- 
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+</section>
+ -->
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="as_sitesearch" value="articles.jehy.ru">
+  </form>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.43px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.71px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.71px;">android</a> <a href="/tags/applet/" style="font-size: 12.14px;">applet</a> <a href="/tags/arduino/" style="font-size: 10.71px;">arduino</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.71px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15px;">dev</a> <a href="/tags/esphome/" style="font-size: 10px;">esphome</a> <a href="/tags/fun/" style="font-size: 14.29px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.29px;">habr</a> <a href="/tags/home-assistant/" style="font-size: 10.71px;">home assistant</a> <a href="/tags/java/" style="font-size: 12.14px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.71px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/openid/" style="font-size: 10.71px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.14px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.14px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 15.71px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.14px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.71px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.43px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.57px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 14.29px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.14px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.71px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.71px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.86px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 16.43px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.29px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.71px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.71px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.71px;">работа</a> <a href="/tags/%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%8B%D0%B5-%D0%B8%D0%B3%D1%80%D1%8B/" style="font-size: 10px;">ролевые игры</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.14px;">таро</a> <a href="/tags/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC/" style="font-size: 10.71px;">умный дом</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.86px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.71px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.57px;">цитаты</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2022/05/умный-дом-у-геккона/">Умный дом - теперь и у геккона</a>
+      </li>
+    
+      <li>
+        <a href="/2022/02/алиса-открой-ворота/">Алиса, открой ворота - или MVP умного дома за пару вечеров</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/шедоуран-2021-отчет/">Шедоуран 2021 отчёт</a>
+      </li>
+    
+      <li>
+        <a href="/2020/06/как-активный-гражданин-приучает-людей-к-фишингу/">Как «активный гражданин» приучает людей к фишингу</a>
+      </li>
+    
+      <li>
+        <a href="/2020/02/снимаем-покрытие-кода-с-уже-запущенного-nodejs-приложения/">Снимаем покрытие кода с уже запущенного Node.JS приложения</a>
+      </li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><!--<div class="alignleft">
+  
+  &copy; 2022 Jehy
+  
+</div>-->
+<div class="clearfix"></div>
+</footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

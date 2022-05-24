@@ -1,0 +1,287 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="verify-admitad" content="71b6485389" />
+  
+  <title>Бэкап переписки в telegram | Jehy&#39;s notes</title>
+  <meta name="author" content="Jehy">
+  
+  <meta name="description" content="Оригинал поста на хабре
+Сразу начну с того, что я не призываю никого бежать из Мессенджера-который-нельзя-называть. Совсем даже наоборот. Просто спать гораздо спокойнее, когда одно облако у тебя забэкаплено в другом облаке. А то и облака периодически падают на грешную землю, а терять годы переписки очень обидно. Да и друг меня спросил, как сделать бэкап, а я с ходу не нашёл внятной инструкции.
+Предупреждаю сразу - для бэкапа вам потребуется Linux, или хотя бы виртуалка с ним. При наличии рук можно и на Mac OS, и может даже можно на том огрызке, что нынче встроен в Windows - но я ничего не гарантирую.
+Поехали!">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Бэкап переписки в telegram"/>
+  <meta property="og:site_name" content="Jehy&#39;s notes"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Jehy&#39;s notes" type="application/atom+xml">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Jehy&#39;s notes</a></h1>
+  <h2><a href="/">Insert 1 into dual</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/wishlist">Wishlist</a></li>
+    
+      <li><a href="/donate">Donate</a></li>
+    
+      <li><a href="/atom.xml">Subscribe</a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://whois.jehy.ru">Contact me</a></li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-2018/04/бэкап-переписки-в-telegram" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2018-04-26T07:00:00.000Z"><a href="/2018/04/бэкап-переписки-в-telegram/">2018-04-26</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Бэкап переписки в telegram</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/354472%7D">Оригинал поста на хабре</a></p>
+<p>Сразу начну с того, что я не призываю никого бежать из Мессенджера-который-нельзя-называть. Совсем даже наоборот. Просто спать гораздо спокойнее, когда одно облако у тебя забэкаплено в другом облаке. А то и облака периодически падают на грешную землю, а терять годы переписки очень обидно. Да и друг меня спросил, как сделать бэкап, а я с ходу не нашёл внятной инструкции.</p>
+<p>Предупреждаю сразу - для бэкапа вам потребуется Linux, или хотя бы виртуалка с ним. При наличии рук можно и на Mac OS, и может даже можно на том огрызке, что нынче встроен в Windows - но я ничего не гарантирую.</p>
+<p>Поехали!<span id="more"></span></p>
+<p>Бэкапить мы будем при помощи двух милых программ:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/tvdstaaij/telegram-history-dump">программы</a> для создания дампов</li>
+<li>Консольного <a target="_blank" rel="noopener" href="https://github.com/vysheng/tg">клиента</a> телеграмм</li>
+</ul>
+<p>Брать исходники мы будем из проверенных источников из гита, так что первым делом потребуется клиент:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install git</span><br></pre></td></tr></table></figure>
+
+<p>Дальше создайте себе какую-нибудь директорию, где вы будете творить беспредел, например</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> telegram-backup</span><br></pre></td></tr></table></figure>
+<p>Затем клонируем себе консольного клиента и переходим в его папку:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --recursive https://github.com/vysheng/tg.git &amp;amp;&amp;amp; <span class="built_in">cd</span> tg</span><br></pre></td></tr></table></figure>
+
+<p>Теперь устанавливаем всякие зависимости для его сборки. Если у вас не убунта, то на странице программы описаны альтернативные методы сборки:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev libevent-dev libjansson-dev libpython-dev make </span><br></pre></td></tr></table></figure>
+<p>Затем - классика</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+<p>Теперь запускаем клиент, передаваемая ему в качества параметра публичный ключ, который лежит тут же:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/telegram-cli -k tg-server.pub</span><br></pre></td></tr></table></figure>
+<p>Если всё прошло успешно, то вы увидите примерно следующее:</p>
+<blockquote>
+<p>Telegram-cli version 1.4.1, Copyright (C) 2013-2015 Vitaly Valtman
+Telegram-cli comes with ABSOLUTELY NO WARRANTY; for details type <code>show_license&#39; This is free software, and you are welcome to redistribute it under certain conditions; type </code>show_license’ for details.
+Telegram-cli uses libtgl version 2.1.0
+Telegram-cli includes software developed by the OpenSSL Project
+for use in the OpenSSL Toolkit. (<a target="_blank" rel="noopener" href="http://www.openssl.org/">http://www.openssl.org/</a>)
+I: config dir&#x3D;[&#x2F;home&#x2F;jehy&#x2F;.telegram-cli]
+[&#x2F;home&#x2F;jehy&#x2F;.telegram-cli] created
+[&#x2F;home&#x2F;jehy&#x2F;.telegram-cli&#x2F;downloads] created</p>
+</blockquote>
+<p>Дальше из консоли у вас запросят номер телефона, введите его:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">phone number: 79166666666</span><br></pre></td></tr></table></figure>
+<p>И запросят код, который придёт в смс или в другого открытого клиента, сообщение с клиента примерно так выглядит:</p>
+<blockquote>
+<p>Your login code: 123456</p>
+</blockquote>
+<blockquote>
+<p>This code can be used to log in to your Telegram account. We never ask it for anything else. Do not give it to anyone, even if they say they’re from Telegram!!</p>
+</blockquote>
+<blockquote>
+<p>If you didn’t request this code by trying to log in on another device, simply ignore this message.</p>
+</blockquote>
+<p>Вводим код:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code (&#x27;CALL&#x27; for phone code):123456</span><br></pre></td></tr></table></figure>
+<p>И вводим пароль (если он у вас установлен, что вообще очень неплохо):</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password :xxx</span><br></pre></td></tr></table></figure>
+<p>Дальше при удачном стечении обстоятельств вы увидите, что вы зашли в клиент и вам начали приходить сообщения:</p>
+<blockquote>
+<p>User Jehy updated flags
+User Jehy updated flags
+[19:41]  Александр Жаров &gt;&gt;&gt; Привет!
+[19:41]  Александр Жаров &gt;&gt;&gt; Как дела?</p>
+</blockquote>
+<p>Отлично! Теперь вырубаем клиента (Ctrl+C) и запускаем его в режиме сервера:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/telegram-cli --json -P 9009</span><br></pre></td></tr></table></figure>
+<p>После чего оставляем эту консоль в покое, открываем вторую, приходим в нашу папочку telegram-backup и ставим туда вторую программу:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/tvdstaaij/telegram-history-dump.git</span><br></pre></td></tr></table></figure>
+<p>Переходим в его директорию</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> telegram-history-backup</span><br></pre></td></tr></table></figure>
+<p>И запускаем</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby telegram-history-dump.rb</span><br></pre></td></tr></table></figure>
+<p>Если всё хорошо, то мы увидим, что начался бэкап, это будет выглядеть примерно так:</p>
+<blockquote>
+<p>ruby telegram-history-dump.rb
+I, [2018-04-26T19:43:38.286782 #11274]  INFO – : Attaching to telegram-cli control socket at localhost:9009
+I, [2018-04-26T19:43:39.689541 #11274]  INFO – : Skipping 34 dialogs: “Mila_Milan”, “Stormy_Daniels”, “Amila_Miley”, “Sasha_Gray”
+I, [2018-04-26T19:43:39.689946 #11274]  INFO – : Backing up 181 dialogs: “user#1299351”, “Canela_Skin”, “Dana_DeAmond”, “Lita_Phoenix”, “Erica_Lauren”, “Naomi_Woods”, “Ну_вы_поняли”
+I, [2018-04-26T19:43:39.690609 #11274]  INFO – : Dumping “user#122679361” (range 1-100)
+I, [2018-04-26T19:43:40.975234 #11274]  INFO – : Dumping “Jessa_Rhodes” (range 1-100)
+I, [2018-04-26T19:43:42.262817 #11274]  INFO – : Dumping “Anya_Ivu” (range 1-100)<br>I, [2018-04-26T19:43:43.548510 #11274]  INFO – : Dumping “Brandi_Bae” (range 1-100)
+I, [2018-04-26T19:44:42.541472 #11274]  INFO – : Dumping “Бесконечное_лето” (range 101-200)
+I, [2018-04-26T19:44:43.541788 #11274]  INFO – : Dumping “Бесконечное_лето” (range 201-300)
+I, [2018-04-26T19:44:44.542101 #11274]  INFO – : Dumping “Бесконечное_лето” (range 301-400)
+I, [2018-04-26T19:44:45.542446 #11274]  INFO – : Dumping “Бесконечное_лето” (range 401-500)</p>
+</blockquote>
+<p>Запаситесь терпением - у телеграмма есть свои лимиты, и поэтому история выкачивается не быстро - примерно по 100 сообщений от пользователя или группы в секунду.</p>
+<p>Когда программа закончит своё действо, возникает интересный вопрос - а собственно что и куда мы скачали? Чтобы это понять, сделайте из директории программы</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd output/json</span><br></pre></td></tr></table></figure>
+<p>Там будет куча файликов в формате JSON, каждый из которых содержит переписку с каким-то из контактов. Конечно, читать это довольно сложно, но из JSON можно легко эскпортировать в любой другой читабельный формат. Кстати, ещё можно было указать другой формат при экспорте истории - например, чтобы вам сгенерилось по HTML страничке на контакт.
+А если вы любите хардкор, то можете просто грепать по истории, типа так:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">grep &quot;porn&quot; . -R</span><br><span class="line">./КотоНод.jsonl:&#123;&quot;event&quot;:&quot;message&quot;,&quot;id&quot;:&quot;02040050001310087a8e0200000000000000000000000000&quot;,&quot;flags&quot;:228,&quot;from&quot;:&#123;&quot;id&quot;:&quot;$0120000078745a00625f8a35c922bb6c&quot;,&quot;p</span><br><span class="line">eer_type&quot;:&quot;user&quot;,&quot;peer_id&quot;:3328156,&quot;print_name&quot;:&quot;Jehy&quot;,&quot;flags&quot;:721597,&quot;first_name&quot;:&quot;Jehy&quot;,&quot;when&quot;:&quot;2018-04-26 20:09:54&quot;,&quot;last_name&quot;:&quot;&quot;,&quot;phone&quot;:&quot;7123456</span><br><span class="line">&quot;,&quot;username&quot;:&quot;Jehy_rus&quot;&#125;,&quot;to&quot;:&#123;&quot;id&quot;:&quot;$02000001005310020000000000000000&quot;,&quot;peer_type&quot;:&quot;chat&quot;,&quot;peer_id&quot;:115391548,&quot;print_name&quot;:&quot;КотоНод&quot;,&quot;flags&quot;:1,&quot;title&quot;:&quot;К</span><br><span class="line">отоНод&quot;,&quot;admin&quot;:&#123;&quot;id&quot;:&quot;$01000000001000000000001000000000&quot;,&quot;peer_type&quot;:&quot;user&quot;,&quot;peer_id&quot;:0,&quot;print_name&quot;:&quot;user#0&quot;&#125;,&quot;members_num&quot;:3&#125;,&quot;out&quot;:true,&quot;unread&quot;:false</span><br><span class="line">,&quot;service&quot;:false,&quot;date&quot;:1504003822,&quot;text&quot;:&quot;https://tjournal.ru/58619-polzovatel-reddit-zaarhiviroval-dva-petabayta-porno-chtoby-proverit-bezlimitnoe-oblac</span><br><span class="line">hnoe-hranilishche-amazon?from=digest\n\n@navalny ты?&quot;,&quot;media&quot;:&#123;&quot;type&quot;:&quot;webpage&quot;,&quot;url&quot;:&quot;https://tjournal.ru/58619-polzovatel-reddit-zaarhiviroval-dva-pe</span><br><span class="line">tabayta-porno-chtoby-proverit-bezlimitnoe-oblachnoe-hranilishche-amazon?from=digest&quot;,&quot;title&quot;:&quot;Пользователь Reddit заархивировал два петабайта порно, чтобы</span><br><span class="line">проверить безлимитное облачное хранилище Amazon&quot;,&quot;description&quot;:&quot;Он тестировал сервис полгода с целью найти в нём ограничения.&quot;&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Вот как-то так. При этом напоминаю:</p>
+<ul>
+<li>Естественно, история приватных чатов не сохраняется;</li>
+<li>Медиа файлы тоже не сохраняются. Может это как-то и можно сделать, но меня не очень волновало;</li>
+<li>Пожалуйста, храните бекапы своей переписки в безопасных местах. А то в многолетней переписке может найтись вообще что угодно.</li>
+<li>Вполне возможно, что вы где-то найдёте более удобный инструмент для экспорта или подготовленный докер образ со всем этим софтом или что угодно другое. Будьте внимательны, проверяйте такие инструменты трижды.</li>
+</ul>
+<p>А вообще возникает у меня потихоньку ощущение, что скоро всё опять будет как в 90е - музыка, фильмы и файлы на локальных машинах, и в интернет могут зайти только программисты. Не сказать, чтобы это меня радовало.</p>
+<h3 id="Не-очень-полезные-ссылки-с-альтернативными-вариантами"><a href="#Не-очень-полезные-ссылки-с-альтернативными-вариантами" class="headerlink" title="Не очень полезные ссылки с альтернативными вариантами:"></a>Не очень полезные ссылки с альтернативными вариантами:</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://telegram.wiki/general/exporting-chats">Удивительная рекомендация</a> с телеграмм вики - проскроллить весь свой чат в веб клиенте и потом сохранить его печатью в pdf;</li>
+<li>Хитрый <a target="_blank" rel="noopener" href="https://gist.github.com/agentcooper/b5c0cec210bd81c6b49a6385f9d66069">клиентский джаваскрипт</a> для экспорта данных прямо с веб клиента;</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/habr/">habr</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!-- 
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+</section>
+ -->
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="as_sitesearch" value="articles.jehy.ru">
+  </form>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.43px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.71px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.71px;">android</a> <a href="/tags/applet/" style="font-size: 12.14px;">applet</a> <a href="/tags/arduino/" style="font-size: 10.71px;">arduino</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.71px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15px;">dev</a> <a href="/tags/esphome/" style="font-size: 10px;">esphome</a> <a href="/tags/fun/" style="font-size: 14.29px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.29px;">habr</a> <a href="/tags/home-assistant/" style="font-size: 10.71px;">home assistant</a> <a href="/tags/java/" style="font-size: 12.14px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.71px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/openid/" style="font-size: 10.71px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.14px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.14px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 15.71px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.14px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.71px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.43px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.57px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 14.29px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.14px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.71px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.71px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.86px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 16.43px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.29px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.71px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.71px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.71px;">работа</a> <a href="/tags/%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%8B%D0%B5-%D0%B8%D0%B3%D1%80%D1%8B/" style="font-size: 10px;">ролевые игры</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.14px;">таро</a> <a href="/tags/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC/" style="font-size: 10.71px;">умный дом</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.86px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.71px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.57px;">цитаты</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2022/05/умный-дом-у-геккона/">Умный дом - теперь и у геккона</a>
+      </li>
+    
+      <li>
+        <a href="/2022/02/алиса-открой-ворота/">Алиса, открой ворота - или MVP умного дома за пару вечеров</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/шедоуран-2021-отчет/">Шедоуран 2021 отчёт</a>
+      </li>
+    
+      <li>
+        <a href="/2020/06/как-активный-гражданин-приучает-людей-к-фишингу/">Как «активный гражданин» приучает людей к фишингу</a>
+      </li>
+    
+      <li>
+        <a href="/2020/02/снимаем-покрытие-кода-с-уже-запущенного-nodejs-приложения/">Снимаем покрытие кода с уже запущенного Node.JS приложения</a>
+      </li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><!--<div class="alignleft">
+  
+  &copy; 2022 Jehy
+  
+</div>-->
+<div class="clearfix"></div>
+</footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

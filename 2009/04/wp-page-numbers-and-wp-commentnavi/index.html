@@ -1,0 +1,297 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="verify-admitad" content="71b6485389" />
+  
+  <title>Wordpress: WP page numbers+WP commentnavi | Jehy&#39;s notes</title>
+  <meta name="author" content="Jehy">
+  
+  <meta name="description" content="Wordpress 2.7 has a wonderful feature - comments pager. It means that comments to post are separated to several pages. That’s very useful, but, by default, wordpress poorly shows that navigation (only “forward” and “backward” links).
+To show a cool pager we need to install  WP commentnavi plugin. But, once again, by default it diesn’t look cool.
+If you use WP page numbers plugin, then you can use it’s style to show comments pages too. Here’s how to do it.В вопрдпрессе 2.7 появилась такая замечательная вещь, как навигация по комментариям. Однако по умолчанию она выглядит убого (есть только ссылки вперёд-назад), и гораздо приятнее использовать постраничную навигацию.
+Это для нас делает плагин WP commentnavi. И, опять же, он не очень симпатично выглядит по умолчанию.
+Зато есть очень красивая и функциональная листалка для страниц блога под названием WP page numbers.
+Соотвественно, было бы классно, чтобы оно выводилось одинаково, и в одном стиле. Бесспорно, это можно сделать через настраиваемый css плагина WP commentnavi - но это не очень удобно, да и зачем нам подгрузка лишних стилей?
+Лучше сделать так, чтобы WP commentnavi использовал стили от WP page numbers.
+How to do it:
+1) Open wp-commentnavi.php, and remove lines
+
+Как это сделать:">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Wordpress: WP page numbers+WP commentnavi"/>
+  <meta property="og:site_name" content="Jehy&#39;s notes"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Jehy&#39;s notes" type="application/atom+xml">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Jehy&#39;s notes</a></h1>
+  <h2><a href="/">Insert 1 into dual</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/wishlist">Wishlist</a></li>
+    
+      <li><a href="/donate">Donate</a></li>
+    
+      <li><a href="/atom.xml">Subscribe</a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://whois.jehy.ru">Contact me</a></li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-2009/04/wp-page-numbers-and-wp-commentnavi" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2009-04-13T07:24:52.000Z"><a href="/2009/04/wp-page-numbers-and-wp-commentnavi/">2009-04-13</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Wordpress: WP page numbers+WP commentnavi</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p>Wordpress 2.7 has a wonderful feature - comments pager. It means that comments to post are separated to several pages. That’s very useful, but, by default, wordpress poorly shows that navigation (only “forward” and “backward” links).</p>
+<p>To show a cool pager we need to install  <a target="_blank" rel="noopener" href="http://wordpress.org/extend/plugins/wp-commentnavi/">WP commentnavi</a> plugin. But, once again, by default it diesn’t look cool.
+If you use <a target="_blank" rel="noopener" href="http://wordpress.org/extend/plugins/wp-page-numbers/">WP page numbers</a> plugin, then you can use it’s style to show comments pages too. Here’s how to do it.<hr>В вопрдпрессе 2.7 появилась такая замечательная вещь, как навигация по комментариям. Однако по умолчанию она выглядит убого (есть только ссылки вперёд-назад), и гораздо приятнее использовать постраничную навигацию.
+Это для нас делает плагин <a target="_blank" rel="noopener" href="http://wordpress.org/extend/plugins/wp-commentnavi/">WP commentnavi</a>. И, опять же, он не очень симпатично выглядит по умолчанию.
+Зато есть очень красивая и функциональная листалка для страниц блога под названием <a target="_blank" rel="noopener" href="http://wordpress.org/extend/plugins/wp-page-numbers/">WP page numbers</a>.</p>
+<p>Соотвественно, было бы классно, чтобы оно выводилось одинаково, и в одном стиле. Бесспорно, это можно сделать через настраиваемый css плагина WP commentnavi - но это не очень удобно, да и зачем нам подгрузка лишних стилей?
+Лучше сделать так, чтобы WP commentnavi использовал стили от WP page numbers.</p>
+<hr>How to do it:
+1) Open wp-commentnavi.php, and remove lines
+<hr>
+Как это сделать:<span id="more"></span>
+1) открываем wp-commentnavi.php, после чего
+<hr>
+<pre lang="php">
+### Function: Comment Navigation CSS
+add_action('wp_head', 'commentnavi_css');
+function commentnavi_css() {
+    if(@file_exists(TEMPLATEPATH.'/commentnavi-css.css')) {
+        wp_register_style('wp-commentnavi', get_stylesheet_directory_uri().'/commentnavi-css.css', false, '1.00', 'all');		
+    } else {
+        wp_register_style('wp-commentnavi', plugins_url('wp-commentnavi/commentnavi-css.css'), false, '1.00', 'all');
+    }
+    echo "\n".'<!-- Start Of Script Generated By WP-CommentNavi 1.00 -->'."\n";
+    wp_print_styles('wp-commentnavi');
+    echo '<!-- End Of Script Generated By WP-CommentNavi 1.00 -->'."\n";
+}</pre>
+Просто убираем.<hr>
+2) Replace **function wp\_commentnavi($before = '', $after = '')** with the following code:
+<hr>
+2) Заменяем функцию**function wp\_commentnavi($before = '', $after = '')**, которая занимается выводом кода пейджера на код
+<pre lang="php">
+function wp_commentnavi($before = '', $after = '') {
+    global $wp_query;
+    $comments_per_page = intval(get_query_var('comments_per_page'));
+    $paged = intval(get_query_var('cpage'));
+    $commentnavi_options = get_option('commentnavi_options');
+    $numcomments = intval($wp_query->comment_count);
+    $max_page = intval($wp_query->max_num_comment_pages);
+    if(empty($paged) || $paged == 0) {
+        $paged = 1;
+    }
+    $pages_to_show = intval($commentnavi_options['num_pages']);
+    $pages_to_show_minus_1 = $pages_to_show-1;
+    $half_page_start = floor($pages_to_show_minus_1/2);
+    $half_page_end = ceil($pages_to_show_minus_1/2);
+    $start_page = $paged - $half_page_start;
+    if($start_page <= 0) {
+        $start_page = 1;
+    }
+    $end_page = $paged + $half_page_end;
+    if(($end_page - $start_page) != $pages_to_show_minus_1) {
+        $end_page = $start_page + $pages_to_show_minus_1;
+    }
+    if($end_page > $max_page) {
+        $start_page = $max_page - $pages_to_show_minus_1;
+        $end_page = $max_page;
+    }
+    if($start_page <= 0) {
+        $start_page = 1;
+    }
+    if($max_page > 1 || intval($commentnavi_options['always_show']) == 1) {
+        $pages_text = str_replace("%CURRENT_PAGE%", number_format_i18n($paged), $commentnavi_options['pages_text']);
+        $pages_text = str_replace("%TOTAL_PAGES%", number_format_i18n($max_page), $pages_text);
+        echo $before.'<div id="wp_page_numbers"><ul>'."\n";
+                if(!empty($pages_text)) {
+                    echo '<li class="page_info">&#8201;'.$pages_text.'&#8201;</li>';
+                }					
+                if ($start_page >= 2 && $pages_to_show < $max_page) {
+                    $first_page_text = str_replace("%TOTAL_PAGES%", number_format_i18n($max_page), $commentnavi_options['first_text']);
+                    echo '<li class="first_last_page"><a href="'.clean_url(get_comments_pagenum_link()).'" title="'.$first_page_text.'">&#8201;'.$first_page_text.'&#8201;</a></li>';
+                    if(!empty($commentnavi_options['dotleft_text'])) {
+                        echo '<li  class="space">&#8201;'.$commentnavi_options['dotleft_text'].'&#8201;</li>';
+                    }
+                }
+                echo'<li>';
+                previous_comments_link($commentnavi_options['prev_text']);
+                echo'</li>';
+                for($i = $start_page; $i  <= $end_page; $i++) {						
+                    if($i == $paged) {
+                        $current_page_text = str_replace("%PAGE_NUMBER%", number_format_i18n($i), $commentnavi_options['current_text']);
+                        #echo '<li class="active_page">&#8201;'.$current_page_text.'&#8201;</li>';
+                        echo '<li class="active_page"><a href="'.clean_url(get_comments_pagenum_link($i)).'" title="'.$current_page_text.'">&#8201;'.$current_page_text.'&#8201;</a></li>';
+                    } else {
+                        $page_text = str_replace("%PAGE_NUMBER%", number_format_i18n($i), $commentnavi_options['page_text']);
+                        echo '<li><a href="'.clean_url(get_comments_pagenum_link($i)).'" title="'.$page_text.'">&#8201;'.$page_text.'&#8201;</a></li>';
+                    }
+                }
+                echo'<li>';
+                next_comments_link($commentnavi_options['next_text'], $max_page);
+                echo'</li>';
+                if ($end_page < $max_page) {
+                    if(!empty($commentnavi_options['dotright_text'])) {
+                        echo '<li  class="space">&#8201;'.$commentnavi_options['dotright_text'].'&#8201;</li>';
+                    }
+                    $last_page_text = str_replace("%TOTAL_PAGES%", number_format_i18n($max_page), $commentnavi_options['last_text']);
+                    echo '<li><a href="'.clean_url(get_comments_pagenum_link($max_page)).'" title="'.$last_page_text.'">&#8201;'.$last_page_text.'&#8201;</a></li>';
+                }
+        echo '</ul><div style="float: none; clear: both;"></div></div>'.$after."\n";
+    }
+}
+</pre>Voila, everything works, just like on [this](https://jehy.ru/articles/2008/10/05/wordpress-plugin-no-external-links/) page.<hr>Вуаля, всё будет показываться красиво и в одном стиле, совсем как на [этой](https://jehy.ru/articles/2008/10/05/wordpress-plugin-no-external-links/) страничке (см. пейджер внизу, после комментариев).
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/wordpress/">wordpress</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!-- 
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+</section>
+ -->
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="as_sitesearch" value="articles.jehy.ru">
+  </form>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.43px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.71px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.71px;">android</a> <a href="/tags/applet/" style="font-size: 12.14px;">applet</a> <a href="/tags/arduino/" style="font-size: 10.71px;">arduino</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.71px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15px;">dev</a> <a href="/tags/esphome/" style="font-size: 10px;">esphome</a> <a href="/tags/fun/" style="font-size: 14.29px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.29px;">habr</a> <a href="/tags/home-assistant/" style="font-size: 10.71px;">home assistant</a> <a href="/tags/java/" style="font-size: 12.14px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.71px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/openid/" style="font-size: 10.71px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.14px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.14px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 15.71px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.14px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.71px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.43px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.57px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 14.29px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.14px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.71px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.71px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.86px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 16.43px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.29px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.71px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.71px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.71px;">работа</a> <a href="/tags/%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%8B%D0%B5-%D0%B8%D0%B3%D1%80%D1%8B/" style="font-size: 10px;">ролевые игры</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.14px;">таро</a> <a href="/tags/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC/" style="font-size: 10.71px;">умный дом</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.86px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.71px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.57px;">цитаты</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2022/05/умный-дом-у-геккона/">Умный дом - теперь и у геккона</a>
+      </li>
+    
+      <li>
+        <a href="/2022/02/алиса-открой-ворота/">Алиса, открой ворота - или MVP умного дома за пару вечеров</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/шедоуран-2021-отчет/">Шедоуран 2021 отчёт</a>
+      </li>
+    
+      <li>
+        <a href="/2020/06/как-активный-гражданин-приучает-людей-к-фишингу/">Как «активный гражданин» приучает людей к фишингу</a>
+      </li>
+    
+      <li>
+        <a href="/2020/02/снимаем-покрытие-кода-с-уже-запущенного-nodejs-приложения/">Снимаем покрытие кода с уже запущенного Node.JS приложения</a>
+      </li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><!--<div class="alignleft">
+  
+  &copy; 2022 Jehy
+  
+</div>-->
+<div class="clearfix"></div>
+</footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
