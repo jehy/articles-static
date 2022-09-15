@@ -25,7 +25,7 @@
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 6.2.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 
 <body>
@@ -54,6 +54,60 @@
 </header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article id="post-2009/07/копаясь-в-исходниках" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2009-07-14T08:16:31.000Z"><a href="/2009/07/копаясь-в-исходниках/">2009-07-14</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2009/07/копаясь-в-исходниках/">Копаясь в исходниках</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p>В одном из файлов ядра wordpress есть функция</p>
+<pre lang="php">
+/**
+ * Whether today is a new day.
+ *
+ * @since 0.71
+ * @uses $day Today
+ * @uses $previousday Previous day
+ *
+ * @return int 1 when new day, 0 if not a new day.
+ */
+function is_new_day() {
+    global $day, $previousday;
+    if ( $day != $previousday )
+        return 1;
+    else
+        return 0;
+}
+</pre>
+<p>Как-то я её прочитал и задумался - а действительно ли сегодня новый новый день? Не продолжается ли ещё вчера и позавчера, замкнутые в дурную бесконечность? Не наступил ли старый день? И если наступил, то отличается ли он от старого?
+Это первый скрипт, в котором я вижу философски заложенную вероятность дня сурка.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!--  -->
+
+
+
   <article id="post-2009/07/игры-которые-играют-в-людей" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
@@ -399,47 +453,6 @@ So cute (means “kawaii”).</p>
 
 
 
-  <article id="post-2009/05/и-никто-не-уйдёт" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2009-05-16T22:09:11.000Z"><a href="/2009/05/и-никто-не-уйдёт/">2009-05-16</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2009/05/и-никто-не-уйдёт/">И никто не уйдёт</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p>Это не хроники, но рассказик всё равно злобный. Stand-alone, ни с чем не связан, можно спокойно читать тем, кто осиливает много буков.
-Он примерно арифметически равен двум сериям хауса и бутылке портвейна.</p>
-<p><strong>И никто не уйдёт</strong></p>
-<p>— Сегодня я представляю вам абсолютно новый, революционный продукт. Это прорыв в индустрии развлечений, медицины, отдыха, это— почти полученный экстракт счастья! Счастье натуральное, без всякого вреда, без привыкания, без последствий— не об этом ли мы все мечтаем?— Я перевёл дыхание. Зал шуршал газетами, естественно: каждый третий продукт— от нового фильма до лосьона от прыщей— презентуется именно таким образом.</p>
-<p>— Пожалуйста, скажите, у кого из вас есть хорошие воспоминания? Да, да, смелее— просто поднимите руку. Неужели только у двух человек из трёх сотен? Уже у десяти… О, неужели— мы видим, что у всех они есть! Сколько всего можно перечислить: первый поход в школу, старые друзья, совместные попойки, запах тумана, утра  и скошенной травы на весеннем поле, первый опыт секса, первая поездка на машине, дорогостоящий круиз, свадьба… Столько всего, что не перечислишь и за день. Но есть всего лишь одна проблема.— Я призадумался, поднёс руку ко лбу. Заинтересованных лиц было уже больше.
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2009/05/и-никто-не-уйдёт/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-<!--  -->
-
-
-
 
 
     <nav id="page-nav">
@@ -474,6 +487,10 @@ So cute (means “kawaii”).</p>
   <ul class="entry">
     
       <li>
+        <a href="/2022/09/назад-во-времени/">Назад в детство</a>
+      </li>
+    
+      <li>
         <a href="/2022/05/умный-дом-у-геккона/">Умный дом - теперь и у геккона</a>
       </li>
     
@@ -487,10 +504,6 @@ So cute (means “kawaii”).</p>
     
       <li>
         <a href="/2020/06/как-активный-гражданин-приучает-людей-к-фишингу/">Как «активный гражданин» приучает людей к фишингу</a>
-      </li>
-    
-      <li>
-        <a href="/2020/02/снимаем-покрытие-кода-с-уже-запущенного-nodejs-приложения/">Снимаем покрытие кода с уже запущенного Node.JS приложения</a>
       </li>
     
   </ul>

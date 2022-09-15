@@ -25,7 +25,7 @@
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 6.2.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 
 <body>
@@ -54,6 +54,57 @@
 </header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article id="post-2013/12/warning-the-signers-certificate-chain-is-not-validated" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2013-12-12T14:12:45.000Z"><a href="/2013/12/warning-the-signers-certificate-chain-is-not-validated/">2013-12-12</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/12/warning-the-signers-certificate-chain-is-not-validated/">Warning: The signer`s certificate chain is not validated</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p>I had a week of trouble, signing my web start java applet.</p>
+<p>While I signed (with a good COMODO code signing certificate), there was </p>
+<blockquote>**Warning: The signer's certificate chain is not validated.**</blockquote>
+But I didn't pay much attention to it.
+ 
+<p>And my signed applet appeared to be of unknown publisher even through “Show details” in browser showed me that applet is signed with the correct certificate. Of cause, it was much restricted - and I need to read user disc, etc… It could be solved my directly installing CA to user computer - but that’s unreasonable to request every user to do it manually. So I suffered for a week and suddenly came up with a solution, inspired by <a target="_blank" rel="noopener" href="http://communities.serena.com/serena/topics/your_security_settings_have_blocked_an_application_from_running_with_insecure_or_expired_jre">this post</a> (thank you, 
+Supriya Roy):</p>
+<ol>
+<li><p>Install your .pfx certificate with the <strong>“Mark this key as exportable. This will allow you to back up or transport your keys at a later time”</strong> and <strong>“Include all extended properties”</strong> checked.</p>
+</li>
+<li><p>Check that that you have full certificate chain for this certificate and it is valid. Otherwise, install neccessary CA.</p>
+</li>
+<li><p>Export the installed certificate with <strong>“Yes, export the private key”</strong> option and <strong>“Include all certificates in the certification path if possible”</strong> and <strong>“Export all extended properties”</strong> checked under the option .PFX or PKCS #12.</p>
+</li>
+<li><p>Use exported .pfx file to sign the JAR. Don’t forget that it could change alias - get new one with</p>
+<pre lang="bash">keytool.exe -list -keystore D:\keys\code.pfx -storetype pkcs12</pre></li>
+</ol>
+<p>Worked like magic - warning disappeared and my jars are trusted now!</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!--  -->
+
+
+
   <article id="post-2013/12/trouble-with-yum-on-rhel-centos-and-fedora" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
@@ -415,43 +466,6 @@ Feel free to use and to fork.</p>
 
 
 
-  <article id="post-2013/02/день-святого-валентина" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2013-02-14T14:37:58.000Z"><a href="/2013/02/день-святого-валентина/">2013-02-14</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/02/день-святого-валентина/">День Святого Валентина</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p>Наконец этот праздник. День святого Валентина. Я так долго его ждал, несколько раз порывался пойти к ней… Но останавливал себя. Теперь я стою на неизвестной никому из нашего селения лесной поляне, в руках у меня - её локон цвета воронова крыла и маленький ошмёток ткани. Не буду рассказывать, какими неправдами и усилиями я получил фрагмент робы святого Валентина. Скажем так - это было очень непросто.
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/02/день-святого-валентина/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-<!--  -->
-
-
-
 
 
     <nav id="page-nav">
@@ -486,6 +500,10 @@ Feel free to use and to fork.</p>
   <ul class="entry">
     
       <li>
+        <a href="/2022/09/назад-во-времени/">Назад в детство</a>
+      </li>
+    
+      <li>
         <a href="/2022/05/умный-дом-у-геккона/">Умный дом - теперь и у геккона</a>
       </li>
     
@@ -499,10 +517,6 @@ Feel free to use and to fork.</p>
     
       <li>
         <a href="/2020/06/как-активный-гражданин-приучает-людей-к-фишингу/">Как «активный гражданин» приучает людей к фишингу</a>
-      </li>
-    
-      <li>
-        <a href="/2020/02/снимаем-покрытие-кода-с-уже-запущенного-nodejs-приложения/">Снимаем покрытие кода с уже запущенного Node.JS приложения</a>
       </li>
     
   </ul>
