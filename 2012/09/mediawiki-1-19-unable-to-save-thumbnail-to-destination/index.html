@@ -85,26 +85,25 @@ you can solve it with<span id="more"></span></p>
 (apache must be able to write in this folder)</li>
 <li>Or, if you are running a really strict server with safemode and so on - edit file includes&#x2F;GlobalFunctions.php and replace piece<pre lang="php" line="2493">if( function_exists( 'sys_get_temp_dir' ) ) {
             return sys_get_temp_dir();
-     }</pre>
-with<pre lang="php">return ini_get('upload_tmp_dir');</pre>
-One of those solutions will work for sure :)
-I had to make 1) and 3) to return my thumbnails…</li>
+     }</pre></li>
 </ol>
+<p>with</p>
+<pre lang="php">return ini_get('upload_tmp_dir');</pre>
+<p>One of those solutions will work for sure :)
+I had to make 1) and 3) to return my thumbnails…</p>
 <p>По русски:
 При ошибке
 <strong>Ошибка создания миниатюры: Не удаётся сохранить эскиз по месту назначения</strong>
 Мы можем сделать следующее:</p>
 <ol>
 <li>Добавьте код в LocalSettings.php:<pre lang="php">$wgTmpDirectory = "$IP/images/temp";</pre>
+(у сервера должны быть права записи в указанную папку)
+2)Или добавьте другой код в LocalSettings.php:<pre lang="php">putenv('TMPDIR=/path/to/my/temp/folder');</pre>
 (у сервера должны быть права записи в указанную папку)</li>
+<li>Или, если мы на суровом сервере в сейф моде - берём файл includes&#x2F;GlobalFunctions.php и заменяем<pre lang="php" line="2493">if( function_exists( 'sys_get_temp_dir' ) ) {
+            return sys_get_temp_dir();
+     }</pre></li>
 </ol>
-<p>2)Или добавьте другой код в LocalSettings.php:</p>
-<pre lang="php">putenv('TMPDIR=/path/to/my/temp/folder');</pre>
-<p>(у сервера должны быть права записи в указанную папку)
-3) Или, если мы на суровом сервере в сейф моде - берём файл includes&#x2F;GlobalFunctions.php и заменяем</p>
-<pre lang="php" line="2493">if( function_exists( 'sys_get_temp_dir' ) ) {
-               return sys_get_temp_dir();
-        }</pre>
 <p>на</p>
 <pre lang="php">return ini_get('upload_tmp_dir');</pre>
 <p>Что-нибудь из этого поможет наверняка. Мне помогла совокупность 1) и 3)</p>
@@ -189,7 +188,7 @@ I had to make 1) and 3) to return my thumbnails…</li>
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2022 Jehy
+  &copy; 2023 Jehy
   
 </div>-->
 <div class="clearfix"></div>

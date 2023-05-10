@@ -137,14 +137,15 @@
 
 <p>Чтобы показать, как всё просто - покажу примитивную реализацию третьего варианта, которую я сделал для своего приложения за час времени.</p>
 <ol>
-<li><p>Добавляем куда-то свою актуальную версию приложения. Я засунул прямо в исходники на Github в build.gradle:
-<code>//        releaseVersionCode 5</code></p>
-</li>
-<li><p>Публикуем где-то релизы приложения. У меня они так же лежат на github, в формате
-<code>String url=&quot;https://github.com/jehy/rutracker-free/releases/download/&quot; + version+&quot;/app-release.apk&quot;;</code></p>
-</li>
-<li><p>Пишем собственно алгоритм обновления:</p>
-</li>
+<li>Добавляем куда-то свою актуальную версию приложения. Я засунул прямо в исходники на Github в build.gradle:</li>
+</ol>
+<p><code>//        releaseVersionCode 5</code></p>
+<ol start="2">
+<li>Публикуем где-то релизы приложения. У меня они так же лежат на github, в формате</li>
+</ol>
+<p><code>String url=&quot;https://github.com/jehy/rutracker-free/releases/download/&quot; + version+&quot;/app-release.apk&quot;;</code></p>
+<ol start="3">
+<li>Пишем собственно алгоритм обновления:</li>
 </ol>
 <p>3.1 в MainActivity.OnCreate добавляем вызов проверки:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new Updater().execute(this);</span><br></pre></td></tr></table></figure>
@@ -261,7 +262,7 @@
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2022 Jehy
+  &copy; 2023 Jehy
   
 </div>-->
 <div class="clearfix"></div>
