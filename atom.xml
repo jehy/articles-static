@@ -6,7 +6,7 @@
   <link href="https://articles.jehy.ru/atom.xml" rel="self"/>
   
   <link href="https://articles.jehy.ru/"/>
-  <updated>2023-06-05T11:08:53.194Z</updated>
+  <updated>2023-06-05T11:33:32.692Z</updated>
   <id>https://articles.jehy.ru/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Умный дом для геккона и сверчков - год спустя</title>
+    <link href="https://articles.jehy.ru/2023/05/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC-%D1%83-%D0%B3%D0%B5%D0%BA%D0%BA%D0%BE%D0%BD%D0%B0-%D0%B8-%D1%81%D0%B2%D0%B5%D1%80%D1%87%D0%BA%D0%BE%D0%B2/"/>
+    <id>https://articles.jehy.ru/2023/05/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC-%D1%83-%D0%B3%D0%B5%D0%BA%D0%BA%D0%BE%D0%BD%D0%B0-%D0%B8-%D1%81%D0%B2%D0%B5%D1%80%D1%87%D0%BA%D0%BE%D0%B2/</id>
+    <published>2023-05-24T10:59:54.000Z</published>
+    <updated>2023-06-05T11:33:32.692Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/734266&quot;&gt;Оригинал поста на хабре&lt;/a&gt;
+&lt;img src=&quot;https://habrastorage.org/r/w780/getpro/habr/upload_files/1eb/18e/815/1eb18e815fce8bd1fc12c6306975f554.jpeg&quot;&gt;
+Примерно год назад я уже писал, как собрал &lt;a href=&quot;https://habr.com/ru/articles/666980/&quot;&gt;умный дом для моего любимого эублефара&lt;/a&gt;.
+За это время он прошёл несколько модификаций, и у меня появилась живая еда, которой тоже нужен свой дом. Что характерно, тоже умный. Если вы не читали первую часть, то рекомендую начать с неё, так как буду рассказывать не с нуля, а про апгрейды.&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="habr" scheme="https://articles.jehy.ru/tags/habr/"/>
+    
+    <category term="умный дом" scheme="https://articles.jehy.ru/tags/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC/"/>
+    
+    <category term="arduino" scheme="https://articles.jehy.ru/tags/arduino/"/>
+    
+    <category term="home assistant" scheme="https://articles.jehy.ru/tags/home-assistant/"/>
+    
+    <category term="esphome" scheme="https://articles.jehy.ru/tags/esphome/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Мгла отступает. Отчёт персонажа.</title>
     <link href="https://articles.jehy.ru/2022/10/%D0%9C%D0%B3%D0%BB%D0%B0%20%D0%BE%D1%82%D1%81%D1%82%D1%83%D0%BF%D0%B0%D0%B5%D1%82/"/>
     <id>https://articles.jehy.ru/2022/10/%D0%9C%D0%B3%D0%BB%D0%B0%20%D0%BE%D1%82%D1%81%D1%82%D1%83%D0%BF%D0%B0%D0%B5%D1%82/</id>
     <published>2022-10-16T13:00:54.000Z</published>
-    <updated>2023-06-05T11:08:53.194Z</updated>
+    <updated>2023-06-05T11:33:32.692Z</updated>
     
     
     <summary type="html">&lt;p&gt;Лишь несколько часов назад наступил рассвет, а &lt;a href=&quot;https://vk.com/darkness_2022&quot;&gt;Мгла&lt;/a&gt;, в свою очередь, отступила.&lt;/p&gt;
@@ -43,7 +71,7 @@
     <link href="https://articles.jehy.ru/2022/09/%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%BA%D0%B8%20%D0%BF%D0%BE%20%D0%BD%D0%BE%D0%B4%D0%B5/"/>
     <id>https://articles.jehy.ru/2022/09/%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%BA%D0%B8%20%D0%BF%D0%BE%20%D0%BD%D0%BE%D0%B4%D0%B5/</id>
     <published>2022-09-16T07:00:54.000Z</published>
-    <updated>2023-06-05T11:08:53.194Z</updated>
+    <updated>2023-06-05T11:33:32.692Z</updated>
     
     
       
@@ -68,7 +96,7 @@
     <link href="https://articles.jehy.ru/2022/09/%D0%BD%D0%B0%D0%B7%D0%B0%D0%B4-%D0%B2%D0%BE-%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%B8/"/>
     <id>https://articles.jehy.ru/2022/09/%D0%BD%D0%B0%D0%B7%D0%B0%D0%B4-%D0%B2%D0%BE-%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%B8/</id>
     <published>2022-09-15T15:39:54.000Z</published>
-    <updated>2023-06-05T11:08:53.194Z</updated>
+    <updated>2023-06-05T11:33:32.692Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;a href=&quot;https://www.reddit.com/r/AskReddit/comments/8xamvz/comment/e22e55e/&quot;&gt;Оригинальная история тут, копирую, чтобы не потерялась&lt;/a&gt;&lt;/p&gt;
@@ -86,7 +114,7 @@
     <link href="https://articles.jehy.ru/2022/05/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC-%D1%83-%D0%B3%D0%B5%D0%BA%D0%BA%D0%BE%D0%BD%D0%B0/"/>
     <id>https://articles.jehy.ru/2022/05/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC-%D1%83-%D0%B3%D0%B5%D0%BA%D0%BA%D0%BE%D0%BD%D0%B0/</id>
     <published>2022-05-24T10:59:54.000Z</published>
-    <updated>2023-06-05T11:08:53.190Z</updated>
+    <updated>2023-06-05T11:33:32.688Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/666980&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
@@ -125,7 +153,7 @@
     <link href="https://articles.jehy.ru/2022/02/%D0%B0%D0%BB%D0%B8%D1%81%D0%B0-%D0%BE%D1%82%D0%BA%D1%80%D0%BE%D0%B9-%D0%B2%D0%BE%D1%80%D0%BE%D1%82%D0%B0/"/>
     <id>https://articles.jehy.ru/2022/02/%D0%B0%D0%BB%D0%B8%D1%81%D0%B0-%D0%BE%D1%82%D0%BA%D1%80%D0%BE%D0%B9-%D0%B2%D0%BE%D1%80%D0%BE%D1%82%D0%B0/</id>
     <published>2022-02-07T06:31:54.000Z</published>
-    <updated>2023-06-05T11:08:53.186Z</updated>
+    <updated>2023-06-05T11:33:32.688Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/650033%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
@@ -175,7 +203,7 @@
     <link href="https://articles.jehy.ru/2021/08/%D1%88%D0%B5%D0%B4%D0%BE%D1%83%D1%80%D0%B0%D0%BD-2021-%D0%BE%D1%82%D1%87%D0%B5%D1%82/"/>
     <id>https://articles.jehy.ru/2021/08/%D1%88%D0%B5%D0%B4%D0%BE%D1%83%D1%80%D0%B0%D0%BD-2021-%D0%BE%D1%82%D1%87%D0%B5%D1%82/</id>
     <published>2021-08-04T18:00:54.000Z</published>
-    <updated>2023-06-05T11:08:53.186Z</updated>
+    <updated>2023-06-05T11:33:32.688Z</updated>
     
     
     <summary type="html">&lt;p&gt;Недавно приехал с шедоурана и таки решил сесть написать небольшой отчёт.&lt;/p&gt;
@@ -196,7 +224,7 @@
     <link href="https://articles.jehy.ru/2020/06/%D0%BA%D0%B0%D0%BA-%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9-%D0%B3%D1%80%D0%B0%D0%B6%D0%B4%D0%B0%D0%BD%D0%B8%D0%BD-%D0%BF%D1%80%D0%B8%D1%83%D1%87%D0%B0%D0%B5%D1%82-%D0%BB%D1%8E%D0%B4%D0%B5%D0%B9-%D0%BA-%D1%84%D0%B8%D1%88%D0%B8%D0%BD%D0%B3%D1%83/"/>
     <id>https://articles.jehy.ru/2020/06/%D0%BA%D0%B0%D0%BA-%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9-%D0%B3%D1%80%D0%B0%D0%B6%D0%B4%D0%B0%D0%BD%D0%B8%D0%BD-%D0%BF%D1%80%D0%B8%D1%83%D1%87%D0%B0%D0%B5%D1%82-%D0%BB%D1%8E%D0%B4%D0%B5%D0%B9-%D0%BA-%D1%84%D0%B8%D1%88%D0%B8%D0%BD%D0%B3%D1%83/</id>
     <published>2020-06-26T07:00:00.000Z</published>
-    <updated>2023-06-05T11:08:53.186Z</updated>
+    <updated>2023-06-05T11:33:32.688Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/508400%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
@@ -214,7 +242,7 @@
     <link href="https://articles.jehy.ru/2020/02/%D1%81%D0%BD%D0%B8%D0%BC%D0%B0%D0%B5%D0%BC-%D0%BF%D0%BE%D0%BA%D1%80%D1%8B%D1%82%D0%B8%D0%B5-%D0%BA%D0%BE%D0%B4%D0%B0-%D1%81-%D1%83%D0%B6%D0%B5-%D0%B7%D0%B0%D0%BF%D1%83%D1%89%D0%B5%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE-nodejs-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F/"/>
     <id>https://articles.jehy.ru/2020/02/%D1%81%D0%BD%D0%B8%D0%BC%D0%B0%D0%B5%D0%BC-%D0%BF%D0%BE%D0%BA%D1%80%D1%8B%D1%82%D0%B8%D0%B5-%D0%BA%D0%BE%D0%B4%D0%B0-%D1%81-%D1%83%D0%B6%D0%B5-%D0%B7%D0%B0%D0%BF%D1%83%D1%89%D0%B5%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE-nodejs-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F/</id>
     <published>2020-02-16T07:00:00.000Z</published>
-    <updated>2023-06-05T11:08:53.186Z</updated>
+    <updated>2023-06-05T11:33:32.688Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/488544%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
@@ -242,7 +270,7 @@
     <link href="https://articles.jehy.ru/2020/01/%D0%BA%D0%B0%D0%BA-%D0%BC%D0%B8%D0%B3%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D1%81-mocha-%D0%BD%D0%B0-jest-%D0%B2-15-%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%8B%D1%85-%D1%88%D0%B0%D0%B3%D0%BE%D0%B2-%E2%80%94-%D0%B8-%D0%B7%D0%B0%D1%87%D0%B5%D0%BC/"/>
     <id>https://articles.jehy.ru/2020/01/%D0%BA%D0%B0%D0%BA-%D0%BC%D0%B8%D0%B3%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D1%81-mocha-%D0%BD%D0%B0-jest-%D0%B2-15-%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%8B%D1%85-%D1%88%D0%B0%D0%B3%D0%BE%D0%B2-%E2%80%94-%D0%B8-%D0%B7%D0%B0%D1%87%D0%B5%D0%BC/</id>
     <published>2020-01-31T07:00:00.000Z</published>
-    <updated>2023-06-05T11:08:53.186Z</updated>
+    <updated>2023-06-05T11:33:32.688Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/486360%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
@@ -261,7 +289,7 @@
     <link href="https://articles.jehy.ru/2019/12/%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BD%D1%83%D0%B6%D0%BD%D0%BE-%D1%81%D1%82%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA%D0%BE%D0%B2/"/>
     <id>https://articles.jehy.ru/2019/12/%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BD%D1%83%D0%B6%D0%BD%D0%BE-%D1%81%D1%82%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA%D0%BE%D0%B2/</id>
     <published>2019-12-17T07:00:00.000Z</published>
-    <updated>2023-06-05T11:08:53.186Z</updated>
+    <updated>2023-06-05T11:33:32.684Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/480748%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
@@ -281,7 +309,7 @@
     <link href="https://articles.jehy.ru/2019/11/deno-%D0%B2%D1%80%D0%B5%D0%BC%D1%8F-nodejs-%D1%83%D1%85%D0%BE%D0%B4%D0%B8%D1%82/"/>
     <id>https://articles.jehy.ru/2019/11/deno-%D0%B2%D1%80%D0%B5%D0%BC%D1%8F-nodejs-%D1%83%D1%85%D0%BE%D0%B4%D0%B8%D1%82/</id>
     <published>2019-11-22T07:00:00.000Z</published>
-    <updated>2023-06-05T11:08:53.182Z</updated>
+    <updated>2023-06-05T11:33:32.684Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/476972%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
@@ -301,7 +329,7 @@
     <link href="https://articles.jehy.ru/2019/07/9-%D0%BB%D0%B5%D1%82-%D0%B2-%D0%BC%D0%BE%D0%BD%D0%BE%D0%BB%D0%B8%D1%82%D0%B5-%D0%BD%D0%B0-nodejs/"/>
     <id>https://articles.jehy.ru/2019/07/9-%D0%BB%D0%B5%D1%82-%D0%B2-%D0%BC%D0%BE%D0%BD%D0%BE%D0%BB%D0%B8%D1%82%D0%B5-%D0%BD%D0%B0-nodejs/</id>
     <published>2019-07-09T07:00:00.000Z</published>
-    <updated>2023-06-05T11:08:53.178Z</updated>
+    <updated>2023-06-05T11:33:32.680Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/459206%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
@@ -327,7 +355,7 @@
     <link href="https://articles.jehy.ru/2018/12/%D0%BD%D0%B5%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%BD%D1%8B%D0%B5-%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%B8-%D0%BF%D1%80%D0%B8-%D0%BD%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B8-%D1%8E%D0%BD%D0%B8%D1%82-%D1%82%D0%B5%D1%81%D1%82%D0%BE%D0%B2/"/>
     <id>https://articles.jehy.ru/2018/12/%D0%BD%D0%B5%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%BD%D1%8B%D0%B5-%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%B8-%D0%BF%D1%80%D0%B8-%D0%BD%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B8-%D1%8E%D0%BD%D0%B8%D1%82-%D1%82%D0%B5%D1%81%D1%82%D0%BE%D0%B2/</id>
     <published>2018-12-04T07:00:00.000Z</published>
-    <updated>2023-06-05T11:08:53.178Z</updated>
+    <updated>2023-06-05T11:33:32.680Z</updated>
     
     
       
@@ -350,7 +378,7 @@
     <link href="https://articles.jehy.ru/2018/11/hijacking-domain-using-github-pages/"/>
     <id>https://articles.jehy.ru/2018/11/hijacking-domain-using-github-pages/</id>
     <published>2018-11-15T07:00:00.000Z</published>
-    <updated>2023-06-05T11:08:53.166Z</updated>
+    <updated>2023-06-05T11:33:32.668Z</updated>
     
     
       
@@ -376,7 +404,7 @@
     <link href="https://articles.jehy.ru/2018/11/%D0%B0%D1%82%D0%B0%D0%BA%D0%B0-%D0%BD%D0%B0-github-pages-%D1%81-%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%B2%D0%B0%D1%82%D0%BE%D0%BC-%D1%81%D0%B0%D0%B9%D1%82%D0%B0-%D0%BD%D0%B0-%D0%B2%D0%B0%D1%88%D0%B5%D0%BC-%D0%B4%D0%BE%D0%BC%D0%B5%D0%BD%D0%B5/"/>
     <id>https://articles.jehy.ru/2018/11/%D0%B0%D1%82%D0%B0%D0%BA%D0%B0-%D0%BD%D0%B0-github-pages-%D1%81-%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%B2%D0%B0%D1%82%D0%BE%D0%BC-%D1%81%D0%B0%D0%B9%D1%82%D0%B0-%D0%BD%D0%B0-%D0%B2%D0%B0%D1%88%D0%B5%D0%BC-%D0%B4%D0%BE%D0%BC%D0%B5%D0%BD%D0%B5/</id>
     <published>2018-11-15T07:00:00.000Z</published>
-    <updated>2023-06-05T11:08:53.166Z</updated>
+    <updated>2023-06-05T11:33:32.668Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/429972%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
@@ -397,7 +425,7 @@
     <link href="https://articles.jehy.ru/2018/11/%D0%BD%D0%B5%D0%B9%D1%80%D0%BE%D0%BD%D0%BD%D1%8B%D0%B5-%D1%81%D0%B5%D1%82%D0%B8-%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2-%D1%86%D0%B5%D0%BD%D0%B7%D1%83%D1%80%D1%8B-%D1%85%D0%B5%D0%BD%D1%82%D0%B0%D1%8F/"/>
     <id>https://articles.jehy.ru/2018/11/%D0%BD%D0%B5%D0%B9%D1%80%D0%BE%D0%BD%D0%BD%D1%8B%D0%B5-%D1%81%D0%B5%D1%82%D0%B8-%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2-%D1%86%D0%B5%D0%BD%D0%B7%D1%83%D1%80%D1%8B-%D1%85%D0%B5%D0%BD%D1%82%D0%B0%D1%8F/</id>
     <published>2018-11-06T07:00:00.000Z</published>
-    <updated>2023-06-05T11:08:53.170Z</updated>
+    <updated>2023-06-05T11:33:32.672Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/428896%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
@@ -417,7 +445,7 @@
     <link href="https://articles.jehy.ru/2018/06/node-js-senior-interview-questions/"/>
     <id>https://articles.jehy.ru/2018/06/node-js-senior-interview-questions/</id>
     <published>2018-06-01T07:00:00.000Z</published>
-    <updated>2023-06-05T11:08:53.166Z</updated>
+    <updated>2023-06-05T11:33:32.668Z</updated>
     
     
       
@@ -442,7 +470,7 @@
     <link href="https://articles.jehy.ru/2018/04/diarrhea-%D0%B4%D0%BB%D1%8F-%D0%B2%D0%B0%D1%88%D0%B5%D0%B3%D0%BE-%D0%B1%D1%8D%D0%BA%D0%B5%D0%BD%D0%B4%D0%B0-%D0%BD%D0%B0-nodejs-%E2%80%94-%D1%83%D0%BC%D0%B5%D0%BD%D1%8C%D1%88%D0%B0%D0%B5%D0%BC-%D0%B2%D0%B5%D1%81-%D1%81%D0%B1%D0%BE%D1%80%D0%BA%D0%B8/"/>
     <id>https://articles.jehy.ru/2018/04/diarrhea-%D0%B4%D0%BB%D1%8F-%D0%B2%D0%B0%D1%88%D0%B5%D0%B3%D0%BE-%D0%B1%D1%8D%D0%BA%D0%B5%D0%BD%D0%B4%D0%B0-%D0%BD%D0%B0-nodejs-%E2%80%94-%D1%83%D0%BC%D0%B5%D0%BD%D1%8C%D1%88%D0%B0%D0%B5%D0%BC-%D0%B2%D0%B5%D1%81-%D1%81%D0%B1%D0%BE%D1%80%D0%BA%D0%B8/</id>
     <published>2018-04-27T07:00:00.000Z</published>
-    <updated>2023-06-05T11:08:53.166Z</updated>
+    <updated>2023-06-05T11:33:32.668Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/354504%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
@@ -462,33 +490,13 @@
     <link href="https://articles.jehy.ru/2018/04/%D0%B1%D1%8D%D0%BA%D0%B0%D0%BF-%D0%BF%D0%B5%D1%80%D0%B5%D0%BF%D0%B8%D1%81%D0%BA%D0%B8-%D0%B2-telegram/"/>
     <id>https://articles.jehy.ru/2018/04/%D0%B1%D1%8D%D0%BA%D0%B0%D0%BF-%D0%BF%D0%B5%D1%80%D0%B5%D0%BF%D0%B8%D1%81%D0%BA%D0%B8-%D0%B2-telegram/</id>
     <published>2018-04-26T07:00:00.000Z</published>
-    <updated>2023-06-05T11:08:53.166Z</updated>
+    <updated>2023-06-05T11:33:32.668Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/354472%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Сразу начну с того, что я не призываю никого бежать из Мессенджера-который-нельзя-называть. Совсем даже наоборот. Просто спать гораздо спокойнее, когда одно облако у тебя забэкаплено в другом облаке. А то и облака периодически падают на грешную землю, а терять годы переписки очень обидно. Да и друг меня спросил, как сделать бэкап, а я с ходу не нашёл внятной инструкции.&lt;/p&gt;
 &lt;p&gt;Предупреждаю сразу - для бэкапа вам потребуется Linux, или хотя бы виртуалка с ним. При наличии рук можно и на Mac OS, и может даже можно на том огрызке, что нынче встроен в Windows - но я ничего не гарантирую.&lt;/p&gt;
 &lt;p&gt;Поехали!</summary>
-    
-    
-    
-    
-    <category term="habr" scheme="https://articles.jehy.ru/tags/habr/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ещё один инструмент для проверки ваших npm зависимостей — wtfwith</title>
-    <link href="https://articles.jehy.ru/2018/04/%D0%B5%D1%89%D1%91-%D0%BE%D0%B4%D0%B8%D0%BD-%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BC%D0%B5%D0%BD%D1%82-%D0%B4%D0%BB%D1%8F-%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B8-%D0%B2%D0%B0%D1%88%D0%B8%D1%85-npm-%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B5%D0%B9-%E2%80%94-wtfwith/"/>
-    <id>https://articles.jehy.ru/2018/04/%D0%B5%D1%89%D1%91-%D0%BE%D0%B4%D0%B8%D0%BD-%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BC%D0%B5%D0%BD%D1%82-%D0%B4%D0%BB%D1%8F-%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B8-%D0%B2%D0%B0%D1%88%D0%B8%D1%85-npm-%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B5%D0%B9-%E2%80%94-wtfwith/</id>
-    <published>2018-04-20T07:00:00.000Z</published>
-    <updated>2023-06-05T11:08:53.166Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://habr.com/ru/post/353912%7D&quot;&gt;Оригинал поста на хабре&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Вы как-нибудь задумывались, сколько версий одной и той же библиотеки затягивает ваша клиентская или серверная сборка? Мне вот в какой-то момент стало интересно. Навскидку найти для этого готовый инструмент не получилось, а смотреть глазами package-lock слишком утомительно. Как мы знаем - в любой непонятной ситуации нужно писать свой npm пакет, поэтому я именно это и сделал… Дальше в посте я рассмотрю результат анализа живого проекта и сделаю пару спорных выводов.&lt;/p&gt;
-&lt;p&gt;Ну и никак нельзя обойтись без этой классической картинки:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://habrastorage.org/webt/fu/4y/hq/fu4yhqs70molq5wp_efppaek7a4.png&quot; align = &quot;center&quot;/&gt;</summary>
     
     
     

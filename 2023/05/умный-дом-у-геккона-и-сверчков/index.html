@@ -1,0 +1,232 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="verify-admitad" content="71b6485389" />
+  
+  <title>Умный дом для геккона и сверчков - год спустя | Jehy&#39;s notes</title>
+  <meta name="author" content="Jehy">
+  
+  <meta name="description" content="Оригинал поста на хабре
+
+Примерно год назад я уже писал, как собрал умный дом для моего любимого эублефара.
+За это время он прошёл несколько модификаций, и у меня появилась живая еда, которой тоже нужен свой дом. Что характерно, тоже умный. Если вы не читали первую часть, то рекомендую начать с неё, так как буду рассказывать не с нуля, а про апгрейды.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Умный дом для геккона и сверчков - год спустя"/>
+  <meta property="og:site_name" content="Jehy&#39;s notes"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Jehy&#39;s notes" type="application/atom+xml">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Jehy&#39;s notes</a></h1>
+  <h2><a href="/">Insert 1 into dual</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/wishlist">Wishlist</a></li>
+    
+      <li><a href="/donate">Donate</a></li>
+    
+      <li><a href="/atom.xml">Subscribe</a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://whois.jehy.ru">Contact me</a></li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-2023/05/умный-дом-у-геккона-и-сверчков" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2023-05-24T10:59:54.000Z"><a href="/2023/05/умный-дом-у-геккона-и-сверчков/">2023-05-24</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Умный дом для геккона и сверчков - год спустя</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/734266">Оригинал поста на хабре</a>
+<img src="https://habrastorage.org/r/w780/getpro/habr/upload_files/1eb/18e/815/1eb18e815fce8bd1fc12c6306975f554.jpeg">
+Примерно год назад я уже писал, как собрал <a target="_blank" rel="noopener" href="https://habr.com/ru/articles/666980/">умный дом для моего любимого эублефара</a>.
+За это время он прошёл несколько модификаций, и у меня появилась живая еда, которой тоже нужен свой дом. Что характерно, тоже умный. Если вы не читали первую часть, то рекомендую начать с неё, так как буду рассказывать не с нуля, а про апгрейды.</p>
+<span id="more"></span>
+
+<h1 id="Дисклеймер"><a href="#Дисклеймер" class="headerlink" title="Дисклеймер"></a>Дисклеймер</h1><p>Прежде, чем читать дальше, давайте уточню, что я не герпетолог и не электрик. Я простой бекенд разработчик. И ни за что бы не доверил жизнь животного автоматике, если бы не мог её постоянно контролировать глазами. Пожалуйста, будьте осторожны, и не копируйте бездумно то, что я здесь написал. Я предупредил, и не буду чувствовать себя виноватым, если вы, например, сварите своих аквариумных рыбок. Но мне будет их искренне жаль!</p>
+<h1 id="Выявленные-проблемы"><a href="#Выявленные-проблемы" class="headerlink" title="Выявленные проблемы"></a>Выявленные проблемы</h1><p>Первый блин всегда комом, и этот проект не стал исключением. Первая версия, описанная в прошлом посте, уже была немного обкатана, но часть проблем вылезают спустя длительное время.</p>
+<ol>
+<li>Завязка на автоматизации во внешнем сервере. Сценарии обогрева были прописаны на Home Assistant. И зависание сервера привело к остановке его работы. Хорошо, что я догадался заранее сделать закладку в коде микроконтроллера на этот счёт, чтобы он выключал обогрев, если не получает корректирующий сигнал. В результате в один прекрасный день геккон был немного недогрет, зато не прожарен.</li>
+<li>Использование беспроводных датчиков. Зигби и беспроводные технологии это восхитительно. Но ровно до тех пор, пока работает безукоризненно или на них не завязано никаких критичных вещей. А в моём случае я столкнулся со странной спецификой работы то ли датчиков, то ли софта, в результате которой при отвале датчиков на сервере я получал константную температуру. И когда она была низкой, то лампа в результате не переставала греться… И это тот самый случай, когда всё могло бы закончиться плохо, если бы я не смотрел за гекконом глазами и не имел бы механического термометра.</li>
+<li>И всё же влажность влажна. То есть, важна. В комментариях к прошлому посту я писал, что в результате отрубил увлажнитель, так как и без него всё неплохо. Но сравнение линьки с увлажнителем и без него однозначно показало, что легче мини-дракон линяет при наличии увлажнителя.</li>
+<li>Механическое реле это плохо. Свет и увлажнитель я изначально включал при помощи механических реле. Стандартных ардуиновских и умной розетки известного бренда. Поначалу это казалось быстрым простым решением, однако… Иногда они просто не отрабатывают. К счастью, на них не было завязано ничего критически важного.</li>
+<li>Прототип должен быть легко разборным. Хочется сразу сделать суровую коробку и всё там намертво зафиксировать, но это очень сильно затрудняет отладку и ремонт.</li>
+<li>Греющая лампа сильно сушит воздух в террариуме и разогревает его крайне неравномерно. Для меня было удивительно, что температура и влажность оказались супер локальным явлениями и могут значительно отличаться на расстоянии в жалких 10 сантиметров!</li>
+<li>Поставленный изначально увлажнитель увлажнял воздух вокруг террариума, и его приходилось включать на полную мощность, чтобы удержать зимой требуемые значения. Как следствие, воду приходилось доливать примерно каждые 12 часов, что несколько надоедало.</li>
+</ol>
+<h1 id="Новые-решения"><a href="#Новые-решения" class="headerlink" title="Новые решения"></a>Новые решения</h1><ol>
+<li>Проводной датчик температуры. Теперь в террариуме стоят два <a target="_blank" rel="noopener" href="https://esphome.io/_images/dallas-wired.jpg">датчика Dallas</a>, которые не боятся влажности и довольно точно меряют температуру. Беспроводные датчики остались (фиг их отклеишь), но служат как источник дополнительных данных. Кстати, за год батарейки в них просадились всего до 57%. Так что не стоит верить странным людям, которые твердят про постоянную замену батареек.</li>
+<li>Вместо реализации логики на стороне Home Assistant, я унёс её внутрь микроконтроллера. Теперь он сам узнаёт время суток, понимает требуемую температуру, сравнивает её с текущей, ставит мощность диммера и включает \ выключает лампу освещения. Ну а Home Assistant служит чисто для мониторинга и алертов.</li>
+<li>Механические реле были заменены на твердотельные. Да, там предельный ток меньше… Но на лампы и увлажнитель хватает с лихвой. Ничего больше не щёлкает и не залипает.</li>
+<li>Увлажнитель я заменил на другой, в комплекте с хоботом, чтобы не колхозить. А хобот направил в террариум. Правда, оказалось, что минимальная мощность увлажнителя превращает дом геккона в что-то из Silent Hill. Было лень думать, как сделать мощность ещё меньше, так что я вспомнил постулаты ТРИЗ и настроил микроконтроллер, чтобы он включал увлажнитель раз в минуту на 15 секунд. Отлично работает!
+<img src="https://habrastorage.org/webt/xm/xm/fq/xmxmfquy1s0ybq7xkjwoyeuq3d8.png"></li>
+<li>На смену бинарной логике греющей лампы пришёл диммер. Теперь, вместо того, чтобы включать обогреватель на полную, он включается лишь на часть мощности в зависимости от разницы температур. Да, в силу того, что система инертна, в результате график температуры выглядит как синусоида - но колебания выходят не больше, чем в пол градуса.</li>
+<li>Под террариум добавился греющий коврик. Он не может нагреть стекло и подстилку над ним до опасной температуры, но поднимает её без потери влажности внутри. Забавно, но оказалось, что при наличии постоянно одинаково работающего коврика и включащейся днём лампы получается почти тот же самый режим, что я старался сделать греющей лампой. Так что сейчас она включается реже - только когда температура сильно упала по всему дому.</li>
+</ol>
+<p>В результате выглядит это <a target="_blank" rel="noopener" href="https://habrastorage.org/webt/of/6q/4-/of6q4-rax1tgaoalxf12j4faviw.png">примерно так</a>.</p>
+<h1 id="Будущие-доделки"><a href="#Будущие-доделки" class="headerlink" title="Будущие доделки"></a>Будущие доделки</h1><p>В прошлом посте я писал про то, что доволен тем, что получилось, и думал, что это финальная версия. Но год мелких доработок показал, как я был неправ. Да и скажем честно - мне приятно и интересно этим заниматься. Так что на будущее я меня запланировано следующее:</p>
+<ul>
+<li>собрать удобный корпус для всего этого;</li>
+<li>добавить термореле на случай восстания машин;</li>
+<li>поменять Wemos D1 на что-то с большим количеством памяти, а то предел почти достигнут;</li>
+<li>добавить локальный звуковой алерт;</li>
+<li>добавить красивый дисплей. Лучше, чем с Home Assistant, не будет, но прикольно же!</li>
+<li>добавить кнопку для обозначения кормления, и алертинг, если животное долго не кормили;</li>
+<li>добавить амперметр, чтобы видеть, что какой-то из потребителей (коврик, лампа, увлажнитель) сломался и его надо менять.</li>
+</ul>
+<h1 id="Сверчки-Что-сверчки"><a href="#Сверчки-Что-сверчки" class="headerlink" title="Сверчки? Что сверчки?"></a>Сверчки? Что сверчки?</h1><p>Ах, да. Сверчки. Геккону полезно есть их свежими, а не замороженными или консервированными. Так что в какой-то момент дома появилась и эта нечисть. И конечно же мне сразу стало интересно, как максимизировать их продолжительность жизни. Оказалось, что для этого им нужно поддерживать температурный режим и низкую влажность. Казалось бы - что проще? Однако как раз влажность они каким-то образом повышают сами! Ну или может быть она идёт от корма. В общем, эта задача была проще, чем с гекконом, и решилась датчиком, греющим ковриком и вентилятором. После этого они стали жить по несколько недель и довольно сверчать ночами. Пока что я  удерживаюсь от того, чтобы дать им условия для размножения, и просто периодически закупаю новых. Но не знаю, сколько ещё смогу держать себя в руках…
+<img src="https://habrastorage.org/webt/yx/xz/oq/yxxzoqamvlufnogbjc6u4u5muwe.png"></p>
+<h1 id="Бесплатный-бонус"><a href="#Бесплатный-бонус" class="headerlink" title="Бесплатный бонус"></a>Бесплатный бонус</h1><p>Во время сбора датчиков температуры, я умудрился снова заболеть ковидом. А градусника дома не было. Немного подумав, я взял датчик Dallas и замерил температуру им - получилось довольно точно! Хотя детей вид отца с торчащим из-под руки проводом немного удивил. Хотя нет, кого я обманываю. Вообще не удивил, они меня уже много лет знают!</p>
+<h1 id="Если-вы-тоже-хотите-автоматизировать-своего-геккона"><a href="#Если-вы-тоже-хотите-автоматизировать-своего-геккона" class="headerlink" title="Если вы тоже хотите автоматизировать своего геккона"></a>Если вы тоже хотите автоматизировать своего геккона</h1><p><a target="_blank" rel="noopener" href="https://github.com/jehy/esphome/tree/master/terrarium-dimmer-v2">Код управления диммером террариума</a>
+<a target="_blank" rel="noopener" href="https://github.com/jehy/esphome/tree/master/terrarium-humidifier">Код управления увлажнителем</a>
+<a target="_blank" rel="noopener" href="https://github.com/jehy/esphome/tree/master/cricket-house">Код дома сверчков</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/habr/">habr</a>, <a href="/tags/умный-дом/">умный дом</a>, <a href="/tags/arduino/">arduino</a>, <a href="/tags/home-assistant/">home assistant</a>, <a href="/tags/esphome/">esphome</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!-- 
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+</section>
+ -->
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="as_sitesearch" value="articles.jehy.ru">
+  </form>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.43px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.71px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.71px;">android</a> <a href="/tags/applet/" style="font-size: 12.14px;">applet</a> <a href="/tags/arduino/" style="font-size: 11.43px;">arduino</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.71px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15px;">dev</a> <a href="/tags/esphome/" style="font-size: 10.71px;">esphome</a> <a href="/tags/fun/" style="font-size: 14.29px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.29px;">habr</a> <a href="/tags/home-assistant/" style="font-size: 11.43px;">home assistant</a> <a href="/tags/java/" style="font-size: 12.14px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.71px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/openid/" style="font-size: 10.71px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.14px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.14px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 15.71px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%A0%D0%98/" style="font-size: 10px;">РИ</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.14px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.71px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.43px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.57px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 14.29px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.14px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.71px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.71px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.86px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 16.43px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.29px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.71px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.71px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.71px;">работа</a> <a href="/tags/%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%8B%D0%B5-%D0%B8%D0%B3%D1%80%D1%8B/" style="font-size: 10px;">ролевые игры</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.14px;">таро</a> <a href="/tags/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC/" style="font-size: 11.43px;">умный дом</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.86px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.71px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.57px;">цитаты</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2023/05/умный-дом-у-геккона-и-сверчков/">Умный дом для геккона и сверчков - год спустя</a>
+      </li>
+    
+      <li>
+        <a href="/2022/10/Мгла отступает/">Мгла отступает. Отчёт персонажа.</a>
+      </li>
+    
+      <li>
+        <a href="/2022/09/задачки по ноде/">Задачки по ноде</a>
+      </li>
+    
+      <li>
+        <a href="/2022/09/назад-во-времени/">Назад в детство</a>
+      </li>
+    
+      <li>
+        <a href="/2022/05/умный-дом-у-геккона/">Умный дом - теперь и у геккона</a>
+      </li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><!--<div class="alignleft">
+  
+  &copy; 2023 Jehy
+  
+</div>-->
+<div class="clearfix"></div>
+</footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
