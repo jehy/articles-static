@@ -25,7 +25,7 @@
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 7.0.0"></head>
 
 
 <body>
@@ -54,6 +54,44 @@
 </header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article id="post-2017/10/обычное-утро-2027-года" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2017-10-16T11:32:29.000Z"><a href="/2017/10/обычное-утро-2027-года/">2017-10-16</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/10/обычное-утро-2027-года/">Обычное утро 2027 года</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p>Ну что же, доброе утро. Сегодня… Хмм… 23 сентября 2027 года. Надо бы посмотреть, какие на сегодня планы. О, сегодня же день рождения моего двоюродного племянника! Надо бы поздравить его. Интересно… Мы не виделись с ним уже три года. Даже не могу точно вспомнить, как он выглядит. Ну да ладно, это не проблема. Нельзя помнить всех и всё - вполне достаточно пары воспоминаний и дежурного набора слов.</p>
+<p>Вежливость и память - наше всё. Опорная точка для здравого рассудка человека, который не может существовать в социальном вакууме. Об этом свидетельствует социальный проект “Third Life”, который был запущен пять лет назад, сразу после Второй Мировой Криптовойны, которая стоила человечеству миллионы сожженных вместе с мозгами нейроимплантов. Потери были так велики, что на освободившихся от обслуживания мощностях было решено запустить ИИ симуляторы восьмого поколения, которые, обработав полностью всю информацию о деятельности человека в сети, создавали его виртуальный образ, который мог почти полноценно участвовать в его социальной жизни.</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2017/10/обычное-утро-2027-года/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!--  -->
+
+
+
   <article id="post-2017/09/предыстория-одного-мага" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
@@ -412,102 +450,6 @@
 
 
 
-  <article id="post-2016/10/лёгкая-интеграция-tor-в-android-приложение-на-примере-клиента-для-рутрекера" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2016-10-18T07:00:00.000Z"><a href="/2016/10/лёгкая-интеграция-tor-в-android-приложение-на-примере-клиента-для-рутрекера/">2016-10-18</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/10/лёгкая-интеграция-tor-в-android-приложение-на-примере-клиента-для-рутрекера/">Лёгкая интеграция tor в android приложение на примере клиента для рутрекера</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/313030%7D">Оригинал поста на хабре</a></p>
-<p>Мне давно было интересно, можно ли легко добавить проксирование через тор в Android приложение. Вроде бы довольно очевидная задача, плюс тор браузеры уже под эту платформу давно есть… Но есть много задач, которые сложнее, чем кажутся. Для нетерпеливых сразу скажу - да, можно, и получается довольно легко, быстро и классно. В особенности если не копать с нуля, а воспользоваться моими наработками.</p>
-<p>Для примера я буду использовать приложение для работы с рутрекером - никто не любит код, который работает со сферический конём в вакууме. Раньше это приложение обходило блокировку <a target="_blank" rel="noopener" href="https://habrahabr.ru/post/279267/">при помощи Google Compression Proxy</a> - но увы - то ли рутрекер, то ли гугл выпилил возможность авторизации с этой проксёй. Сразу скажу, что, конечно, есть всякие впны и прочее, что вы используете для лёгкого обхода блокировки и просмотра сериальчиков. Но речь здесь идёт не про это. Как вы понимаете, тор можно использовать в мобильном приложении для огромного количества вещей - например, для доступа к веб сайтам в .onion или для реализации особо безопасного мессенджера.
-<cut></p>
-<h1>Как подключить библиотеку для работы с Тором</h1>
-<h2>Как собрать с нуля</h2>
-Если вас не интересует сборка с нуля, то сразу перейдите к следующему заголовку.
-
-<p>Итак, что у нас есть на эту тему из готового инструментария. Есть особый репозиторий от неких ребят под предводительством Microsoft (ссылка в подвале). Вроде бы у них всё работало - но качество и механизм сборки просто ужасают. А ещё репозиторий устарел на два года. И скомпилированный версии библиотеки там нет, есть только довольно стрёмные инструкции по тому, как собрать её самостоятельно (в стиле - “я делал так, не знаю почему, но без этого ничего не работало”). Впрочем, имеющихся инструкций вполне достаточно для того, чтобы обновить код до актуального состояния и исправить все странные косяки.</p>
-<ol><li>Клонируем себе этот репозиторий.
-
-</li>
-<li>Обновляем там компонент, который отвечает за управление тором - jtorctl. Они использовали форк основного репозитория с правками от briar, но эти правки уже включены в основной репозиторий, так что лучше взять с основного. Можно подключать из maven репозитория, но я такие вещи обычно забираю исходниками - можно сразу посмотреть, прогнать анализ и править на лету баги - проект-то довольно сырой, несмотря на возраст.
-
-</li>
-<li>Обновляем geoip и geoip6 — базы данных блоков IP-адресов с привязкой к географическому положению каждого блока для версий IPv4 и IPv6 соответственно. Для этого скачиваем на сайте тора windows expert bundle.
-
-</li>
-<li>Обновляем сам тор (то есть нативную библиотеку). Стандартной общедоступной нет (ну или я плохо искал) - так что идём к ребятам, которые разрабатывают тор и тор браузер под андроид (Orbot и Orfox), берём последний релиз их Orbot и вынимаем оттуда библиотеку. Тор там довольно свежий, что приятно.
-
-</li>
-<li>Правим руками всё, что перестало компилироваться в нашем проекте. Несколько функций в зависимых библиотеках изменились, но в целом всё интуитивно понятно и поправимо за 5 минут.
-
-</li>
-<li>Следуя рекомендациям ридми нашего проекта, создаём локальные мавен репозитории и строим из кучи кусков наш проект. Кстати, обратите внимание, что билд скрипт настолько кривой, что в одном месте включает в себя предыдущий релиз себя же. Жуть. Так что рекомендую переписать его заново, простым и понятным языком, чтобы получить на выходе обыкновенную библиотеку aar.
-</li>
-</ol>
-<h2>Как собрать из моих наработок</h2>
-Пункты 1-6 я уже сделал за вас, так что просто соберите библиотеку из моего репозитория, или скачайте её в секции релизов. Ссылка будет в “подвале” поста. Однако обращаю внимание, что правильным будет проверить код и библиотеки на соответствие оригинальным и отсутствие закладок. Не стоит такие вещи добавлять вслепую в свои приложения.
-
-<h1>Как перестать волноваться и начать проксировать через тор</h1>
-Сначала нужно включить тор:
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int totalSecondsPerTorStartup = 4 * 60;</span><br><span class="line">int totalTriesPerTorStartup = 5;</span><br><span class="line">try &#123;</span><br><span class="line">  boolean ok = onionProxyManager.startWithRepeat(totalSecondsPerTorStartup, totalTriesPerTorStartup);</span><br><span class="line">  if (!ok)</span><br><span class="line">    Log.e(&quot;TorTest&quot;, &quot;Couldn&#x27;t start Tor!&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">  catch (InterruptedException | IOException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Затем подождать, пока он подцепится:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">while (!onionProxyManager.isRunning())</span><br><span class="line">  Thread.sleep(90);</span><br></pre></td></tr></table></figure>
-<p>Если всё прошло успешно - ура, он слушает у нас localhost на каком-то случайном порту:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Log.v(&quot;My App&quot;, &quot;Tor initialized on port &quot; + onionProxyManager.getIPv4LocalHostSocksPort());</span><br></pre></td></tr></table></figure>
-<p>Но это пока не всё. У нас теперь есть тор, который слушает порт в качестве Socks4a прокси. Однако далеко не все стандартные библиотеки умеют работать с Socks4a. Там из соображений анонимности требуется, чтобы резолв хоста происходил на прокси, а не ранее. Не знаю, какие из стандартных библиотек это умеют, и у меня был код, написанный с Apache HttpComponents. Я уже <a target="_blank" rel="noopener" href="https://habrahabr.ru/post/308522/">писал ранее</a>, почему их можно использовать, да и данный пост не про то. Если вы хотите, то можете реализовать то же самое на любой другой библиотеке.</p>
-<p>Итак, для использования httpComponents нам нужно переписать ConnectionSocketFactory и SSLConnectionSocketFactory.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">public class MySSLConnectionSocketFactory extends SSLConnectionSocketFactory &#123;</span><br><span class="line"></span><br><span class="line">    public MySSLConnectionSocketFactory(final SSLContext sslContext) &#123;</span><br><span class="line">        super(sslContext);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Socket createSocket(final HttpContext context) throws IOException &#123;</span><br><span class="line">        return new Socket();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Socket connectSocket(</span><br><span class="line">            int connectTimeout,</span><br><span class="line">            Socket socket,</span><br><span class="line">            final HttpHost host,</span><br><span class="line">            final InetSocketAddress remoteAddress,</span><br><span class="line">            final InetSocketAddress localAddress,</span><br><span class="line">            final HttpContext context) throws IOException &#123;</span><br><span class="line">        Args.notNull(host, &quot;HTTP host&quot;);</span><br><span class="line">        Args.notNull(remoteAddress, &quot;Remote address&quot;);</span><br><span class="line">        InetSocketAddress socksaddr = (InetSocketAddress) context.getAttribute(&quot;socks.address&quot;);</span><br><span class="line">        socket = new Socket();</span><br><span class="line">        connectTimeout = 100000;</span><br><span class="line">        socket.setSoTimeout(connectTimeout);</span><br><span class="line">        socket.connect(new InetSocketAddress(socksaddr.getHostName(), socksaddr.getPort()), connectTimeout);</span><br><span class="line">        DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream());</span><br><span class="line">        outputStream.write((byte) 0x04);</span><br><span class="line">        outputStream.write((byte) 0x01);</span><br><span class="line">        outputStream.writeShort((short) host.getPort());</span><br><span class="line">        outputStream.writeInt(0x01);</span><br><span class="line">        outputStream.write((byte) 0x00);</span><br><span class="line">        outputStream.write(host.getHostName().getBytes());</span><br><span class="line">        outputStream.write((byte) 0x00);</span><br><span class="line"></span><br><span class="line">        DataInputStream inputStream = new DataInputStream(socket.getInputStream());</span><br><span class="line">        if (inputStream.readByte() != (byte) 0x00 || inputStream.readByte() != (byte) 0x5a) &#123;</span><br><span class="line">            throw new IOException(&quot;SOCKS4a connect failed&quot;);</span><br><span class="line">        &#125; else</span><br><span class="line">            Log.v(&quot;SSLConnectionSF&quot;, &quot;SOCKS4a connect ok!&quot;);</span><br><span class="line">        inputStream.readShort();</span><br><span class="line">        inputStream.readInt();</span><br><span class="line"></span><br><span class="line">        SSLConnectionSocketFactory sslSocketFactory = SSLConnectionSocketFactory.getSocketFactory();</span><br><span class="line">        SSLSocket sslSocket = (SSLSocket) sslSocketFactory.createLayeredSocket(socket, host.getHostName(), host.getPort(), context);</span><br><span class="line">        prepareSocket(sslSocket);</span><br><span class="line">        return sslSocket;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public class MyConnectionSocketFactory implements ConnectionSocketFactory &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Socket createSocket(final HttpContext context) throws IOException &#123;</span><br><span class="line">        return new Socket();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Socket connectSocket(</span><br><span class="line">            int connectTimeout,</span><br><span class="line">            Socket socket,</span><br><span class="line">            final HttpHost host,</span><br><span class="line">            final InetSocketAddress remoteAddress,</span><br><span class="line">            final InetSocketAddress localAddress,</span><br><span class="line">            final HttpContext context) throws IOException, ConnectTimeoutException &#123;</span><br><span class="line"></span><br><span class="line">        InetSocketAddress socksaddr = (InetSocketAddress) context.getAttribute(&quot;socks.address&quot;);</span><br><span class="line">        socket = new Socket();</span><br><span class="line">        connectTimeout = 100000;</span><br><span class="line">        socket.setSoTimeout(connectTimeout);</span><br><span class="line">        socket.connect(new InetSocketAddress(socksaddr.getHostName(), socksaddr.getPort()), connectTimeout);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream());</span><br><span class="line">        outputStream.write((byte) 0x04);</span><br><span class="line">        outputStream.write((byte) 0x01);</span><br><span class="line">        outputStream.writeShort((short) host.getPort());</span><br><span class="line">        outputStream.writeInt(0x01);</span><br><span class="line">        outputStream.write((byte) 0x00);</span><br><span class="line">        outputStream.write(host.getHostName().getBytes());</span><br><span class="line">        outputStream.write((byte) 0x00);</span><br><span class="line"></span><br><span class="line">        DataInputStream inputStream = new DataInputStream(socket.getInputStream());</span><br><span class="line">        if (inputStream.readByte() != (byte) 0x00 || inputStream.readByte() != (byte) 0x5a) &#123;</span><br><span class="line">            throw new IOException(&quot;SOCKS4a connect failed&quot;);</span><br><span class="line">        &#125; else</span><br><span class="line">            Log.v(&quot;SSLConnectionSF&quot;, &quot;SOCKS4a connect ok!&quot;);</span><br><span class="line">        inputStream.readShort();</span><br><span class="line">        inputStream.readInt();</span><br><span class="line">        return socket;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Использовать эти фабрики легко и просто. Для этого нужно создать HttpClient, который использует эти библиотеки:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public HttpClient getNewHttpClient() &#123;</span><br><span class="line"></span><br><span class="line">     Registry&lt;ConnectionSocketFactory&gt; reg = RegistryBuilder.&lt;ConnectionSocketFactory&gt;create()</span><br><span class="line">             .register(&quot;http&quot;, new MyConnectionSocketFactory())</span><br><span class="line">             .register(&quot;https&quot;, new MySSLConnectionSocketFactory(SSLContexts.createSystemDefault()))</span><br><span class="line">             .build();</span><br><span class="line">     PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager(reg);</span><br><span class="line">     return HttpClients.custom()</span><br><span class="line">             .setConnectionManager(cm)</span><br><span class="line">             .build();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>И указать ему наш прокси сервер:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HttpClient cli = getNewHttpClient();</span><br><span class="line"> int port = onionProxyManager.getIPv4LocalHostSocksPort();</span><br><span class="line"> InetSocketAddress socksaddr = new InetSocketAddress(&quot;127.0.0.1&quot;, port);</span><br><span class="line"> HttpClientContext context = HttpClientContext.create();</span><br><span class="line"> context.setAttribute(&quot;socks.address&quot;, socksaddr);</span><br></pre></td></tr></table></figure>
-<p>Всё, теперь мы можем использовать тор так же, как если бы делали обыкновенные запросы. Более того, мы можем так же обращаться и к веб сайтам .onion.</p>
-<h1>Результат</h1>
-Получившийся код я использовал в своём приложении для рутрекера. Да, инициализация тора занимает около 20 секунд, и страницы грузятся не так быстро - но зато мы гарантированно проходим блокировку. А все ресурсы, которые не блокированы, подгружаются через обычное соединение. Можно было бы остальные ресурсы пропускать через Google Compression Proxy, но многие жаловались, что у них заблокирован этот прокси - так что я не стал этого делать. Конечно, в приложении можно было бы ещё много всего сделать - например, кэшировать статику на телефоне для экономии трафика и более быстрой работы - но это не столь критично, да и приложение я писал скорее для примера.
-
-<h1>Заключение</h1>
-Тор на андроиде - классная и удобная штука, которая достаточно работает, и её действительно можно использовать в своих приложениях. Кстати да, есть гораздо более лёгкий способ это делать - просто требовать установки Orbot, который сам поднимет вам тор. Но мне не нравятся зависимости одних приложений от других, да и 3 лишних мегабайта не так критичны в размере приложения. Так что если кому понравилось моё решение - используйте, делайте пулл реквесты, и да пребудет с вами свобода.
-
-<h1>Ссылки:</h1>
-<ol>
-    <li><a target="_blank" rel="noopener" href="https://github.com/thaliproject/Tor_Onion_Proxy_Library">Исходная библиотека</a>;</li>
-    <li><a target="_blank" rel="noopener" href="https://github.com/jehy/Tor-Onion-Proxy-Library">Моя сборка библиотеки</a>;</li>
-    <li><a target="_blank" rel="noopener" href="https://github.com/jehy/rutracker-free">Приложение для рутрекера</a>;</li>
-    <li><a target="_blank" rel="noopener" href="https://guardianproject.info">Guardian Project</a> - ребята, которым мы обязаны наличием нативной тор библиотеки.</li>
-</ol>
-<img src="https://habrastorage.org/files/195/45e/e8d/19545ee8d9e144c4860db4f6490d804a.jpg" align="center"/>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-<!--  -->
-
-
-
 
 
     <nav id="page-nav">
@@ -531,7 +473,7 @@
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.43px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.71px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.71px;">android</a> <a href="/tags/applet/" style="font-size: 12.14px;">applet</a> <a href="/tags/arduino/" style="font-size: 11.43px;">arduino</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.71px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15px;">dev</a> <a href="/tags/esphome/" style="font-size: 10.71px;">esphome</a> <a href="/tags/fun/" style="font-size: 14.29px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.29px;">habr</a> <a href="/tags/home-assistant/" style="font-size: 11.43px;">home assistant</a> <a href="/tags/java/" style="font-size: 12.14px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.71px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/openid/" style="font-size: 10.71px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.14px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.14px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 15.71px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%A0%D0%98/" style="font-size: 11.43px;">РИ</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.14px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.71px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.43px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.57px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 14.29px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.14px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.71px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.71px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.86px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 16.43px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.29px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.71px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.71px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.71px;">работа</a> <a href="/tags/%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%8B%D0%B5-%D0%B8%D0%B3%D1%80%D1%8B/" style="font-size: 10px;">ролевые игры</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.14px;">таро</a> <a href="/tags/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC/" style="font-size: 11.43px;">умный дом</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.86px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.71px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.57px;">цитаты</a>
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.43px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.71px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.71px;">android</a> <a href="/tags/applet/" style="font-size: 12.14px;">applet</a> <a href="/tags/arduino/" style="font-size: 11.43px;">arduino</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.71px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15px;">dev</a> <a href="/tags/esphome/" style="font-size: 10.71px;">esphome</a> <a href="/tags/fun/" style="font-size: 14.29px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.29px;">habr</a> <a href="/tags/home-assistant/" style="font-size: 12.14px;">home assistant</a> <a href="/tags/java/" style="font-size: 12.14px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.71px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/openid/" style="font-size: 10.71px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.14px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.14px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 15.71px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%A0%D0%98/" style="font-size: 11.43px;">РИ</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.14px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.71px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.43px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.57px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 14.29px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.14px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.71px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.71px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.86px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 16.43px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.29px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.71px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.71px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.71px;">работа</a> <a href="/tags/%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%8B%D0%B5-%D0%B8%D0%B3%D1%80%D1%8B/" style="font-size: 10px;">ролевые игры</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.14px;">таро</a> <a href="/tags/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC/" style="font-size: 12.14px;">умный дом</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.86px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.71px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.57px;">цитаты</a>
   </div>
 </div>
 
@@ -540,6 +482,10 @@
 <div class="widget tag">
   <h3 class="title">Recent Posts</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2024/01/умные-напоминалки/">Умные напоминалки</a>
+      </li>
     
       <li>
         <a href="/2023/09/прекрасное-далеко-2013/">Прекрасное далёко, не будь со мной жестоко</a>
@@ -557,10 +503,6 @@
         <a href="/2022/10/Мгла отступает/">Мгла отступает. Отчёт персонажа.</a>
       </li>
     
-      <li>
-        <a href="/2022/09/задачки по ноде/">Задачки по ноде</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -569,7 +511,7 @@
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2023 Jehy
+  &copy; 2024 Jehy
   
 </div>-->
 <div class="clearfix"></div>
