@@ -1,0 +1,258 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="verify-admitad" content="71b6485389" />
+  
+  <title>Какую базу данных выбрать для Home Assistant | Jehy&#39;s notes</title>
+  <meta name="author" content="Jehy">
+  
+  <meta name="description" content="Оригинал поста на хабре
+ВведениеНа случай, если ещё не встречались с HA (Home Assistant) - это opensource веб сервис для умного дома, доступный как на облаке, так и в виде self hosted, который позволяет подключить к себе кучу всяких устройств и настроить для них любые желаемые автоматизации. Например, открывать ворота при вашем приближении или кормить кошку по праздничным дням календаря.
+Сегодня мы поговорим о том, какую СУБД (Систему Управления Базы Данными) для него лучше выбрать. Потому что очень часто в чат по HA приходят новички, и спрашивают, что им делать с MySQL, а им в ответ говорят, что они наркоманы и нанюхались одного известного видео с ютуба. А почему такая реакция, и что делать - начинающему автоматизатору понять довольно сложно без довольно специфического багажа знаний в айти. Так что надеюсь, что эта статья кому-то поможет.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Какую базу данных выбрать для Home Assistant"/>
+  <meta property="og:site_name" content="Jehy&#39;s notes"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Jehy&#39;s notes" type="application/atom+xml">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Jehy&#39;s notes</a></h1>
+  <h2><a href="/">Insert 1 into dual</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/wishlist">Wishlist</a></li>
+    
+      <li><a href="/donate">Donate</a></li>
+    
+      <li><a href="/atom.xml">Subscribe</a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://whois.jehy.ru">Contact me</a></li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-2024/01/какую-базу-данны-выбрать-для-home-assistant" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2024-01-12T23:55:54.000Z"><a href="/2024/01/какую-базу-данны-выбрать-для-home-assistant/">2024-01-12</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Какую базу данных выбрать для Home Assistant</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/articles/786116/">Оригинал поста на хабре</a></p>
+<h1 id="Введение"><a href="#Введение" class="headerlink" title="Введение"></a>Введение</h1><p>На случай, если ещё не встречались с <a target="_blank" rel="noopener" href="https://www.home-assistant.io/">HA (Home Assistant)</a> - это opensource веб сервис для умного дома, доступный как на облаке, так и в виде self hosted, который позволяет подключить к себе кучу всяких устройств и настроить для них любые желаемые автоматизации. Например, открывать ворота при вашем приближении или кормить кошку по праздничным дням календаря.</p>
+<p>Сегодня мы поговорим о том, какую СУБД (Систему Управления Базы Данными) для него лучше выбрать. Потому что очень часто в чат по HA приходят новички, и спрашивают, что им делать с MySQL, а им в ответ говорят, что они наркоманы и нанюхались одного известного видео с ютуба. А почему такая реакция, и что делать - начинающему автоматизатору понять довольно сложно без довольно специфического багажа знаний в айти. Так что надеюсь, что эта статья кому-то поможет.</p>
+<span id="more"></span>
+<p>Итак, Home Assistant написан с использованием SQLAlchemy - грубо говоря, это библиотека, которая в теории позволяет приложению использовать любую СУБД. Все возможные на свете варианты мы рассматривать не будем и ограничимся тремя вариантами - MariaDB, PostgreSQL, и вариант, который идёт в HA по умолчанию - SQLite. MySQL отдельно упоминать не буду т.к. различия с MariaDB до сих пор не такие значительные.</p>
+<h1 id="Частые-аргументы"><a href="#Частые-аргументы" class="headerlink" title="Частые аргументы"></a>Частые аргументы</h1><p>В статьях и видео, которые рекомендуют установку MariaDB&#x2F;MySQL, в лучшем случае говорится, что она <strong>быстрее, чем SQLite</strong>. На этом сравнение заканчивается, и мы бодро идём ставить MariaDB. Но… Так ли это?</p>
+<p>Если мы посмотрим бенчмарки на чтение данных, то совершенно внезапно оказывается… Что SQLite как минимум не медленнее, чем остальные два наших конкурента. В теории, он может оказаться медленнее на больших наборах данных, однако сколько данных - много? На практике оказывается, что много - это порядок десятков гигабайтов. А теперь посмотрите на свой размер базы. Моя, при условии большого количества устройств и истории, весит не более 200 MB…</p>
+<p>Ну ладно, наверное не просто так люди MariaDB ставят. Видимо, есть какие-то ещё преимущества.</p>
+<p>Хмм, может, то, что <strong>SQLite не очень хорошо работает с параллельными процессами записи</strong>?</p>
+<p>Неа. Довольно сложно представить себе умный дом с настолько частыми операциями записи. Кроме того, бутылочным горлышком фактически будет ваш HA, который написан на питоне, который обычно использует довольно мало потоков. Более того, используется SQLAlchemy, который в целом умеет в многопоточность, но только если вы специально писали код с расчётом на неё. Как вы думаете, занимались ли этим разработчики HA? Честно скажу - свечку не держал - но навряд ли.</p>
+<p>Ну, ладно. Может быть, <strong>другие решения надёжнее, чем SQLite</strong>, и ваша база упадёт с меньшей вероятность?</p>
+<p>Ммм. Ну ваще нет. Нужно очень сильно постараться, чтобы запороть SQLite базу. Потому что это всего лишь файл с запросами в текстовом виде. Всегда может случиться какая-то проблема с железом, но от неё вообще мало что спасает кроме бекапов.</p>
+<p>В то время как MariaDB и PostgreSQL имеют довольно неплохие шансы накрыться при некорректном завершении работы - например, при выключении сервера кнопкой или отключении электричества.</p>
+<p>Хорошо. Ну может хотя бы <strong>с бекапами будет всё лучше</strong>?</p>
+<p>Боюсь расстроить, но тут тоже подстава. Для бекапа SQLite достаточно на горячую (при запущенном HA) скопировать файлик базы. А вот если вы скопируете файлы PostgreSQL или MySQL на горячую, то они у вас просто не заведутся. И нужно или останавливать СУБД или пользоваться специальными инструментами экспорта…</p>
+<h1 id="Если-вам-этого-мало"><a href="#Если-вам-этого-мало" class="headerlink" title="Если вам этого мало"></a>Если вам этого мало</h1><p>Помимо этого, есть ещё не очевидные плюшки:</p>
+<ol>
+<li>Установка с видео выглядит легко и просто для пустого HA. Если у вас уже есть данные, то всё становится гораздо интереснее!</li>
+<li>Обратная миграция на SQLite будет далеко не простой.</li>
+<li>Разработчики HA тестируют новые релизы на SQLite. И если у вас вдруг что-то сломается, то вам посочувствуют полтора инвалида, и разбираться с этим вы будете самостоятельно.</li>
+<li>Когда вы разделяете конфиг и базу, вам придётся заботиться о консистентности бэкапов. Иначе вы получите базу с лишними сущностями, или же наоборот - конфиг без данных.</li>
+</ol>
+<h1 id="Так-почему-все-не-используют-SQLite"><a href="#Так-почему-все-не-используют-SQLite" class="headerlink" title="Так почему все не используют SQLite?"></a>Так почему все не используют SQLite?</h1><p>Может возникнуть вопрос, почему же тогда SQLite не используется везде, раз остальные СУБД такие плохие.</p>
+<p>Они не плохие. У них просто принципиально другое назначение:</p>
+<ul>
+<li>Они могут использоваться с множества других машин.</li>
+<li>Поддерживают многопоточную запись данных.</li>
+<li>Поддерживают шардирование и репликацию.</li>
+<li>Могут восстановить данные на произвольную точку времени.</li>
+<li>Предлагают дополнительные типы данных, которые часто бывают востребованы в разработке.</li>
+</ul>
+<p>И ещё много-много других вещей. Которые никак вам не пригодятся в случае HA.</p>
+<h1 id="И-всё-же-в-каком-случае-мне-стоит-поставить-Maria-PostgreSQL"><a href="#И-всё-же-в-каком-случае-мне-стоит-поставить-Maria-PostgreSQL" class="headerlink" title="И всё же - в каком случае мне стоит поставить Maria&#x2F;PostgreSQL?"></a>И всё же - в каком случае мне стоит поставить Maria&#x2F;PostgreSQL?</h1><p>Use cases бывают разные, и, может быть, вы - один из тех, кому это надо? Я накидал примерный чек лист:</p>
+<ul>
+<li>Вы являетесь квалифицированным разработчиком, DevOPS или DBA.</li>
+<li>У вас уже есть Maria&#x2F;PostgreSQL, и вы уже его настроили и бэкапите.</li>
+<li>У вас база данных HA на десятки гигабайт (если да, скажите, пожалуйста, в комментариях, зачем).</li>
+<li>Вы используете БД для каких-то внешних запросов из другого приложения.</li>
+<li>Вы хотите получать интересный незабываемый опыт.</li>
+</ul>
+<p>В таких случаях - да, может быть и стоит.</p>
+<h1 id="А-сам-ты-чего-добился"><a href="#А-сам-ты-чего-добился" class="headerlink" title="А сам ты чего добился?"></a>А сам ты чего добился?</h1><p>Всё это может прозвучать тухло без указания личного опыта. Да, давайте признаюсь - у меня HA стоит на PostgreSQL. Ровно потому что</p>
+<ul>
+<li>Мне хотелось посмотреть, как это будет работать</li>
+<li>У меня уже крутится несколько инстансов Postgres</li>
+<li>Сам я являюсь веб разработчиком и DBA</li>
+<li>Так же умею настраивать и восстанавливать бэкапы Postgres</li>
+<li>И в целом люблю делать троллейбус из буханки хлеба</li>
+</ul>
+<p>При этом, смигрировав свою базу на 200MB, я не заметил ровно никакого эффекта по росту производительности. И прекрасно отдаю себе отчёт в том, что в любой момент это может выстрелить мне в ногу и придётся смигрировать обратно или снести все данные и начать жизнь с нового листа.</p>
+<h1 id="Что-делать-если-я-уже-на-альтернативной-СУБД"><a href="#Что-делать-если-я-уже-на-альтернативной-СУБД" class="headerlink" title="Что делать, если я уже на альтернативной СУБД?"></a>Что делать, если я уже на альтернативной СУБД?</h1><p>Мигрировать обратно будет довольно больно. Если у вас пока мало данных - лучше снести всё и поставить заново.</p>
+<p>Если много, то лучше озаботиться регулярным бэкапом, дополнительно его делать перед каждым обновлением и быть готовым к тому, что всё превратится в тыкву.</p>
+<h1 id="Но-у-меня-всё-работает-медленно-как-ускориться"><a href="#Но-у-меня-всё-работает-медленно-как-ускориться" class="headerlink" title="Но у меня всё работает медленно, как ускориться?!"></a>Но у меня всё работает медленно, как ускориться?!</h1><p>Не факт, что виновата СУБД. Можно попробовать следующее:</p>
+<ul>
+<li>Писать показания датчиков реже.</li>
+<li>Поиграть с настройками <a target="_blank" rel="noopener" href="https://www.home-assistant.io/integrations/recorder/">recorder</a> и перестать записывать лишнее.</li>
+<li>Сменить устройство, на котором у вас стоит HA, если это китайский огрызок компьютера, который не вытягивает по ресурсам.</li>
+<li>Проверить, используется ли у вас своп. Если да - поиграть с настройками или добавить оперативной памяти.</li>
+<li>Если ничто не помогает - посмотреть, наконец, что пишется в логах :)</li>
+</ul>
+<h1 id="Страшные-ссылки"><a href="#Страшные-ссылки" class="headerlink" title="Страшные ссылки"></a>Страшные ссылки</h1><p>Если вы думаете, что я сгущаю краски, то вот подборка:</p>
+<ol>
+<li>На форуме HA до сих пор <a target="_blank" rel="noopener" href="https://community.home-assistant.io/t/whats-the-best-way-to-backup-the-ha-database-on-mariadb-10/109165">нет ответа</a>, как бэкапить базу на MariaDB</li>
+<li>Ну ладно, на самом деле есть, но вы можете посмотреть, как это <a target="_blank" rel="noopener" href="https://community.home-assistant.io/t/reliable-mariadb-addon-backup-ideas/344851/3">недружелюбно выглядит</a>.</li>
+<li>Можете посмотреть <a target="_blank" rel="noopener" href="https://sigfried.be/blog/migrating-home-assistant-sqlite-to-postgresql/">пост про миграцию на postgres</a>. Главное - не забудьте открыть комментарии и понять, что на самом деле там куча возни с внезапно лишними полями и не импортированными нормально sequences.</li>
+<li>Или посмотреть на <a target="_blank" rel="noopener" href="https://www.redpill-linpro.com/techblog/2023/03/21/migrating-home-assistnt-to-postgresql.html">другую историю миграции</a> и количество плясок с бубном.</li>
+<li>На закуску - <a target="_blank" rel="noopener" href="https://community.home-assistant.io/t/migrating-from-mysql-mariadb-back-to-sqlite/545837/61">тред боли</a>, где при обновлении у многих людей полегла MariaDB и они искали способ откатиться обратно.</li>
+</ol>
+<h1 id="Заключение"><a href="#Заключение" class="headerlink" title="Заключение"></a>Заключение</h1><p>Почему я не стал писать здесь историю своей миграции? Просто для абсолютного большинства пользователей очевидный win-win выбор это SQLite. А остальные в целом должны обладать достаточной квалификацией, чтобы смигрировать сами. Потому что если они ей не обладают - то не смогут поддерживать такую установку и оперировать бэкапами базы.</p>
+<p>На этом, наверное, всё. Буду рад, если вы расскажете мне о своих причинах, успехах и неудачах использования альтернативных СУБД. Если история будет убедительной, то готов выложить инструкцию по миграции на PostgreSQL с сохранением данных и с автоматизированными бекапами :)</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/умный-дом/">умный дом</a>, <a href="/tags/home-assistant/">home assistant</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!-- 
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+</section>
+ -->
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="as_sitesearch" value="articles.jehy.ru">
+  </form>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.33px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.67px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.67px;">android</a> <a href="/tags/applet/" style="font-size: 12px;">applet</a> <a href="/tags/arduino/" style="font-size: 11.33px;">arduino</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.67px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15.33px;">dev</a> <a href="/tags/esphome/" style="font-size: 10.67px;">esphome</a> <a href="/tags/fun/" style="font-size: 14.67px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.33px;">habr</a> <a href="/tags/home-assistant/" style="font-size: 13.33px;">home assistant</a> <a href="/tags/java/" style="font-size: 12px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.67px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/openid/" style="font-size: 10.67px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 16px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%A0%D0%98/" style="font-size: 11.33px;">РИ</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.67px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.33px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 14px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 14.67px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.33px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.67px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.67px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 18px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 16.67px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.67px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.67px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.67px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.67px;">работа</a> <a href="/tags/%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%8B%D0%B5-%D0%B8%D0%B3%D1%80%D1%8B/" style="font-size: 10px;">ролевые игры</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12px;">таро</a> <a href="/tags/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC/" style="font-size: 13.33px;">умный дом</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.67px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.67px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.67px;">цитаты</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2024/01/какую-базу-данны-выбрать-для-home-assistant/">Какую базу данных выбрать для Home Assistant</a>
+      </li>
+    
+      <li>
+        <a href="/2024/01/публикация-локального-сервера-из-дома-в-интернет/">Публикация локального сервера из дома в интернет</a>
+      </li>
+    
+      <li>
+        <a href="/2024/01/умные-напоминалки/">Умные напоминалки</a>
+      </li>
+    
+      <li>
+        <a href="/2023/09/прекрасное-далеко-2013/">Прекрасное далёко, не будь со мной жестоко</a>
+      </li>
+    
+      <li>
+        <a href="/2023/08/отчет-из-банки-со-светлячками/">Отчёт из Банки со светлячками</a>
+      </li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><!--<div class="alignleft">
+  
+  &copy; 2024 Jehy
+  
+</div>-->
+<div class="clearfix"></div>
+</footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

@@ -54,6 +54,49 @@
 </header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article id="post-2014/12/custom-parser-for-wp-noexternallinks" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2014-12-08T18:49:43.000Z"><a href="/2014/12/custom-parser-for-wp-noexternallinks/">2014-12-08</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/12/custom-parser-for-wp-noexternallinks/">Custom parser for WP-NoExternalLinks</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><strong>Warning! I no longer support this plugin after version 3.5.9.9! Please ask questions on wordpress support page.</strong></p>
+<p>Recently I added a new feature to this plugin. Now you can extend it yourself without danger of plugin update which could remove all your changes in plugin code.</p>
+<p>In this sample, we will overwrite function <strong>check_follow</strong>, which checks if link is posted by admin and has <strong>rel&#x3D;”follow”</strong> attribute.
+Let’s imagine we want all our authors to have the same options. How can we accomplish it? Easily!
+Just create file <strong>custom-parser.php</strong> in directory <strong>wp-content&#x2F;uploads</strong> and replace</p>
+<pre lang="php">user_can($author,'manage_options' );</pre> from original function with <pre lang="php">user_can($author,'publish_posts' );</pre> - voila!
+<p>Here is the full code of our new modified class which will be loaded instead of basic one:</p>
+<p><strong>wp-content&#x2F;uploads&#x2F;custom-parser.php</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">defined</span>(<span class="string">&#x27;DB_NAME&#x27;</span>))</span><br><span class="line">  <span class="keyword">die</span>(<span class="string">&#x27;Error: Plugin &quot;wp-noexternallinks&quot; does not support standalone calls, damned hacker.&#x27;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">#include base parser</span></span><br><span class="line"><span class="keyword">include_once</span>(ABSPATH . <span class="string">&#x27;wp-content/plugins/wp-noexternallinks/wp-noexternallinks-parser.php&#x27;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">custom_parser</span> <span class="keyword">extends</span> <span class="title">wp_noexternallinks_parser</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">check_follow</span>(<span class="params"><span class="variable">$matches</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">#support of &quot;meta=follow&quot; option for admins. disabled by default to minify processing.</span></span><br><span class="line">  <span class="keyword">if</span>(!<span class="variable language_">$this</span>-&gt;options[<span class="string">&#x27;dont_mask_admin_follow&#x27;</span>])</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  <span class="variable">$id</span>=<span class="keyword">array</span>(<span class="title function_ invoke__">get_comment_ID</span>(),<span class="title function_ invoke__">get_the_ID</span>());<span class="comment">//it is either page or post</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="variable">$id</span>[<span class="number">0</span>])</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">debug_info</span>(<span class="string">&#x27;It is a comment. id &#x27;</span>.<span class="variable">$id</span>[<span class="number">0</span>]);</span><br><span class="line">  <span class="keyword">elseif</span>(<span class="variable">$id</span>[<span class="number">1</span>])</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">debug_info</span>(<span class="string">&#x27;It is a page. id &#x27;</span>.<span class="variable">$id</span>[<span class="number">1</span>]);</span><br><span class="line">  <span class="variable">$author</span>=<span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">if</span>(<span class="variable">$id</span>[<span class="number">0</span>])</span><br><span class="line">    <span class="variable">$author</span>=<span class="title function_ invoke__">get_comment_author</span>(<span class="variable">$id</span>[<span class="number">0</span>]);</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(<span class="variable">$id</span>[<span class="number">1</span>])</span><br><span class="line">    <span class="variable">$author</span>=<span class="title function_ invoke__">get_the_author_meta</span>(<span class="string">&#x27;ID&#x27;</span>);</span><br><span class="line">  <span class="keyword">if</span>(!<span class="variable">$author</span>)</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">debug_info</span>(<span class="string">&#x27;it is neither post or page, applying usual rules&#x27;</span>);</span><br><span class="line">  <span class="keyword">elseif</span>(<span class="title function_ invoke__">user_can</span>(<span class="variable">$author</span>,<span class="string">&#x27;publish_posts&#x27;</span> )&amp;&amp;(<span class="title function_ invoke__">stripos</span>(<span class="variable">$matches</span>[<span class="number">0</span>],<span class="string">&#x27;rel=&quot;follow&quot;&#x27;</span>)!==<span class="literal">FALSE</span> || <span class="title function_ invoke__">stripos</span>(<span class="variable">$matches</span>[<span class="number">0</span>],<span class="string">&quot;rel=&#x27;follow&#x27;&quot;</span>)!==<span class="literal">FALSE</span>))</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">debug_info</span>(<span class="string">&#x27;This link has a follow atribute and is posted by author, not masking it.&#x27;</span>);</span><br><span class="line">    <span class="comment">#wordpress adds rel=&quot;nofollow&quot; by itself when posting new link in comments. get rid of it! Also, remove our follow attibute - it is unneccesary.</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">str_ireplace</span>(<span class="keyword">array</span>(<span class="string">&#x27;rel=&quot;follow&quot;&#x27;</span>,<span class="string">&quot;rel=&#x27;follow&#x27;&quot;</span>,<span class="string">&#x27;rel=&quot;nofollow&quot;&#x27;</span>),<span class="string">&#x27;&#x27;</span>,<span class="variable">$matches</span>[<span class="number">0</span>]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">debug_info</span>(<span class="string">&#x27;it does not have rel follow or is not posted by author, masking it&#x27;</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>One more sample is <a target="_blank" rel="noopener" href="https://jehy.ru/articles/2014/12/09/encrypting-links-for-wp-noexternallinks/">encrypting links</a>.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!--  -->
+
+
+
   <article id="post-2014/10/бегущий-в-лабиринте-победа-маркетинг" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
@@ -456,43 +499,6 @@ I could not use yum any more:
 
 
 
-  <article id="post-2013/10/немного-про-разработку" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2013-10-07T07:38:45.000Z"><a href="/2013/10/немного-про-разработку/">2013-10-07</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/10/немного-про-разработку/">Немного про разработку</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p>Решил утащить на память к себе две чудесные статьи, которые полностью описывают моё отношение к разработке. Из первой я несогласен только с одним абзацем - который говорит про невозможность работы с неработающим кодом.</p>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/10/немного-про-разработку/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-<!--  -->
-
-
-
 
 
     <nav id="page-nav">
@@ -516,7 +522,7 @@ I could not use yum any more:
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.43px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.71px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.71px;">android</a> <a href="/tags/applet/" style="font-size: 12.14px;">applet</a> <a href="/tags/arduino/" style="font-size: 11.43px;">arduino</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.71px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15px;">dev</a> <a href="/tags/esphome/" style="font-size: 10.71px;">esphome</a> <a href="/tags/fun/" style="font-size: 14.29px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.29px;">habr</a> <a href="/tags/home-assistant/" style="font-size: 12.86px;">home assistant</a> <a href="/tags/java/" style="font-size: 12.14px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.71px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/openid/" style="font-size: 10.71px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.14px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.14px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 15.71px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%A0%D0%98/" style="font-size: 11.43px;">РИ</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.14px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.71px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.43px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.57px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 14.29px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.14px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.71px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.71px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.86px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 16.43px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.29px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.71px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.71px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.71px;">работа</a> <a href="/tags/%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%8B%D0%B5-%D0%B8%D0%B3%D1%80%D1%8B/" style="font-size: 10px;">ролевые игры</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.14px;">таро</a> <a href="/tags/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC/" style="font-size: 12.86px;">умный дом</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.86px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.71px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.57px;">цитаты</a>
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.33px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.67px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.67px;">android</a> <a href="/tags/applet/" style="font-size: 12px;">applet</a> <a href="/tags/arduino/" style="font-size: 11.33px;">arduino</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.67px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15.33px;">dev</a> <a href="/tags/esphome/" style="font-size: 10.67px;">esphome</a> <a href="/tags/fun/" style="font-size: 14.67px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.33px;">habr</a> <a href="/tags/home-assistant/" style="font-size: 13.33px;">home assistant</a> <a href="/tags/java/" style="font-size: 12px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.67px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/openid/" style="font-size: 10.67px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 16px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%A0%D0%98/" style="font-size: 11.33px;">РИ</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.67px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.33px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 14px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 14.67px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.33px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.67px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.67px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 18px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 16.67px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.67px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.67px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.67px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.67px;">работа</a> <a href="/tags/%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%8B%D0%B5-%D0%B8%D0%B3%D1%80%D1%8B/" style="font-size: 10px;">ролевые игры</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12px;">таро</a> <a href="/tags/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC/" style="font-size: 13.33px;">умный дом</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.67px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.67px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.67px;">цитаты</a>
   </div>
 </div>
 
@@ -525,6 +531,10 @@ I could not use yum any more:
 <div class="widget tag">
   <h3 class="title">Recent Posts</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2024/01/какую-базу-данны-выбрать-для-home-assistant/">Какую базу данных выбрать для Home Assistant</a>
+      </li>
     
       <li>
         <a href="/2024/01/публикация-локального-сервера-из-дома-в-интернет/">Публикация локального сервера из дома в интернет</a>
@@ -540,10 +550,6 @@ I could not use yum any more:
     
       <li>
         <a href="/2023/08/отчет-из-банки-со-светлячками/">Отчёт из Банки со светлячками</a>
-      </li>
-    
-      <li>
-        <a href="/2023/05/умный-дом-у-геккона-и-сверчков/">Умный дом для геккона и сверчков - год спустя</a>
       </li>
     
   </ul>
