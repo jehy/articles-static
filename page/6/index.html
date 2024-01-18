@@ -54,6 +54,45 @@
 </header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article id="post-2016/03/хабростатистика-—-в-какое-время-лучше-публиковать-статью-на-хабре" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2016-03-18T07:00:00.000Z"><a href="/2016/03/хабростатистика-—-в-какое-время-лучше-публиковать-статью-на-хабре/">2016-03-18</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/03/хабростатистика-—-в-какое-время-лучше-публиковать-статью-на-хабре/">ХаброСтатистика — в какое время лучше публиковать статью на хабре?</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/279607%7D">Оригинал поста на хабре</a></p>
+<p>Астрологи объявили месяц статистики, и пожалуй я присоединюсь на сегодня к авторам статистических статей.</p>
+<p>Наверняка вы задумывались - когда лучше публиковать статью? В выходные, чтобы её внимательно читали? В пятницу, чтобы у всех было хорошее настроение? В понедельник, когда после выходных все выползают читать хабр? А может быть, лучше выбрать время обеденного перерыва? Сразу оговорюсь, что данный вопрос имеет значение не только для хабра - примерно то же самое можно сказать про почти любые публикации, если нету какой-то совсем суровой конкретики. У меня есть своя гипотеза, о ней я расскажу в конце статьи.</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/03/хабростатистика-—-в-какое-время-лучше-публиковать-статью-на-хабре/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!--  -->
+
+
+
   <article id="post-2016/03/есть-ли-жизнь-без-google-play-альтернативы-и-обновление-приложений" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
@@ -720,93 +759,6 @@ $text_filtered=apply_filters('wp_noexternallinks',$text);
 
 
 
-  <article id="post-2014/12/encrypting-links-for-wp-noexternallinks" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2014-12-09T12:03:33.000Z"><a href="/2014/12/encrypting-links-for-wp-noexternallinks/">2014-12-09</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2014/12/encrypting-links-for-wp-noexternallinks/">Encrypting links for WP-NoExternalLinks</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p><strong>Warning! I no longer support this plugin after version 3.5.9.9! Please ask questions on wordpress support page.</strong></p>
-<p>This article is based on <a target="_blank" rel="noopener" href="https://www.digi77.com/how-to-protect-your-wordpress-external-links/">this one</a> and the latest version of plugin. Now you can easily encrypt your links without changing plugin code.</p>
-<ol>
-<li>Ensure that you have <strong>php-mcrypt</strong> installed:</li>
-</ol>
-<p>For CentOS, type</p>
-<pre lang="bash">
-sudo yum install php-mcrypt
-</pre>
-<p>For ubuntu, type</p>
-<pre lang="bash">
-sudo apt-get install php5-mcrypt
-</pre>
-<p>For windows, enable this extension in php.ini:</p>
-<pre lang="bash">
-extension=php_mcrypt.dll
-</pre>
-<ol start="2">
-<li>Create file <strong>wp-content&#x2F;uploads&#x2F;custom-parser.php</strong> and add here the following:</li>
-</ol>
-<pre lang="php" line="1">
-<?php
-if(!defined('DB_NAME'))
-  die('Error: Plugin "wp-noexternallinks" does not support standalone calls, damned hacker.');
- 
-#include base parser
-include_once(ABSPATH . 'wp-content/plugins/wp-noexternallinks/wp-noexternallinks-parser.php');
- 
-class custom_parser extends wp_noexternallinks_parser
-{
-  var $salt,$iv;
-  function init_crypt()
-  {
-    if(!function_exists('mcrypt_create_iv'))
-      die('php-mcrypt library not installed, can not process links!');
-    $this->salt ='ms8-sRt-kBs5-s1wQ';
-    $this->iv=mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND);
-  }
-  function encode_link($url)
-  {
-    if(!$this->salt)
-      $this->init_crypt();
-    return trim(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $this->salt, $url, MCRYPT_MODE_ECB, $this->iv)));
-  }
-  function decode_link($url)
-  { 
-    if(!$this->salt)
-      $this->init_crypt();
-    return trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $this->salt, base64_decode($url), MCRYPT_MODE_ECB, $this->iv));
-  }
-}
-?>
-</pre>
-<p>Do not forget to change <strong>$salt</strong> to any custom value! Also, add statistic handling from the original function if you use statistics.</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-<!--  -->
-
-
-
 
 
     <nav id="page-nav">
@@ -841,6 +793,10 @@ class custom_parser extends wp_noexternallinks_parser
   <ul class="entry">
     
       <li>
+        <a href="/2024/01/яндекс-лампа-через-local-tuya/">Умные напоминалки</a>
+      </li>
+    
+      <li>
         <a href="/2024/01/какую-базу-данны-выбрать-для-home-assistant/">Какую базу данных выбрать для Home Assistant</a>
       </li>
     
@@ -854,10 +810,6 @@ class custom_parser extends wp_noexternallinks_parser
     
       <li>
         <a href="/2023/09/прекрасное-далеко-2013/">Прекрасное далёко, не будь со мной жестоко</a>
-      </li>
-    
-      <li>
-        <a href="/2023/08/отчет-из-банки-со-светлячками/">Отчёт из Банки со светлячками</a>
       </li>
     
   </ul>

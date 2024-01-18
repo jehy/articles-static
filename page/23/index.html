@@ -54,6 +54,56 @@
 </header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article id="post-2008/10/delete-clean-wiki-old-revisions" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2008-10-05T22:39:02.000Z"><a href="/2008/10/delete-clean-wiki-old-revisions/">2008-10-05</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2008/10/delete-clean-wiki-old-revisions/">Чистка wiki от старых ревизий/Clean old wiki revisions</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p>База данных проекта, основанного на движке wiki, мгновенно разрастается до абсолютно несуразных размеров. По непонятным причинам (видимо, какие-то соображения внутренней политики) у самой wikimedia нет штатных механизмов для удаления старых версий (ревизий) статей.</p>
+<p>Но есть замечательный плагин под названием “SpecialDeleteOldRevisions”, который эту функциональность обеспечивает. С его помощью можно удалить статьи, фильтруя по<UL></p>
+<li>Категории статьи</li>
+<li>Дате создания ревизии</li>
+<li>Названию статьи</li>
+</UL>При этом можно удалять архивные (удалённые) статьи, а можно нет. Но, как всегда, после некоторой работы напильником. Я её осуществил и выложил пропатченный плагин у себя.
+[Оригинальная страница плагина](http://www.mediawiki.org/wiki/Extension:SpecialDeleteOldRevisions)
+[Моя пропатченная версия для вики 13.2](https://jehy.ru/dload/specialdeleteoldrevisions.zip)
+Для того, чтобы установить плагин, скопируйте его директорию "SpecialDeleteOldRevisions" в "/extensions", после чего добавьте в файл LocalSettings.php строчки
+<pre lang="php">
+ $wgGroupPermissions['sysop']['DeleteOldRevisions'] = true;
+ include_once('extensions/SpecialDeleteOldRevisions/SpecialDeleteOldRevisions.php');
+</pre>
+После этого в списке служебных страниц появится страница "Delete old revisions" - вперёд и без испуга. Хотя лучше сначала всё-таки сделать бэкап базы ;).
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2008/10/delete-clean-wiki-old-revisions/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!--  -->
+
+
+
   <article id="post-2008/10/work-2" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
@@ -416,40 +466,6 @@ So let the comments be here.</p>
 
 
 
-  <article id="post-2008/09/see-saw-aura-lyrics" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2008-09-03T13:44:34.000Z"><a href="/2008/09/see-saw-aura-lyrics/">2008-09-03</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2008/09/see-saw-aura-lyrics/">See-saw Aura lyrics</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">if you are near to the dark</span><br><span class="line">I will tell you &#x27;bout the sun</span><br><span class="line">you are here, no escape</span><br><span class="line">from my visions of the world</span><br><span class="line">you will cry all alone</span><br><span class="line">but it does not mean a thing to me</span><br><span class="line"> </span><br><span class="line">knowing the song I will sing</span><br><span class="line">till the darkness comes to sleep</span><br><span class="line">come to me, I will tell</span><br><span class="line">&#x27;bout the secret of the sun</span><br><span class="line">it&#x27;s in you, not in me</span><br><span class="line">but it does not mean a thing to you</span><br><span class="line"> </span><br><span class="line">the sun is in your eyes</span><br><span class="line">the sun is in your ears</span><br><span class="line">I hope you see the sun</span><br><span class="line">someday in the darkness</span><br><span class="line"> </span><br><span class="line">the sun is in your eyes</span><br><span class="line">the sun is in your ears</span><br><span class="line">but you can&#x27;t see the sun</span><br><span class="line">ever in the darkness</span><br><span class="line">it does not much matter to me</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-<!--  -->
-
-
-
 
 
     <nav id="page-nav">
@@ -484,6 +500,10 @@ So let the comments be here.</p>
   <ul class="entry">
     
       <li>
+        <a href="/2024/01/яндекс-лампа-через-local-tuya/">Умные напоминалки</a>
+      </li>
+    
+      <li>
         <a href="/2024/01/какую-базу-данны-выбрать-для-home-assistant/">Какую базу данных выбрать для Home Assistant</a>
       </li>
     
@@ -497,10 +517,6 @@ So let the comments be here.</p>
     
       <li>
         <a href="/2023/09/прекрасное-далеко-2013/">Прекрасное далёко, не будь со мной жестоко</a>
-      </li>
-    
-      <li>
-        <a href="/2023/08/отчет-из-банки-со-светлячками/">Отчёт из Банки со светлячками</a>
       </li>
     
   </ul>
