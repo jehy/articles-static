@@ -25,7 +25,7 @@
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -54,6 +54,132 @@
 </header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article id="post-2008/10/wodoo" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2008-10-07T20:58:40.000Z"><a href="/2008/10/wodoo/">2008-10-07</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2008/10/wodoo/">Вуду</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p>Случаются же неудачи даже у опытной колдуньи. Что такое, я же с такими усилиями лепила фигурку, закладывала туда волосы…</p>
+<p>Сначала я долго лупила фигурку. Била, надрезала… А этому вождю хоть бы что. Ну ладно - сказала я себе - небось терпит просто, а под утро жена его косметикой подкрашивает. Вождь он такой - и вида не подаст, что весь в синяках и побит неимоверно.
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2008/10/wodoo/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!--  -->
+
+
+
+  <article id="post-2008/10/wordpress-delete-revisions" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2008-10-07T08:47:39.000Z"><a href="/2008/10/wordpress-delete-revisions/">2008-10-07</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2008/10/wordpress-delete-revisions/">Ревизии в wordpress</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p>В большинстве случаев не требуется ни хранить двадцать версий одного и того же поста, ни ни сравнивать их.
+Чтобы отключить хранение ревизий, следует добавить</p>
+<pre lang="php">define ('WP_POST_REVISIONS', 0);</pre>
+<p>в файл wp-config.php.
+А теперь - чистка базы и удаление старых ревизий wordpress.</p>
+<p>Для этого просто нужно отправить следующий SQL-запрос:</p>
+<pre lang="sql">
+DELETE a,b,c
+FROM wp_posts a
+LEFT JOIN wp_term_relationships b ON (a.ID = b.object_id)
+LEFT JOIN wp_postmeta c ON (a.ID = c.post_id)
+WHERE a.post_type = 'revision'</pre>
+<p>Он целиком почистит старые ревизии wordpress и всякий мусор, связанный с ними.
+Ещё можно воспользоваться <strong>плагинами для вордпресса</strong>, такими как</p>
+<p><a target="_blank" rel="noopener" href="http://wordpress.org/extend/plugins/no-revisions/stats/">Плагин для отключения ревизий</a> (вкл\выкл ревизий)</p>
+<p>Но вообще-то, ревизии могут оказаться полезными, мало ли что мы там случайно потёрли или изменили…</p>
+<p><a target="_blank" rel="noopener" href="http://wordpress.org/extend/plugins/revision-control/">Контроль ревизий</a> (более мощный, позволяет как отключить ревизии, так и ограничить их количество)</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!--  -->
+
+
+
+  <article id="post-2008/10/superhero" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2008-10-06T20:24:33.000Z"><a href="/2008/10/superhero/">2008-10-06</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2008/10/superhero/">Супергерой</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p>Маленький жест пальцами, мгновенная мысль - и вот ты, словно бог, отделяешься от поверхности грешной земли. Ступни парят в воздухе, на тебя больше не воздействует сила тяжести, ты можешь с огромной скоростью перемещаться по пространству, не прилагая никаких усилий. Не надо никаких крыльев, никакой турбины - все эти причиндалы пускай остаются вместе с Карлсоном. Ты - супергерой, мутант, сверхчеловек нового поколения, нечто отличное от них всех, ты не из этой серой массы людишек, ты можешь летать - летать сколько угодно и где угодно, стоит только захотеть.</p>
+<p>Но только в пределах этой комнаты. Задёрнув плотные шторы, закрыв внутренние ставни, заперев дверь на замок, включив музыку на полную катушку - взлетай и пари, у тебя есть площадь два на два метра. В ней можно подлетать вверх, вниз (только стараясь не зацепить люстру), вращаться (как хорошо,у  меня маленький рост, если я точно наблюдаю за центром вращения, то обычно не цепляюсь ни за что ни ногами, ни головой), или просто лежать на воздушной подушке на высоте полутора метров, внимательно разглядывая запятнанный потолок.</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2008/10/superhero/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!--  -->
+
+
+
   <article id="post-2008/10/delete-clean-wiki-old-revisions" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
@@ -362,115 +488,11 @@ So let the comments be here.</p>
 
 
 
-  <article id="post-2008/09/makarevich" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2008-09-09T17:44:45.000Z"><a href="/2008/09/makarevich/">2008-09-09</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2008/09/makarevich/">Макаревич</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p>Если столько цветов… Бесполезных цветов…</p>
-<p>В бесполезных руках.</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-<!--  -->
-
-
-
-  <article id="post-2008/09/wordpress-broken-permalinks" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2008-09-06T16:09:54.000Z"><a href="/2008/09/wordpress-broken-permalinks/">2008-09-06</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2008/09/wordpress-broken-permalinks/">Wordpress rebuild broken permalinks</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p>No way (programs, plugins) to fix links automatically, use script like the following:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span></span><br><span class="line"><span class="variable">$blog_url</span>=’http:<span class="comment">//localhost/jehy.ru/articles/’;</span></span><br><span class="line"><span class="variable">$prefix</span>=’wp_’;</span><br><span class="line"> </span><br><span class="line"><span class="variable">$sql</span>=’SELECT `id`,`post_name` FROM `’.<span class="variable">$prefix</span>.’posts`’;</span><br><span class="line"><span class="variable">$result</span>=<span class="title function_ invoke__">mysql_query</span>(<span class="variable">$sql</span>);</span><br><span class="line"><span class="keyword">while</span>(<span class="variable">$row</span>=<span class="title function_ invoke__">mysql_fetch_array</span>(<span class="variable">$result</span>))</span><br><span class="line">&#123;</span><br><span class="line"><span class="variable">$sql2</span>=‘UPDATE `’.<span class="variable">$prefix</span>.‘`posts` SET `guid`=”‘.<span class="variable">$blog_url</span>.‘archives/’.<span class="variable">$row</span>[<span class="string">&#x27;id&#x27;</span>].‘/’.<span class="variable">$row</span>[<span class="string">&#x27;post_name&#x27;</span>].‘” where id=”‘.<span class="variable">$row</span>[<span class="string">&#x27;id&#x27;</span>].‘”‘;</span><br><span class="line"><span class="title function_ invoke__">mysql_query</span>(<span class="variable">$sql2</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-<!--  -->
-
-
-
-  <article id="post-2008/09/alumina-english-version-lyrics-by-nightmare-deathnote-ed1-song" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2008-09-04T09:11:57.000Z"><a href="/2008/09/alumina-english-version-lyrics-by-nightmare-deathnote-ed1-song/">2008-09-04</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2008/09/alumina-english-version-lyrics-by-nightmare-deathnote-ed1-song/">Alumina (English Version) lyrics by Nightmare (DeathNote ED1 song)</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">Amidst the passing time, a twinkling and ephemeral sparkling</span><br><span class="line">I&#x27;m a believer that keeps walking, to carve his memories of it into the world</span><br><span class="line"> </span><br><span class="line">Having dreams that no one else can, I cast aside the things I don&#x27;t need</span><br><span class="line">Feelings that I won&#x27;t surrender reside in my heart</span><br><span class="line"> </span><br><span class="line">There is still a gap between ideals and reality, even though the shackles of sacrifice prevent my feet from moving</span><br><span class="line">I can&#x27;t suppress the overflowing urge, because my heart is very wanting</span><br><span class="line"> </span><br><span class="line">&quot;Lies&quot;, &quot;fear&quot;, &quot;emptiness&quot;, &quot;grief&quot;, I&#x27;m not so weak that I&#x27;m</span><br><span class="line">Gripped by all these kinds of negativities, I&#x27;m a trickster who knows no loneliness</span><br><span class="line"> </span><br><span class="line">Flocks of buildings stab into the night sky, look up to the sky in which I can&#x27;t see any stars</span><br><span class="line">I ask myself &quot;aren&#x27;t you lost?&quot;</span><br><span class="line"> </span><br><span class="line">The city is smeared with overflowing things</span><br><span class="line">It&#x27;s not something that&#x27;s unrealistic</span><br><span class="line">At the end of the road that connects us to the future, I want to see what I&#x27;ve got in my hand</span><br><span class="line"> </span><br><span class="line">Closing my eyes, I float on the sea of my senses, and envision it</span><br><span class="line">The day that I have my ideals within my grasp</span><br><span class="line"> </span><br><span class="line">It&#x27;s accepted in this world that &quot;righteousness&quot; has it&#x27;s limits; and withering is foolishly the same way</span><br><span class="line">Something that no one else has, toward a crystallization called &quot;myself&quot;</span><br><span class="line"> </span><br><span class="line">Piercing through simplicity, one day it will change into reality</span><br><span class="line">I want to continue to obstinately believe, it&#x27;s just my faith. The absolute truth.</span><br><span class="line"> </span><br><span class="line">Amidst the passing time, a twinkling and ephemeral sparkling</span><br><span class="line">I&#x27;m a believer that keeps walking, to carve his memories of it into the world</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-<!--  -->
-
-
-
 
 
     <nav id="page-nav">
         
-        <a class="extend prev" rel="prev" href="/page/22/">&lt;&lt; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="page-number" href="/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/25/">25</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/24/">Next &gt;&gt;</a>
+        <a class="extend prev" rel="prev" href="/page/22/">&lt;&lt; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="page-number" href="/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/25/">25</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/24/">Next &gt;&gt;</a>
     </nav>
 
 </div></div>
@@ -489,7 +511,7 @@ So let the comments be here.</p>
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.33px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.67px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.67px;">android</a> <a href="/tags/applet/" style="font-size: 12px;">applet</a> <a href="/tags/arduino/" style="font-size: 11.33px;">arduino</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.67px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15.33px;">dev</a> <a href="/tags/esphome/" style="font-size: 10.67px;">esphome</a> <a href="/tags/fun/" style="font-size: 14.67px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.33px;">habr</a> <a href="/tags/home-assistant/" style="font-size: 13.33px;">home assistant</a> <a href="/tags/java/" style="font-size: 12px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.67px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/openid/" style="font-size: 10.67px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 16px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%A0%D0%98/" style="font-size: 11.33px;">РИ</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.67px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.33px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 14px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 14.67px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.33px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.67px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.67px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 18px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 16.67px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.67px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.67px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.67px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.67px;">работа</a> <a href="/tags/%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%8B%D0%B5-%D0%B8%D0%B3%D1%80%D1%8B/" style="font-size: 10px;">ролевые игры</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12px;">таро</a> <a href="/tags/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC/" style="font-size: 13.33px;">умный дом</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.67px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.67px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.67px;">цитаты</a>
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.43px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.71px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.71px;">android</a> <a href="/tags/applet/" style="font-size: 12.14px;">applet</a> <a href="/tags/arduino/" style="font-size: 11.43px;">arduino</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.71px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15px;">dev</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/esphome/" style="font-size: 10.71px;">esphome</a> <a href="/tags/fun/" style="font-size: 14.29px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.29px;">habr</a> <a href="/tags/home-assistant/" style="font-size: 13.57px;">home assistant</a> <a href="/tags/java/" style="font-size: 12.14px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.71px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/openid/" style="font-size: 10.71px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12.14px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12.14px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 15.71px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12.14px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.71px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.43px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.57px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 14.29px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.14px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.71px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.71px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 17.86px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 16.43px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.29px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.71px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.71px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.71px;">работа</a> <a href="/tags/%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%8B%D0%B5-%D0%B8%D0%B3%D1%80%D1%8B/" style="font-size: 12.86px;">ролевые игры</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12.14px;">таро</a> <a href="/tags/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC/" style="font-size: 13.57px;">умный дом</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.86px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.71px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.57px;">цитаты</a>
   </div>
 </div>
 
@@ -500,23 +522,23 @@ So let the comments be here.</p>
   <ul class="entry">
     
       <li>
+        <a href="/2024/09/отчёт-по-трясине/">Отчёт по «Трясине» от МГ «... И Животноводство».</a>
+      </li>
+    
+      <li>
+        <a href="/2024/07/self-hosted-для-домашнего-сервера/">Self Hosted для домашнего сервера</a>
+      </li>
+    
+      <li>
+        <a href="/2024/07/докер-контейнеры-и-прикладная-некромантия/">Докер контейнеры и прикладная некромантия</a>
+      </li>
+    
+      <li>
         <a href="/2024/01/яндекс-лампа-через-local-tuya/">Подключение яндекс лампы через Local Tuya</a>
       </li>
     
       <li>
         <a href="/2024/01/какую-базу-данны-выбрать-для-home-assistant/">Какую базу данных выбрать для Home Assistant</a>
-      </li>
-    
-      <li>
-        <a href="/2024/01/публикация-локального-сервера-из-дома-в-интернет/">Публикация локального сервера из дома в интернет</a>
-      </li>
-    
-      <li>
-        <a href="/2024/01/умные-напоминалки/">Умные напоминалки</a>
-      </li>
-    
-      <li>
-        <a href="/2023/09/прекрасное-далеко-2013/">Прекрасное далёко, не будь со мной жестоко</a>
       </li>
     
   </ul>
