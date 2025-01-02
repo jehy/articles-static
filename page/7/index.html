@@ -502,14 +502,16 @@ Just create file <strong>custom-parser.php</strong> in directory <strong>wp-cont
 <p>Fortunately, Skype uses SQLite database and we can make a direct connect to it and search there directly. So, you need to:</p>
 <ol>
 <li>Download SQLite client (i used <a target="_blank" rel="noopener" href="http://sqlitebrowser.org/">http://sqlitebrowser.org/</a> but you can install any client you like)</li>
-<li>Find your history file as it is decribed on <a target="_blank" rel="noopener" href="https://support.skype.com/en/faq/FA392/where-can-i-find-my-conversation-history-in-skype-for-windows-desktop-and-what-can-i-do-with-it">skype web site</a>:<blockquote>Hold down the Windows key The Windows key on your keyboard, then press R to bring up the Run window. If you are using a touch screen device on Windows 8, you can bring up the Run window from the Search charm.
+<li>Find your history file as it is decribed on <a target="_blank" rel="noopener" href="https://support.skype.com/en/faq/FA392/where-can-i-find-my-conversation-history-in-skype-for-windows-desktop-and-what-can-i-do-with-it">skype web site</a>:</li>
+</ol>
+<blockquote>Hold down the Windows key The Windows key on your keyboard, then press R to bring up the Run window. If you are using a touch screen device on Windows 8, you can bring up the Run window from the Search charm.
 Type %appdata%\Skype into the Run window and press Enter.
 Open the folder named after your Skype Name.
-Find the main.db file in the folder, this file is your chat history.</blockquote></li>
-<li>Use your SQLite client to open this file.</li>
-<li>Open database table “messages”</li>
-<li>Use any SQL queries you want to search for message you need. Here’s an example of me searching for “git” word in conversations - but there are many field that you can use for searching and ordering.</li>
-</ol>
+Find the main.db file in the folder, this file is your chat history.</blockquote>
+3) Use your SQLite client to open this file.
+4) Open database table "messages"
+5) Use any SQL queries you want to search for message you need. Here's an example of me searching for "git" word in conversations - but there are many field that you can use for searching and ordering.
+ 
 <img src="/2014/05/searching-through-skype-history/git.png" class="">
 
       
@@ -642,7 +644,7 @@ done
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2024 Jehy
+  &copy; 2025 Jehy
   
 </div>-->
 <div class="clearfix"></div>

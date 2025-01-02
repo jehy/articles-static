@@ -77,10 +77,14 @@ So here it is:</p>
 <ol>
 <li>Enter device console on android device (via ADB, ssh, terminal emulator, etc)</li>
 <li>issue “mount” command - it will show you all currently mounted devices.</li>
-<li>There you’ll see smth like <pre lang="bash">/dev/block/vold/179:1 /mnt/sdcard vfat </pre>
-Remember it.</li>
-<li>plug your device into computer, select file transfer mode.</li>
-<li>In device console, enter smth like <pre lang="bash">mount -r -t vfat /dev/block/vold/179:1 /mnt/sdcard</pre></li>
+<li>There you’ll see smth like</li>
+</ol>
+<pre lang="bash">/dev/block/vold/179:1 /mnt/sdcard vfat </pre>
+<p>Remember it.
+4) plug your device into computer, select file transfer mode.
+5) In device console, enter smth like </p>
+<pre lang="bash">mount -r -t vfat /dev/block/vold/179:1 /mnt/sdcard</pre>
+<ol start="6">
 <li>Your SD card is mounted on your android device in read only mode (-r flag), you are wonderful!</li>
 </ol>
 <p>You can probably mount in writable mode but it can be dangerous.</p>
@@ -508,7 +512,7 @@ Feel free to use and to fork.</p>
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2024 Jehy
+  &copy; 2025 Jehy
   
 </div>-->
 <div class="clearfix"></div>

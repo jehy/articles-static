@@ -109,14 +109,16 @@ TypeError: Parsing primary.xml error: Start tag expected, '<' not found
 <li>Check if you are behind a firewall, blocking connection to mirror.</li>
 <li>Update libxml2.</li>
 <li>Try disabling repos in &#x2F;etc&#x2F;yum.repos.d - some of them may cause the problem.</li>
-<li><strong>This worked for me</strong>. Try executing<pre lang="bash">
+<li><strong>This worked for me</strong>. Try executing</li>
+</ol>
+<pre lang="bash">
 export LD_LIBRARY_PATH=/usr/lib64:/usr/local/lib
 </pre>
-then run<pre lang="bash">
+<p>then run</p>
+<pre lang="bash">
 yum clean all
 </pre>
-and test your yum.</li>
-</ol>
+<p>and test your yum.</p>
 <p>If it’s okay - add this export statement to your <strong>.bash_profile</strong></p>
 
       
@@ -199,7 +201,7 @@ and test your yum.</li>
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2024 Jehy
+  &copy; 2025 Jehy
   
 </div>-->
 <div class="clearfix"></div>

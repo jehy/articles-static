@@ -88,8 +88,9 @@ Supriya Roy):</p>
 <li><p>Export the installed certificate with <strong>“Yes, export the private key”</strong> option and <strong>“Include all certificates in the certification path if possible”</strong> and <strong>“Export all extended properties”</strong> checked under the option .PFX or PKCS #12.</p>
 </li>
 <li><p>Use exported .pfx file to sign the JAR. Don’t forget that it could change alias - get new one with</p>
-<pre lang="bash">keytool.exe -list -keystore D:\keys\code.pfx -storetype pkcs12</pre></li>
+</li>
 </ol>
+<pre lang="bash">keytool.exe -list -keystore D:\keys\code.pfx -storetype pkcs12</pre>
 <p>Worked like magic - warning disappeared and my jars are trusted now!</p>
 
       
@@ -172,7 +173,7 @@ Supriya Roy):</p>
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2024 Jehy
+  &copy; 2025 Jehy
   
 </div>-->
 <div class="clearfix"></div>

@@ -92,9 +92,11 @@ If you need the same feature - just replace the first code fragment with the sec
 <li><p><strong>Live+Press</strong> очень красивый, со множеством настроек, полностью заменяющий интерфейсы жж… Только вот с русским языком он не работает. А я так и не смогла его отстроить для этого. В интернете тоже решений нет. Обещают в следующей версии сделать поддержку.</p>
 </li>
 <li><p><strong>LJ crosspost</strong>. Не такой красивый, меньше опций. Однако работает по ощущениям быстрее и не так заси… засоряет базу :) И вдобавок работает с русским языком. Сразу и без ковыряния. Ещё один плюс - для него есть русификация. Ссылку искать не буду так как у меня все интерфейсы на английском.</p>
+</li>
+</ol>
 <span id="more"></span>
 <p>Единственный момент - LJ crosspost имеет два варианта:</p>
-</li>
+<ol>
 <li><p>Целиком копировать запись в жж</p>
 </li>
 <li><p>Копировать только до вордпрессовского тэга “&lt;!–more–&gt;”
@@ -103,38 +105,38 @@ If you need the same feature - just replace the first code fragment with the sec
 </ol>
 <p>Для этого открываем файл “lj_crosspost.php” (это там единственный php файл), после чего берём фрагмент</p>
 <pre lang="php" line="609">if(!$post->post_password) {
-        // and if there's no <!--more--> tag, we can spit it out and go on our
-        // merry way
-        if(strpos($post->post_content, "<!--more-->") === false) {
-            $the_event .= apply_filters('the_content', $post->post_content);
-        }
-        else {
-            $content = explode("<!--more-->", $post->post_content, 2);
-            $the_event .= apply_filters('the_content', $content[0]);
-            switch($options['more']) {
-            case "copy":
-                $the_event .= apply_filters('the_content', $content[1]);
-                break;
-            case "link":
-                $the_event .= sprintf('
+		// and if there's no <!--more--> tag, we can spit it out and go on our
+		// merry way
+		if(strpos($post->post_content, "<!--more-->") === false) {
+			$the_event .= apply_filters('the_content', $post->post_content);
+		}
+		else {
+			$content = explode("<!--more-->", $post->post_content, 2);
+			$the_event .= apply_filters('the_content', $content[0]);
+			switch($options['more']) {
+			case "copy":
+				$the_event .= apply_filters('the_content', $content[1]);
+				break;
+			case "link":
+				$the_event .= sprintf('
  
 <a href="%s#more-%s">', get_permalink($post_id), $post_id) .
-                    __('Read the rest of this entry &raquo;', LJXP_DOMAIN) .
-                    '</a>
+					__('Read the rest of this entry &raquo;', LJXP_DOMAIN) .
+					'</a>
  
 ';
-                break;
-            case "lj-cut":
-                $the_event .= '<lj-cut text="' .
-                    __('Read the rest of this entry &amp;raquo;', LJXP_DOMAIN) .
-                    '">' . apply_filters('the_content', $content[1]) . '</lj-cut>';
-                break;
-        }
-        }
-    }</pre>
+				break;
+			case "lj-cut":
+				$the_event .= '<lj-cut text="' .
+					__('Read the rest of this entry &amp;raquo;', LJXP_DOMAIN) .
+					'">' . apply_filters('the_content', $content[1]) . '</lj-cut>';
+				break;
+		}
+		}
+	}</pre>
 <p>И жестоко заменяем на</p>
 <pre lang="php" line="609">
-    if(!$post->post_password)
+	if(!$post->post_password)
 $the_event=apply_filters('the_content',$post->post_excerpt).'<a href="'.get_permalink($post_id).'#more-'.$post_id.'">Read the rest of this entry &raquo;</a>';
 </pre>
 <p>Номера строк идентичны. Думаю, и в русской версии так же.</p>
@@ -222,7 +224,7 @@ $the_event=apply_filters('the_content',$post->post_excerpt).'<a href="'.get_perm
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2024 Jehy
+  &copy; 2025 Jehy
   
 </div>-->
 <div class="clearfix"></div>

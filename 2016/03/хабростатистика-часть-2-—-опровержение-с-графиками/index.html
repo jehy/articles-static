@@ -78,10 +78,10 @@
 <p>Сначала посмотрим статистику отдельно по каждому дню:</p>
 <p>Обозначения на графиках такие:</p>
 <ol>
-    <li>Quantity - количество опубликованных в это время статей</li>
-    <li>Comments - среднее количество оставленных комментариев</li>
-    <li>Views - среднее количество набранных просмотров</li>
-    <li>Rate - средний набранный рейтинг</li>
+	<li>Quantity - количество опубликованных в это время статей</li>
+	<li>Comments - среднее количество оставленных комментариев</li>
+	<li>Views - среднее количество набранных просмотров</li>
+	<li>Rate - средний набранный рейтинг</li>
 </ol>
 
 <p>Понедельник выглядит так:</p>
@@ -163,10 +163,10 @@ SELECT * FROM posts WHERE WEEKDAY(created)+1=6 AND HOUR(created)=6
 </tr>
 </table>
 
-<p>Затем - в воскресенье в 6 утра.</p>
+<p>Затем - в воскресенье в 6 утра.
 <source lang="sql">
-SELECT * FROM posts WHERE WEEKDAY(created)+1=7 AND HOUR(created)=6
-</source>
+SELECT * FROM posts WHERE WEEKDAY(created)+1&#x3D;7 AND HOUR(created)&#x3D;6
+</source></p>
 <table border=1>
 <tr>
 <td bgcolor=silver class='medium'>id</td><td bgcolor=silver class='medium'>created</td><td bgcolor=silver class='medium'>rate</td><td bgcolor=silver class='medium'>comments</td><td bgcolor=silver class='medium'>views</td></tr>
@@ -305,7 +305,7 @@ SELECT * FROM posts WHERE WEEKDAY(created)+1=7 AND HOUR(created)=6
   </div>
   <footer id="footer" class="inner"><!--<div class="alignleft">
   
-  &copy; 2024 Jehy
+  &copy; 2025 Jehy
   
 </div>-->
 <div class="clearfix"></div>
