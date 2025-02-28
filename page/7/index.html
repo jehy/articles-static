@@ -54,6 +54,140 @@
 </header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article id="post-2016/02/ещё-один-способ-определения-качества-воздуха-на-arduino-—-с-передачей-данных-в-сеть" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2016-02-12T07:00:00.000Z"><a href="/2016/02/ещё-один-способ-определения-качества-воздуха-на-arduino-—-с-передачей-данных-в-сеть/">2016-02-12</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/02/ещё-один-способ-определения-качества-воздуха-на-arduino-—-с-передачей-данных-в-сеть/">Ещё один способ определения качества воздуха на Arduino — с передачей данных в сеть</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/390327%7D">Оригинал поста на хабре</a></p>
+<p>Меня зовут Евгений, и я - веб разработчик. Уже есть десятки постов о различных метеостанциях на ардуино, но мне хотелось написать о том, что в 2016 году можно быстро, легко и без знания электротехники собрать полезный датчик, претендующий на IoT, который легко может работать с вашей инфраструктурой, написанной на чём угодно.
+<cut text="Да, я хочу в 2016 год" />
+Если вам интересно, зачем вообще измерять СО2, то полезные ссылки вы можете найти в конце поста.</p>
+<p>Итак, наша цель - сделать датчик температуры, влажности и СО2 с отображением данных на дисплей и отсылкой на веб сервер. Что нам для этого понадобится:</p>
+<h1>Компоненты</h1>
+1\. Ардуино. Я взял Wemos D1, Arduino совместимую плату, основанную на микроконтроллере  ESP-8266EX. Wemos совместим с ардуино IDE, у него есть свой Wi-Fi, и стоит он 6.3$.
+
+<img src="https://habrastorage.org/files/696/701/640/696701640dac44fbb2e6b4fa38bf5cdd.jpg"/>
+
+<p>2. Датчик СО2. Ранее я пробовал обычный MQ-135, но даже после прожига, калибровки и учёта поправок на температуру и влажность погрешности был довольно заметные - около 300 ppm. Так что для гарантии точных измерений я взял MH-Z19 - самый дорогой компонент схемы, 27$.</p>
+<img src="https://habrastorage.org/files/d13/f6c/0e6/d13f6c0e6d4d4d1d91c00430811e9fa8.jpg"/>
+
+<p>3. Датчик температуры и влажности. Использовал стандартный и любимый всеми DHT11 за 1.44$. В комментариях подсказывают, что лучше брать DHT22, но для схемы и стоимости это не принципиально:</p>
+<img src="https://habrastorage.org/files/25e/099/13f/25e09913fffc41ea91a8885ea2b3ba40.png"/>
+
+<p>4. I2C совместимый дисплей. Я взял самый дешёвый hd44780 за 3.06$.</p>
+<img src="https://habrastorage.org/files/a25/921/5e8/a259215e86c848fab46b5e1f92a7272b.jpg"/>
+
+<p>5. Чтобы это выглядело не очень ужасно, и было перемещаемо, так же неплохо иметь корпус. Чтобы не заморачиваться с выпиливанием, я взял корпус за 8$ с дырками и креплениям под usb и дисплей. Внимание - в корпусе должны быть дырки для проветривания, иначе он будет измерять только свою особую атмосферу.</p>
+<img src="https://habrastorage.org/files/c49/0d6/af3/c490d6af378c4c2ea1bc28dcd9999c45.jpg"/>
+
+<p>6. Отладочный USB кабель и около 10 проводков. Цену учитывать не буду.</p>
+<p>Итоговая стоимость - 44 доллара, если брать на алиэкспресс. Аналогичные устройства без возможности что-то передавать в сеть сейчас стоят у китайцев в районе 100$. Аналог от Tion, которые в количестве делают свои посты на гиктаймс с рекламой бризеров, пока в разработке (не имею к ним отношения, а жаль).</p>
+<p>Заказал, обождал месяц - приступаем к сборке! Нет ничего проще.</p>
+<h1>Сборка</h1>
+1. Подключаем датчик температуры и влажности. Земля к земле, прах к праху, плюс к пяти вольтам на ардуино, цифровой выход к цифровому выходу (я использовал D5).
+
+<p>2. Подключаем датчик СО2. У него есть богатый выбор интерфейсов - PWM, аналоговый и цифровой вывод.  Единственный элемент пайки - надо приделать ножки на нужные выходы. Проверял лично - работают все. Остановился на получении цифровых данных - точно, красиво, лаконично, и так же есть возможность отсылать команды на калибровку, что мне впрочем не потребовалось. Опять же - земля к земле, плюс к другим пяти вольтам, TX и RX выводы на цифровые пины - в моём случае, на D6 и D7.</p>
+<p>3. Подключаем дисплей. И снова - земля к земле, плюс на последний оставшийся выход на пять вольт, SDA на дисплее к SDA на ардуино, SCL так же к SCL.</p>
+<p>И… Всё! Можно закручивать получившееся добро в корпус, если вы конечно не умудрились сделать какую-нибудь ошибку при подключении. Обратите внимание, чтобы у датчика СО2 не оказались прижаты воздухозаборники (или как это корректнее назвать, белые такие штуки). Как бонус, при сборке в корпусе значительно уменьшаются отклонения в измерении.</p>
+<h1>Прошивка</h1>
+Отлично, нам осталось “только” написать софт. В ссылках ниже есть репозиторий на гитхабе, который можно просто залить и использовать. Единственный тонкий момент - у вашего дисплея может оказаться другой адрес. Воспользуйтесь мини программой из ссылок для сканирования адресов i2c и поменяйте на нужный, если сразу не заработает. Перед сканированием отключите остальные устройства, иначе можно получить много мусора.
+
+<p>Да, Wemos D1 является совместимым с Arduino, и вам нужно просто добавить в Arduino IDE соответствующую борду. Подключаем стандартным коротким кабелем по micro USB и заливаем прошивку. Если вы всё сделали верно, то устройство сначала постарается подключиться к Wi-Fi (сеть и пароль берётся из файла настроек), затем ждёт некоторое время для “разогрева”  датчиков, и наконец покажет данные на дисплее. Если по сети данные отправить не получится, то будет об этом сообщать. Если уровень CO2 допустимый, то после загрузки подсветка выключится, и включится только если вам пора открыть форточку.</p>
+<h1>Результат</h1>
+У меня это выглядит так (осторожно, трафик):
+
+<p><a target="_blank" rel="noopener" href="https://habrastorage.org/files/18b/adc/6a0/18badc6a04be43269a4e7eb9ef28ed88.jpg">В разобранном виде</a></p>
+<p><a target="_blank" rel="noopener" href="https://habrastorage.org/files/1ca/39d/dbb/1ca39ddbbe1c4e19ae5423e1cc429cbf.jpg">В собранном виде, с выключенной подсветкой</a></p>
+<p><a target="_blank" rel="noopener" href="https://habrastorage.org/files/8e5/525/c06/8e5525c0623c46cd89b6080c3186956b.jpg">Пора проветрить!</a></p>
+<h1>А как же сеть?</h1>
+Теперь насчёт работы с сетью. Не мудрствуя лукаво, я собираю данные в JSON и отсылаю его на сервер обычным POST запросом, где простой скрипт на PHP кладёт его в MySQL базу. Далее можно посмотреть, как изменялись ваши условия жизни в течении дня при помощи PHP и Google Charts - вся серверная часть тоже есть в ссылках.
+
+<p>В итоге по смешной цене, с нулевыми знаниями в электротехнике и с минимальными затратами времени мы может получить примерно такие симпатичные графики:
+<a target="_blank" rel="noopener" href="https://habrastorage.org/files/908/242/be6/908242be6bdc456994cb2cc2090ffd13.png">
+Осторожно, трафик</a></p>
+<p>Не скажу, что это прям срывает покрова с простой истины, что “меньше народу - больше кислороду”, и что нужно периодически проветривать, да и про это много раз говорили - в том числе и про вред пластиковых окон. Но на этом примере понятно, насколько просто, быстро, надёжно и красиво можно сделать практически любой датчик, который поставляет данные для какой-то более сложной системы.</p>
+<p>Да, показания я сравнивал с вот таким китайским датчиком Green Life - показания практически идентичные, только мой немного быстрее реагирует на изменение обстановки:</p>
+<p>На картинке поднята контрастность дисплея - на нём всё видно отлично, но телефон перекорёжило от его света:</p>
+<img src="https://habrastorage.org/files/6be/a57/1bd/6bea571bdafd44d8b76a4bbf9c40977e.jpg"/>
+
+<h1>Выводы</h1>
+
+<p>Конечно, многое можно было бы сделать лучше. Навскидку я вижу следующие минусы:</p>
+<ol>
+<li>Дисплей с выключенной обладает очень низкой контрастностью. Лучше брать другой, разорившись ещё центов на 10.</li>
+<li>При включенной подсветке экран немного мерцает. Не критично, но видимо не нравится ему, что от ардуины запитывается сразу три устройства на пять вольт. Вероятно, правильно было бы сделать раздельное питание.</li>
+<li>Конечно, всё это можно красиво спаять, а не просто покидать в коробку, кое как соединив.</li>
+<li>Датчик температуры и влажности иногда возвращает левые огромные значения. Их я просто отсекаю, но вообще неприятно. Возможно, сказывается общая запитка или некачественное соединение.</li>
+<li>Конечно, можно было бы накапливать статистику и периодически её отсылать (и накапливать в случае ошибок) - никому не нужно знать своё качество воздуха с точностью до 5 секунд.</li>
+<li>Чтобы не вбивать данные вайфайной точки при компиляции, можно было бы сделать, чтобы в случае, если коннект не удался, устройство переходило в режим вайфай точки (да, Wemos это умеет), подцепившись к которой, можно его перенастроить - в том числе ввести новое имя сети и пароль.</li>
+<li>Wemos D1 всем хорош, но у меня иногда вылетает (раз в 2-3 дня) по неизвестным причинам, и сам перегружается только через несколько часов. Вроде как не мой софт кривой, просто борда не очень стабильная. Можно с этим бороться подключением устройства к какой-нибудь ардуино нано, которая его перезапускает при необходимости, или просто поставить железку с таймером, которая будет раз в полчаса перезапускать устройство (благо у него есть вход RESET).</li>
+<li>При выдёргивании и возврате обратно питания, датчик СО2 сходит с ума, что лечится перезагрузкой. Я это решил простым способом - при накоплении некоторого количества непрерывных ошибок, устройство само себя перезапускает, после чего всё приходит в норму. Вероятно, можно было бы решить это более правильным способом на уровне железа.</li>
+<li>Температура измеряется с точностью до двух градусов, влажность - с точностью до десяти процентов. В бытовых целях достаточно, а для какого-то другого использования понадобится датчик поточнее.</li>
+<li>Если вам требуется отправить один небольшой пакет данных, то библиотека для работы с JSON это убийство воробьёв из пушки. Гораздо проще собрать JSON ручками, или вообще передавать параметры при помощи GET/POST, что я вначале и делал. Но при наличии огромного количества оперативки на Wemos - почему нет, так красивее. Но при портировании кода на маломощную ардуину скорее всего придётся переписать это.</li>
+<li>В текущей реализации нет управления яркостью подсветки - она может быть только включена и выключена. Можно убрать перемычку и поставить вместо неё сопротивление или ввести на ардуино - тогда вы сможете управлять яркостью подсветки.</li>
+<li>Так же можно сделать управление или получение информации при помощи приложения. Самый простой способ, как ни смешно - добавить телеграмм бота - библиотека для связи ардуино через телеграмм уже есть.</li>
+</ol>
+
+<h1>Что дальше</h1>
+А дальше я хочу отдохнуть от рабочих будней и поиграть с друзьями в лазертаг. Одна проблема - стоит игра от 500 рублей в час на человека. Это при полном отсутствии расходников. А купить комплект для игры будет стоит каких-то совсем заоблачных денег - примерно от 8000. Так что для того, чтобы поиграть в лазертаг, надо сначала его собрать. Планирую сделать что-то вроде <a target="_blank" rel="noopener" href="https://www.kickstarter.com/projects/skirmos/skirmos-open-source-laser-tag">Skirmos</a> - где каких-то денег будет стоит только сам ствол, который должен быть довольно прочным. Интересно? Следите за публикациями! А что вы делаете на Arduino?
+
+<h1>Ссылки</h1>
+<h2>Основное</h2>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/jehy/arduino-esp8266-mhz-19-serial">Код для ардуино</a></li>
+<li><a href=" https://github.com/jehy/co2-online-display">Серверная часть</a></li>
+<li>Посмотреть на воздух в моём офисе можно <a target="_blank" rel="noopener" href="http://co2.jehy.ru/">тут</a></li>
+<li>Взять меня на работу (да, я её ищу) можно <a target="_blank" rel="noopener" href="http://whois.jehy.ru">тут</a></li>
+</ol>
+
+<h2>Полезное</h2>
+<ol>
+<li>Если вы ничего не знаете про СО2 - https://geektimes.ru/company/tion/blog/269134/</li>
+<li><a target="_blank" rel="noopener" href="http://www.wemos.cc/wiki/doku.php?id=en:d1">О wemos d1</a></li>
+<li><a target="_blank" rel="noopener" href="http://eleparts.co.kr/data/design/product_file/SENSOR/gas/MH-Z19_CO2%20Manual%20V2.pdf">Спецификации датчика MH-Z19 </a></li>
+<li><a target="_blank" rel="noopener" href="http://www.2150692.ru/faq/87-co2-mhz19-arduino">Хорошая статья</a>, примерно про то же самое, но без сети, с дисплеем от телефона, с работой по PWM и на Arduino nano</li>
+<li><a target="_blank" rel="noopener" href="http://playground.arduino.cc/Main/I2cScanner">Сканирование устройств на i2c</a></li>
+<li><a href=" http://tion.ru/magicair/">Будущий аналог датчика от Tion (не имею к нему отношения)</a></li>
+<li><a target="_blank" rel="noopener" href="http://samopal.pro/wdt-ne555/">Решение для перезапуска ESP8266 на уровне железа</a></li>
+<li><a target="_blank" rel="noopener" href="https://geektimes.ru/post/255562/">Ещё одна хорошая статья про ESP, Lua и CO2</a></li>
+<li>А <a target="_blank" rel="noopener" href="http://vk.com/fablabum">тут</a> студенты МАМИ занимаются всякой хорошей элетроникой. Кстати, им требуются преподаватели. Скоро буду там вести лекции.</li>
+</ol>
+<h2>Использованные библиотеки</h2>
+<ol>
+<li>
+<a target="_blank" rel="noopener" href="https://github.com/fdebrabander/Arduino-LiquidCrystal-I2C-library">Библиотека </a>для работы с дисплеем</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/bblanchon/ArduinoJson">Библиотека </a>для создания JSON</li>
+<li><a href=" https://github.com/adafruit/DHT-sensor-library">Библиотека </a>для работы с семейством сенсоров DHT</li>
+</ol>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!--  -->
+
+
+
   <article id="post-2015/11/один-день-зимы" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
@@ -530,59 +664,6 @@ Find the main.db file in the folder, this file is your chat history.</blockquote
 
 
 
-  <article id="post-2014/05/simple-bash-linux-script-to-login-and-update-web-sites-from-git-repositories" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2014-05-26T13:16:20.000Z"><a href="/2014/05/simple-bash-linux-script-to-login-and-update-web-sites-from-git-repositories/">2014-05-26</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2014/05/simple-bash-linux-script-to-login-and-update-web-sites-from-git-repositories/">Simple bash linux script to login and update web sites from Git repositories</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p>We have some web sites which must be updated from Git repositories by users who have no other permissions on web server. For this task, I imported SSH key to server for authorizing on bitbucket and wrote a simple bash script for four different repos:</p>
-<pre lang="bash" line="1">
-#!/bin/bash
- 
-while true; do
-echo "Please choose api to update (enter number)"
-select repo in "dev" "a" "b" "test" "EXIT"; do
-    case $repo in
-        dev ) cd /web/dev;echo "updating:";pwd;git pull origin master; break;;
-        a ) cd /web/a;echo "updating:";pwd;git pull origin master; break;;
-        b) cd /web/b;echo "updating:";pwd;git pull origin master; break;;
-        test ) cd /web/test;echo "updating:";pwd;git pull origin master; break;;
-        EXIT ) exit;break;;
-    esac
-done
-echo "Update finished. Want to update more?"
-echo ""
-done
-</pre>
-<p>This bash script is set as login shell for those users - so they can login and update their servers.</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-<!--  -->
-
-
-
 
 
     <nav id="page-nav">
@@ -606,7 +687,7 @@ done
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.33px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.67px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.67px;">android</a> <a href="/tags/applet/" style="font-size: 12px;">applet</a> <a href="/tags/arduino/" style="font-size: 11.33px;">arduino</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.67px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15.33px;">dev</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/esphome/" style="font-size: 10.67px;">esphome</a> <a href="/tags/fun/" style="font-size: 14.67px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.33px;">habr</a> <a href="/tags/home-assistant/" style="font-size: 14px;">home assistant</a> <a href="/tags/java/" style="font-size: 12px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.67px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/openid/" style="font-size: 10.67px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 12px;">webstart</a> <a href="/tags/wiki/" style="font-size: 12px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 16px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 12px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.67px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.33px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 14px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 14.67px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.33px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.67px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.67px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 18px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 16.67px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 14.67px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.67px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.67px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.67px;">работа</a> <a href="/tags/%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%8B%D0%B5-%D0%B8%D0%B3%D1%80%D1%8B/" style="font-size: 13.33px;">ролевые игры</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 12px;">таро</a> <a href="/tags/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC/" style="font-size: 14px;">умный дом</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.67px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.67px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.67px;">цитаты</a>
+    <a href="/tags/MS-SQL/" style="font-size: 10px;">MS SQL</a> <a href="/tags/Oracle/" style="font-size: 11.25px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.63px;">PHP</a> <a href="/tags/RHEL/" style="font-size: 10px;">RHEL</a> <a href="/tags/SAP/" style="font-size: 10px;">SAP</a> <a href="/tags/android/" style="font-size: 10.63px;">android</a> <a href="/tags/applet/" style="font-size: 11.88px;">applet</a> <a href="/tags/arduino/" style="font-size: 11.25px;">arduino</a> <a href="/tags/buddypress/" style="font-size: 10px;">buddypress</a> <a href="/tags/codesigning/" style="font-size: 10.63px;">codesigning</a> <a href="/tags/dev/" style="font-size: 15.63px;">dev</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/esphome/" style="font-size: 10.63px;">esphome</a> <a href="/tags/fun/" style="font-size: 15px;">fun</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/habr/" style="font-size: 19.38px;">habr</a> <a href="/tags/home-assistant/" style="font-size: 14.38px;">home assistant</a> <a href="/tags/java/" style="font-size: 11.88px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/livejournal/" style="font-size: 10px;">livejournal</a> <a href="/tags/medium/" style="font-size: 10.63px;">medium</a> <a href="/tags/mta/" style="font-size: 10px;">mta</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/openid/" style="font-size: 10.63px;">openid</a> <a href="/tags/skype/" style="font-size: 10px;">skype</a> <a href="/tags/webstart/" style="font-size: 11.88px;">webstart</a> <a href="/tags/wiki/" style="font-size: 11.88px;">wiki</a> <a href="/tags/wod/" style="font-size: 10px;">wod</a> <a href="/tags/wordpress/" style="font-size: 16.25px;">wordpress</a> <a href="/tags/wordpress-mu/" style="font-size: 10px;">wordpress mu</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5/" style="font-size: 11.88px;">аниме</a> <a href="/tags/%D0%B1%D0%B5%D0%B3/" style="font-size: 10px;">бег</a> <a href="/tags/%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F/" style="font-size: 10.63px;">инквизиция</a> <a href="/tags/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D1%8B/" style="font-size: 11.25px;">интернеты</a> <a href="/tags/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8/" style="font-size: 20px;">истории</a> <a href="/tags/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/" style="font-size: 13.75px;">картинки</a> <a href="/tags/%D0%BA%D0%B8%D0%BD%D0%BE/" style="font-size: 15px;">кино</a> <a href="/tags/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BD%D0%BE%D0%B5/" style="font-size: 17.5px;">книжное</a> <a href="/tags/%D0%BA%D0%BF%D0%BA/" style="font-size: 10.63px;">кпк</a> <a href="/tags/%D0%BB%D0%B8%D0%BD%D1%83%D0%BA%D1%81/" style="font-size: 10px;">линукс</a> <a href="/tags/%D0%BC%D0%B0%D0%BD%D0%B3%D0%B0/" style="font-size: 10.63px;">манга</a> <a href="/tags/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" style="font-size: 18.13px;">музыка</a> <a href="/tags/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/" style="font-size: 16.88px;">мысли</a> <a href="/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%8B/" style="font-size: 15px;">переводы</a> <a href="/tags/%D0%BF%D0%BE-%D0%B6%D0%B8%D0%B7%D0%BD%D0%B8/" style="font-size: 10.63px;">по жизни</a> <a href="/tags/%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/" style="font-size: 10.63px;">политика</a> <a href="/tags/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/" style="font-size: 10.63px;">работа</a> <a href="/tags/%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%8B%D0%B5-%D0%B8%D0%B3%D1%80%D1%8B/" style="font-size: 13.13px;">ролевые игры</a> <a href="/tags/%D1%82%D0%B0%D1%80%D0%BE/" style="font-size: 11.88px;">таро</a> <a href="/tags/%D1%83%D0%BC%D0%BD%D1%8B%D0%B9-%D0%B4%D0%BE%D0%BC/" style="font-size: 14.38px;">умный дом</a> <a href="/tags/%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5/" style="font-size: 12.5px;">учебное</a> <a href="/tags/%D1%85%D0%B8%D0%BA%D0%BA%D0%B8/" style="font-size: 10px;">хикки</a> <a href="/tags/%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C/" style="font-size: 10.63px;">церковь</a> <a href="/tags/%D1%86%D0%B8%D1%82%D0%B0%D1%82%D1%8B/" style="font-size: 18.75px;">цитаты</a>
   </div>
 </div>
 
@@ -617,11 +698,11 @@ done
   <ul class="entry">
     
       <li>
-        <a href="/2024/09/отчёт-по-трясине/">Отчёт по «Трясине» от МГ «... И Животноводство».</a>
+        <a href="/2025/02/умный-дом-на-канале-яндекса/">Мой умный дом на канале яндекса</a>
       </li>
     
       <li>
-        <a href="/2024/07/докер-контейнеры-и-прикладная-некромантия/">Докер контейнеры и прикладная некромантия</a>
+        <a href="/2024/09/отчёт-по-трясине/">Отчёт по «Трясине» от МГ «... И Животноводство».</a>
       </li>
     
       <li>
@@ -629,11 +710,11 @@ done
       </li>
     
       <li>
-        <a href="/2024/05/отчёт-по-эйре/">Отчёт по «Книге Эйре»</a>
+        <a href="/2024/07/докер-контейнеры-и-прикладная-некромантия/">Докер контейнеры и прикладная некромантия</a>
       </li>
     
       <li>
-        <a href="/2024/01/яндекс-лампа-через-local-tuya/">Подключение яндекс лампы через Local Tuya</a>
+        <a href="/2024/05/отчёт-по-эйре/">Отчёт по «Книге Эйре»</a>
       </li>
     
   </ul>
