@@ -54,6 +54,54 @@
 </header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article id="post-2014/05/searching-through-skype-history" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2014-05-26T13:28:48.000Z"><a href="/2014/05/searching-through-skype-history/">2014-05-26</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/05/searching-through-skype-history/">Searching through skype history</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p>If you have more then 300 contacts and they have overlapping conversations - you understand that it’s impossible to find anything with simple Ctrl+F approach.</p>
+<p>Fortunately, Skype uses SQLite database and we can make a direct connect to it and search there directly. So, you need to:</p>
+<ol>
+<li>Download SQLite client (i used <a target="_blank" rel="noopener" href="http://sqlitebrowser.org/">http://sqlitebrowser.org/</a> but you can install any client you like)</li>
+<li>Find your history file as it is decribed on <a target="_blank" rel="noopener" href="https://support.skype.com/en/faq/FA392/where-can-i-find-my-conversation-history-in-skype-for-windows-desktop-and-what-can-i-do-with-it">skype web site</a>:</li>
+</ol>
+<blockquote>Hold down the Windows key The Windows key on your keyboard, then press R to bring up the Run window. If you are using a touch screen device on Windows 8, you can bring up the Run window from the Search charm.
+Type %appdata%\Skype into the Run window and press Enter.
+Open the folder named after your Skype Name.
+Find the main.db file in the folder, this file is your chat history.</blockquote>
+3) Use your SQLite client to open this file.
+4) Open database table "messages"
+5) Use any SQL queries you want to search for message you need. Here's an example of me searching for "git" word in conversations - but there are many field that you can use for searching and ordering.
+ 
+<img src="/2014/05/searching-through-skype-history/git.png" class="">
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!--  -->
+
+
+
   <article id="post-2014/05/simple-bash-linux-script-to-login-and-update-web-sites-from-git-repositories" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
@@ -423,43 +471,6 @@ I could not use yum any more:
 
 
 
-  <article id="post-2013/08/снежная-королева-киберсказка" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2013-08-22T11:14:46.000Z"><a href="/2013/08/снежная-королева-киберсказка/">2013-08-22</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/08/снежная-королева-киберсказка/">Снежная королева - киберсказка</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p>Герда задумчиво догрызала грязный ноготь на указательном пальце правой руки. Увы, остальные уже закончились, а ожидание казалось нестерпимым. Её старый компьютер громко выл кулерами, компилируя простой низкоуровневый код. От потоков воздуха, которые разогревались, проходя сквозь раскалённый до 90 градусов процессор, заметно шевелились засаленные жалюзи. Свет в комнате периодически помаргивал, и она лишний раз порадовалась тому, что несколько дней назад всё же отдала несколько новых йен за старый, но кое-как отремонтированный и всё же работающий стабилизатор напряжения. Меньше всего ей бы хотелось повторять всё заново… Она отрывисто вздохнула и не глядя вытащила ещё одну сигарету из помятой пачки.
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/08/снежная-королева-киберсказка/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-<!--  -->
-
-
-
 
 
     <nav id="page-nav">
@@ -494,6 +505,10 @@ I could not use yum any more:
   <ul class="entry">
     
       <li>
+        <a href="/2025/06/миядзаки-2025/">Миядзаки 2025</a>
+      </li>
+    
+      <li>
         <a href="/2025/02/умный-дом-на-канале-яндекса/">Мой умный дом на канале яндекса</a>
       </li>
     
@@ -507,10 +522,6 @@ I could not use yum any more:
     
       <li>
         <a href="/2024/07/докер-контейнеры-и-прикладная-некромантия/">Докер контейнеры и прикладная некромантия</a>
-      </li>
-    
-      <li>
-        <a href="/2024/05/отчёт-по-эйре/">Отчёт по «Книге Эйре»</a>
       </li>
     
   </ul>

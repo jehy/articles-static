@@ -54,6 +54,51 @@
 </header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article id="post-2016/02/версионирование-базы-данных-на-лету" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2016-02-16T07:00:00.000Z"><a href="/2016/02/версионирование-базы-данных-на-лету/">2016-02-16</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/02/версионирование-базы-данных-на-лету/">Версионирование базы данных на лету</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/277359%7D">Оригинал поста на хабре</a></p>
+<p>Здравствуйте, меня зовут Евгений, и я веб разработчик. Несколько лет назад мне перепала функция DBA (Database Administrator), я получил по этому поводу несколько сертификатов и решал соответствующие задачи. Я давно хотел описать задачу версионирования базы данных, но мне казалось, что для этого должны быть какие-то беспроигрышные варианты, которые хорошо знают умелые дяди, а я просто чего-то недопонимаю. Вчерашнее собеседование и последующий поиск по <a href=”http://dba.stackexchange.com/questions/283/how-do-you-version-your-oracle-database-changes”>тематическим ресурсам</a> показал, что это не так, и задача действительно сложна, актуальна и не решается однозначно. Разберём её по пунктам.</p>
+<h1>Что мы версионируем</h1>
+Мы используем контроль версий только для DDL (Data Definition Language) запросов. Сами данные нас не интересуют. Почему? Рассмотрим два крайних случая.
+
+<ol>
+	<li>Данных мало (скажем, менее 50 мегабайт). В этом случае, мы можем просто периодически делать полный дамп базы и смело складывать его в репозиторий.</li>
+	<li>Данных много (больше гигабайта). В этом случае версионирование нам мало поможет, всё равно разобраться в этом будет довольно проблематично. Целесообразно в данном случае использовать стандартную схему с бекапами и архив логом, которая позволяет нам получить целостную версию базы на любой момент во времени.</li>
+</ol>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/02/версионирование-базы-данных-на-лету/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!--  -->
+
+
+
   <article id="post-2016/02/ещё-один-способ-определения-качества-воздуха-на-arduino-—-с-передачей-данных-в-сеть" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
@@ -616,54 +661,6 @@ Just create file <strong>custom-parser.php</strong> in directory <strong>wp-cont
 
 
 
-  <article id="post-2014/05/searching-through-skype-history" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2014-05-26T13:28:48.000Z"><a href="/2014/05/searching-through-skype-history/">2014-05-26</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2014/05/searching-through-skype-history/">Searching through skype history</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p>If you have more then 300 contacts and they have overlapping conversations - you understand that it’s impossible to find anything with simple Ctrl+F approach.</p>
-<p>Fortunately, Skype uses SQLite database and we can make a direct connect to it and search there directly. So, you need to:</p>
-<ol>
-<li>Download SQLite client (i used <a target="_blank" rel="noopener" href="http://sqlitebrowser.org/">http://sqlitebrowser.org/</a> but you can install any client you like)</li>
-<li>Find your history file as it is decribed on <a target="_blank" rel="noopener" href="https://support.skype.com/en/faq/FA392/where-can-i-find-my-conversation-history-in-skype-for-windows-desktop-and-what-can-i-do-with-it">skype web site</a>:</li>
-</ol>
-<blockquote>Hold down the Windows key The Windows key on your keyboard, then press R to bring up the Run window. If you are using a touch screen device on Windows 8, you can bring up the Run window from the Search charm.
-Type %appdata%\Skype into the Run window and press Enter.
-Open the folder named after your Skype Name.
-Find the main.db file in the folder, this file is your chat history.</blockquote>
-3) Use your SQLite client to open this file.
-4) Open database table "messages"
-5) Use any SQL queries you want to search for message you need. Here's an example of me searching for "git" word in conversations - but there are many field that you can use for searching and ordering.
- 
-<img src="/2014/05/searching-through-skype-history/git.png" class="">
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-<!--  -->
-
-
-
 
 
     <nav id="page-nav">
@@ -698,6 +695,10 @@ Find the main.db file in the folder, this file is your chat history.</blockquote
   <ul class="entry">
     
       <li>
+        <a href="/2025/06/миядзаки-2025/">Миядзаки 2025</a>
+      </li>
+    
+      <li>
         <a href="/2025/02/умный-дом-на-канале-яндекса/">Мой умный дом на канале яндекса</a>
       </li>
     
@@ -711,10 +712,6 @@ Find the main.db file in the folder, this file is your chat history.</blockquote
     
       <li>
         <a href="/2024/07/докер-контейнеры-и-прикладная-некромантия/">Докер контейнеры и прикладная некромантия</a>
-      </li>
-    
-      <li>
-        <a href="/2024/05/отчёт-по-эйре/">Отчёт по «Книге Эйре»</a>
       </li>
     
   </ul>

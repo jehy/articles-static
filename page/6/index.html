@@ -54,6 +54,114 @@
 </header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article id="post-2016/08/о-чём-молчит-google-и-почему-вам-стоит-использовать-apache-httpcomponents-в-android" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2016-08-25T07:00:00.000Z"><a href="/2016/08/о-чём-молчит-google-и-почему-вам-стоит-использовать-apache-httpcomponents-в-android/">2016-08-25</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/08/о-чём-молчит-google-и-почему-вам-стоит-использовать-apache-httpcomponents-в-android/">О чём молчит Google и почему вам стоит использовать Apache HttpComponents в Android</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/308522%7D">Оригинал поста на хабре</a></p>
+<p>Эту статью нужно было публиковать гораздо раньше (почти на шесть лет), сэкономив тем самым Android разработчикам огромное количество месяцев бессмысленной разработки - но увы, не всегда есть на это время.</p>
+<h1>Введение</h1>
+Если вы разрабатываете под Android, то наверняка сталкивались с тем, что открываете вы своё приложение, которое отлично работало несколько лет, и тут внезапно оказывается, что Apache httpComponents стали deprecated, и их не рекомендуется использовать. Сначала давайте разберём, что же произошло, а потом сделаем выводы, что делать.<habracut/>
+
+<h2>Что произошло</h2>
+Слишком далеко закапываться я не стал, однако много интересных вещей можно получить из рассылки org.apache.hc.dev и джиры Apache. Например, факт что:
+
+<blockquote>Android включал в себя старый pre-beta релиз библиотеки</blockquote>
+Более того, на протяжении всей истории версия библиотеки не менялась, и если включаете у себя apache legacy, то это всё та же pre-beta.
+
+<p>Подтверждение можно прочитать <a target="_blank" rel="noopener" href="https://hc.apache.org/httpcomponents-client-4.3.x/android-port.html">тут</a>.</p>
+<p>“Подтверждение на английском:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Google Android 1.0 was released with a pre-BETA snapshot of Apache HttpClient. To coincide with the first Android release Apache HttpClient 4.0 APIs had to be frozen prematurely, while many of interfaces and internal structures were still not fully worked out. As Apache HttpClient 4.0 was maturing the project was expecting Google to incorporate the latest code improvements into their code tree. Unfortunately it did not happen. Version of Apache HttpClient shipped with Android has effectively become a fork. Eventually Google decided to discontinue further development of their fork while refusing to upgrade to the stock version of Apache HttpClient citing compatibility concerns as a reason for such decision. As a result those Android developers who would like to continue using Apache HttpClient APIs on Android cannot take advantage of newer features, performance improvements and bug fixes.</span><br></pre></td></tr></table></figure>
+
+<blockquote>Google просто забил на проблему</blockquote>
+Разработчики из Apache активно работали над библиотекой, но назначенные им менеджеры Google не отвечали месяцами, менялись, а в конце концов сказали, что это не приоритетная задача, пользователям хватает старой версии, да и вообще надо выкинуть эту библиотеку. В подтверждение - немного из упомянутого мной листа рассылки (работа началась в 2008 году, а в 2010 внезапно проявился новый менеджер):
+
+<p>Новый менеджер признаёт, что задаче не уделяют внимания… Ну и ладно.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Jesse Wilson commented on HTTPCLIENT-898:</span><br><span class="line">I&#x27;m Bob&#x27;s successor on the Android team. If you&#x27;ve got questions about our use of the HTTP client code, I&#x27;ll do my best to answer &#x27;em. I regret that we haven&#x27;t given this code much attention lately; that said I&#x27;m happy that it hasn&#x27;t really needed it.</span><br></pre></td></tr></table></figure>
+
+<p>Тогда же прозвенел первый тревожный звоночек:</p>
+<p>Знаете, спустя два года мы решили, что ничего не надо делать.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">I&#x27;m quite sorry that Android included an unreleased rev of Apache HTTP client, and I suspect we&#x27;ll be paying for that mistake for quite a while.</span><br><span class="line"></span><br><span class="line">Because of the strict compatibility requirements of our platform, we will be unable to make forwards-incompatible API changes to the HTTP code. Unlike your desktop and serverside users, including the API as a part of the core platform significantly reduces our ability to make API changes.</span><br><span class="line"></span><br><span class="line">These days we aren&#x27;t spending much time on the HTTP client code. Our users seem to be mostly satisfied with the ancient version in the SDK, and have been directing their complaints elsewhere (crypto, locales, XML...).</span><br><span class="line"></span><br><span class="line">That said, we do want to figure out a long term strategy for an HTTP client API that will work for both us and the Apache HTTP client team. We&#x27;re considering a variety of options...</span><br><span class="line"></span><br><span class="line">  - Discouraging our users from using the built-in Apache HTTP client,    preferring the JDK&#x27;s own URLConnection classes. Whether this is feasible depends mostly on whether the new APIs in Java 6 (which we&#x27;re working on)   will satisfy the use cases that Apache HTTP client has covered for years.</span><br><span class="line"></span><br><span class="line">  - Replacing the Apache HTTP client API with a 3rd API in a &quot;com.google&quot;  or &quot;android.&quot; package. Such an API would likely be based on parts of your own code, but with a more limited API.</span><br><span class="line"></span><br><span class="line">  - Tidying up the version of Apache HTTP that we&#x27;re already stuck with. This includes deprecating APIs that shouldn&#x27;t have ever been exposed as  public, and possibly filling in any gaps using newer code from your project.</span><br><span class="line"></span><br><span class="line">But none of this work is particularly urgent since we&#x27;re actively fighting fires in other areas of the core libraries.</span><br></pre></td></tr></table></figure>
+<p>Они не могут производит изменения в коде существующей библиотеки из-за несовместимостей? Oh rly? А если вынесут это в свой отдельный пакет на основе кода Apache, то внезапно смогут? Вообще, breaking changes в Android это отдельная тема, выходящая за рамки данной статьи, но чего стоит только ограничение разрешений приложений в шестёрке… При этом ребята из Apache активно старались предоставить максимальную совместимость, и было готовы сделать для этого что угодно. Но увы.</p>
+<p>Ребят, у нас мало времени, мы взяли вашу разработку и забили на неё, не беспокойте нас по пустякам.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">I explained on several earlier occasions that Android doesn&#x27;t allow binary incompatibilities of any kind (not my rule). I understand that the HttpClient team is more tolerant of binary incompatibilities. While I&#x27;m not saying it would be impossible to make these changes in Android, I am saying that it would take a lot of convincing (and time), it would annoy other people who are time-constrained and who have higher priorities, and it could likely fail anyway.</span><br></pre></td></tr></table></figure>
+
+<h2>Финал</h2>
+А дальше библиотеку просто без всяких адекватных объяснений выпилили с официальной рекомендацией использовать HttpUrlConnection. Вот <a target="_blank" rel="noopener" href="http://android-developers.blogspot.ru/2011/09/androids-http-clients.html">хотя бы что-то</a>, отдалённо похожее на объяснение ситуации от Джесси Вилсона, который был на то время в Dalvik team (к слову, он же и был вторым менеджером Google по связям с Apache. Запомните это имя).
+
+<p>В его статье вы можете увидеть, что среди преимуществ он видит:</p>
+<ul>
+	<li>Кеширование (которое, если надо, реализуется где угодно)</li>
+	<li>Малый вес библиотеки (да, но сомнительный аргумент)</li>
+	<li>Компрессия, которая сохраняет батарейку и ускоряет загрузку (да, но при желании мы можем использовать Google Compression Proxy и через Apache HttpComponents как обычный прокси)</li>
+</ul>
+Крайне сомнительные объяснения. Если вы сейчас сидите в шапочке из фольги, то рациональным доводом будет то, что гугл таким образом решил втихую заставить пользователей гонять весь свой трафик через свой прокси…
+<b>UPD</b>. Как мне справедливо указали, под компрессией имеется в виду не использование GCP, а использование стандартного gzip... Который у Apache есть уже много-много лет. Так что тем более странно.
+
+<p>К сожалению, большинство разработчиков слепо верят Google и сразу считают, что библиотека Apache “плохая”, и нужно бежать выкидывать её из своего кода.</p>
+<p>Разработчики из Apache прокомментировали это кратко:</p>
+<blockquote>Google has used the project when it suited their goals and screwed us afterwards. There is nothing we can do about it.</blockquote>
+
+<h2>Эпилог c OkHttp</h2>
+Если вы разрабатываете под Android, то наверняка видели рекомендации заменять Apache HttpComponents ныне популярной библиотекой OkHttp от Square.
+
+<p>А вы всё ещё помните милого парня Джесси Вилсона из Dalvik team? А вы знаете, что сейчас <a target="_blank" rel="noopener" href="https://github.com/swankjesse">он работает в Square</a>? И именно он является создателем OkHttp? Более того, вы знате, что OkHttp начинался как форк куска AOSP (Android Open Source Project), который в свою очередь брал свой код из Apache Harmony?</p>
+<p>Так что это и есть по сути создание форка Apache с последующим выкидыванием оригинала из обращения (второй вариант из озвученных ранее Джесси в общении с Apache). Звучит довольно гнусно, не правда ли? Единственное что непонятно - была ли это инициатива Google или самого Джесси. Но поступил он крайне некрасиво, выкинув конкурентов с помощью Google и придя весь в белом со своим решением.</p>
+<h1>И что же?</h1>
+Давайте разберёмся, какие есть варианты того, как жить дальше.
+
+<p><b>1. Использовать HttpUrlConnection</b>
+Рекомендованный подход Google. Действительно имеет смысл, если у вас простое приложение. Но не дай бог вам попробовать сделать что-то не совсем тривиальное. В моей практике таких случая было два - когда я пытался использовать SSL прокси и когда хотел обратиться к некоему айпишнику со своим именем хоста. Обе задачи при помощи HttpUrlConnection реализовать невозможно.</p>
+<p><b>2. Использовать другие продвинутые альтернативы</b>
+Например, тот же OkHttp. Сам его не пробовал, но говорят, что библиотека хорошая. Однако, вы потратите много времени на переписывание хорошего готового имеющегося кода (если у вас уже есть приложение). Ну и касательно именно OkHttp - я бы не стал использовать столь неприятно пахнущий форк.</p>
+<p><b>3. Использовать legacy библиотеку</b>
+Да, вы можете продолжать использовать всю ту же древнюю бету, что и раньше. Но зачем? Как быстрое затыкание дырки это решение неплохое, а если нет… То конечно нет. Обидно, что именно такой ответ является наиболее популярным решением на том же stack overflow - люди просто не понимают, что они используют версию библиотеки от 2008 года.</p>
+<p><b>4. Использовать последние версии Apache HttpComponents</b>
+В плюсах имеем то, что мы продолжаем использовать всё тот же код, не тратя время на переписывание и на изучение новой библиотеки и её багов. Более того, код написанный на HttpComponents будет у вас работать где угодно. Библиотека чудовищно мощная и позволяет вам сделать действительно что угодно.
+Вопрос - как её подключать?
+Если просто брать и подставлять в gradle, то выйдет конфликт классов с этой самой древней версией.
+В релизе 4.3 разработчики apache предлагали использовать специальные постфиксы “HC4” в классах для избегания конфликтов, но работало это как-то очень плохо.
+Зато к релизу 4.5 они уже рекомендуют другой, единственно логичный выход - использовать перепакованную под другим пространством классов библиотеку, собранную неким товарищем на гитхабе (ссылка ниже). Там, правда, на самом деле версия 4.4, а не 4.5 - но это не так принципиально. А если вас волнует, что вы используете собранную непонятно кем библиотеку (хотя она довольно популярна), то вы всегда можете собрать её сами из исходников. На данный момент я считаю это наиболее правильным выходом из сложившейся дурной ситуации (и сам делаю именно так).</p>
+<h2>Что дальше?</h2>
+Заметок по использованию пятой версии библиотеки на Android пока что нету - возможно, это объясняется тем, что она пока ещё в альфа версии. Или просто в Apache решили больше не иметь дела с Google и Android. Впрочем, даже если так - всегда найдутся энтузиасты, которые смогут корректно перепаковать последнюю версию. А работать с ней - сплошное удовольствие.
+
+<h2>Ссылки</h2>
+<ol>
+	<li><a target="_blank" rel="noopener" href="https://github.com/smarek/httpclient-android">Репозиторий</a> с перепакованной версией httpComponents;</li>
+	<li><a target="_blank" rel="noopener" href="https://hc.apache.org/httpcomponents-client-4.5.x/android-port.html">Заметки</a> о релизе 4.5, где рекомендуют использовать этот репозиторий;</li>
+	<li>Интересные <a target="_blank" rel="noopener" href="http://markmail.org/search/?q=order%3Adate-backward+list%3Aorg.apache.hc.dev+from%3ABob%2BLee+from%3AJesse%2BWilson#query:order%3Adate-backward%20list%3Aorg.apache.hc.dev%20from%3ABob%2BLee%20from%3AJesse%2BWilson+page:1+mid:2l7zed626lunw63s+state:results">фрагменты переписки</a> ребят из Apache и Google;</li>
+	<li>Любопытные задачи с комментариями в джире Apache - <a target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/HTTPCLIENT-1632">раз</a>  и <a target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/HTTPCLIENT-898">два</a>.</li>
+</ol>
+В процессе написания статьи я общался на эту тему с разработчиком из Apache, который подтвердил мои предположения, но от греха подальше упоминать его здесь не буду.
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<!--  -->
+
+
+
   <article id="post-2016/08/хроника-взлома-pokemon-go" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
@@ -685,51 +793,6 @@ If it’s possible to bring your app into compliance, you can sign in to your De
 
 
 
-  <article id="post-2016/02/версионирование-базы-данных-на-лету" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time class="dt-published" datetime="2016-02-16T07:00:00.000Z"><a href="/2016/02/версионирование-базы-данных-на-лету/">2016-02-16</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/02/версионирование-базы-данных-на-лету/">Версионирование базы данных на лету</a></h1>
-  
-
-    </header>
-    <div class="e-content entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://habr.com/ru/post/277359%7D">Оригинал поста на хабре</a></p>
-<p>Здравствуйте, меня зовут Евгений, и я веб разработчик. Несколько лет назад мне перепала функция DBA (Database Administrator), я получил по этому поводу несколько сертификатов и решал соответствующие задачи. Я давно хотел описать задачу версионирования базы данных, но мне казалось, что для этого должны быть какие-то беспроигрышные варианты, которые хорошо знают умелые дяди, а я просто чего-то недопонимаю. Вчерашнее собеседование и последующий поиск по <a href=”http://dba.stackexchange.com/questions/283/how-do-you-version-your-oracle-database-changes”>тематическим ресурсам</a> показал, что это не так, и задача действительно сложна, актуальна и не решается однозначно. Разберём её по пунктам.</p>
-<h1>Что мы версионируем</h1>
-Мы используем контроль версий только для DDL (Data Definition Language) запросов. Сами данные нас не интересуют. Почему? Рассмотрим два крайних случая.
-
-<ol>
-	<li>Данных мало (скажем, менее 50 мегабайт). В этом случае, мы можем просто периодически делать полный дамп базы и смело складывать его в репозиторий.</li>
-	<li>Данных много (больше гигабайта). В этом случае версионирование нам мало поможет, всё равно разобраться в этом будет довольно проблематично. Целесообразно в данном случае использовать стандартную схему с бекапами и архив логом, которая позволяет нам получить целостную версию базы на любой момент во времени.</li>
-</ol>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2016/02/версионирование-базы-данных-на-лету/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-<!--  -->
-
-
-
 
 
     <nav id="page-nav">
@@ -764,6 +827,10 @@ If it’s possible to bring your app into compliance, you can sign in to your De
   <ul class="entry">
     
       <li>
+        <a href="/2025/06/миядзаки-2025/">Миядзаки 2025</a>
+      </li>
+    
+      <li>
         <a href="/2025/02/умный-дом-на-канале-яндекса/">Мой умный дом на канале яндекса</a>
       </li>
     
@@ -777,10 +844,6 @@ If it’s possible to bring your app into compliance, you can sign in to your De
     
       <li>
         <a href="/2024/07/докер-контейнеры-и-прикладная-некромантия/">Докер контейнеры и прикладная некромантия</a>
-      </li>
-    
-      <li>
-        <a href="/2024/05/отчёт-по-эйре/">Отчёт по «Книге Эйре»</a>
       </li>
     
   </ul>
